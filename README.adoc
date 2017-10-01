@@ -1,0 +1,68 @@
+:icons: font
+//:source-highlighter: pygments 
+
+
+
+[TIP]
+fssdsfffff.
+
+.Code block
+[source,html,linenums,highlight='7-9']
+----
+<!DOCTYPE html>
+    <html>
+        <head>
+            <title>Bob’s Auto Parts - Order Result</title>
+        </head>
+        <body id="sds">
+            <h1>Bob’s Auto Parts</h1>
+            <h2>Order Results</h2>
+        </body>
+</html>
+----
+
+For more information about why Asciidoctor is great, 
+see <<_awesome_asciidoctor, the section below>>.
+
+[#_awesome_asciidoctor]
+== Asciidoctor is really awesome, but this section title is super long
+
+=== PHP Kodlarını HTML Sayfası İçine Yerlerştirme
+HTML dosyasında yer alan <h2> etiketinin altına aşağıdaki kod parçasını ekleyelim.
+[source,php]
+----
+<?php
+$totalqty = 0;
+ + $sparkqty;
+echo "<p>Items ordered: ".$totalqty."<br />";
+$totalamount = 0.00;
+define('TIREPRICE', 100);
+define('OILPRICE', 10);
+define('SPARKPRICE', 4);
+$totalamount = $tireqty * TIREPRICE
++ $oilqty * OILPRICE
++ $sparkqty * SPARKPRICE;
+echo "Subtotal: $".number_format($totalamount,2)."<br />";
+$taxrate = 0.10; // local sales tax is 10%
+$totalamount = $totalamount * (1 + $taxrate);
+echo "Total including tax: $".number_format($totalamount,2)."</p>";
+ echo '<p>Order processed.</p>';
+?>
+----
+Dosyayı kaydettikten sonra Ahmet'in sipariş formunun olduğu sayfayı açıp formu dolduralım. Form onay butonuna basıp formu gönderdiğimizde tarayıcımızda aşağıdaki şekilde bir web sayfası göreceğiz.
+
+Burada görüldüğü gibi, yazdığımız PHP kodları sunucuda işlem görerek tekrar HTML koduna dönüştü.
+
+=== PHP Etiketleri
+PHP kodları `<?php` ile `?>` arasına yazılır. Bu kullanım, 
+HTML etiketlerinin `<` ile `>` arasına yazılmasıyla benzeşmektedir. 
+Bu iki ifadeye, (`<?php` ve `?>`), *_PHP etiketleri_* denir. Sunucu, bu iki etiket arasında kalan herşeyi PHP kodu olara yorumlar. Dışında kalanlar ise HTML kodu olarak işlev görür.
+Aslında PHP etiketleri iki farklı şekilde karşııza çıkar.
+
+* XML Stili
++ 
+Bu etiket türü PHP ayarlarında varsayılan olarak gelir.
++
+* ffsf
+
+
