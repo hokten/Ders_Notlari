@@ -215,6 +215,7 @@ sonucunda, mantıksal değerler olan `true` veya `false` değerlerinden birini a
 |`$a >= $b`
 |===
 
+=== Mantıksal Operatörler Eklendi
 
 
 
