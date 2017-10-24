@@ -1,0 +1,5 @@
+= Web Tasarımının Temelleri
+== Semantik Etiketler
+
+=== `aside` Etiketi
+İçerik ile direkt olarak ilgisi olmayan bölümler için kullanılan *semantik* bir etikettir.

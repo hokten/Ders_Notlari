@@ -1,0 +1,54 @@
+= Linux
+== Komutlar
+
+=== Komut Kullanım Şablonu
+komut [paremetreler] +
+ls [-l,-h,-p] +
+ls
+
+=== `pwd` Komutu
+Konsolda bulunduğumuz klasörün tam yolunu konsola yazdırır. İngilizce, _print working directory_ 
+cümlesinin kısaltmasıdır.
+
+=== `cd` Komutu
+Konsolda, başka bir klasöre geçmemizi sağlar. Kullanımı `cd /gecilecek/klasör` şeklindedir.
+
+[source,bash]
+----
+[root@archlinux ~]# pwd
+[root@archlinux ~]# /root
+[root@archlinux ~]# cd /etc/conf.d
+[root@archlinux conf.d]# pwd
+[root@archlinux conf.d]# /etc/conf.d
+----
+`cd ~` komutu ile aktif kullanıcının ana klasörüne geçilir. +
+`cd ..` ile bulunduğunuz klasörün bir üst klasörüne geçersiniz. +
+`cd -` ile bir önce bulunduğunuz klasöre geçersiniz.
+
+=== `ls` Komutu
+Bir klasör içerisindeki dosyaları ve klasörleri listelemek için kullanılır. `ls` komutunun 
+kullanım formatı şu şekildedir:
+[source,bash]
+ls [paremetreler] [listelenecek_klasör1 listelenecek_klasör2 ...]
+
+`ls` komutu, konsolda bulunduğunuz klasörü listeler. +
+`ls /etc/httpd` komutu, `/etc/httpd` klasörü içerisindeki dosyaları ve klasörleri listeler. +
+`ls /etc/httpd /var` komutu, hem `/etc/httpd` klasörünü hem de `/var` klasörünü listeler.
+
+==== `ls` Komutunun Önemli Paremetreleri
+===== `-a` Parametresi
+Gizli dosyalar ve klasörler de dahil olacak şekilde, klasör içerisindeki tüm(_all_) dosyaları listeler.
+
+===== `-l` Parametresi
+Dosyaları ve klasörleri sütunlar halinde ve ayrıntılı olarak listeler.
+
+===== `-h` Parametresi
+Ayrıntılı listelemede, dosya ve klasör boyutlarını okunaklı(_human readable_) olarak yazar. `-l` parametresi
+ile beraber kullanılır. Dosya boyutlarını, büyüklüğüne göre uygun biçimde KiloByte, MegaByte ve GigaByte birimlerine çevirir. 
+KiloByte için *K*, MegaByte için *M* ve GigaByte için *G* kısaltmasını kullanır.
+
+
+
+
+
+
