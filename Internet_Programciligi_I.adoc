@@ -215,9 +215,112 @@ sonucunda, mantıksal değerler olan `true` veya `false` değerlerinden birini a
 |`$a >= $b`
 |===
 
-=== Mantıksal Operatörler Eklendi
+=== Mantıksal Operatörler
+Mantıksal operatörler, iki veya daha fazla mantıksal ifadenin sonuçlarını mantıksal olarak birleştirmek için kullanılır.
 
+|===
+|Operatör |Adı |Kullanılışı |Sonuç
 
+|`!`
+|NOT
+|`!$a`
+|`$a` `false` is `true`, `true` ise `false` değerini döndürür.
 
+|`&&`
+|AND
+|`$a && $b`
+|`$a` ile `$b` değişkenlerinin ikisi de `true` ise `true`,  aksi durumlarda `false` döndürür.
+
+|`&#124;&#124;`
+|OR
+|`$a &#124;&#124; $b`
+|`$a` ile `$b` değişkenlerinin ikisinden biri veya ikisi birden `true` ise `true`,  aksi durumlarda `false` döndürür.
+|===
+
+[source, php]
+----
+$yas = 15;
+/*
+Yaşı 0-3 arasında olanlara bebek;
+Yaşı 4-18 arasında olanlar çocuk;
+Yaşı 19-45 arasında olanlar yetişkin;
+*/
+if( ($yas >= 0) && ($yas <=3) ) {
+    echo "Sen bir bebeksin";
+}
+elseif(($yas > 3) && ($yas <=18))
+{
+    echo "Sen bir çocuksun";
+}
+elseif(($yas > 18) && ($yas <=45))
+{
+    echo "Sen bir yetişkinsin";
+}
+----
+
+[source, php]
+----
+<html>
+<head>
+
+</head>
+<body>
+
+<form action="online.php" method="post">
+    1. Soru : Açık kaynaklı web programlama dili nedir?
+    <br />
+    <input type="text" name="soru_bir" />
+    <br />
+    2. Soru : Web sitesi tasarlamak için kullanılan dil nedir?
+    <br />
+    <input type="text" name="soru_iki" />
+    <br />
+    <input type="submit" name="test" value="Sınav Sonucumu Göster" />
+</form>
+<?php
+/*
+ * Sorulan iki sorudan en az birini bilen bir kişinin 
+ * başarılı kabul edildiği bir sınav için veya operatörünün kullanılışı.
+ */
+if(!empty($_POST["test"])) {
+	$bir = ($_POST["soru_bir"] == "PHP");
+	$iki = ($_POST["soru_iki"] == "HTML");
+
+	if($bir or $iki) {
+		echo "Sınavdan geçtiniz.";
+	}
+	else {
+		echo "Sınavdan kaldınız.";
+	}
+}
+?>
+</body>
+</html>
+----
+
+=== Ternary Operatörü
+`if-else` yapısının kısa şeklidir. Kullanım biçimi aşağıdaki gibidir +
+`koşul ? koşul doğru ise değer : koşul yanlış ise değer`
+
+[source, php]
+----
+<html>
+    <head>
+	<title>Zebra Stilli Tablo</title>
+    </head>
+<body>
+<?php
+echo "<table border='1'>";
+$renk="purple";
+for($i=1; $i<=15; $i++) {
+	echo "<tr bgcolor=$renk><td>A</td><td>B</td></tr>";
+	$renk = $renk == "purple" ? "yellow" : "purple";
+}
+echo "</table>";
+?>
+</body>
+</html>
+----
+// 24.10.2017 GBIL201 Dersi Sonu
 
 
