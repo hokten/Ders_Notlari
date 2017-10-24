@@ -154,6 +154,67 @@ echo '$yeni_sayi : ' . $yeni_sayi; // $yeni_sayi = 10 olur.
 === Referanslar
 Bir değişkene atama işlemi yapılırken, atanan değişkenin kopyasının mı kullanılacağını yoksa o değişkenin referansının mı kullanılacağının
 seçimini yapabiliriz. Bu işlem `&` (ampersand) operatörü ile yapılır.
+[source,php]
+----
+$a = 5;
+$b = $a;
+
+// Bu kodlar, $a nın bir kopyasını oluşturur ve bu ayrışık kopyayı $b değişkenine atar.
+$a = 7;
+// $a = 7 olarak atanırsa acaba, $b değişkeni de 7 mi olur?
+// Bu kullanımda $a da gerçekleşen değişimler $b yi etkilemez.
+echo '$b : ' . $b;
+echo "<br />";
+
+
+// Bu kodlar, $a nın referansını $b değişkenine aktarır.
+$a = 5;
+$b = &$a;
+
+$a = 56;
+// Bu $b de 56 olur.
+echo '$b : ' . $b;
+----
+
+=== Karşılaştırma Operatörleri
+İki değeri karşılaştırmak için kullanılır. Bu operatörleri kullanan ifadeler, karşılaştırmanın 
+sonucunda, mantıksal değerler olan `true` veya `false` değerlerinden birini alır.
+
+|===
+|Operatör |Kullanılışı |Eşiti
+
+|`==`
+|eşittir
+|`$a == $b`
+
+|`===`
+|denktir
+|`$a === $b`
+
+|`!=`
+|eşit değildir
+|`$a != $b`
+
+|`<>`
+|eşit değildir
+|`$a <> $b`
+
+|`<`
+|küçüktür
+|`$a < $b`
+|`>`
+|büyüktür
+|`$a > $b`
+
+|`pass:[<=]`
+|küçük veya eşit
+|`$a <= $b`
+
+|`>=`
+|büyük veya eşit
+|`$a >= $b`
+|===
+
 
 
 

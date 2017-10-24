@@ -71,5 +71,5 @@ Aslında PHP etiketleri iki farklı şekilde karşııza çıkar.
 Bu etiket türü PHP ayarlarında varsayılan olarak gelir.
 +
 * ffsf
-
+Ekeleno
 
