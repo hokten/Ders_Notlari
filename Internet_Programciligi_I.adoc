@@ -1,0 +1,161 @@
+= Hello, AsciiDoc!
+Doc Writer <doc@example.com>
+
+== Değişkenlere Değer Atamak
+Değişkenlere değer atamak için `=` operatörü kullanılır. 
+Atama işleminde öncelik sağ tarafdadır. Yani önce `=` operatörünün sağ tarafı 
+hesaplanır ve değer sol tarafdaki değişkene atanır.
+
+[source,php]
+$sayi1 = 7; // $sayi1 değişkenine 7 değeri atandı.
+$sayi2 = $sayi1 // $sayi2 değişkenine $sayi1 değişkeninin değer atanır.
+$sayi3 = $sayi1 + 6; // $sayi3 değişkeni 7+6 değerini alır.
+$sayi3 = $sayi3 + 2; // $sayi3 = 13 + 2 olur ve $sayi3 değişkeninin yeni değeri 15 olur.
+
+== Değişken Türleri
+* Integer : Tamsayı türünden değişkenler ve sabitler için kullanılır.
+* Double : Reel sayı türünden değişkenler ve sabitler için kullanılır.
+* String : Metin türünden değişkenler ve sabitler için kullanılır.
+* Array : Dizi türünden değişkenler ve sabitler için kullanılır.
+* Boolean : Mantıksal ifade (true, false) içeren değişkenler ve sabitler için kullanılır.
+* Object : Sınıf örneklerini saklmak için kullanılır.
+
+== Sabitler
+Program içerisinde değişmez olarak kalacak değerlere sabitler denir. Sabitler değiştirilemez. 
+PHP'de sabit oluşturmak için `define` fonksiyonu kullanılır. `define` fonksiyonu aşağıdaki şekilde 
+kullanılır.
+[source,php]
+define(PI, 3.14);
+$yaricap = 3;
+$alan = PI * $yaricap * $yaricap;
+
+Sabit isimleri oluştururken büyük harfler kullanılır. Ayrıca, sabit isimlerinin başında, değişkenlerden farklı olarak
+`$` işareti bulunmaz.
+
+== Operatörler
+Operatörler, değerler ve değişkenler üzerinde belirli bir işlem yapan fonksiyon kısayollarıdır. Operatörler genellikle 
+tek bir sembolden ibarettir. Bir operatör, solunda bulunan ifade ile sağında bulunan ifadeyi bir operasyona tabi tutar.
+Örneğin, `+` operatörü solundaki sayı ile sağındaki sayıyı toplar.
+[source,php]
+$sayi = 3
+$sayi1 = $sayi + 2; // $sayi1 = 5 olur.
+
+=== Aritmetik Operatörler
+|===
+|Operatör |İsim |Örnek
+
+|`+`
+|Toplama
+| `$a + $b`
+
+|`-`
+|Çıkarma
+| `$a - $b`
+
+|`*`
+|Çarpma
+| `$a * $b`
+
+|`/`
+|Bölme
+| `$a / $b`
+
+|`%`
+|Kalan
+| `$a % $b`
+|===
+
+=== String Operatörleri
+İki string türünden değişkeni veya değeri bitişik şekilde birleştirmek için `.` operatörü kullanılır.
+[source,php]
+----
+$ad = "Ali";
+$bosluk = " ";
+$soyad = "ŞAHİN"
+$ad_soyad = $ad.$bosluk // $ad_soyad = "Ali " olur.
+$ad_soyad = $ad_soyad.$soyad; // $ad_soyad = "Ali ŞAHİN"
+$ad_soyad = $ad.$bosluk.$soyad; // $ad_soyad = "Ali ŞAHİN"
+----
+
+
+
+// 24.10.2017 GBIL201 Dersi Başlangıcı
+
+== Birleşik Atama Operatörleri
+Birleşik atama operatörleri, bir değişken üzerinde belli bir işlem yapıp 
+sonucu yine aynı değişkene atamaya yarar.
+Örneğin;
+[source,php]
+$a += 5;
+
+ile
+[source,php]
+$a = $a + 5;
+
+aynı işlevi görür.
+|===
+|Operatör |Kullanılışı |Eşiti
+
+|`+=`
+|`$a += $b`
+|`$a = $a + $b`
+
+|`-=`
+|`$a -= $b`
+|`$a = $a - $b`
+
+|`*=`
+|`$a *= $b`
+|`$a = $a * $b`
+
+|`/=`
+|`$a /= $b`
+|`$a = $a / $b`
+
+|`%=`
+|`$a %= $b`
+|`$a = $a % $b`
+
+|`.=`
+|`$a .= $b`
+|`$a = $a . $b`
+|===
+
+[source,php]
+$ad = "Ali";
+$bosluk = " ";
+$soyad = "ŞAHİN"
+$ad_soyad="";
+$ad_soyad .= $ad; // $ad_soyad = ""."Ali" olur yani $ad_soyad="Ali"
+$ad_soyad .= $bosluk; // $ad_soyad = "Ali"." " olur yani $ad_soyad="Ali "
+$ad_soyad .= $soyad; // $ad_soyad = "Ali "."ŞAHİN" olur yani $ad_soyad="Ali ŞAHİN"
+
+=== Bir Artırma ve Bir Azaltma Operatörleri
+Değişken önüne veya sonuna koyulan `pass:[++]`, değişkenin değerini bir arttırır. Benzer şekilde 
+değişken önüne veya sonuna koyulan `--` , değişkenin değerini bir azaltır. Yani; 
+`pass:[$a++]` veya `pass:[++$a]` ifadeleri `a += 1` deyiminin kısayollarıdır.
+// 18.10.2017 BIL201 Dersi Sonu
+
+[source, php]
+----
+$sayi = 10;
+$yeni_sayi = ++$sayi;
+echo '$sayi : ' . $sayi; // $sayi=11 olur.
+echo '<br />'; 
+echo '$yeni_sayi : ' . $yeni_sayi; // $yeni_sayi = 11 olur.
+
+$sayi = 10;
+$yeni_sayi = $sayi++;
+echo '$sayi : ' . $sayi; // $sayi=11 olur.
+echo '<br />'; 
+echo '$yeni_sayi : ' . $yeni_sayi; // $yeni_sayi = 10 olur.
+----
+
+=== Referanslar
+Bir değişkene atama işlemi yapılırken, atanan değişkenin kopyasının mı kullanılacağını yoksa o değişkenin referansının mı kullanılacağının
+seçimini yapabiliriz. Bu işlem `&` (ampersand) operatörü ile yapılır.
+
+
+
+
+
