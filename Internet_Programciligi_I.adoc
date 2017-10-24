@@ -261,40 +261,40 @@ elseif(($yas > 18) && ($yas <=45))
 [source, php]
 ----
 <html>
-<head>
+	<head>
 
-</head>
-<body>
+	</head>
+	<body>
 
-<form action="online.php" method="post">
-    1. Soru : Açık kaynaklı web programlama dili nedir?
-    <br />
-    <input type="text" name="soru_bir" />
-    <br />
-    2. Soru : Web sitesi tasarlamak için kullanılan dil nedir?
-    <br />
-    <input type="text" name="soru_iki" />
-    <br />
-    <input type="submit" name="test" value="Sınav Sonucumu Göster" />
-</form>
-<?php
-/*
- * Sorulan iki sorudan en az birini bilen bir kişinin 
- * başarılı kabul edildiği bir sınav için veya operatörünün kullanılışı.
- */
-if(!empty($_POST["test"])) {
-	$bir = ($_POST["soru_bir"] == "PHP");
-	$iki = ($_POST["soru_iki"] == "HTML");
+		<form action="online.php" method="post">
+			1. Soru : Açık kaynaklı web programlama dili nedir?
+			<br />
+			<input type="text" name="soru_bir" />
+			<br />
+			2. Soru : Web sitesi tasarlamak için kullanılan dil nedir?
+			<br />
+			<input type="text" name="soru_iki" />
+			<br />
+			<input type="submit" name="test" value="Sınav Sonucumu Göster" />
+		</form>
+		<?php
+		/*
+		 * Sorulan iki sorudan en az birini bilen bir kişinin 
+		 * başarılı kabul edildiği bir sınav için veya operatörünün kullanılışı.
+		 */
+		if(!empty($_POST["test"])) {
+			$bir = ($_POST["soru_bir"] == "PHP");
+			$iki = ($_POST["soru_iki"] == "HTML");
 
-	if($bir or $iki) {
-		echo "Sınavdan geçtiniz.";
-	}
-	else {
-		echo "Sınavdan kaldınız.";
-	}
-}
-?>
-</body>
+			if($bir or $iki) {
+				echo "Sınavdan geçtiniz.";
+			}
+			else {
+				echo "Sınavdan kaldınız.";
+			}
+		}
+		?>
+	</body>
 </html>
 ----
 
