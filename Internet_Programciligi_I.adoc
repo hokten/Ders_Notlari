@@ -323,4 +323,39 @@ echo "</table>";
 ----
 // 24.10.2017 GBIL201 Dersi Sonu
 
+=== Hata Mesajı İptal Operatörü
+PHP'de bir deyimin başına `@` operatörü getirildiğinde, bu deyimin üreteceği olası hata iletileri yok sayılır.
 
+=== Operatör Öncelikleri ve Birleşmeleri
+Bir operatör ikiden fazla ifade ile kullanıldığında birleşmenin hangi tarafdan başlayarak gerçekleşeciğini 
+operatörün birleşme yönü ile tayin edebiliriz.
+|===
+|Birleşim Yönü |Operatörler
+
+|sağ
+|`!`
+
+|sol
+|* / %
+
+|sol
+|+ - .
+
+|yönsüz
+|< pass:[<=] > >=
+
+|yönsüz
+|== != === !== <>
+
+|sol
+|&
+
+|sol
+|&&
+
+|sol
+|`&#124;&#124;`
+
+|sağ
+|= += -= *= **= /= .= %=
+//25.10.2017 BIL201 Dersi Sonu
