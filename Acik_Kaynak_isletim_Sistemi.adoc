@@ -46,9 +46,25 @@ Dosyaları ve klasörleri sütunlar halinde ve ayrıntılı olarak listeler.
 Ayrıntılı listelemede, dosya ve klasör boyutlarını okunaklı(_human readable_) olarak yazar. `-l` parametresi
 ile beraber kullanılır. Dosya boyutlarını, büyüklüğüne göre uygun biçimde KiloByte, MegaByte ve GigaByte birimlerine çevirir. 
 KiloByte için *K*, MegaByte için *M* ve GigaByte için *G* kısaltmasını kullanır.
+// 20.10.2017 GBIL207 Dersi Sonu
 
+===== `-R` Parametresi
+Bu parametre ile iç içe olan tüm klasörler ve dosyalar listelenir.
 
+===== `-S` Parametresi
+Dosya ve klasörleri, önce boyutu büyük olan gelecek şekilde boyutuna göre sıralar.
 
+===== `-r` Parametresi
+Dosya ve klasörleri, geçerli olan sıralamanının tersi yönünde sıralar.
 
+===== `-t` Parametresi
+Yeni düzenlenen dosya ve klasörler önce gelecek şekilde, doya ve klasörleri değiştirilme tarihine göre listeler.
 
+===== `-X` Parametresi
+Dosya ve klasörleri uzantısına göre alfabetik olarak sıralar.
 
+=== `cp` Komutu
+Dosya ve klasörleri kopyalamak için kullanılan komuttur. Kullanım şekli aşağıdaki gibidir. +
+`cp [seçenek]... kaynak_dosya hedef_dosya` +
+`cp [seçenek]... kaynak_dosya... hedef_klasör`
+//25.10.2017 BIL207 Dersi Sonu
