@@ -3,3 +3,101 @@
 
 === `aside` Etiketi
 İçerik ile direkt olarak ilgisi olmayan bölümler için kullanılan *semantik* bir etikettir.
+
+=== Footer (Alt Bilgi) Oluşturma
+Footer, makale veya yazı ile ilgili ayrıntıların bulunduğu ve genellikle sözkonusu içeriğin 
+altına konumlandırılan semantik bir yapıdır.
+[source, html]
+----
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Deneme</title>
+</head>
+<body>
+	<article>
+		<h1>Amasya Mimarisi</h1>
+		Amasya'nın tarihi yapıları mimari açıdan çok çeşitli özelliklere sahiptir.
+		<section>
+			<h2>Amasya Kalesi</h2>
+			Harşena dağındadır. Yüksekliği şu kadardır. Restore edilmektedir.
+		</section>
+		<section>
+			<h2>Kral Kaya Mezarları</h2>
+			Merdivenlerle çıkılır. Dağalara açılna oyuklar şeklindedir.
+		</section>
+		<footer>
+			&copy; Her Hakkı Saklıdır. Yazar : Hasan ÖKTEN
+		</footer>
+	</article>
+</body>
+</html>
+----
+
+=== Generic Kapsayıcılar Oluşturma
+Sayfanın bölümlerine ait sınırların daha net bir şekilde vurgulanması ve
+bölümlere stil şablonlarının daha rahat uygulanması için sayfalar genellikle 
+sanal bölümlere ayrılır.
+[source, html]
+----
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Deneme</title>
+	<style type="text/css">
+		header {
+			height:120px;
+			border:1px solid red;
+		}
+		#kapsayici {
+			border:1px solid green;
+			padding: 5px;
+		}
+		#icerik {
+			width:75%;
+			height:700px;
+			border:1px solid blue;
+			margin:5px;
+			float:left;
+		}
+		#sagsutun {
+			width:20%;
+			height:700px;
+			border:1px solid purple;
+			margin:5px;
+			float:right;
+		}
+		footer {
+			height:50px;
+			margin:5px;
+			border:1px solid black;
+			clear:both;
+		}
+
+	</style>
+</head>
+<body>
+	<!-- Sayfa genel kapsayıcısı -->
+	<div id="kapsayici">
+		<header>
+			<!-- Sayfanın başlık bölümü burası -->
+		</header>
+
+		<div id="icerik">
+			<!-- Burada sayfanı asıl içeriği bulunacak -->
+		</div>
+
+		<div id="sagsutun">
+			<!-- Buraya sağ sütunda yer alacak içerik yerleştirilcek -->
+		</div>
+
+		<footer>
+			<!-- Sayfanın alt bilgi bölümü -->
+		</footer>
+
+	</div>
+</body>
+</html>
+----
