@@ -101,3 +101,92 @@ sanal bölümlere ayrılır.
 </body>
 </html>
 ----
+== Yazılar
+=== Paragraf Oluşturma
+HTML'de enter tuşuna basarak paragraf oluşturamayız. Çünkü yeni satır karakterleri boşluk karakterine dönüşür.
+HTML'de paragraf eklemek için `p`  etiketi kullanılır. `p` etiketi sonlandırmalı bir etikettir ve paragraf yapılacak 
+`p` etiketinin içine yazılır.
+[source, html]
+----
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Deneme</title>
+	<style type="text/css">
+	body {
+		font-size:20px;
+	}
+	</style>
+</head>
+<body>
+	<h1>P Etiketi</h1>
+	<p>HTML’de enter tuşuna basarak paragraf oluşturamayız. Çünkü yeni satır karakterleri boşluk karakterine dönüşür. HTML’de paragraf eklemek için p etiketi kullanılır. p etiketi sonlandırmalı bir etikettir ve paragraf yapılacak p etiketinin içine yazılır.</p>
+	<p>p etiketinin özellikleri şunlardır: align</p>
+</body>
+</html>
+----
+=== Yazar İletişim Bilgisi Ekleme
+`address` etiketi, yazarın fiziksel adresini belirtmekten ziyade; yazar, organizasyon veya kişiler hakkında 
+iletişim bilgisi eklemek için kullanılır.
+[source, html]
+----
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Deneme</title>
+	<style type="text/css">
+	body {
+		font-size:20px;
+	}
+	</style>
+</head>
+<body>
+  <article>
+    <h1>Makale Başlığı</h1>
+    <p>Makale içeriği. Makale içeriği</p>
+    <footer>
+    	<address>
+	  Email adresimi : <a href="mailto:hokten@gmail.com">hokten@gmail.com</a>
+	</address>
+    </footer>
+  </article>
+</body>
+</html>
+
+----
+=== Şekil Ekleme
+Sayfaya, grafik, resim gibi içrikler eklerken `figure` etiketi kullanılabilir.
+Şekil hakında kısa bir bilgi içeren metin `figcaption` etiketi ile eklenir.
+`figcaption`, `figure` etiketinin içinde olmalıdır. Ayrıca, `figcaption`, `figure`
+etiketinin ya başında ya da sonunuda yer almalıdır.
+[source, html]
+----
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Deneme</title>
+</head>
+<body>
+  <article>
+    <h1>Renk Çemberi</h1>
+    <p>
+    	Herhangi bir yazının rengini veya nesnenin arkaplanını değiştirmek için <span class="sekil">Şekil-2</span>'deki aracı
+    	kullanabiliriz.
+    </p>
+    <figure>i
+    	<img src="renk.png" />
+    	<figcaption>Şekil-2 : Renk Skalası</figcaption>
+    </figure>
+  </article>
+</body>
+</html>
+----
+
+=== Tarih/Zaman Yazdırma
+Tarih ve zaman içeren bir metni işaretlemek için `time` etiketi kullanılır. Çoğu zaman `time` etiketi 
+bir makalenin yayınlama tarihini bildirmek için kullanılır. Bunun için `time` etiketine, `pubdate` özelliği 
+eklenir. Tarih ve zaman bilgisi ise `datetime` özelliği içerisinde verilir.
+// 26.10.2017 Ders Sonu
