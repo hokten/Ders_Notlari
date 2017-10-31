@@ -358,4 +358,53 @@ operatörün birleşme yönü ile tayin edebiliriz.
 
 |sağ
 |= += -= *= **= /= .= %=
+|===
 //25.10.2017 BIL201 Dersi Sonu
+=== Değişken Fonksiyonları
+Bir değişkenin tipi, içeriği gibi bilgileri öğrenmek veya sorgulamak için kullanılan fonksiyonlardır.
+Bir değişkenin türünü öğrenemk için `gettype()` fonksiyonu kullanılır.
+
+[source, php]
+----
+<?php
+$degisken="Merhaba";
+echo gettype($degisken); // string yazacaktır.
+
+$degisken1=13;
+echo gettype($degisken1); //integer yazacaktır.
+
+$degisken2=1.45;
+echo gettype($degisken2); //double yzacaktır.
+
+$degisken3=false;
+echo gettype($degisken3); //boolean yzacaktır.
+?>
+----
+Bir değişkenin türünü değiştirmek içi `settype()` fonksiyonu kullanılır. `settype()` fonksiyonu 
+iki argüman alır. Birinci argüman; türü değiştirilmek istenen değişken, ikinci argüman ise değişkenin yeni türünü
+belirten metindir.
+[source, php]
+----
+<?php
+$a=56;
+echo gettype($a); // integer yazacaktır.
+echo "<br />";
+settype($a, "double");
+echo gettype($a); // double yazacaktır.
+?>
+----
+PHP ayrıca tip kontrol fonksiyonları da içerir. Bu fonksiyonlar, bir değişkeni argüman olarak alır ve o değiikenin 
+ilgili türden olup olmadığını `true` veya `false`  döndürerek bildirir. Bu fonksiyonlar şunlardır:
+
+* `is_array()`
+* `is_double()`, `is_float()`, `is_real()`
+* `is_long()`, `is_int()`, `is_integer()`
+* `is_string()`
+* `is_object()`
+
+=== Değişkenin Durumunu Kontrol Etmek
+`isset()` fonksiyonu ile bir değişkenin tanımlanıp tanımlanmadığı denetlenebilir. Değişken tanımlı ise `true`, 
+tanımlı değilse `false` döndürür. +
+Bir değişkenin tanımlı olup olmadığını `empty()` fonksiyonu ile de denetleyebiliriz. Ayrıca `empty()` fonksiyonu, bir değişkenin içeriğinin 
+boş veya sıfır olup olmadığını da sınar.
+//31.10.2017 GBil ders sonu
