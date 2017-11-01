@@ -387,10 +387,10 @@ belirten metindir.
 ----
 <?php
 $a=56;
-echo gettype($a); // integer yazacaktır.
+echo '$a değişkeninin türü : ' . gettype($a); // integer
 echo "<br />";
 settype($a, "double");
-echo gettype($a); // double yazacaktır.
+echo '$a değişkeninin yeni türü : ' . gettype($a); // double
 ?>
 ----
 PHP ayrıca tip kontrol fonksiyonları da içerir. Bu fonksiyonlar, bir değişkeni argüman olarak alır ve o değiikenin 
@@ -408,3 +408,141 @@ tanımlı değilse `false` döndürür. +
 Bir değişkenin tanımlı olup olmadığını `empty()` fonksiyonu ile de denetleyebiliriz. Ayrıca `empty()` fonksiyonu, bir değişkenin içeriğinin 
 boş veya sıfır olup olmadığını da sınar.
 //31.10.2017 GBil ders sonu
+
+[source, php]
+----
+var_dump(isset($degisken));
+/* Yukarıdaki ifadede; $degisken, isset fonksiyonu ile denetlenmeden önceki
+ * satırlarda tanımlanmadığından(= operatörü ile bir değer ataması yok) bu
+ * değişken tanımsızdır. Dönen değer false olacaktır.
+*/
+----
+
+[source, php]
+----
+<?php
+$degisken="Merhaba";
+var_dump(isset($degisken));
+/* Yukarıdaki ifadede; $degisken, isset fonksiyonu ile denetlenmeden önceki
+ * satırlarda tanımlandığından(= operatörü ile bir değer ataması var) bu
+ * değişken tanımlıdır. Dönen değer true olacaktır.
+*/
+?>
+----
+
+[source, php]
+----
+<?php
+var_dump(empty($degisken));
+/* Yukarıdaki ifadede; $degisken, empty fonksiyonu ile denetlenmeden önceki
+ * satırlarda tanımlanmadığından(= operatörü ile bir değer ataması var) bu
+ * değişken tanımsızdır ve dolayısıyla boş olarak düşünülebilir. empty fonksiyonu
+ * boş değerde true döndürdüğü için, dönen değer true olacaktır.
+ */
+?>
+----
+
+[source,php]
+----
+<?php
+$degisken="Merhaba";
+var_dump(empty($degisken));
+/* Yukarıdaki ifadede; $degisken, empty fonksiyonu ile denetlenmeden önceki
+ * satırlarda tanımlanmış ve boş değer almamıştır. empty fonksiyonu, değişken
+ * boş olmadığında false döndürdüğü için dönen değer false olacaktır.
+ */
+?>
+----
+
+[source, php]
+----
+<?php
+$degisken="";
+var_dump(empty($degisken));
+/* Yukarıdaki ifadede; $degisken, empty fonksiyonu ile denetlenmeden önceki
+ * satırlarda tanımlanmış ama boş değer almıştır. empty fonksiyonu, değişken
+ * boş olduğunda true döndürdüğü için dönen değer true olacaktır.
+ */
+?>
+----
+
+[source, php]
+----
+<?php
+$degisken=0;
+var_dump(empty($degisken));
+/* Yukarıdaki ifadede; $degisken, empty fonksiyonu ile denetlenmeden önceki
+ * satırlarda 0 değerini almıştır. empty fonksiyonu, değişken
+ * 0 değerini aldığında true döndürdüğü için dönen değer true olacaktır.
+ */
+?>
+----
+
+[source, php]
+----
+<?php
+$degisken=1;
+var_dump(empty($degisken));
+/* Yukarıdaki ifadede; $degisken, empty fonksiyonu ile denetlenmeden önceki
+ * satırlarda 0 değerini almamıştır. empty fonksiyonu, değişken
+ * 0 değerini almadığında false döndürdüğü için dönen değer false olacaktır.
+ */
+?>
+----
+
+[source, php]
+----
+<?php
+if(empty($_POST)) {
+
+}
+else {
+    if(empty($_POST["yil"])) {
+        echo "Araç üretim yılını boş girdiniz.!";
+    }
+    else {
+        $arac_uretim_yili = $_POST["yil"];
+        settype($arac_uretim_yili, "integer");
+        $arac_yasi = 2017 - $arac_uretim_yili + 1;
+        $vergi_miktari = 1000 * (1/$arac_yasi);
+        echo $vergi_miktari;
+
+    }
+}
+?>
+----
+=== Kontrol Yapıları
+==== If Deyimi
+`If-else` yapısı, bir koşulun sağlanması ve sağlanmaması durumunda farklı kod bloklarının çalışmasını sağlar.
+Kullanım şekli aşağıdaki gibidir.
+[source, php]
+----
+if(koşul) {
+	// koşul true ise yapılacaklar
+}
+else {
+	// koşul false ise yapılacaklar
+}
+----
+
+[source, php]
+----
+<?php
+$yas = 2;
+if($yas < 4) {
+    echo "Bebek";
+}
+elseif($yas < 12) {
+    echo "Çocuk";
+}
+elseif($yas < 30) {
+    echo "Genç";
+}
+/* if - elseif yapısındaki koşullardan biri sağlandığında o blok çalıştırılır.
+ * Sonraki elseif blokları işletilmez.
+ * Yukarıdaki örnekte; 2<4, 2<12 ve 2<30 olup bütün elseif bloklarının koşulu sağlanır ama ilk
+ * koşulu sqğlaya elseif bloğu 2<4 olduğu için program Bebek çıktısı üretecektir.
+ */
+?>
+----
+//01.11.2017 BIL Ders Sonu
