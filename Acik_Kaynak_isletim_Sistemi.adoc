@@ -63,8 +63,40 @@ Yeni düzenlenen dosya ve klasörler önce gelecek şekilde, doya ve klasörleri
 ===== `-X` Parametresi
 Dosya ve klasörleri uzantısına göre alfabetik olarak sıralar.
 
+=== `touch` Komutu
+`touch` komutu bir dosyanın, oluşturulma ve değiştirilme tarihini, komutun verildiği an olarak ayarlar.
+Eğer dosya mevcut değilse yeni bir dosya oluşturur.
+
+=== `mkdir` Komutu
+Klasör oluşturmak için kullanılan komuttur. Kullanım şekli aşağıdaki gibidir. +
+`mkdir [seçenekler]... klasör...`
+
+==== `mkdir` Komutunun Parametreleri
+===== `-p` Parametresi
+`mkdir` komutu `-p` parametresi ile birlikte kullanıldığında, oluşturulacak klasör eğer üst klasörler de 
+barındırıyorsa, komut bu klasörleri de oluşturur.
+
+.Örnekler
+[source, bash]
+----
+mkdir yeni
+# Bulunduğunuz klasörün içinde yeni isimli bir klasör oluşturur.
+
+mkdir bir/iki
+# Eğer bulunduğunuz klasörde bir klasörü varsa bir klasörü içinde iki isimli klasör oluşturur.
+
+mkdir /iki/uc
+# Bulunduğunuz klasörde iki isimli klasör yoksa, bu komut hata verecektir.
+
+mkdir /iki/uc
+# Bulunduğunuz klasörde iki isimli klasör yoksa, bu komut hata verecektir.
+
+mkdir -p /iki/uc
+# Bulunduğunuz klasörde iki isimli klasör yoksa oluşturulur. Daha sonra bu klasör içinde uc klasörü oluşturulur.
+----
 === `cp` Komutu
 Dosya ve klasörleri kopyalamak için kullanılan komuttur. Kullanım şekli aşağıdaki gibidir. +
 `cp [seçenek]... kaynak_dosya hedef_dosya` +
 `cp [seçenek]... kaynak_dosya... hedef_klasör`
 //25.10.2017 BIL207 Dersi Sonu
+Örnekler
