@@ -240,3 +240,71 @@ Kısa ve satır içinde yer alacak olan alıntılar için genellikle `<q>` etike
   <p><q><cite>Ahmet ALP'in Orman Kanunu</cite> adlı kitabında, Ormanların çok güzel</q> olduğunu belirtmiştir.</p>
   <p>Ahmet ALP, Orman Kanunu adlı kitabında, <q cite="http://ormankitabi.com">Ormanların çok güzel</q> olduğunu belirtmiştir.</p>
 ----
+=== Renkli Vurgu
+Bir yazıyı arkaplanını değğiştirerek renkli vurgu yapmak için `<mark>` etiketi kullanılır.
+
+.`<mark>` etiketinin kullanımı
+[source, html]
+----
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+</head>
+<body>
+  <p>Bir yazının <mark>önemli kısmı</mark> mark etiketi ile vurgulanabilir.</p>
+  <p>
+  	<mark>mark</mark> etiketi çeşitli amaçlar için kullanılabilir. <mark>mark</mark> etiketi renkli vurgu yapar. 
+  	Mesela <mark>mark</mark> etiketini arama sonuçlarında arama metnini vurgulamak için kullanabiliriz.
+  	Örneğin bu metinde <mark>mark</mark> kelimesinin arandığını düşünelim.
+  </p>
+  <p>Ayrıca, bir kod parçasında herhangi bir satırı veya deyimi vurugulamak için de kullanılabilir.</p>
+  PHP'de while döngüsü aşağıdaki gibidir. 2. satırda while deyiminin içinde yer alan koşul 
+  doğru olduğu sürece döngü devam eder.
+  <pre>
+  	<code>
+  		1.		$degisken = 5;
+  		2.		while(<mark>$degisken > 0</mark>) {
+  		3.			echo '$degisken : ' + $degisken;
+  		4.			$degisken--;
+  		5.		}
+  	</code>
+  </pre>
+</body>
+</html>
+----
+
+=== Kısaltmalar
+HTML5'de bir kısaltmayı işaretlemek ve açılımını belirtmek için `<abbr>` etiketi kullanılır. 
+`<abbr>` etiketi iki biçimde kullanılabilir. Birinci kullanım şeklinde; kısaltma `<abbr>` etiketi içinde, açılım ise 
+`<abbr>` etiketinin `title` özelliği içinde bulunur. Diğer kullanım şeklinde `title` özelliği kullanılmaz, açılım `<abbr>` 
+etiketinden sonra parantez içerisinde yazılır. Genel olarak bir kısaltmanın açılımı makalede bir defa ve en başta belirtilir. 
+İlk kısaltmadan sonraki kısaltmalarda açılıma ihtiyaç yoktur.
+
+.`<abbr>` etiketinin kullanımları
+[source, html]
+----
+<p>
+ <abbr title="Türkiye Büyük Millet Meclisi">TBMM</abbr>, bütçe görüşmeleri için olağanüstü toplandı
+</p>
+
+<p>
+	<abbr>TFF</abbr> (Türkiye Futbol Federasyonu), Ahmet ALP'e 45 maç ceza verdi. TFF, bu kararıyla tepki çekti.
+</p>
+
+<p>
+	<abbr title="Merkez Bankası">MB</abbr> (Merkez Bankası) faiz artırımına gitti.
+</p>
+----
+
+=== Terim Tanımlama
+Bir terimi tanımlarken, terimi işaretlemek için `<dfn>` etiketi kullanılır.
+
+.`<dfn>` etiketi kullanımı
+[source, html]
+----
+<p>
+	Ahmet şarkıda geçen "enikonu" sözcüğünün anlamını bilmediğini söyledi. 
+	Ben de ona <dfn>enikonu</dfn>'nun iyiden iyiye, iyice anlamına geldiğini söyledim.
+</p>
+----
