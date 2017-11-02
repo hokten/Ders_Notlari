@@ -189,4 +189,54 @@ etiketinin ya başında ya da sonunuda yer almalıdır.
 Tarih ve zaman içeren bir metni işaretlemek için `time` etiketi kullanılır. Çoğu zaman `time` etiketi 
 bir makalenin yayınlama tarihini bildirmek için kullanılır. Bunun için `time` etiketine, `pubdate` özelliği 
 eklenir. Tarih ve zaman bilgisi ise `datetime` özelliği içerisinde verilir.
-// 26.10.2017 Ders Sonu
+// 26.10.2017 Ders Son
+[source, html]
+----
+<p>Tren istasyona, <time>2017-11-02</time> tarihinde ve saat <time>12:35</time>'de ulaştı.</p>
+  <p>Dağın zirvesine tırmanışımıza <time datetime="1952-06-12T11:05:00">12 Haziran 1952, saat 05:00</time>'de başlamıştık.</p>
+  <p><time datetime="2017-08-09">09/08/2017</time> tarihi bizim için önemli bir tarihdir.
+----
+
+==== `datetetime` Özelliğini Formatı
+`<time>` etiketinin datetime özelliğine atanacak olan değer, 24 saatlik formata uygun olmalıdır. 
+Ayrıca UTC zaman bölgesi bilgisi de içerebilir.
+Böylelikle, datetime özelliğinde bulunan değer machine-readable bir tarih-zaman formatı
+oluşturmaktadır. Genel format aşağıdaki şekildedir.
+YYYY-MM-DDThh:mm:ss
+2017-11-02T08:33:00+02:00
+
+=== Vurgulu veya Önemli Yazılar Oluşturma
+Bir yazı önemli olarak işaretlenmek istenirse `<strong>` etiketi kullanılır.
+Bir yazıya vurgu yapmak istenirse `<em>` etiketi kullanılır.
+
+.`<strong>` etiketinin kullanımı
+[source, html]
+----
+<p>Aşağıdakilerin HTML etiketi <strong>olmaması</strong> için ne yapılmalıdır?</p>
+----
+
+[source, html]
+----
+<p>HTML5'de anlamsal bir işaretleme yapan etiketler <em>semantik etiketler</em> denir.
+----
+
+=== Alıntı Yapma
+HTML'de alıntı yapmak için `<blockquote>` ve `<q>` etiketleri kullanılır. +
+Uzun metinleri alıntılarken `<blockquote>` etiketi kullanılır. `<blockquote>` ile alıntılanan metin, normal metinden daha girintili olarak yazılır. +
+Kısa ve satır içinde yer alacak olan alıntılar için genellikle `<q>` etiketi kullanılır. 
+
+[source,  html]
+----
+  <p>Atatürk bu konuda şöyle demiş: 
+  	<blockquote cite="https://www.neguzelsozler.com/unlu-sozleri/ataturk-sozleri.html">
+  		Tehdide dayanan ahlak, bir erdemlilik olmadığından başka, güvenilmeye de layık değildir.
+  	</blockquote>
+  </p>
+----
+
+[source, html]
+----
+  <p>Ahmet ALP, Orman Kanunu adlı kitabında, <q>Ormanların çok güzel</q> olduğunu belirtmiştir.</p>
+  <p><q><cite>Ahmet ALP'in Orman Kanunu</cite> adlı kitabında, Ormanların çok güzel</q> olduğunu belirtmiştir.</p>
+  <p>Ahmet ALP, Orman Kanunu adlı kitabında, <q cite="http://ormankitabi.com">Ormanların çok güzel</q> olduğunu belirtmiştir.</p>
+----
