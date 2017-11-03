@@ -99,4 +99,26 @@ Dosya ve klasörleri kopyalamak için kullanılan komuttur. Kullanım şekli aş
 `cp [seçenek]... kaynak_dosya hedef_dosya` +
 `cp [seçenek]... kaynak_dosya... hedef_klasör`
 //25.10.2017 BIL207 Dersi Sonu
-Örnekler
+
+.Örnekler
+[source, bash]
+----
+cp dosya.txt deneme/
+# Bulunduğunuz klasördeki dosya.txt dosyasını, yine bulunduğunuz klasörde yer alan klasör deneme klsörü içine kopyalar.
+
+cp dosya.txt deneme/dosya_kopyasi.txt
+# Bulunduğunuz klasördeki dosya.txt dosyasını, yine bulunduğunuz klasörde yer alan klasör deneme klsörü içine kopyalar.
+
+cp dosya1.txt dosya2.txt dosya3.txt dosya4.txt deneme/
+# Bulunduğunuz klasörde bulunan dosya1.txt dosya2.txt dosya3.txt dosya4.txt dosyalarını deneme klasörü içine kopyalar.
+
+cp dosya.txt dosya.txt.bak
+# Bulunduğunuz klasördeki dosya.txt dosyasını, aynı klasörde dosya.txt.bak olarak kopyalar.
+
+cp klasor1/ klasor2/
+# cp komutu ek seçenekler olamadan klasör kopyalama eylemini gerçekleştiremez. Bu komut hata verecektir.
+
+cp -r klasor1/ klasor2/
+# Bulunduğunuz klasörde klasor2 klasörü mevcut değilse, bulunduğunuz klasörde içeriği klasor1 ile aynı olan klasor2 isimli bir klasör oluşturur.
+# Eğer bulunduğunuz klasörde klasor2 isimli bir klasör varsa, klasor1 klasörünü klasor2 içine kopyalar.
+----
