@@ -492,11 +492,20 @@ var_dump(empty($degisken));
 
 [source, php]
 ----
+<html>
+<head>
+    <title>Araç Vergisi Hesapla</title>
+</head>
+<body>
+<form action="online.php" method="post">
+    Aracın Üretim Yılı : <input type="text" name="yil" />
+    <input type="submit" name="submit" value="Hesapla" />
+</form>
 <?php
-if(empty($_POST)) {
-
-}
-else {
+/* Bu program, üretim yılı girilen bir aracın vergi miktarı hesaplamaktadır.
+ * Aracı vergi miktarı 1000 * (1 / Araç Yaşı) formülü ile elde edilmektedir.
+ */
+if(!empty($_POST)) {
     if(empty($_POST["yil"])) {
         echo "Araç üretim yılını boş girdiniz.!";
     }
@@ -506,10 +515,11 @@ else {
         $arac_yasi = 2017 - $arac_uretim_yili + 1;
         $vergi_miktari = 1000 * (1/$arac_yasi);
         echo $vergi_miktari;
-
     }
 }
 ?>
+</body>
+</html>
 ----
 === Kontrol Yapıları
 ==== If Deyimi
@@ -546,3 +556,152 @@ elseif($yas < 30) {
 ?>
 ----
 //01.11.2017 BIL Ders Sonu
+
+
+==== `switch-case` Yapısı
+`switch-case` yapısı `if-elseif-else` yaspısı ile eşdeğer olarak düşünülebilir. Eğer `if-elseif-else` yapısında 
+kullanılan koşullar basit ve değer formunda ise bu yapı yerine `switch-case` yapısı kullanmak daha uygun olacaktır."
+
+[source, php]
+----
+<html>
+<head>
+    <title>Tek Soruluk Sınav</title>
+</head>
+<body>
+<form action="online.php" method="post">
+    <table border="1">
+        <tr>
+            <td>1.</td>
+            <td>Aşağıdakilerden hangisi PHP de bir değişkenin içeriği boş ise true döndürür?</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="radio" value="a" name="soru1"><br />
+                <input type="radio" value="b" name="soru1"><br />
+                <input type="radio" value="c" name="soru1"><br />
+                <input type="radio" value="d" name="soru1"><br />
+            </td>
+            <td>
+                A) var_dump() <br />
+                B) echo() <br />
+                C) empty() <br />
+                D) isset()
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" name="submit" value="Sınavı Bitir" /></td>
+        </tr>
+    </table>
+</form>
+<?php
+if(!empty($_POST)) {
+    switch($_POST["soru1"]) {
+        case "a" :
+            echo "Yanlış Cevap";
+            break;
+        case "b" :
+            echo "Yanlış Cevap";
+            break;
+        case "c" :
+            echo "Doğru Cevap";
+            break;
+        case "d" :
+            echo "Yanlış Cevap";
+            break;
+        default :
+            echo "Ne girdiğinizi anlayamadım.";
+            break;
+    }
+}
+?>
+</body>
+</html>
+----
+==== `while` Döngüsü
+Bir koşul doğru olduğu sürece bloğunu tekrarlaya döngüdür. Kullanım şekli aşağıdaki gibidir.
+[source, php]
+----
+while(koşul) {
+  /* koşul doğru ise bu bloğun içi işletilecek ve bloğun sonuna 
+   * gelindiğinde tekrar koşul sınanacak ve doğru olması durumunda 
+   * blok yine baştan sona tekrar işlenecektir. Bu durum koşul yanlış 
+   * oluncaya kadar devam eder. Koşulun yanlış olması durumunda while 
+   * bloğununun bittiği yerden program devam eder.
+   */
+}
+----
+[source,php]
+----
+<html>
+<head>
+    <title>Sayıya En Yakın Üçe Bölünen Sayı</title>
+</head>
+<body>
+<form action="online.php" method="post">
+    Bir sayı giriniz : <input type="text" name="sayi" />
+    <input type="submit" name="submit" value="Gönder" />
+</form>
+<?php
+if(!empty($_POST)) {
+    $sayi = intval($_POST["sayi"]);
+    $en_yakin_sayi = $sayi;
+    while($en_yakin_sayi <= $sayi) {
+        if(($en_yakin_sayi % 3) == 0)
+            break;
+        $en_yakin_sayi--;
+    }
+    echo "Girdiğiniz sayıdan küçük ve o sayıya en yakın üçe bölünen sayı $en_yakin_sayi dır.";
+}
+?>
+</body>
+</html>
+----
+==== `for` Döngüsü
+Döngü sayısı, döngünün başlayacağı ve biteceği değerler kesinlik arz ediyorsa for döngüsü tercih edilir. `for` dögngüsünün
+yapısı aşağıdaki biçimdedir.
+[source, php]
+----
+for(ifade1; koşul; ifade2) {
+	ifade3;
+	ifade4;
+}
+ifade5;
+----
+* Program for döngüsüne geldiğinde bir defalığına `ifade1` çalıştırılır.
+* Daha sonra `koşul` ifadesine bakılır. Eğer koşul doğru ise döngü bloğu yani burada  `ifade3` ve `ifade4` çalıştırılır. 
+Eğer `koşul` doğru değil ise döngüye hiç girilmez ve döngü sonuna yani `ifade5` ifadesine atlanır.
+* `koşul` koşulunun doğru olması durumunda döngü bloğu calışacak ve döngü adımı sonlandığında yeni adıma geçmeden önce 
+`ifade2` çalıştırılır.
+* Daha sonra `koşul` tekrar kontrol edilerek aynı işlemler devam eder.
+[source, php]
+----
+<html>
+<head>
+    <title>Sayıya En Yakın Üçe Bölünen Sayı</title>
+</head>
+<body>
+<form action="online.php" method="post">
+    Tablo satır sayısını giriniz :
+    <input type="text" name="satir_sayisi" />
+    <input type="submit" name="submit" value="Oluştur" />
+</form>
+<?php
+if(!empty($_POST)) {
+    $toplam_satir = intval($_POST["satir_sayisi"]);
+    echo "<table border='1'>";
+    $renk="yellow";
+    for($i=1; $i<=$toplam_satir; $i++) {
+        echo "<tr bgcolor='$renk'>";
+        echo "<td>{$i}_1</td>";
+        echo "<td>{$i}_2</td>";
+        echo "</tr>";
+        $renk=($renk=="green") ? "yellow" : "green";
+    }
+    echo "</table>";
+}
+?>
+</body>
+</html>
+----
+//07.11.207 GBIL Ders sonu
