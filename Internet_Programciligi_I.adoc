@@ -1,3 +1,6 @@
+:numbered:
+:toc:
+:example-caption: Alıştırma
 = Hello, AsciiDoc!
 Doc Writer <doc@example.com>
 
@@ -645,18 +648,24 @@ while(koşul) {
 <?php
 if(!empty($_POST)) {
     $sayi = intval($_POST["sayi"]);
-    $en_yakin_sayi = $sayi;
-    while($en_yakin_sayi <= $sayi) {
-        if(($en_yakin_sayi % 3) == 0)
+    while($sayi >= 0) {
+        if(($sayi % 3) == 0)
             break;
-        $en_yakin_sayi--;
+        $sayi--;
     }
-    echo "Girdiğiniz sayıdan küçük ve o sayıya en yakın üçe bölünen sayı $en_yakin_sayi dır.";
+    echo "Girdiğiniz sayıdan küçük ve o sayıya en yakın üçe bölünen sayı $sayi dır.";
 }
 ?>
 </body>
 </html>
 ----
+.{nbsp} 
+==========================
+Yukarıdaki örnekde, girilen sayıdan küçük olan ve girilen sayıya en yakın olan tamsayı bulunmuştur. Siz de 
+girilen sayıya en yakın üçe bölünene sayıyı bulan bir program yazınız.
+==========================
+
+
 ==== `for` Döngüsü
 Döngü sayısı, döngünün başlayacağı ve biteceği değerler kesinlik arz ediyorsa for döngüsü tercih edilir. `for` dögngüsünün
 yapısı aşağıdaki biçimdedir.
@@ -668,40 +677,59 @@ for(ifade1; koşul; ifade2) {
 }
 ifade5;
 ----
+Görüldüğü gibi `for` döngüsünün özellikleri, `for` ifadesinden sonra gelen parantezin içinde yer alan ve birbirinden `;` 
+karakteri ile ayrılan üç kısım ile oluşturulur.
+
 * Program for döngüsüne geldiğinde bir defalığına `ifade1` çalıştırılır.
 * Daha sonra `koşul` ifadesine bakılır. Eğer koşul doğru ise döngü bloğu yani burada  `ifade3` ve `ifade4` çalıştırılır. 
 Eğer `koşul` doğru değil ise döngüye hiç girilmez ve döngü sonuna yani `ifade5` ifadesine atlanır.
 * `koşul` koşulunun doğru olması durumunda döngü bloğu calışacak ve döngü adımı sonlandığında yeni adıma geçmeden önce 
 `ifade2` çalıştırılır.
 * Daha sonra `koşul` tekrar kontrol edilerek aynı işlemler devam eder.
-[source, php]
+
+[source,php]
 ----
 <html>
 <head>
-    <title>Sayıya En Yakın Üçe Bölünen Sayı</title>
+    <title>for Döngüsü</title>
 </head>
 <body>
-<form action="online.php" method="post">
-    Tablo satır sayısını giriniz :
-    <input type="text" name="satir_sayisi" />
-    <input type="submit" name="submit" value="Oluştur" />
-</form>
 <?php
-if(!empty($_POST)) {
-    $toplam_satir = intval($_POST["satir_sayisi"]);
-    echo "<table border='1'>";
-    $renk="yellow";
-    for($i=1; $i<=$toplam_satir; $i++) {
-        echo "<tr bgcolor='$renk'>";
-        echo "<td>{$i}_1</td>";
-        echo "<td>{$i}_2</td>";
-        echo "</tr>";
-        $renk=($renk=="green") ? "yellow" : "green";
-    }
-    echo "</table>";
+for($i=0; $i<=15; $i++) {
+    echo "$i,";
 }
 ?>
 </body>
 </html>
 ----
+
+[source,php]
+----
+<html>
+<head>
+    <title>for Döngüsü</title>
+</head>
+<body>
+<?php
+for(ifade1; ifade2; ifade3) {
+    ifade4;
+    ifade5;
+}
+ifade6;
+
+// Yukarıda for yapısına tam olarak karşılık gelen while yapısı aşağıda verilmiştir. 
+
+ifade1;
+while(ifade2) {
+    ifade4;
+    ifade5;
+    ifade3;
+}
+ifade6;
+?>
+</body>
+</html>
+----
+
+
 //07.11.207 GBIL Ders sonu
