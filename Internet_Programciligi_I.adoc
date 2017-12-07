@@ -733,3 +733,28 @@ ifade6;
 
 
 //07.11.207 GBIL Ders sonu
+=== MySQL ve PHP
+PHP'de MySQL veritabanına bağlantı kurmak ve temel veri işlemlerini yapmak için 
+PDO(PHP Data Objects) sınıfı kullanılır.
+
+==== Veritabanı Sunucusuna Bağlanma
+Veritabanı bağlantısı kurmak için öncelikle bir PDO nesnesi oluşturulur. Bir PDO nesnesi 
+[source, php]
+----
+$db = new PDO($dsn, $username, $password);
+----
+PDO sınıfının kurucu fonksiyonu görüldüğü gibi üç argümana htiyaç duyar. Bunlar DSN(Data Source Name), 
+veritabanı sunucusunun kullanıcı ismi ve şifresi. DSN, veritabanı sunucusunun türü, adresi ve kullanılacak veritabanını tanımlar.
+DSN'nin söz dizimi aşağıdaki gibidir.
+
+[source, php]
+----
+$dsn = "mysql:host=host_adresi;dbname=veritabani";
+----
+
+==== İstisnaları Yakalamak
+PDO sınıfından bir PDO nesnesi türetirken bir hata ve olağan dışı durumlarla karşılaşabilirsiniz. 
+Örneğin, bağlanmak istediğiniz veritabanı sunucusunun hizmeti sonlandırılmış olabilir. 
+Böyle istisnai durumları yakalamak için `try-catch` yapısı kullanılır. Eğer istisnalar yakalanmazsa 
+programın çalışmayı durdurur.
+
