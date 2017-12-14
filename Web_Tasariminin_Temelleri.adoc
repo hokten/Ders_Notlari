@@ -362,3 +362,38 @@ Bu özellik-değer çiftleriyle oluşan tanımlama bloğunun, hangi HTML nesnele
 Stil kuralları hakkında kısa notlar ekelemek için yorumlar kullanılabilir.
 CSS stillerinde yorumlar /* ile */ arasına yazılır ve birden fazla
 satıra yayılabilir.
+
+=== Değerler
+CSS özelliklerine atanacak değerler, özelliğe göre çeşitlilik gösterir. Örneğin, bazı özellikler
+ancak önceden tanımlanmış sabit değerleri alır. Bazıları ise; sayısal değer, tamsayı, yüzde ve renk 
+gibi değerleri kabul eder. Önceden tanımalanmış değerlere örnek olarak; **left**, **right**, **none** 
+verilebilir.
+
+==== Uzunluk ve Yüzdesel Değerler
+Bir çok CSS özelliği, değer olarak ölçü ifade eden sayısal değerleri kabul eder. Burada 
+dikkat edilmesi gereken nokta, ölçü birimlerini mutlaka belirtilmesi gerektiğidir.
+Tüm ölçüler; ölçünün sayısal değeri ve hemen onu takip eden ölçü biriminden oluşur. Örneğin, **3em**, **4px**. 
+Bu durumun tek istisnası **0** değeridir. **0** değerinde birim bildirmeye gerek yoktur. 
+Bazı ölçülerin değeri, başka ölçülere göre ifade edilir. Örneğin, **em** sayfanın varsayılan yazı boyutuna göre bir ölçü bildirir.
+Yani, **1em** ile  ifade edilen değer, sayfanın varsayılan yazı boyudur. Ayrıca, piksel(px), santimetre(cm), milimetre(mm) ölçü birimleri de 
+kullanılabilir.
+
+===== Birimsiz Sayısal Değerler
+Bazı CSS özellikleri, ancak birimsiz sayısal değerleri kabul eder. Bu şekilde CSS özelliklerine örnek olarak **line-height** ve **z-index** 
+verilebilir. Kullanıma örnek olarak, `line-height:1.7` veya `z-index:4` verilebilir.
+
+==== URL Değerleri
+Bazı CSS özellikleri; bir başka sayfanın adresi, resim yolu gibi dosya veya klasörlerin fiziksel yolunu içeren bilgileri kabul eder.
+Bu durumda, değer bölümünde **url(dosyanin_yolu.uzn)** formatı kullanılır. Örneğin bir nesnenin arkaplanına resim eklemek için CSS'nin 
+**background** özelliği kullanılır. **background** özelliği, `background:url(arkaplan.gif)` şeklinde kullanılır.
+
+==== CSS Renk Değerleri
+CSS'de renk değerleri değişik biçimlerde ifade edilebilir. En basit kullanım, renk değeri olarak rengin ingilizce karşılığını yazmaktır. 
+CSS2'de yalnızca 16 adet renk ismi varken, CSS3'de buna 131 tane renk ismi eklenmiştir. Bu renkleri görmek için http://www.w3.org/TR/css3-color/#svg-color[bu] siteyi ziyaret edebilirsiniz. 
+
+Renk değerleri bildirmek için en etkili yol `rgb()` formatıdır. `rgb()` formatında, üç ana renk(red, green, blue) belirli oranlarda karıştırılarak 
+çok sayıda farklı renk oluşturulur. Bu format, `rgb(x,y,z)` şeklindedir. Burada x,y ve z; 0 ile 255 arasında bir sayı ollmalıdır. Bu değerler sırasıyla, 
+renkde bulunan kırmızı, yeşil ve mavinin oranıdır.
+`rgb(25,25,25)`
+
+===== RGBA, HSL ve HSLA Formatları

@@ -122,3 +122,40 @@ cp -r klasor1/ klasor2/
 # Bulunduğunuz klasörde klasor2 klasörü mevcut değilse, bulunduğunuz klasörde içeriği klasor1 ile aynı olan klasor2 isimli bir klasör oluşturur.
 # Eğer bulunduğunuz klasörde klasor2 isimli bir klasör varsa, klasor1 klasörünü klasor2 içine kopyalar.
 ----
+
+=== `mv` Komutu
+Dosya ve klasörleri taşımak için kullanılan komuttur. Ayrıca bu komut, aynı klasör içerisinde bir dosya veya klasör taşıma yöntemi ile 
+bir soya va klasörü yeniden adlandırmak için de kullanılabilir. Kullanım şekilleri aşağıda verilmiştir.
+
+`mv [seçenek]... kaynak_dosya hedef_dosya` +
+`mv [secenek]... kaynak... hedef_klasor`
+
+.Örnekler
+[source, bash]
+----
+mv abc.txt def.txt
+# Çalıştığınız klasörde bulunan abc.txt dosyasını def.txt dosyasına taşır
+
+mv def.txt Yeni/
+# Çalıştığınız klasörde def.txt dosyasını, yine çalıştığınız klasörde bulunan Yeni/ klasörü için taşır.
+
+mv dosya1 dosya2 dosya3 /home/okten/son/
+# Çalıştığınız klasörde bulunan dosya1, dosya2, dosya3 dosyalarını /home/okten/son/ klasörüne taşır.
+----
+
+=== `rm` Komutu
+Dosya veya klasörleri silmek için kullanılan komuttur. Kullanımı şağıdaki gibidir.
+
+`rm [seçenek]... [dosya]...`
+
+.Örnekler
+[source, bash]
+----
+rm dosya1
+# Çalıştığınız klasörde bulunan dosya1 dosyasını siler.
+
+# Bir klasör içindekilerle beraber silinmek isteniyorsa rm komutu aşağıdaki gibi kullanılır.
+rm -rf Klasor/
+
+# rm komutu ile aşağıdaki gibi çalıştırmanız sisteminiz için tehlike arz eder.
+rm -rf /

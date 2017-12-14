@@ -758,3 +758,15 @@ PDO sınıfından bir PDO nesnesi türetirken bir hata ve olağan dışı duruml
 Böyle istisnai durumları yakalamak için `try-catch` yapısı kullanılır. Eğer istisnalar yakalanmazsa 
 programın çalışmayı durdurur.
 
+[source, php]
+----
+try {
+	$db = new PDO("mysql:host=localhost;dbname=veritabani", "root", "12345");
+}
+catch(PDException $e) {
+	$error_mesage = $e->getMessage();
+}
+----
+
+==== Ürün Gösterme Uygulaması Örneği
+Ü
