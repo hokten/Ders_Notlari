@@ -853,3 +853,47 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 ----
+
+Web sunucumuzun kök dizininde(Wamp için `C:\wamp64\www`) `product_viewer` isimli bir klasör oluşturalım. Bu uygulamanın bütün dosyalarını 
+bu klasör içinde oluşturacağız. Veritabanına bağlanma prosedürünü proje genelinde bir çok dosyada tekrar edeceğimizden dolayı, bu işlemi gerçekleştiren bir php dosyası 
+oluşturmak ve bu dosyayı diğer dosyaların içine aktarmak daha mantıklı olacaktır. Bu işlem için, bulunduğunuz dosyaya başka bir dosyayı 
+dahil etmeye yarayan `include()` fonksiyonu kullanılabilir. Veritabanına bağlanma prosedürünü yerine getiren `database.php` dosyasını 
+ve veritabanına bağlanırken oluşabilecek hataları göstermeye yarayacak `database_error.php` dosyasını oluşturalım. `database_error.php` 
+dosyasını `database.php` dosyası içine dahil edeceğimizden, öncelikle `database_error.php` dosyasını oluşturalım.
+
+.database_error.php
+[source, php]
+----
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mağaza</title>
+</head>
+<body>
+	<h1>Veritabanı Hatası</h1>
+	<p>Veritabanına bağlanırken aşağıdaki hata oluştu.</p>
+	<?php echo $error_message; ?>
+</body>
+</html>
+----
+
+.database.php
+[source, php]
+----
+<?php
+$dsn = "mysql:host=localhost;dbname=magaza;charset=utf8";
+$username="root";
+$password="";
+
+try {
+    $db = new PDO($dsn, $username, $password);
+}
+catch(PDOException $e) {
+    $error_message = $e->getMessage();
+    include("database_error.php"); // database_error.php dosyası bu satıra yerleşiyor.
+    exit();
+}
+?>
+----
+
+Uygulamamız ürün listeleme sayfası iki sütundan oluşmaktadır. Sol sütunda 
