@@ -769,4 +769,87 @@ catch(PDException $e) {
 ----
 
 ==== Ürün Gösterme Uygulaması Örneği
-Ü
+Müzik aletleri satan bir mağazanın online kataloğunu oluşturmak için kullancağımız uygulama.
+Uygulamanın veritabanı için aşağıdaki sql dosyasını kullanacağız.
+
+[source, php]
+----
+-- phpMyAdmin SQL Dump
+-- version 4.7.4
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1:3306
+-- Generation Time: Dec 19, 2017 at 03:19 PM
+-- Server version: 5.7.19
+-- PHP Version: 5.6.31
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `magaza`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kategoriler`
+--
+
+DROP TABLE IF EXISTS `kategoriler`;
+CREATE TABLE IF NOT EXISTS `kategoriler` (
+  `kategori_id` int(11) NOT NULL AUTO_INCREMENT,
+  `kategori_ismi` varchar(100) COLLATE utf8_turkish_ci NOT NULL,
+  PRIMARY KEY (`kategori_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
+
+--
+-- Dumping data for table `kategoriler`
+--
+
+INSERT INTO `kategoriler` (`kategori_id`, `kategori_ismi`) VALUES
+(1, 'Gitarlar'),
+(2, 'Baslar'),
+(3, 'Davullar');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `urunler`
+--
+
+DROP TABLE IF EXISTS `urunler`;
+CREATE TABLE IF NOT EXISTS `urunler` (
+  `urun_id` int(11) NOT NULL AUTO_INCREMENT,
+  `urun_kod` varchar(50) COLLATE utf8_turkish_ci NOT NULL,
+  `urun_isim` varchar(500) COLLATE utf8_turkish_ci NOT NULL,
+  `urun_fiyat` float NOT NULL,
+  `kategori_id` int(11) NOT NULL,
+  PRIMARY KEY (`urun_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
+
+--
+-- Dumping data for table `urunler`
+--
+
+INSERT INTO `urunler` (`urun_id`, `urun_kod`, `urun_isim`, `urun_fiyat`, `kategori_id`) VALUES
+(1, 'slen', 'St. Lenov', 799, 1),
+(2, 'kpol', 'Ken Paul', 1199, 1),
+(3, 'tmox', 'Ten Mox', 500, 1),
+(4, 'clam', 'Clm Maxi', 700, 2),
+(5, 'rol', 'Ron Loul', 456, 2),
+(6, 'yul', 'Young Lul', 123, 3);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+----
