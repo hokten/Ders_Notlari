@@ -896,4 +896,85 @@ catch(PDOException $e) {
 ?>
 ----
 
-Uygulamamız ürün listeleme sayfası iki sütundan oluşmaktadır. Sol sütunda 
+Uygulamamız ürün listeleme sayfası iki sütundan oluşmaktadır. Sol sütunda, her bir kategori ismi bağlantı olacak şekilde kategoriler listesi; 
+sağ tarafta ise soldan hangi kategoriye tıklandıysa on ait ürünlerin listesi.
+
+.index.php
+[source, php]
+----
+<?php
+require_once("database.php");
+
+$category_id = filter_input(INPUT_GET, 'category_id', FILTER_VALIDATE_INT);
+
+if($category_id == NULL || $category_id == FALSE) {
+    $category_id = 1;
+}
+
+$queryCategory = 'SELECT * FROM kategoriler WHERE kategori_id = :kat_id';
+$statement1 = $db->prepare($queryCategory);
+$statement1->bindValue(':kat_id', $category_id);
+$statement1->execute();
+$category = $statement1->fetch();
+$category_name = $category['kategori_ismi']; // tıklanan kategorinin ismi $category_name değişkeninde saklı.
+$statement1->closeCursor();
+
+// Bütün kategorileri çek
+$queryAllCategories = 'SELECT * FROM kategoriler ORDER BY kategori_id';
+$statement2 = $db->prepare($queryAllCategories);
+$statement2->execute();
+$categories = $statement2->fetchAll(); // bütün kategori kayitlar $categories değişkeni içinde
+$statement2->closeCursor();
+
+$queryProducts = 'SELECT * FROM urunler WHERE kategori_id = :kat_id ORDER BY kategori_id';
+$statement3 = $db->prepare($queryProducts);
+$statement3->bindValue(':kat_id', $category_id);
+$statement3->execute();
+$products = $statement3->fetchAll(); // tıklanan kategoriye ait ürün kayıtları $products değişkenine atandı.
+$statement3->closeCursor();
+?>
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Müzik Aletleri Mağazası</title>
+</head>
+<body>
+    <main>
+        <h1>Ürünler Listesi</h1>
+        <aside>
+            <h2>Kategoriler</h2>
+            <nav>
+                <ul>
+                    <?php foreach($categories as $category) : ?>
+                        <li>
+                            <a href='?category_id=<?php echo $category['kategori_id']; ?>'>
+                                <?php echo $category['kategori_ismi']; ?>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </nav>
+        </aside>
+
+        <section>
+            <h2><?php echo $category_name; ?></h2>
+            <table border="1">
+                <tr>
+                    <th>Kodu</th>
+                    <th>İsmi</th>
+                    <th>Fiyatı</th>
+                </tr>
+
+                <?php foreach($products as $product) : ?>
+                    <tr>
+                        <td><?php echo $product['urun_kod']; ?></td>
+                        <td><?php echo $product['urun_isim']; ?></td>
+                        <td><?php echo $product['urun_fiyat']; ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+        </section>
+    </main>
+</body>
+</html>
+----
