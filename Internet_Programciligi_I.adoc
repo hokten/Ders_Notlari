@@ -878,7 +878,7 @@ dosyasını `database.php` dosyası içine dahil edeceğimizden, öncelikle `dat
 ----
 
 .database.php
-[source, php]
+[source, php, highlight='7-10']
 ----
 <?php
 $dsn = "mysql:host=localhost;dbname=magaza;charset=utf8";
@@ -886,7 +886,7 @@ $username="root";
 $password="";
 
 try {
-    $db = new PDO($dsn, $username, $password);
+    $db = new PDO($dsn, $username, $password); // <1>
 }
 catch(PDOException $e) {
     $error_message = $e->getMessage();
