@@ -397,3 +397,108 @@ renkde bulunan kırmızı, yeşil ve mavinin oranıdır.
 `rgb(25,25,25)`
 
 ===== RGBA, HSL ve HSLA Formatları
+sdf
+
+=== Stil Sayfaları İle Çalışma
+
+==== Harici Stiller
+
+Web siteleri birden fazla sayfadan oluşur. Oluşturmuş olduğunuz CSS kurallarını, proje genelinde veya 
+birden fazla sayfada kullanmak isteyebiliriz. Bu durumda, CSS kurullarınızı, uzantısı `.css` olan bir 
+dosya içerisine yerleştirip dilediğiniz dosyayay dahil edebilirsiniz. CSS kurallarının bu şekilde kullanımına 
+**harici stil oluşturma** denir. Harici stil oluşturmak için öncelikle proje klasörünüz içerisinde uzantısı 
+`.css` olan bir dosya oluşturulur. Stil kurallarınız bu dosya içerisine arka arkaya eklenir. 
+Bir web sayfasında bu harici stil sayfasını kullanmak isterseniz, web sayfasının HTML kodlarında `head` bölümü
+içerisine
+[source, html]
+----
+<link rel="stylesheet" type="text/css" href="haricistildosyasi.css" />
+----
+satırı eklenir. Aşağıdaki örneği yapalım.
+
+.genel.css
+[source, css]
+----
+body {
+	background-color:yellow;
+	color:red;
+	font-size:15px;
+	font-weight:bold;
+}
+----
+
+
+.deneme.html
+[source, html]
+----
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Örnek</title>
+	<link rel="stylesheet" type="text/css" href="genel.css" />
+</head>
+<body>
+	Merhaba
+</body>
+</html>
+----
+
+==== Dahili Stiller
+Dahili stil oluşturmak için öncelikle, dahili stilleriniz uygulanacağı sayfanın `head` etiketi içerisine `<style type="text/css"><style>` bölümü eklenir. 
+Sayfanızda kullanacağınız tüm stil kuralları arka arkaya bu `<style>` etiketi içine yazılır. Aşağıdaki örneği yapalım.
+
+[source, html]
+----
+<html>
+<head>
+    <title>Örnek</title>
+    <style type="text/css">
+        body {
+            background-color:red;
+        }
+    </style>
+</head>
+<body>
+    Merhabaii
+</body>
+</html>
+----
+
+==== Satır İçi Stil Kuralları
+Eğer sadece bir HTML nesnesinin, oluşturacağınız CSS özelliklerinden etkilenmesini istiyorsanız, o HTML etiketine `style` özelliği ekleyebilirsiniz.
+`style` özelliğine değer olarak, birden fazla CSS özellik-değer çiftini aralarında noktalı virgül olacak şekilde ekleriz.
+
+[source, html]
+----
+<html>
+<head>
+    <title>Örnek</title>
+</head>
+<body style="background-color:red; color:yellow">
+    Merhaba
+</body>
+</html>
+----
+
+=== Farklı Durumlar İçin Farklı Stil Sayfaları Oluşturma
+
+=== Seçicilerin Tanımlanması
+Seçiciler, hazırlamış olduğunuz bir kuralın, hangi HTML nesnelerine uygulanacağını belirleyen yapıdır.
+Örneğin, sayfadaki tüm paragrafların(`p` etiketlerinin), Trebuchet MS font ailesinden ve 16px olmasını isterseniz seçici 
+olarak `p` kullanmalısınız.
+[source,css]
+----
+p {
+    font-family:Trebuchet MS;
+    font-size:16px;
+}
+/* Bu CSS kuralında p seçicidir ve sayfadaki tüm p etiketlerini seçerek 
+/* kuraldaki tüm stilleri bu etiketlere uygular.
+----
+Seçiciler, seçimlerini 5 kritere göre yapar.
+
+. Etiketin ismine veya tipine göre
+. Etiketin bulunduğu konuma göre
+. `id` ve `class` özelliklerine göre
+. pseudo-class ve pseud-element kavramlarına göre
+. Etiketin özelliklerinin veya değerlerinin bulunup bulunmamasına göre
