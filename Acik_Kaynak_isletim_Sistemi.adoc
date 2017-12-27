@@ -159,3 +159,45 @@ rm -rf Klasor/
 
 # rm komutu ile aşağıdaki gibi çalıştırmanız sisteminiz için tehlike arz eder.
 rm -rf /
+----
+
+|===
+|İfade |Anlamo
+
+|.
+|Yeni satır karakteri dışında herhangi bir karakter
+
+|\w
+|Bir Kelime
+
+|\d
+| Bir rakam
+
+|\s
+| Bir boşluk karakteri
+
+|[abc]
+| a, b veya c karakterlerinden herhangi biri
+
+|[^abc]
+| a, b veya c karakterleri haricinde bir karakter
+
+|[a-z]
+|a ile z arasında karakterlerden herhangi biri
+
+|[0-9]
+|0 ile 9 arasında karakterlerden herhangi biri
+
+|[B-K]
+|B ile K arasında karakterlerden herhangi biri
+
+|^
+| Satır veya string başı
+
+|$
+| Satır veya string sonu
+
+
+
+|
+|===
