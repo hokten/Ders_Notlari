@@ -1,4 +1,8 @@
 :imagesdir: Resimler
 = ASP.NET
-image::deneme.jpg[Deneme Resmi]
 
+sadasasda
+sasd
+
+image::deneme.jpg[Deneme Resmi]
+asas
