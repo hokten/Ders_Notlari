@@ -1,4 +1,4 @@
-:imagesdir: ./Resimler
+:imagesdir: Resimler
 = ASP.NET
-image::Resimler/deneme.jpg[Deneme Resmi]
+image::deneme.jpg[Deneme Resmi]
 
