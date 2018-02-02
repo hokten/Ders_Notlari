@@ -1,0 +1,4 @@
+:imagesdir: ./Resimler
+= ASP.NET
+image::deneme.jpg[Deneme Resmi]
+
