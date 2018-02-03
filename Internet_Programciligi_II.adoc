@@ -1,8 +1,15 @@
 :imagesdir: Resimler
+:figure-caption: Şekil
+
 = ASP.NET
 
 sadasasda
 sasd
 
-image::deneme.jpg[Deneme Resmi]
-asas
+[[system_overview]]
+.System Overview
+image::yeni_mvc.png[caption='', title='{figure-caption} 
+{counter:refnum}']
+
+The overall architecture of the system is show in <<system_overview>>.
+
