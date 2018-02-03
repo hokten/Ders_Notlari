@@ -8,8 +8,7 @@ sasd
 
 [[system_overview]]
 .System Overview
-image::yeni_mvc.png[caption='', title='{figure-caption} 
-{counter:refnum}']
+image::yeni_mvc.png[caption='', title='{figure-caption} {counter:refnum}']
 
 The overall architecture of the system is show in <<system_overview>>.
 
