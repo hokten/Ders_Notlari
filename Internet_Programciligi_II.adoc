@@ -1,14 +1,23 @@
 :imagesdir: Resimler
 :figure-caption: Şekil
+:xrefstyle: full
+
 
 = ASP.NET
+== Yeni Bir ASP.NET MVC Projesi Oluşturma
 
-sadasasda
-sasd
+Visual Studio 2015'de `File &#9658; New Project` menü yolunu izleyerek yeni bir ASP.NET 
+MVC projesi oluşturmaya başlatabiliriz. Öncelikle karşımıza <<system_overview>> de görülen `New Project` 
+dialog penceresi çıkacaktır. Visual Studio'da yeni bir proje oluştururken öncelikle 
+kullanacağımız dili ve sonra ise projemizin şablonunun(tamplate) seçmemiz gerekir.Visual C# ile bir ASP.NET MVC porojesi
+oluşturmak için `Templates &#9660; Visual C# &#9660; Web` seçeneğini seçmeliyiz.
 
-[[system_overview]]
-.System Overview
-image::yeni_mvc.png[caption='', title='{figure-caption} {counter:refnum}']
+image::yeni_mvc.png[#SimpleGroovyApp, title="Ratpack library"]
 
-The overall architecture of the system is show in <<system_overview>>.
-
+`New Project' dialog pencerisinin **Name** bölümüne projemizini ismi olan **Davetiye** metnini girelim ve OK 
+butonuna tıklayalım. 
+The overall architecture<<img-sunset>> of the system is show in <<SimpleGroovyApp>>t.
+[#img-sunset]
+.A mountain sunset
+[link=http://www.flickr.com/photos/javh/5448336655]
+image::yeni_mvc.jpg[Sunset,300,200]
