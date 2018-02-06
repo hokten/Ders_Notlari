@@ -1,9 +1,11 @@
 :imagesdir: Resimler
 :figure-caption: Şekil
+:listing-caption: Kod
 :xrefstyle: full
-
+:icons: font
 
 = ASP.NET
+
 == Yeni Bir ASP.NET MVC Projesi Oluşturma
 
 Visual Studio 2015'de `File &#9658; New Project` menü yolunu izleyerek yeni bir ASP.NET 
@@ -15,9 +17,69 @@ oluşturmak için `Templates &#9660; Visual C# &#9660; Web` seçeneğini seçmel
 image::yeni_mvc.png[#SimpleGroovyApp, title="Ratpack library"]
 
 `New Project' dialog pencerisinin **Name** bölümüne projemizini ismi olan **Davetiye** metnini girelim ve OK 
-butonuna tıklayalım. 
+butonuna tıklayalım. Sonra karşımıza <<initial_content>>'de görülen, farklı amaçlara göre hazırlanmış proje başlangıç 
+şablonlarını seçebileceğiniz dialog penceresi çıkacaktır. Bu başlangıç şablonları ile kimlik doğrulama, görsel temalar ve 
+site gezinme seçenekleri gibi bazı özellikleri projenize otomatik olarak ekleyebilirsiniz. Biz burada öncelikle basitlik için 
+boş bir şablon kullanacağız. Sadece temel özelliklerin bulunduğu boş bir ASP.NET MVC şablonu oluşturmak için bu dialog 
+penceresinin _Select a template_ bölümünden *Empty* seçilir ve  _Add folders and core references_ kısmında bulunan *MVC* 
+seçeneği tiklenir. OK butonuna basıldığında en temel iskelete sahip bir ASP.NET MVC projesi oluşturmuş oluruz.
+
+Projeniz oluştuğunda, projenize ait tüm dosyaların listelendiği Şekil'de gösterilen  _Solution Explorer_ 
+panelinde bazı dosya ve klasörlerin otomatik olarak oluşturulduğunu göreceksiniz. Bu tüm MVC uygulamalarında bulunması 
+gereken temel dosya ve klasörlerin olduğu varsayılan bir yapıdır.
+
+Şimdi _Debug_ menüsünden *Start Debugging* öğesine tıklayarak uygulamanızı tarayıcıda deneyebilirsiniz. Öncelikle karşınıza, 
+projeniz genelinde hata ayıklamanın özelliğinin aktif hale getireleceğini bildiren bir onay kutusu çıkacaktır. OK butonuna
+basarak hata ayıklamayı aktif hale getirdiğimizde web tarayıcımız çalışacak ve Şekil'deki gibi bir sayfa gösterecektir. 
+Uygulamamız *Empty* şablonu ile oluşturulduğundan herhangi bir içeriğe sahip değildir ve dolayısıyla tarayıcımız 
+*404 Not Found Error* sayfasını karşımıza getirmiştir. Denemeniz bittiğinde tarayıcıyı kapatmalı veya Visula Studio'yu açıp 
+_Debug_ menüsünden *Stop Debugging* seçeneğine tıklamalısınız. 
 The overall architecture<<img-sunset>> of the system is show in <<SimpleGroovyApp>>t.
 [#img-sunset]
 .A mountain sunset
 [link=http://www.flickr.com/photos/javh/5448336655]
 image::yeni_mvc.jpg[Sunset,300,200]
+
+== İlk Controller Ekleme
+MVC mimarisinde gelen istekler kontrolörler tarafından tutulup işlenirler. ASP.NET kontrolörler, .NET çatısının temel 
+kontrolör sınıfı olan _System.Web.MVC.Controller_ sınıfından türetilen bir C# nesnesidir. Bu nesnede yer alan her 
+public methoda *action method* denir ve bu methodlar Web üzerinden URL'ler aracılığıyla bir eylemi gerçekleştirmek için 
+çağırılırlar. Yeni oluşturulan kontrolörler, Visual Studio tarafından otomatik olarak projenin _Controllers_ klasörüne 
+yerleştirilir. Şekilde görüldüğü gibi Yeni bir kontrolör oluşturmak için, _Solution Explorer_ panelinde _Controllers_ klasörüne 
+sağ tıklanır ve `Add&#9658;Controller` menü yolu izlenir. 
+Şekil
+Sonrasında karşımıza Şekilde görülen `Add Scaffold` dialog penceresi çıkacaktır. Burada,  `MVC 5 Controller - Empty` seçeneği 
+seçilip  `Add` butonuna basıldığında, bizeden oluşturacak olduğumuz kontrolörün ismini isteyen  `Add Controller` dialog 
+penceresiyle karşımıza çıkacak. Kontrolörümüzün ismini `HomeController` olarak girip  `Add` butonuna bastığımızda 
+yeni bir kontrolör eklemiş oluruz. Kontrolör isimlendirmesinde bazı genel kurallar vardır. Kontrolör ismi aslında kontrolörün 
+amacına belirler. `Home` burada varsayılan kontrolör anlamına gelmektedir. 
+Ayrıca kontrolör ismini  `Controller` son eki takip eder.
+
+Bu işlemlerden sonra, Visual Studio projenin  _Controllers_ klasörü içinde  `HomeController.cs` isimli yeni bir dosya 
+oluşturacaktır. Bu dosyayı açmak için çift tıklayın. <<MyScript>>, dosyanın varsayılan içeriği göstermektedir.
+[[MyScript]]
+[source,cs,numbered,linenums]
+.index.pg
+----
+using
+using
+using
+using
+using
+System;
+System.Collections.Generic;
+System.Linq;
+System.Web;
+System.Web.Mvc;
+namespace PartyInvites.Controllers {
+public class HomeController : Controller { <1>
+17Chapter 2 ■ Your FIrSt MVC applICatIon
+public ActionResult Index() {
+return View();
+}
+}
+}
+----
+<1> satırda <1> görüldüğü gibi 
+doluşturacaktır. Bu dosyayı açmak için çift tıklayın. <<home-varsayilan-kod>>, dosyanın varsayılan içeriği göstermektedir.
+ddd
