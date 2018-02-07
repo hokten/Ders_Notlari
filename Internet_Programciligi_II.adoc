@@ -2,7 +2,7 @@
 :figure-caption: Şekil
 :listing-caption: Kod
 :xrefstyle: full
-:icons: font
+:source-highlighter: highlightjs
 
 = ASP.NET
 
@@ -58,28 +58,25 @@ Ayrıca kontrolör ismini  `Controller` son eki takip eder.
 Bu işlemlerden sonra, Visual Studio projenin  _Controllers_ klasörü içinde  `HomeController.cs` isimli yeni bir dosya 
 oluşturacaktır. Bu dosyayı açmak için çift tıklayın. <<MyScript>>, dosyanın varsayılan içeriği göstermektedir.
 [[MyScript]]
-[source,cs,numbered,linenums]
+[source, csharp, linenums, numbered]
 .index.pg
 ----
-using
-using
-using
-using
-using
-System;
-System.Collections.Generic;
-System.Linq;
-System.Web;
-System.Web.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
 namespace PartyInvites.Controllers {
-public class HomeController : Controller { <1>
-17Chapter 2 ■ Your FIrSt MVC applICatIon
-public ActionResult Index() {
-return View();
-}
-}
+  public class HomeController : Controller {
+    public ActionResult Index() {
+      return View(); <1>
+    }
+  }
 }
 ----
-<1> satırda <1> görüldüğü gibi 
+<1> görüldüğü gibi 
 doluşturacaktır. Bu dosyayı açmak için çift tıklayın. <<home-varsayilan-kod>>, dosyanın varsayılan içeriği göstermektedir.
-ddd
+pass:[<i class="conum" data-value="2"></i>]
+
+
