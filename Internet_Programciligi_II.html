@@ -424,7 +424,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 .hide-for-print{display:none!important}
 .show-for-print{display:inherit!important}}
 </style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <style>
 .listingblock .pygments .hll { background-color: #ffffcc }
 .listingblock .pygments, .listingblock .pygments code { background: #f8f8f8; }
@@ -595,24 +594,59 @@ oluşturacaktır. Bu dosyayı açmak için çift tıklayın. <a href="#MyScript"
 <span class="tok-k">namespace</span> <span class="tok-nn">PartyInvites.Controllers</span> <span class="tok-p">{</span>
   <span class="tok-k">public</span> <span class="tok-k">class</span> <span class="tok-nc">HomeController</span> <span class="tok-p">:</span> <span class="tok-n">Controller</span> <span class="tok-p">{</span>
     <span class="tok-k">public</span> <span class="tok-n">ActionResult</span> <span class="tok-nf">Index</span><span class="tok-p">()</span> <span class="tok-p">{</span>
-      <span class="tok-k">return</span> <span class="tok-nf">View</span><span class="tok-p">();</span>
+      <span class="tok-k">return</span> <span class="tok-nf">View</span><span class="tok-p">();</span> <b class="conum">(1)</b>
     <span class="tok-p">}</span>
   <span class="tok-p">}</span>
 <span class="tok-p">}</span>
 </td></tr></table></code></pre>
 </div>
 </div>
-<div class="paragraph">
+<div class="colist arabic">
+<ol>
+<li>
 <p>görüldüğü gibi
 doluşturacaktır. Bu dosyayı açmak için çift tıklayın. <a href="#home-varsayilan-kod">[home-varsayilan-kod]</a>, dosyanın varsayılan içeriği göstermektedir.
-ddd</p>
+<i class="conum" data-value="2"></i></p>
+</li>
+</ol>
+</div>
+<div id="MyyScript" class="listingblock">
+<div class="title">Kod 2. index.pg</div>
+<div class="content">
+<pre class="pygments highlight"><code data-lang="csharp"><table class="pyhltable"><tr><td class="linenos"><div class="linenodiv"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</div></td><td class="code"><span></span><span class="tok-k">using</span> <span class="tok-nn">System</span><span class="tok-p">;</span>
+<span class="tok-k">using</span> <span class="tok-nn">System.Collections.Generic</span><span class="tok-p">;</span>
+<span class="tok-k">using</span> <span class="tok-nn">System.Linq</span><span class="tok-p">;</span>
+<span class="tok-k">using</span> <span class="tok-nn">System.Web</span><span class="tok-p">;</span>
+<span class="tok-k">using</span> <span class="tok-nn">System.Web.Mvc</span><span class="tok-p">;</span>
+
+<span class="tok-k">namespace</span> <span class="tok-nn">PartyInvites.Controllers</span> <span class="tok-p">{</span>
+  <span class="tok-k">public</span> <span class="tok-k">class</span> <span class="tok-nc">HomeController</span> <span class="tok-p">:</span> <span class="tok-n">Controller</span> <span class="tok-p">{</span>
+    <span class="tok-k">public</span> <span class="tok-n">ActionResult</span> <span class="tok-nf">Index</span><span class="tok-p">()</span> <span class="tok-p">{</span>
+      <span class="tok-n"><em></span><span class="tok-p"><strong></span><span class="tok-k">return</span><span class="tok-p"></strong></span><span class="tok-n"></em></span> <span class="tok-n">View</span><span class="tok-p">();</span> <b class="conum">(1)</b>
+    <span class="tok-p">}</span>
+  <span class="tok-p">}</span>
+<span class="tok-p">}</span>
+</td></tr></table></code></pre>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-07 10:32:10 +03
+Last updated 2018-02-07 11:22:59 +03
 </div>
 </div>
 </body>

@@ -59,6 +59,26 @@ Bu işlemlerden sonra, Visual Studio projenin  _Controllers_ klasörü içinde  
 oluşturacaktır. Bu dosyayı açmak için çift tıklayın. <<MyScript>>, dosyanın varsayılan içeriği göstermektedir.
 [[MyScript]]
 [source, csharp, linenums, numbered]
+.*HomeController.cs* dosyasının varsayılan içeriği.
+----
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace PartyInvites.Controllers {
+  public class HomeController : Controller { <1>
+    public ActionResult Index() {
+      return View(); 
+    }
+  }
+}
+----
+<<MyScript>> kodunun (1) numaralı satırı dikkatle incelendiğinde, +HomeController+ sınıfının +System.Web.MVC+ isim uzayı 
+içinde yer alan +Controller+ ana sınıfından türetildiği anlaşılabilir.
+[[HomeControllercs_1]]
+[source, csharp, linenums,subs="verbatim,quotes"]
 .index.pg
 ----
 using System;
@@ -69,14 +89,11 @@ using System.Web.Mvc;
 
 namespace PartyInvites.Controllers {
   public class HomeController : Controller {
-    public ActionResult Index() {
-      return View(); <1>
-    }
+    public [red yellow-background]*string*  Index() { <1>
+      [red yellow-background]*return "Hello World";* <2>
+    } 
   }
 }
 ----
-<1> görüldüğü gibi 
-doluşturacaktır. Bu dosyayı açmak için çift tıklayın. <<home-varsayilan-kod>>, dosyanın varsayılan içeriği göstermektedir.
-pass:[<i class="conum" data-value="2"></i>]
-
+<<MyScript>> kodunu yeni hali <<HomeControllercs_1>> olacak şekilde değiştirelim. 
 
