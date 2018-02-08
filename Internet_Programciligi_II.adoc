@@ -1,7 +1,7 @@
 :imagesdir: Resimler
 :figure-caption: Şekil
 :listing-caption: Kod
-:xrefstyle: full
+:xrefstyle: short
 :source-highlighter: highlightjs
 :tip-caption: :bulb:
 :note-caption: :information_source:
@@ -127,7 +127,7 @@ düzenlemek olacaktır.
 [source, csharp, linenums,subs="verbatim,quotes"]
 .HomeController.cs dosyasında yer alan controller, bir view çıktılayacak şekilde değiştiriliyor.
 ----
-using  <<HomeControllercs_2>>;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
