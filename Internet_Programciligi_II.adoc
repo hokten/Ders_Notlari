@@ -3,7 +3,11 @@
 :listing-caption: Kod
 :xrefstyle: full
 :source-highlighter: highlightjs
-
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
 = ASP.NET
 
 == Yeni Bir ASP.NET MVC Projesi Oluşturma
@@ -95,5 +99,50 @@ namespace PartyInvites.Controllers {
   }
 }
 ----
-<<MyScript>> kodunu yeni hali <<HomeControllercs_1>> olacak şekilde değiştirelim. 
+<<MyScript>> kodunu yeni hali <<HomeControllercs_1>> olacak şekilde değiştirelim. Bu yapılan küçük değşiklik ile, :q
 
+== Routelar
+Model, view, controllera ek olarak MVC uygulamaları da _route sistemini_ kullanırlar. 
+Route sistemi, URLler ile controller ve action metodları arasındaki eşleşmelerden sorumludur. 
+Visual Studio yeni bir MVC uygulaması oluşturulduğunda varsayılan olarak bazı routeları projeye ekler. 
+Mesela, tarayıcıdan, `/`, `/Home` veya `/Home/Index` URLlerine istekte bulunduğunuzda, `HomeController` 
+controllerının `Index` action metodu çağırılacaktır. 
+
+Gerçekten örneğimizde tarayıcıda `http://localhost:portt`, `http://localhost:portt/Home` veya `http://localhost:portt/Home/Index` 
+URLlerine istekte bulunduğunuzda, tarayıcının ekranda gösterdiği web sayfası, MVC uygulamamızdan çekilen _Hello World_ yazısından 
+ibaret olacaktır.
+[TIP]
+====
+Route sistemine ait ayarları projenizin `App_Start` klasörü içinde bulunan `RouteConfig.cs` dosyasını
+düzenleyerek değiştirebilirsiniz.
+====
+== Web Sayfaları Üretip Çıktılamak
+Örneğimizdeki çıktı olan _Hello World_ yazısı bir HTML çıktısı değil sadece bir metin çıktıdır. 
+Tarayıcı isteklerine HTML cevapları verebilmek için _View_lar kullanılır. 
+
+=== View Oluşturmak ve Çıktılamak
+Bu işlem için öncelikle `HomeControlller.cs` dosyasındaki `Index` action metodunu <<HomeControllercs_2>> de vurgulandığı biçimde
+düzenlemek olacaktır.
+[[HomeControllercs_2]]
+[source, csharp, linenums,subs="verbatim,quotes"]
+.HomeController.cs dosyasında yer alan controller, bir view çıktılayacak şekilde değiştiriliyor.
+----
+using  <<HomeControllercs_2>>;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace PartyInvites.Controllers {
+  public class HomeController : Controller {
+    public [red yellow-background]*ViewResult*  Index() { <1>
+      [red yellow-background]*return View();* <2>
+    } 
+  }
+}
+----
+<<HomeControllercs_2>> kodunda değişen kısımlar sarı arkaplanlı olarak gösterilmiştir. 
+Bir action metodunun `ViewResult` nesnesi döndürdümesi, MVC yapısına bir `View` çıktılanacağının talimatını vermesi demektir.
+<<HomeControllercs_2>> kodunun (2) ile işaretlenmiş satırındaki `return View()` komutunda yer alan `View()` 
+metodu bibir `VievResult` nesnesi üretecektir. Şu an için herhangi bir `View` oluşturmadığımızdan, çıktılanan `View` Visual 
+Studio'nun varsayılan Viewi olacakır.
