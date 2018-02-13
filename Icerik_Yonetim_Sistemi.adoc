@@ -1,0 +1,73 @@
+= İçerik Yönetim Sistemi
+
+== Temel Kavramlar
+
+=== İçerik
+Editöryal süreçlerden geçmiş ve yayınlanarak insanlar tarafından
+tüketilen verilerdir.
+
+=== İçerik Yönetim Sistemi
+İçeriği etkin bir şekilde yönetmek için gereken çeşitli otomasyon
+görevlerine sahip olan yazılımlardır.
+İçerik Yönetim sistemi(Content Management System) CMS
+
+CMS genellikle, depoda saklanan içerik ile etkileşime
+giren çok-kullanıcılı ve sunucu tabanlı bir yazılımdır.
+
+CMS içeriğin, içeriği tüketecek kullanıcılara hazır hale
+gelebilmesi için gerekli olan yeni içerik üretme, var olan
+içeriği düzenleme gibi editöryal süreçler için bir
+editör kullanmaya izin verir.
+
+=== İçerik Yönetime Sistemi Türleri
+* Web Content Management(WCM) Yönetimi yapılacak içerikler bir
+web sitesi aracılığıyla sunulur.
+* Enterprise Content Management(ECM): Büyük şirketler tarafından
+genelde dökümanları düzenli tutumak için kullanılan CMS dir.
+* Digital Asset Management(DAM): Resim, müzik ve video gibi zengin
+içeriğe sahip kaynakların yönetimi için kullanılan sistemlerdir.
+* Records Managemet : İş süreçleri tarafından oluşturulan alım
+satım işlemlerinin bilgilerin yönetimini yapan sistemlerdir.
+
+
+
+
+
+
+== İçerik Yönetim Sistemlerinin Faydaları
+
+=== İçerik Kontrolü
+İçerik büyüdükçe oluşan karmaşayı ortadan kaldırmak için içerikler üzerinde size kontrol mekanizması sunar.
+CMS bir içeriğin tüm izlerini kayıt altında tutar. Örneğini; içeriğin nerede saklandığı, içeriğin kim tarafından ve 
+hangi tarihte oluşturulduğu, içeriğe kimler tarafında erişim yapıldığı, içeriğin başka içeriklerle olan ilişkileri 
+gibi bilgilerin hepsi CMS tarafından bilinir. Böylelikle CMS, içeriğimizin başına gelecek kötü durumlara engel olmuş olur.
+
+CMS aşağıdaki temel yönetim fonksiyonlarına sahiptir:
+
+* _**İzinler**_ : İçeriği kimlerin okuyacağı, içeriği kimlerin düzenleyebileceği veya içeriği kimlerin silebileceği.
+* _**Durum Yönetimi ve Akış**_ : İçerik yayınlandı mı?, içerik taslak olarak mı kaydedildi?, içerik arşive mi çekildi?
+* _**Versiyonlama**_ : İçerik kaç defa değişti?, İçerik bir ay önce nasıldı?, İçeriğin en son hali ile önceki halleri arasında 
+ne gibi farklar var?
+* _**Bağımlılık Yönetimi**_ : İçerilk hangi başka içeriklerle birlikte kullanılıyor?, Eğer bu içeriği silersem başka içerikler 
+bundan etkilenir mi?i, Hangi içerikler kullanılmıyor veya eksik referansa sahip. 
+* _**Arama ve Organizasyon**_ : Belirli bir içerik parçasını nasıl içerikler içerisinde arayabilirim? Bir içeriğini kullanan tüm içerikleri 
+nasıl bulabilirim?, İçerikler daha iyi organize etmek için nasıl gruplara ayırıp kategorilendirebilirim?
+
+=== İçeriğin Yeniden Kullanılabilmesi
+Bazı içeriklerin birden fazla yerde kullanılması veya birden fazla yolla kullanılması onun değerini arttırır.
+Örneğin;
+
+* Bir gazete web sitesi için bir haber makalesi düşünelim. Bu haber makalesi kendi sayfasında yer alır. Ayrıca "Flaş Haberler" içeriğinde 
+yer alabilir. Ek olarak da, başka bir içerik için "İlişkili Haberler" bölümünde yer alabilir.
+* Bir yazara ait kısa özgeçmiş, yazarın tüm yazılarının altında gözükebilir.
+* Güvenlik Bildirim sözleşmesi, web sitesindeki tüm sayfaların altında gözükebilir.
+
+Yukarıdaki durumlarda ortak olan içerik, bulunduğu her konumda tekrardan oluşturulmaz. Onun yerine, ortak içerik tek bir konuma sahiptir ve herhangi bir 
+içerik tarafından kullanılacağı zaman bu konumdan çekilir. Böylece ortak içerik, bulunduğu her içerik için ayrı ayrı oluşturulmamış olacaktır.
+
+Mesela, sitenizin her bir sayfasının altında, şirketinizin açık adresinin yer aldığını varsayalım. Eğer her bir sayfa için şirket adresi ayrı ayrı oluşturulmuş 
+olsaydı, şirketinizin adresinin değişmesi durumunda tüm sayfaları tekrar düzenlemeniz gerekecekti. Ama şirket adresi içeriğini oluşturup diğer sayfalarda yeniden
+kullandığınızda, şirket adresi içeriğinde yapılan değişiklik otomatik olarak bu içeriğin bulunduğu tüm sayfaları da etkileyecektir.
+
+=== İçerik Otomasyonu ve Montajı
+Tüm içeriğimiz tek bir kaynakta yer aldığından
