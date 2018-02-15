@@ -8,6 +8,8 @@
 :important-caption: :heavy_exclamation_mark:
 :caution-caption: :fire:
 :warning-caption: :warning:
+:sectnums:
+
 = ASP.NET
 
 == Yeni Bir ASP.NET MVC Projesi Oluşturma
@@ -18,10 +20,20 @@ dialog penceresi çıkacaktır. Visual Studio'da yeni bir proje oluştururken ö
 kullanacağımız dili ve sonra ise projemizin şablonunun(tamplate) seçmemiz gerekir.Visual C# ile bir ASP.NET MVC porojesi
 oluşturmak için `Templates &#9660; Visual C# &#9660; Web` seçeneğini seçmeliyiz.
 
-image::yeni_mvc.png[#SimpleGroovyApp, title="Ratpack library"]
-
 `New Project' dialog pencerisinin **Name** bölümüne projemizini ismi olan **Davetiye** metnini girelim ve OK 
-butonuna tıklayalım. Sonra karşımıza <<initial_content>>'de görülen, farklı amaçlara göre hazırlanmış proje başlangıç 
+butonuna tıklayalım. 
+
+[#new_project]
+.A mountain sunset
+image::yeni_mvc.png[Sunset]
+
+
+[#new_project]
+.A mountain sunset
+image::https://farm5.staticflickr.com/4740/28382836479_981336ca57_b.jpg[Sunset]
+
+
+Sonra karşımıza <<initial_content>>'de görülen, farklı amaçlara göre hazırlanmış proje başlangıç 
 şablonlarını seçebileceğiniz dialog penceresi çıkacaktır. Bu başlangıç şablonları ile kimlik doğrulama, görsel temalar ve 
 site gezinme seçenekleri gibi bazı özellikleri projenize otomatik olarak ekleyebilirsiniz. Biz burada öncelikle basitlik için 
 boş bir şablon kullanacağız. Sadece temel özelliklerin bulunduğu boş bir ASP.NET MVC şablonu oluşturmak için bu dialog 
@@ -145,4 +157,26 @@ namespace PartyInvites.Controllers {
 Bir action metodunun `ViewResult` nesnesi döndürdümesi, MVC yapısına bir `View` çıktılanacağının talimatını vermesi demektir.
 <<HomeControllercs_2>> kodunun (2) ile işaretlenmiş satırındaki `return View()` komutunda yer alan `View()` 
 metodu bibir `VievResult` nesnesi üretecektir. Şu an için herhangi bir `View` oluşturmadığımızdan, çıktılanan `View` Visual 
-Studio'nun varsayılan Viewi olacakır.
+Studio'nun varsayılan ``View``i olacakır.
+
+Bu işlemlerden sonra uygulamanızı çalıştırdığınızda, MVC çatısının uygun Viewi bulamadığını ayrıca nu Viewi projenin 
+hangi dizinlerinde aradığını belirten <<view_err_ie>> şeklinde görebileceğiniz bir hata mesajı ile karşılaşacaksınız.
+[#view_err_ie]
+.MVC çatısının varsayılan Viewi aradığını ama bulamadığını gösterem hata.
+image::https://farm5.staticflickr.com/4712/40130846032_4408877ba4_o.png[]
+ASP.NET MVC çatısı, Viewler ile Action Metodlar birbirleri ile isimleri ile kurulan bir ilişkilendirme ile bağlıdır. 
+Gerçekten <<view_err_ie>> şeklinde, `Home` controllerı içinde yer alan `Index` action metodu çağırıldığında, MVC çatısının 
+`Views` dizini içinde yer alan `Home/Index` yolunda bazı dosyaları aradığını fakat bulamadığını görmekteyiz.
+
+[#add_view_menu]
+.Index action metoduna bağlı bir View oluşturma.
+image::https://farm5.staticflickr.com/4622/26293459058_51c0cb0d29_o.png[]
+Bir View oluşturmak için, Action metod tanımı içinde herhangi bir yere sağ tıklayıp `*Add View*` seçeneğine seçmek gerekir. 
+Örneğimizi dikkate alırsak, <<add_view_menu>> şeklinde görüldüğü gibi `*HomeController.cs*` dosyası içinde 
+yer alan `*Index*` action metodunun tanım bloğunu içinde herhangi bir yere sağ tıklayıp menüden `*Add View*` seçeneğini 
+seçtiğimizde karşımıza Şekil x şeklinde görülen `*Add View*` dialog penceresi gelecektir.
+
+[#add_view_dialog]
+.Add View dialog penceresi.
+image::https://farm5.staticflickr.com/4742/39267718395_2302c565c7_o.png[]
+

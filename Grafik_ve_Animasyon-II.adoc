@@ -1,0 +1,31 @@
+= Adobe Flash CS6
+
+== Flash Nedir?
+Bir çok göz alıcı web sitesinde, çevrimiçi sosyal oyunlarda ve hatta reklam bannerlarında gördüğümüz 
+animasyonların büyük çoğunluğu Flash ile oluşturulmuştur. Ama Flash günümüzde sadece animasyon oluşturmaktan 
+daha fazlasını da yapmaktadır. Adobe Flash CS6 ile video ve ses doyalarını düzenleyebilir hatta web tabanlı
+uygulamalar geliştirmek için bir veritabanına bile bağlanabilirsiniz.
+
+Flash CS6 dört temel özelliğe sahiptir.
+
+**Çizim Ortamı : ** Flash, kompleks çizimleri ve tipografileri işlemek için son derece yeterli araçlar 
+bütününe sahiptir. Kuzeni Adobe Illustrator CS6 gibi Flash'ında asli işlerinden biri detaylı, zengin ve 
+ölçeklenebilir dijital çizimler oluşturmaktır.Flash, *.ai* (Illustrator) ve *.psd* (Photoshop) 
+dosyalarını doğrudan destekler.
+
+**Animasyon :** Flash, resim, ses ve videolar içeren ve web üzerinden hızlı bir şeklilde yüklenebilen sade 
+animasyonlar oluşturur. Flash animasyonlar web sitelerinde ve sosyal ağlarda gösterilebilir. Ayrıca, interaktif 
+web tabanlı reklam panoları için ilk akla gelen geliştieme ortamıdır.
+
+Flash, geleneksel olarak kullanılan *frame-by-frame* animasyon methodunun yası sıra, *tweening* 
+adı verilen bir başka animasyon metodunu da kullanır. Tweening metodu, anime edilecek bir nesnenin ik ve son
+durumları belirlendikten sonra bu iki durum arasındaki hareketin bilgisayar tarafından doldurulması anlamın gelmektedir.
+
+**Yerleşim Planı : ** Flash sahnesi size sıradışı web arayüzleri oluşturmak için esnek bir ortam sunar. İçeriğinizi 
+Flash sahnesinin herhangi bir yerine özgür ve kesin bir şekilde konumlandırabilir ve böylece arayüzünüzü web sayfasının 
+sınırlarını kırarak daha da öne çıkartabilirsiniz. Ayrıca Flash bir çok eğlenceli tipografiler ve sıra dışı yazı tiplerini 
+içinde barındırır.
+
+**Programlama : ** Flash CS6'nın az farkedilmesine rağmen en güzel özelliklerinden biri yeteneklerinizi 
+basit ve tasarım ve animasyonların daha da ötesine taşıyan, güçlü bir yerleşik betik dili olan __AcionScript__'dir.
+
