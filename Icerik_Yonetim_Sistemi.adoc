@@ -70,4 +70,6 @@ olsaydı, şirketinizin adresinin değişmesi durumunda tüm sayfaları tekrar d
 kullandığınızda, şirket adresi içeriğinde yapılan değişiklik otomatik olarak bu içeriğin bulunduğu tüm sayfaları da etkileyecektir.
 
 === İçerik Otomasyonu ve Montajı
-Tüm içeriğimiz tek bir kaynakta yer aldığından
+Tüm içeriğimiz tek bir kaynakta yer aldığından, içeriği sorgulama ve değiştirme işlemlerini muazzam bir şekilde gerçekleştiren bir sisteme sahip oluruz. 
+Bu sistem sayesinde mesela, geçen ay oluşturulan makaleleri bulabilir veya içinde "karnıbhar" sözcüğü geçen tüm makaleleri listeleyebiliriz. 
+Eğer içeriklerimiz düzgün bir yapıya sahip olursa, bu içeriklerin farklı koşullarda farklı görüntelenmesini sağlayabilirifarklı görüntelenmesini sağlayabilirizz

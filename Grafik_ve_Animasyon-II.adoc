@@ -27,5 +27,16 @@ sınırlarını kırarak daha da öne çıkartabilirsiniz. Ayrıca Flash bir ço
 içinde barındırır.
 
 **Programlama : ** Flash CS6'nın az farkedilmesine rağmen en güzel özelliklerinden biri yeteneklerinizi 
-basit ve tasarım ve animasyonların daha da ötesine taşıyan, güçlü bir yerleşik betik dili olan __AcionScript__'dir.
+basit ve tasarım ve animasyonların daha da ötesine taşıyan, güçlü bir yerleşik betik dili olan __AcitionScript__'dir.
 
+== Flash Player
+Flash animasyonlarını oynatmak için kullanılan bir uygulamadır. Flash player, bir çok moderm tarayıyıya uzantı olarak 
+eklenebilir. Flash animasyonları *.swf* uzantısına sahiptir. +
+Flash Player sadece bir video oynatıcısı değildir. Tıklama ve fare hareketlerine göre tepkiler verip dinamik içerik sunumu yapabilir.
+Örneği Flash ile tek bir karakteri olan basit bir oyun yapılabilir. Klavyeden ok tuşları yardımıyla bu karakter hareket ettirilebilir.
+
+
+== Flash Dosya Türleri
+Flash'da *.fla*, *.xfl*, *.swf* ve *.html* olmak üzere dört adet dosya türü kullanılır. *.fla* Flash'ın proje dosya biçimidir. 
+Proje dosyalarında; resim, ses ve video gibi kaynkları oluşturabilir ve düzenleyebilirsiniz. *.fla* dosyalarını web tarayıcıları tanımazlar. 
+Projeniz tamamlandığında *.fla* dosyasını kullanarak, projenizin ürünü olan *.swf* dosyası oluşturulur.

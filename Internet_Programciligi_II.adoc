@@ -180,3 +180,5 @@ seçtiğimizde karşımıza Şekil x şeklinde görülen `*Add View*` dialog pen
 .Add View dialog penceresi.
 image::https://farm5.staticflickr.com/4742/39267718395_2302c565c7_o.png[]
 
+Burada, _View Name_ bölümünü _Index_ olarak bırakalım. _Index_, oluşturacak olduğumuz viewe bağlanan 
+action metodun ismidir. 
