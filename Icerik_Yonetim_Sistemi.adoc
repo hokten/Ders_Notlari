@@ -71,3 +71,39 @@ kullandığınızda, şirket adresi içeriğinde yapılan değişiklik otomatik 
 
 === İçerik Otomasyonu ve Montajı
 Tüm içeriğimiz tek bir kaynakta yer aldığından
+
+== Wordpress'i Kurmak
+Wordpress'i kullanmaya başlamadan önce altyapısını oluşturmak gerekir. Bu ise 
+Wordpress'i indirip kurmakdan daha fazlası demektir. İlk olarak bir alan adına 
+ve web barındırma hizmetine ihtiyacımız olacak. 
+Wordpress'i kullanmak için, Wordpress.com'da bir hesap alabilir ya da 
+daha karışık olan yöntemi seçip Wordpress'i bir web barındırma alanına kurabilirsiniz. 
+
+===Alan Adı Alma
+Wordpress'i kurup kullanmak için ilk adım bir alan adı edinmektir. _Alan adları_, bir websitesini 
+ziyaret etmek için web tarayıcısının adres çubuğuna yazdığınız _eşsiz_ isimlerdir. +
+Alan adlarının _eşsiz_ olması, aynı alan adının iki farklı web sitesi tarafından kullanılamayacağı 
+anlmaına gelmektedir.
+
+==== Alan Adı Uzantılarını Anlama
+Alan adı alırken, alan adlarının sonundaki uzantılara önem vermek gerekir. Alan adlarının 
+sonunda gördüğümüz, __.edu, .com, .biz, .net__ gibi uzantılara **üst-seviye alan adı uzantıları** 
+denir. Alan adınız mutlaka bir üst-seviye alan adı uzantısı bulundurmak zorundadır. +
+İki veya daha fazla alan adınıb birbirlerinden tek farkı üst-seviye alan adı uzantısı olabilir. 
+Bu durumda bütün bu alan adları tek bir şahıs veya şirkete ait olmayabilir. Örneğin, 
+`superbirblog.com` alan adını siz aldıysanız, `superbirblog.net` alan adı bir başkası tarafından alınmış olabilir.
+
+[TIP]
+.Alan Adlarına Sahip mi Oluruz Yoksa Kiralar mıyız?
+====
+Bir alan adı almak demek aslında onu belli bir süreliğine kiralamak anlamına gelir. Bir 
+alan adını bir seneden on seneye kadar kiralayabilirsiniz. Fakat kiralama süresi dolmadan 
+önce alan adını yeniden satın alıp belli süreliğine kiralamazsanız o alan adını kaybetmiş 
+olursunuz. Alan adı serbest kalır ve bir başkası tarafından kiralanabilir.
+====
+Eğer bu sizin için bir problem teşkil ediyorsa, sadece üt-seviye alan adı uzantısı farklı olan 
+birden fazla alan adını alabilirsiniz.
+
+==== Alan Adlarının Maliyeti
+Alan adı kiralamanın maliyeti, hizmet aldığınız yere ve hizmetinizin özelliklerine göre 3 dolardan 
+300 dolara kadar çıkabilir. 
