@@ -70,8 +70,24 @@ olsaydı, şirketinizin adresinin değişmesi durumunda tüm sayfaları tekrar d
 kullandığınızda, şirket adresi içeriğinde yapılan değişiklik otomatik olarak bu içeriğin bulunduğu tüm sayfaları da etkileyecektir.
 
 === İçerik Otomasyonu ve Montajı
-<<<<<<< HEAD
-Tüm içeriğimiz tek bir kaynakta yer aldığından
+Tüm içeriğimiz tek bir kaynakta yer aldığından, içeriği sorgulama ve değiştirme işlemlerini muazzam bir şekilde gerçekleştiren bir sisteme sahip oluruz. 
+Bu sistem sayesinde mesela, geçen ay oluşturulan makaleleri bulabilir veya içinde "karnıbhar" sözcüğü geçen tüm makaleleri listeleyebiliriz. 
+Eğer içeriklerimiz düzgün bir yapıya sahip olursa, bu içeriklerin farklı koşullarda farklı görüntelenmesini sağlayabilirifarklı görüntelenmesini sağlayabilirizz
+Örneğin;
+
+* İçeriği farklı şekillerde yayınlanacak şekilde oluşturabilirsiniz.
+* Otomatik olarak liste öğeleri ve gezinti menüleri oluşturabilirsiniz.
+* Kullanıcıların yereline göre, içeri farklı dillerde gözükecek şekilde oluşturabilirsiniz.
+
+=== İçerik Düzenleme İşlemini Kuvvetlendirir
+İçerik üzerindeki hataların tespiti ve düzeltilmesi için CMS'ler gerekli araçlara sahiptir.
+
+== İçerik Yönetim Sistemlerinin Yapamadıkları
+=== İçerik Üretmek
+İçerik yönetim sistemleri içerik oluşturamazlar. İçeriği oluşturmak ve organize etmek için güçlü bir zemin oluştururlar.
+
+=== Pazar Araştırması
+İçeriğiniz düzgün ve iyi yapılandırılmış bile olsa bu içeriğinizin farkedilmesini sağlamaz.
 
 == Wordpress'i Kurmak
 Wordpress'i kullanmaya başlamadan önce altyapısını oluşturmak gerekir. Bu ise 
@@ -80,7 +96,7 @@ ve web barındırma hizmetine ihtiyacımız olacak.
 Wordpress'i kullanmak için, Wordpress.com'da bir hesap alabilir ya da 
 daha karışık olan yöntemi seçip Wordpress'i bir web barındırma alanına kurabilirsiniz. 
 
-===Alan Adı Alma
+=== Alan Adı Alma
 Wordpress'i kurup kullanmak için ilk adım bir alan adı edinmektir. _Alan adları_, bir websitesini 
 ziyaret etmek için web tarayıcısının adres çubuğuna yazdığınız _eşsiz_ isimlerdir. +
 Alan adlarının _eşsiz_ olması, aynı alan adının iki farklı web sitesi tarafından kullanılamayacağı 
@@ -108,8 +124,5 @@ birden fazla alan adını alabilirsiniz.
 ==== Alan Adlarının Maliyeti
 Alan adı kiralamanın maliyeti, hizmet aldığınız yere ve hizmetinizin özelliklerine göre 3 dolardan 
 300 dolara kadar çıkabilir. 
-=======
-Tüm içeriğimiz tek bir kaynakta yer aldığından, içeriği sorgulama ve değiştirme işlemlerini muazzam bir şekilde gerçekleştiren bir sisteme sahip oluruz. 
-Bu sistem sayesinde mesela, geçen ay oluşturulan makaleleri bulabilir veya içinde "karnıbhar" sözcüğü geçen tüm makaleleri listeleyebiliriz. 
-Eğer içeriklerimiz düzgün bir yapıya sahip olursa, bu içeriklerin farklı koşullarda farklı görüntelenmesini sağlayabilirifarklı görüntelenmesini sağlayabilirizz
->>>>>>> 76d1c36d3721c65a2d2bc7e161fb324bc3d6f65f
+
+= awardspace.com
