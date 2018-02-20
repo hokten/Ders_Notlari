@@ -1,0 +1,51 @@
+= Sunucu İşletim sistemi
+== Windows Server 2012'yi Edinmek
+
+Windows Server 2012'nin öncelikli amacı işletim sistemini, küçük orta ve büyük 
+ölçekli şirketlere göre optimize etmektir.
+Windows Server 2012'nin şirketinize ve amacınıza uygun değişik sürümleri mevcuttur.
+
+Windows Server 2012, yalnızca 64-bit mimarisine sahip donanımlarda çalışır.
+
+=== Windows Server 2012'nin Sürümleri
+* **Windows Server 2012 Foundation :** Limitli özelliklere sahiptir. Sadece OEM 
+bilgisayarlar üzerinde çalışır. Bu sürüm sadece tek bir işlemci destekler. Belirli bir 
+fiziksel ortamda, 15 kullanıcıya kadar destek verir. Sanallaştırma  ortamlarına izin vermez.
+* **Windows Server 2012 Essential : ** Kısıtlanmış özelliklere sahiptir. Sanallaştırma ortamlarına 
+izin vermez, 25 kullanıcıya kadar destekler ve tek bir fiziksel ortamda iki işlemciye destek sağlar. 
+* **Windows Server 2012 Standart : ** Bütün özelliklere sahiptir. Tek bir fiziksel ortamda 64 fiziksel 
+işlemciye kadar destek verir. Ayrıca iki sanal örneğe izin verir.
+* **Windows Server 2012 Datacenter : ** Bütün özellikler sahiptir. Tek bir fiziksel ortamda 64 fiziksel işlemciye
+kadar destek verir. Sınırsız sayıda sanal örnek oluşturulabilir.
+
+Windows Server 2012, sanal ortamlar oluşturmak için _**Hyper V**_ adı verilen bir teknoloji kullanır.
+_**Hyper-V**_ ile, bir fiziksel bilgisayar üzerinde, fiziksel bilgisayarla eş zamanlı çalışabilen birden fazla 
+misafir(sanal) bilgisayarlar oluşturulabilir.
+
+=== Windows Server 2012 Kurulumu
+==== Kurulum Seçeneklerini Anlamak
+Kuruluma başlamadan önce, hangi sabit diskinize ve bu diskin hangi bölümlerine işletim sisteminizi kuracağınıza karar vermelisiniz.
+Dilerseniz disk bölümlendirme işlemini Window Server 2012 kurulum CD'sinde yer alan bölümleme aracı ile yapabilirsiniz. +
+Windows Server 2012'nin *temiz kurulum* ve *upgrade* olmak üzere iki kurulum seçeneği vardır.
+Windows Server 2012, **Full Server**, **Minimal Server Interface** ve **Server Core** olmak üzere 
+üç farklı kurulum yapısına sahiptir.
+
+* **Full Server : **  Full Server, konfigürasyonlar için zengin arayüz uygulamalrı içerenve masaüstü ortamnına 
+sahip kurulum yapısıdır.
+* **Minimal Server Interface : ** Sunucu araçları için minumum düzeyde grafiksel arayüz içeren uygulamalar bulundurur.
+* **Server Core : ** Kullanıcı arayüzleri içermeyen, işlemlerin konsol üzerinden yapıldığı kurulum yapısıdır.
+
+=== Windows Server 2012'nin Kurulumu
+Kuruluma başlamak için bilgisayarın açılış birimini CDROM olarak değiştirmemiz gerekir. Bu işlem BIOS veya EFI'nin ilgili ayarında yapılabilir.
+BIOS(Basic Input Output System), EFI(Extensible Fımrware Interface) +
+BIOS tabanlı bilgisayarlar boot disk bölümü için MBR disk türü kullanırken EFI tabanlı bilgisayarlar GPT disk türü kullanırlar.
+
+==== Bilgisayarı İsimlendirme
+Bilgisayarınıza, Ahmet, Mehmet gibi isimler verebilirsiniz. Böyle bir isimlendirme, bilgisayarın üstlendiği görev hakkında hiç bir 
+bilgi vermez. Bilgisayar sayısı çoğaldıkça bu tarz isimlendirme karışıklığa yol açacaktır. +
+Kullanıcılara yönetimsel anlmada kolaylık sağlamak için bir isimlendirme kuralı kabul etmemiz doğru olacaktır. Örneğin, Muhasasebe birimindeki 
+bir sunucu bilgisayara, *MuhasebeSunucu01* ismi verilebilir. Bu tarz bir isimlendir sistematiği, bilgisayarı konumu ve görevi hakkında bize bilgi verecektir.
+Bilgisayar isimleri domain içinde eşsiz olmalıdırlar. Bilgisayar isimleri en fazla 64 karakter uzunluğunda olabilirler. 
+
+==== Ağ ve Domain Üyelikleri İçin Özellikler
+Kurukum sırasında, aşağıda belirtilen ağ ve domain üyelik bilgilerine karar vermeniz gerekmektedir.
