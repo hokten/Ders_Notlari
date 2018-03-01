@@ -49,6 +49,7 @@ Bilgisayar isimleri domain içinde eşsiz olmalıdırlar. Bilgisayar isimleri en
 
 ==== Ağ ve Domain Üyelikleri İçin Özellikler
 Kurukum sırasında, aşağıda belirtilen ağ ve domain üyelik bilgilerine karar vermeniz gerekmektedir.
+
 === Rol ve Özellikleri Kurma
 İşletim sistemini kurarak, sunucu işletim sistemi oluşturmak için ilk adımı atmmış olduk. 
 Fakat sunucu işletim sistemini kurmak demek bilgisayarınızın artık bir sunucu olarak faaliyet göstermeye 
@@ -59,6 +60,7 @@ Windows Server 2016'da sunucuya, hangi verileri nasıl sunacağı konusunda verd
 _Rol_ sözcüğü ile, sunucuya ağ üzerinde biçilen rolün, Windows Server 2016'da yer alan yönetimsel araçlarla kurulması ifade 
 edilmektedir. Diğer bir ifadeyle, rolller sunucuya ağ üzerinde var olma amacı verir. +
 _Özellikler_ ise sunucunun belirli bir özelliği kazanabilmesi için gerekli olan fonksiyon yığınını ekler.
+
 ==== Sihirbazı Kullanarak Bir Rol Yükleme
 Hiç şüphe yok ki, rollerin ve özelliklerin yüklü olduğu en yaygın yer, işletim sistemi yüklenir yüklenmez kullanılabilir grafik sihirbazlarının hemen içindedir. Varsayılan olarak, Windows Server 2016'ya her giriş yaptığınızda otomatik olarak Server Manager uygulaması açılacaktır.
 Yeni kurduğumuz sunucuya giriş yaptığnızda karşınıza 
