@@ -49,3 +49,115 @@ Bilgisayar isimleri domain içinde eşsiz olmalıdırlar. Bilgisayar isimleri en
 
 ==== Ağ ve Domain Üyelikleri İçin Özellikler
 Kurukum sırasında, aşağıda belirtilen ağ ve domain üyelik bilgilerine karar vermeniz gerekmektedir.
+=== Rol ve Özellikleri Kurma
+İşletim sistemini kurarak, sunucu işletim sistemi oluşturmak için ilk adımı atmmış olduk. 
+Fakat sunucu işletim sistemini kurmak demek bilgisayarınızın artık bir sunucu olarak faaliyet göstermeye 
+başladığı anlamına gelmemektedir. Istemcilerde, temel işletim sisteminin ana amacı veriyi işlemek ve tüketmektir.
+Sunucu işletim sistemlerinin öncelikli amacı ise veriyi istemcilere sunmaktır. 
+Bu sebeple siz sunucuya neyi sunacağı konusunda bir şey bildirmezseniz sunucu amaçsız çalışacaktır. +
+Windows Server 2016'da sunucuya, hangi verileri nasıl sunacağı konusunda verdiğiniz görevlere __rol ve özellikler__ denir. +
+_Rol_ sözcüğü ile, sunucuya ağ üzerinde biçilen rolün, Windows Server 2016'da yer alan yönetimsel araçlarla kurulması ifade 
+edilmektedir. Diğer bir ifadeyle, rolller sunucuya ağ üzerinde var olma amacı verir. +
+_Özellikler_ ise sunucunun belirli bir özelliği kazanabilmesi için gerekli olan fonksiyon yığınını ekler.
+==== Sihirbazı Kullanarak Bir Rol Yükleme
+Hiç şüphe yok ki, rollerin ve özelliklerin yüklü olduğu en yaygın yer, işletim sistemi yüklenir yüklenmez kullanılabilir grafik sihirbazlarının hemen içindedir. Varsayılan olarak, Windows Server 2016'ya her giriş yaptığınızda otomatik olarak Server Manager uygulaması açılacaktır.
+Yeni kurduğumuz sunucuya giriş yaptığnızda karşınıza 
+Server Manager aracı çıkacaktır. 
+Bu aracın içinde, birden beşe kadar numaralandırılmış 
+linkler halinde başlangıçta yapılacaklar listesi göreceğiz. 
+Öncelikle sunucumuzuni, yerel bir sunucu olarak çalışa
+bilmesi için gerekli şartları oluşturmamıza sağlayan 
+_Configure this local server_ bağlantısına tıklayacağız.
+Bu şartlar, kesin bir bilgisayar ismi belirleme, ip adresini
+statik olarak sabitleme gibi adımlardan oluşur.
+Bu kısmı geçtikten sonra ikinci adıma geçiyoruz. 
+_Add roles and features_ bağlantısına tıklayalım. 
+Aynı işlemi, Server Manager penceresinin sağ üst kısmında
+yer alan _Manage_ menüsünden _Add roles and features_
+seçeneğine tıklayarak da açabiliriz.
+Sonradında rol ve özellik eklememize yardımcı olan bir 
+sihirbaz bizi karşılayacaktır.
+İlk olara, rol kurma hakkında bilgiler içeren yazıların
+olduğu bir ekran karşımıza gelecektir. 
+_Next_ düğmesine basarak ilerleyelim. Bu pencerede, _Role-based or feature-based installation_ ve _Remote Desktop Services 
+installation_ seçeneklerini göreceğiz. Biz burada; _Role-based or feature-based installation_ seçeneğini seçeceğiz. 
+_Remote Desktop Services installation_  seçeneği ile devam ederseniz sunucunuza uzak masaüstü erişimi yapabilmek için gerekli 
+olan yazılımların kurulumunu yapmış olursunuz. +
+Biz, Windows Server 2016'yı denemek için bir test ortamı oluşturacağımızdan dolayı, içinde bulunduğum ortamda 
+bulunan _Active Directory_ yapısını yönetecek bir __Domain Controller__'a ihtiyacım olacaktır. Sunucuya _AD DS_ 
+rolünü eklemeden önce, sunucumuzda bazı ön koşulları yerine getirmeliyiz. Bu koşullar şunlardır: 
+* Bilgisayarınızı ismine(hostname) kesin ve değişmeyecek şekilde karar vermiş ve atamış olmanızz.
+* IP adresinizi otomatik olarak(DHCP) değil kesin ve değişmeyecek biçimde statik olarak alınmış olması.
+* Network ayarlarında DNS bölümüne en azından snunucu bilgisayarın ip adresi olacak şekilde DNS sunucularının girilmiş olması.
+
+Bu işlemleri gerçekleştirdikten sonra _Next_ düğmesine basıp ilerleyelin. Karşımıza rolü hangi sunucuya kurmak istediğimizi 
+soran _Server Selection_ penceresi gelecektir. Burada ağınızda bulunan diğer sunucularda listelenecek ve 
+yetkiniz yeterliyse bu sunuculardan birini seçerek rolü bu sunucuya kurulacaktır. Her zaman için, üzerinde çalıştığınız sunucu
+burada ilk  sırada yer alır ve genellikle onu seçerek ilerleriz. Ayrıca, sunucunuzda `.VHDX` uzantısına sahip olan 
+sanal sunucular varsa _Select a virtual hard disk_ seçeneğini seçerek rolünüzü bunlardan birine kurabilirsiniz. 
+Kurulum yapacağımız sunucuyu seçtikten sonra karşımıza, kurabileceğimiz tüm rollerin bir listesi çıkacaktır. 
+Bir rolün kurulumuna başlamak için, Kuracağımız rolün solunda yer alan seçim kutucuğunu işaretleyip _Next_ düğmesine 
+basmamız yeterli olacaktır. Birden fazla rolü kurmak istememiz durumunda, bu işlemleri hepsi için tekrar yapmaya gerek yoktur. 
+Dolayısıyla bu aşamada istediğimiz kadar rolün seçim kutucuğunu işaretleyip hepsini tek bir seferde kurabiliriz. 
+Bu sunucu bilgisayarı _Domain Controller_ olarak görevlendirmek istediğimizden biz bu burada _Active Directory Domain 
+Services_ rolünü seçiyoruz. Seçim yaptıktan sonra bu rolün düzgün çalışması için kurulması gereken özelliklerin bir
+listesi karşımıza çıkacaktır. Bir çok rol düzgün çalışabilmesi için ek bileşenlere ve özelliklere ihtiyaç duyar. 
+Rolü ve gereksinim duyduğu tüm bu ek özellikleri kurabilmek için _Add Features_ butonuna basmamız yeterli olacaktır. 
+Biz burada sunucu bilgisayarımıza ayrıca _DHCP Server_ ve _DNS Server_ rollerini de ekleyeceğimiz için onlara 
+ait seçim kutularını da işaretleyip _Add Features_ düğmesinine basıyoruz. Bu hizmetlerin kurulabilmek için birbirine 
+bağımlı değildir. Yani her birini farklı sunucu bilgisayarlarda kurabilirsiniz. Genelde büyük ölçekli teşkilatlanmlarda 
+bu seçenek tercih edilir. Ama biz küçük bir test ortamı oluşturmak istediğimizden hepsini tek bir sunucuya kuruyoruz. +
+Kurulum işlemi tamamlandıktan sonra, bilgisayarı yeniden başlatmak isteyip istemediğinizi soran bir dialog penceresi 
+ile karşılaşacaksınız. Bazı roller kurulduklarında bilgisayarınızı yeniden başlatmanız gerekebilir. Server Manager 
+penceresini tekrar baktığınınızda, üst kısımda sarı renkli bir ünlem işareti göreceğiz. Bu alana tıkladığımızda, 
+rollerin kurulumun tamamlanması ve işler hale gelebilmesi için gerekli olan ayarlar hakkında bilgi veren mesajlar göreceğiz. 
+Örneğin sunucumuzun _Domain Controller_ hizmetini vermeye başlaması için etki alanını tanımlayacak olan veya 
+katılmak isteyeceğimiz etki alanını bildireceğimiz yükseltme işlemini yapmamız gerekir. 
+
+=== PowerShell Kullanarak Bir Özellik Kurma
+Şimdiye kadar grafik arayüzlü sihirbazlar ile rol ve özellik kurulumunu öğrendik. Rol ve özellik kurmak için her zaman 
+bu sihirbazları kullanabiliriz. Ayrıca Microsoft,rol ve özellik ekleme de dahil olmak üzere bir çok işlemin yapılabileceeği 
+_PowerShell_ adı verilen bir komut satırı istemcisi oluşturdu. PowerShell'de rol ve özellikleri listelemeye ve kurmaya 
+yarayan komutlar bir göz atalım. +
+Yetkili bir PowerShell komut satırı istemcisini açıp `Get-WindowsFeature` komutunu verelim. Bu komut bize, sunucumuza 
+kurabileceğimiz tüm rol ve özelliklerin bir listesini verecektir. Ayrıca hangi rol ve özelliklerin kurulu olduğunu 
+bize gösterecektir. +
+Örneğin _Telenet Client_ özelliği kurmak istediğimizi düşünelim. Telnet ağ bağlantılarını kontrol etmek için kullanılır ve 
+sunucumuz için faydalı olacaktır. Maalesef PowerShell'de verilen `Get-WindowsFeature` komutunun çıktısı sayfalarca ve 
+ayrıca _Telnet Client_ özelliğini kurmak için tam olarak neyi arayacağımı bilmiyorum. Şimdi yine `Get-WindowsFeature` 
+komutunu vereceğiz ancak komutun çıktısını isteğimize göre filtreleyip azaltmak komutun söz dizimini biraz değiştirerek 
+eklemeler yapacağız. Sadece ismi `TEL` ile başlayan özellikleri görebilmek için +
+`Get-WindowsFeature -Name TEL*` +
+komutunu verelim. Bu komutun çıktısında _Telnet Client_ özelliğini ve ona ait bilgileri net olarak görebiliriz. 
+Bir özelliği PowerShell ile eklemek için o özelliğin ismini `Add-WindowsFeature` komutuna argüman olarak vermek yeterli 
+olacaktır. O halde,
+
+[source, powershell]
+----
+Add-WindowsFeature Telnet-Client
+----
+komutunu verdiğimizde Telnet Clien özelliği sunucu bilgisayara kurulacaktır. +
+Sunucumuzda kurulu olan tüm rol ve özellikleri görebilmek için `Get-WindowsFeature | Where Installed` komutunu kullanabilirsiniz.
+
+=== Merkezi Yönetim ve İzleme
+Yeni roller kurarken, yedek alırken, programlara bakım yaparken ya da sorun giderirken mantıken üzerinde çalıştığımız 
+sunucuya giriş yapmamız gerekecektir. Önceleri bu eylem, ancak sunucu bilgisayarın karşısına geçip 
+fare ve klavyeyi kullanmak vasıtasıyla yapılabilirdi. Ancak uzun zamandır bu eylemi yapabilmek için fiziksel olarak sunucu 
+bilgisayarın karşısında olmanıza gerek yok. _Remote Desktop Services (RDP)_ teknolojisi bize, sunucularımızı uzak 
+bilgisayarlardan yönetme imkanı sağlar. Windows Server 2016 içerdiği bazı araçlar ile __RDP__'ye olan gereksinimi 
+azaltmıştır. Bu araçları yakından inceleyelim.
+
+==== Server Manager
+Windows Server 2016 kurulu bir bilgisayara her giriş yaptığınızda _Server Manager_ aracı otomatik olarak başlatılır. 
+Uygulamanın penceresi incelendiğinde, sunucuda kurulu olan hizmetler hakkında özet bilgiler verdiği görülebilir. 
+Sol sütunda sunucuda kurulu olan rollerin bir listesi yer alır. Bu rollerden birine tıkladığınızda rol ile ilgili ayarlar 
+ve özelliklere erişebilirsiniz. Çoğu zaman birden fazla sunucuyla çalışmak zorunda kalabilirsiniz. _Server Manager_ 
+penceresinin altında yer alan _Roles and Server Groups_ sunucularınızı gruplandırmaya yarar. Bu kısımda aynı zamanda 
+sunucularınızda çalışan rolleri görebilirsiniz. Bizim sunucumuzda şimdilik _AD DS_ ve _DHCP_ rollerini eklediğimizden 
+bu kısımda onlar listelenecektir. Rollerin isminin yazdığı başlık kısmının arkaplan rengi kırmızı ise ilgili rolün düzgün 
+çalışmadığını; yeşil ise rolün sorunsuz çalıştığını anlayacağız. Her iki durumda da rollerin üstüne tıklayarak daha 
+fazla bilgi edinebilirsiniz. +
+Server Manager penceresinin üst tarafında yer alan menüde bulunan _Tools_ seçeneğine tıkladığınızda, sunucuda 
+kullanabileceğiz yönetimsel araçların bir listesini göreceksiniz. 
+
+
