@@ -188,5 +188,6 @@ action metodun ismidir.
 Content in a passthrough block is passed to the output unprocessed.
 That means you can include raw HTML, like this embedded Gist:
 </p>
-<script src="https://gist.github.com/hokten/3daa17a3478cff668a9d31c8b9c0aa52.js"></script>
+<script src="https://gist.github.com/hokten/3daa17a3478cff668a9d31c8b9c0aa52.js">
+</script>
 ++++
