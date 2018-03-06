@@ -182,3 +182,5 @@ image::https://farm5.staticflickr.com/4742/39267718395_2302c565c7_o.png[]
 
 Burada, _View Name_ bölümünü _Index_ olarak bırakalım. _Index_, oluşturacak olduğumuz viewe bağlanan 
 action metodun ismidir. 
+
+pass:[<script src="https://gist.github.com/hokten/3daa17a3478cff668a9d31c8b9c0aa52.js"></script>]
