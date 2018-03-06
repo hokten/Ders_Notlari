@@ -87,7 +87,8 @@ _Remote Desktop Services installation_  seçeneği ile devam ederseniz sunucunuz
 olan yazılımların kurulumunu yapmış olursunuz. +
 Biz, Windows Server 2016'yı denemek için bir test ortamı oluşturacağımızdan dolayı, içinde bulunduğum ortamda 
 bulunan _Active Directory_ yapısını yönetecek bir __Domain Controller__'a ihtiyacım olacaktır. Sunucuya _AD DS_ 
-rolünü eklemeden önce, sunucumuzda bazı ön koşulları yerine getirmeliyiz. Bu koşullar şunlardır: 
+rolünü eklemeden önce, sunucumuzda bazı ön koşulları yerine getirmeliyiz. Bu koşullar şunlardır:
+
 * Bilgisayarınızı ismine(hostname) kesin ve değişmeyecek şekilde karar vermiş ve atamış olmanızz.
 * IP adresinizi otomatik olarak(DHCP) değil kesin ve değişmeyecek biçimde statik olarak alınmış olması.
 * Network ayarlarında DNS bölümüne en azından snunucu bilgisayarın ip adresi olacak şekilde DNS sunucularının girilmiş olması.
@@ -162,4 +163,26 @@ fazla bilgi edinebilirsiniz. +
 Server Manager penceresinin üst tarafında yer alan menüde bulunan _Tools_ seçeneğine tıkladığınızda, sunucuda 
 kullanabileceğiz yönetimsel araçların bir listesini göreceksiniz. 
 
+=== sysprep ile işletim Sisteminin Hazır kalıplarını Oluşturmak
+Widows Server 2016'yı kurmak çok da zahmetli değildir. Fakat çok sayıda sunucu bilgisayarınız varsa, benzer rutinleri 
+tekrar etmek zor ve sıkıcı olabilir. Birbirine benzer donanıma sahip bilgisayarlara ya da sanal makinelere _sysprep_ 
+yardımıyla işletim sistemini zahmetsiz bir şekilde kurabiliriz.
+Microsoft System Preparation Tool
+
+=== Active Directory Nedir?
+Active Directory Windows Server ağlarındaki bir dizin hizmetidir. Dizin hizmeti, ağdaki kaynakların bilgisini tutan ve bu bilgiyi 
+kullanıcılara ve uygulamalara sunan ağ hizmetidir. 
+Dizin hizmeti ağ kaynaklarına ulaşmak, bu kaynakları isimlendirmek ve güvenli bir şekilde yönetmek için gereken ortamı sağlamak amacıyla oluşturulur.
+Active Directory ortamdaki ağ altyapısına büyük ölçüde işlevsellik kazandırmaktadır. 
+Özellikle kaynakların kontrolünün ve yönetiminin merkezileştirilmesi Active Directory organizasyonunun en önemli özelliğidir. 
+Active Directory, fiziksel topoloji üzerine dayalı bir sistemin kullanıcıya daha baside indirgenmiş şekilde görünmesini ve kaynaklara
+erişim esnasında kullanıcının eriştiği kaynağın (örneğin printer) ağın neresinde olduğunu veya kaynağın ağa ne 
+şekilde bağlanmış olduğunu bilmeksizin bağlanmasını sağlar. +
+Active Directory kurulu bir Windows Server 2016 ağ çapında sistem konfigürasyonlarını, kullanıcı profillerini ve uygulama bilgilerini Active Directory veritabanında saklar.
+Active Directory sistem yöneticilerinin, domain kapsamındaki tüm bilgisayarlarda desktop özelliklerini, ağ servislerini ve uygulamaları
+merkezi bir noktadan yönetebilmelerini sağlar. +
+Active Directory ayrıca, kullanıcıların sisteme bir kez dahil olmasını, yani logon olmasını ve ardından ağdaki birçok kaynağa tek bir logonla güvenli bir şekilde erişebilmesi konusunda da sistem yöneticilerine merkezi erişim kontrolü sağlar.
+
+=== Domain Controller
+Domain Controller, domain yapısını kuran ve domain veritabanının depolandığı bilgisayarlara verilen isimdir. Kısaca DC denir. 
 
