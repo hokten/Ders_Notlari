@@ -191,3 +191,61 @@ That means you can include raw HTML, like this embedded Gist:
 <script src="https://gist.github.com/hokten/3daa17a3478cff668a9d31c8b9c0aa52.js">
 </script>
 ++++
+== Nesne Yönelim Kavramları
+=== Soyutlama (Abstraction)
+Bir hedefe varmak için otomobilinize bindiğinizi düşünelim. İlk olarak yapacağımız 
+eylemler neler olacaktır? Genel olarak önce kontak anahtarı ile aracı çalıştırmak, vitesi uygun 
+pozisyona almak ve ilerlemek için gaz pedalına basmak. Yayalara çarpmamak ve bazı trafik kurallarına 
+uymak için freni kullanacaksınız. Hedefinize ulaştığınızda ise, vitesi uygun pozisyona alıp otomobili 
+kapatırız. Tüm bu senaryoda bazı şeyleri yapmayız. Örneğin;
+
+* Motor hızını kontrol etmek için aracın kaputunu açıp benzin ve hava akışını ayarlamak
+* Frene pedalına basılınca aracın hızlanmasını ve gaz pedalına basıldığında aracın durmasını 
+sağlamak.
+* Sinyal ışıklarının yanma prensiplerini değiştirmek.
+
+Bu örneğimizde de görüldüğü gibi, bir iş ile baş edebilmek için, bu işin asıl 
+ilgilendiğimiz kısmına yoğunlaşıp geri kalan kısımlardaki ayrıntıları görmezden 
+gelmemiz gerekir. Bilgisayar terminolojisinde bu yoğunlaştığınız seviyeye 
+_*soyutlama katmanı*_ denir.  
+görmezden gelip belli bir seviyede çalışma yürütmemiz gerekir. +
+İyi düşünülmüş bir soyutlama işlemi ile karmaşık bir iş, olduğundan daha basit kavranabilir ve 
+daha az hata çıkartacak bir hale getirilebilir. Örneğimizi ele alırsak, otomobilinizi talimatlarına uygun ve 
+trafik kurallarını gözeterek kullandığınız sürece başınıza kötü bir durum gelme olasılığı 
+çok düşüktür.
+
+=== Yöntemsel Adımları Hazırlamak
+Bir otomobil ile bir hedefe ulaşma problemini düşünürsek aşağıdaki adımları
+prosedürümüze eklememiz gerekir.
+
+. Otomobili çalıştır.
+. Trafik şeridine gir.
+. Belirlenen konuma doğru otomobili sür.
+. Yolda karşına çıkan engelleri güvenle geç.
+. Gerekli trafik kurallarına uy.
+. Otomobili hedefe en yakın yere park et.
+. Otomobili durdur.
+
+Bu adımlar çok açık ve kesindir. Fakat fonksiyonel programcılar, otomobil ile 
+bir hedefe ulaşma problemi için yazacakları bir programda bu adımları kullanamazlar. 
+Fonksiyonel programlama; otomobiller, yayalar ve trafik kuralları gibi nesnelerden 
+mahrumdur. Onlarca fonksiyon ve bu fonksiyonların birbiri ile kuracakları bağları 
+düşünmek zorundadır. Mesela fonksiyonel programcı, gaz pedalına basıldığında 
+nasıl benzin akışının arttığını açıklamak zorundadır. Bütün bir süreç düşünüldüğünde, 
+tüm bu bileşenler arası etkileşimler ile uğraşmak, programcıya temel problem olan 
+__otomobil ile hedefe ulaşmak__ problemiyle uğraşmaya vakit bırakmayacaktır. +
+Özet olarak, fonksiyonel programlamada _soyutlama katmanı_ tam olarak tahayyül edilemez. 
+Çünkü fonksiyonel programlama, karışık yapıya sahip bir problemin açıklığa kavuşması 
+için gerekli olan nesnelere ve soyutlamalara sahip değildir.
+
+=== Nesne Yönelim İle Yaklaşım
+Nesne yönelimli yaklaşımda öncelikle problemde yer alan nesneleri belirlemek gerekir. 
+Mesela "otomobil ile bir hedefe ulaşma" problemimizin; otomobil, gaz pedalı, fren pedalı, 
+sinyaller, yayalar gibi nesneleri vardır. + 
+Sonrasında programımızda kullanacağımız bu nesnelerin kabaca bir modellemesini yapmak 
+gerekir. Bu ilk düşünülen modelleme olduğundan, programınızın nihai halindeki nesnelerin
+sahip olacağı modelleme kadar ayrıntı içermeyecektir. +
+Örneğin gaz pedalını müstakil bir nesne olarak düşünebilir ve fren pedalı, sinyal lambaları 
+gibi bileşenlerle etkileşime girecek biçimde kullanabilirsiniz. 
+
+
