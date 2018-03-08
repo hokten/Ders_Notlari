@@ -248,4 +248,102 @@ sahip olacağı modelleme kadar ayrıntı içermeyecektir. +
 Örneğin gaz pedalını müstakil bir nesne olarak düşünebilir ve fren pedalı, sinyal lambaları 
 gibi bileşenlerle etkileşime girecek biçimde kullanabilirsiniz. 
 
+=== Sınıf ve Nesne Oluşturma
+Sınıf, birbiriyle ilişkili özellik ve fonksiyonların bir paket olarak tanımlanması 
+demektir. Sınıflar, başka parametrelere bağlı olmayan *özellikler* ve 
+başka paametrelere bağlı olan, değişim gösteren *metodlardan* oluşur. +
+Özellik ve metodlara **sınıfın üyeleri** denir
 
+==== Sınıf Tanımlama
+[source, csharp]
+----
+using System;
+public class Otomobil {
+    public string marka; // özellil
+    public string modeli; // özellik
+    public int kapiSayisi; //özellik
+    public decimal bosAgirlik=1250M; //özellik
+    public decimal agirlik;
+    public int vitesSayisi; //özellik
+    public decimal bagajHacmi; //özellik
+    public decimal sehirIci = 8.7M;
+    public decimal sehirDisi = 5.6M;
+
+    public decimal tuketilenYakit(string yer, decimal egim, int mesafe) {
+        decimal yakitOrani;
+        if(yer=="sehirici") {
+            yakitOrani = sehirIci;
+        }
+        else {
+            yakitOrani = sehirDisi;
+        }
+        decimal gercekYakitTuketimi = yakitOrani + (agirlik/bosAgirlik) + ((egim-1)*2);
+        Console.WriteLine("Gercek yakit tuketim orani : " + gercekYakitTuketimi);
+        decimal tktYakit = gercekYakitTuketimi * (mesafe/100);
+        return tktYakit;
+    }
+}
+class MainClass {
+  public static void Main (string[] args) {
+    Otomobil aracim = new Otomobil();
+    aracim.marka = "Honda";
+    aracim.modeli = "Civic";
+    aracim.agirlik = 2000M;
+    decimal tyakit = aracim.tuketilenYakit("sehirici", 1.2M, 600);
+    Console.WriteLine ("Tuketilen yakit "+tyakit+" litredir." );
+  }
+}        vergi = (modelyili/2018) * 100 + (agirlik/250)
+----
+Aracın model yılı bilgisi ve ağırlığına göre yıllık motorlu taşıtlar vergisini hesaplayalım. 
+`Otomobil` sınıfımız `bosAgirilik` özelliğine sahip fakat model yılını belirten bir özelliği 
+yok. O halde `Otomobil` sınıfımıza `modelYili` özelliğini ekleyeceğiz.
+[source, csharp]
+----
+using System;
+public class Otomobil {
+    public string marka; // özellil
+    public string modeli; // özellik
+    public int uretimYili; //özellik
+    public int kapiSayisi; //özellik
+    public decimal bosAgirlik=1250M; //özellik
+    public decimal agirlik;
+    public int vitesSayisi; //özellik
+    public decimal bagajHacmi; //özellik
+    public decimal sehirIci = 8.7M;
+    public decimal sehirDisi = 5.6M;
+
+    // üye metod
+    public decimal tuketilenYakit(string yer, decimal egim, int mesafe) {
+        decimal yakitOrani;
+        if(yer=="sehirici") {
+            yakitOrani = sehirIci;
+        }
+        else {
+            yakitOrani = sehirDisi;
+        }
+        decimal gercekYakitTuketimi = yakitOrani + (agirlik/bosAgirlik) + ((egim-1)*2);
+        Console.WriteLine("Gercek yakit tuketim orani : " + gercekYakitTuketimi);
+        decimal tktYakit = gercekYakitTuketimi * (mesafe/100);
+        return tktYakit;
+    }
+    // üye metod
+    public decimal vergiHesapla() {
+      decimal aninYili = 2018M;
+      decimal vergiMiktari = (uretimYili/aninYili)*1000 + (bosAgirlik/250M);
+      return vergiMiktari;
+    }
+}
+class MainClass {
+  public static void Main (string[] args) {
+    Otomobil aracim = new Otomobil();
+    aracim.marka = "Honda";
+    aracim.modeli = "Civic";
+    aracim.uretimYili = 2000;
+    aracim.agirlik = 2000M;
+    decimal tyakit = aracim.tuketilenYakit("sehirici", 1.2M, 600);
+    decimal vmiktar = aracim.vergiHesapla();
+    Console.WriteLine ("Tuketilen yakit "+tyakit+" litredir." );
+    Console.WriteLine("Vergi miktari : " + vmiktar + "TL'dir.");
+  }
+}
+----
