@@ -263,12 +263,93 @@ hiç bir üyeye sahip olmayan `Arac` isimli bir sınıf oluşturulmaktadır.
 public class Arac {
 }
 ----
+Bu sınıfa bazı özellikler ekleyelim. Problemimizde aracın hangi özelliklerine ihtiyaç duyacağımızı 
+düşenmeliyiz. Örneğin aşağıdaki kod parçasında `Arac` sınıfına `marka`, `model`, `kapiSayisi`,
+`bosAgirlik`, `agirlik`, `vitesSayisi`, `bagajHacmi`, `sehirIci` ve `sehirDisi` özellikleri eklenmiştir.
+
+[source, csharp]
+----
+public class Arac {
+    public string marka; // özellil
+    public string modeli; // özellik
+    public int kapiSayisi; //özellik
+    public decimal bosAgirlik=1250M; //özellik
+    public decimal agirlik;
+    public int vitesSayisi; //özellik
+    public decimal bagajHacmi; //özellik
+    public decimal sehirIci = 8.7M;
+    public decimal sehirDisi = 5.6M;
+}
+----
+Sınıf özellikleri aslında sınıfın değişkenleridir. Genel olarak başka değişkenlere bağlı değillerdir. Fakat, 
+metodlarda ise sınıfın özellikleri ve ek parametrelerle belirli işlemler yapılır. 
+[source, csharp]
+----
+public class Arac {
+    public string marka; // özellil
+    public string modeli; // özellik
+    public int kapiSayisi; //özellik
+    public decimal bosAgirlik=1250M; //özellik
+    public decimal agirlik;
+    public int vitesSayisi; //özellik
+    public decimal bagajHacmi; //özellik
+    public decimal sehirIci = 8.7M;
+    public decimal sehirDisi = 5.6M;
+
+    public decimal tuketilenYakit() {
+    }
+}
+----
+Sınıfdan oluşturulan(türetilen) değişkenlere *nesneler* veya **sınıfın bir örneği** denir. Sınıftan bir nesne oluşturmak için +
+[source, csharp]
+SinifIsmi nesneyeVerilecekIsim = new SinifIsmi()
+
+yapısı kullanılır. Aslında bu işlem değişken tanımlamaya çok benzer. Tamsayı 
+türünde `sayi` isimli bir değişken tanımlamak istesek, `int sayi = 5` ifadesini kullanırız. Örneğimizi düşünürsek, 
+`aracim` isimli bir `Arac` nesnesi oluşturmak istersek +
+
+[source, csharp]
+Arac aracim = new Arac()
+
+ifadesini kullanmak gerekir. Aşağıdaki kodda, `Arac` ve `MainClass` isimli iki sınıf vardır. Aşağıdaki örnekde 
+`aracim` isimli yeni bir `Arac` nesnesi oluşturulmaktadır. C#'da program akışı `Main` fonksiyonundan başlar. 
+Burada `Main` fonksiyonu `MainClass` sınıfı içerisindedir. Dolayısıyla programımız `Arac aracim = new Arac()` 
+satırından başlayacaktır. Bir nesnenin özelliklerine değer atamak ve değer çekmek için ise `nesneAdi.ozellikAdi` 
+söz dizimi kullanılır. Mesela örneğimizde, `aracim` nesnesinin `marka` özelliğine; `aracım.marka="Honda"` ifadesiyle 
+`"Honda"` değeri atanmıştır.
+[source, csharp]
+----
+public class Arac {
+    public string marka; // özellil
+    public string modeli; // özellik
+    public int kapiSayisi; //özellik
+    public decimal bosAgirlik=1250M; //özellik
+    public decimal agirlik;
+    public int vitesSayisi; //özellik
+    public decimal bagajHacmi; //özellik
+    public decimal sehirIci = 8.7M;
+    public decimal sehirDisi = 5.6M;
+    // üye metod
+    public decimal tuketilenYakit() {
+    }
+}
+class MainClass {
+  public static void Main (string[] args) {
+    Arac aracim = new Arac();
+    aracim.marka = "Honda";
+    aracim.modeli = "Civic";
+    aracim.agirlik = 2000M;
+    Console.WriteLine ("Aracın markası : " + aracim.marka);
+    Console.WriteLine ("Aracın modeli : " + aracim.modeli);
+  }
+}
+----
 
 
 [source, csharp]
 ----
 using System;
-public class Otomobil {
+public class Arac {
     public string marka; // özellil
     public string modeli; // özellik
     public int kapiSayisi; //özellik
