@@ -345,10 +345,10 @@ class MainClass {
 }
 ----
 
-
+Aşağıdaki kodda, `Arac` sınıfının `tuketilenYakit` üye metodu işler hale getiriliyor ve 
+`MainClass` sınıfı içinde kullanılıyor. 
 [source, csharp]
 ----
-using System;
 public class Arac {
     public string marka; // özellil
     public string modeli; // özellik
@@ -359,31 +359,35 @@ public class Arac {
     public decimal bagajHacmi; //özellik
     public decimal sehirIci = 8.7M;
     public decimal sehirDisi = 5.6M;
-
+    // üye metod
     public decimal tuketilenYakit(string yer, decimal egim, int mesafe) {
-        decimal yakitOrani;
-        if(yer=="sehirici") {
-            yakitOrani = sehirIci;
-        }
-        else {
-            yakitOrani = sehirDisi;
-        }
-        decimal gercekYakitTuketimi = yakitOrani + (agirlik/bosAgirlik) + ((egim-1)*2);
-        Console.WriteLine("Gercek yakit tuketim orani : " + gercekYakitTuketimi);
-        decimal tktYakit = gercekYakitTuketimi * (mesafe/100);
-        return tktYakit;
+      decimal yakitOrani;
+      if(yer=="sehirici") {
+        yakitOrani = sehirIci;
+      }
+      else {
+        yakitOrani = sehirDisi;
+      }
+      yakitOrani = yakitOrani + (agirlik/bosAgirlik-1)*2 + (egim-1)*2;
+      decimal tktYakit =yakitOrani * (mesafe/100);
+      return tktYakit;
     }
 }
 class MainClass {
   public static void Main (string[] args) {
-    Otomobil aracim = new Otomobil();
+    Arac aracim = new Arac();
     aracim.marka = "Honda";
     aracim.modeli = "Civic";
     aracim.agirlik = 2000M;
-    decimal tyakit = aracim.tuketilenYakit("sehirici", 1.2M, 600);
-    Console.WriteLine ("Tuketilen yakit "+tyakit+" litredir." );
+    Arac yeniarac = new Arac {marka="Opel", modeli="Astra"};
+    decimal tuketim = aracim.tuketilenYakit("sehirdisi", 1.0M, 300);
+    Console.WriteLine("Tüketilen yakıt miktarı : " +tuketim);
+    Console.WriteLine("Aracın markası : " + aracim.marka);
+    Console.WriteLine("Aracın modeli : " + aracim.modeli);
+    Console.WriteLine("İkinci aracın markası : " + yeniarac.marka);
+    Console.WriteLine("İkinci aracın modeli : " + yeniarac.modeli);
   }
-}        vergi = (modelyili/2018) * 100 + (agirlik/250)
+}
 ----
 Aracın model yılı bilgisi ve ağırlığına göre yıllık motorlu taşıtlar vergisini hesaplayalım. 
 `Otomobil` sınıfımız `bosAgirilik` özelliğine sahip fakat model yılını belirten bir özelliği 
@@ -520,4 +524,7 @@ class MainClass {
   }
 }
 ----
-
+==== Sınıfların Statik Üyleleri
+Bir sınıfın statik üyesi `public static degiskenTuru degiskenAdi` şeklinde tanımlanır. Statik üyeler 
+sınıfa aittir. Bu, statik üyelerin sadece sınıf üzerinde değiştirilebileceği anlamına gelir. Nesne 
+aracılığıyla statik üyeye erişmek ve değiştirmek mümkün değildir. 
