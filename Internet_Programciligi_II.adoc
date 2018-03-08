@@ -255,6 +255,16 @@ başka paametrelere bağlı olan, değişim gösteren *metodlardan* oluşur. +
 Özellik ve metodlara **sınıfın üyeleri** denir
 
 ==== Sınıf Tanımlama
+Sınıflar, `class SinifIsmi { }` şeklinde tanımlanırlar. Örneğin aşağıdaki kod parçasında, 
+hiç bir üyeye sahip olmayan `Arac` isimli bir sınıf oluşturulmaktadır.
+
+[source, csharp]
+----
+public class Arac {
+}
+----
+
+
 [source, csharp]
 ----
 using System;
@@ -347,3 +357,86 @@ class MainClass {
   }
 }
 ----
+==== Sınıf İçinde Nesne Kullanımı
+Bir sınıfı üyeleri olarak başka bir sınıfın örneği olan nesneler kullanılabilir. 
+Örneğin her otomobi bir motora sahiptir. Otomobilin motoruna ait detayların 
+probleminizin çözümününe önemli etkileri varsa, otomobil motorunu ayrı bir 
+sınıf olarak tanımlamak mantıklı olacaktır. Böylelikle, bütün olarak uğraşması 
+zor olan probleminizi daha küçük ama anlamlı parçalara ayırıp bu parçalar 
+üzerinde çalışmış olursunuz. 
+Özellik sayısı gittikçe artan ve daha karmaşık bir hal almaya başlayan `Arac` 
+sınıfımızın motorla ilgili özelliklerini bir paket altında toplamak için 
+`Motor` sınıfı oluşturalım. Açıktır ki bu `Motor` sınıfını `Arac` sınıfı içinde 
+kullanacağız.
+
+[source, csharp]
+----
+using System;
+
+public class Motor {
+  public int gucu;
+  public int silindirSayisi;
+  public decimal hacmi;
+  public decimal sehirIci = 8.7M;
+  public decimal sehirDisi = 5.6M;
+  public int vitesSayisi;
+  public decimal motoIsisi() {
+    decimal isi = gucu/silindirSayisi + hacmi;
+    return isi;
+  }
+}
+
+
+
+
+public class Otomobil {
+    public string marka; // özellil
+    public string modeli; // özellik
+    public int uretimYili; //özellik
+    public int kapiSayisi; //özellik
+    public decimal bosAgirlik=1250M; //özellik
+    public decimal agirlik; //özellik
+    public decimal bagajHacmi; //özellik
+    public Motor aracinMotoru;
+
+    // üye metod
+    public decimal tuketilenYakit(string yer, decimal egim, int mesafe) {
+        decimal yakitOrani;
+        if(yer=="sehirici") {
+            yakitOrani = aracinMotoru.sehirIci;
+        }
+        else {
+            yakitOrani = aracinMotoru.sehirDisi;
+        }
+        decimal gercekYakitTuketimi = yakitOrani + (agirlik/bosAgirlik) + ((egim-1)*2);
+        Console.WriteLine("Gercek yakit tuketim orani : " + gercekYakitTuketimi);
+        decimal tktYakit = gercekYakitTuketimi * (mesafe/100);
+        return tktYakit;
+    }
+    // üye metod
+    public decimal vergiHesapla() {
+      decimal aninYili = 2018M;
+      decimal vergiMiktari = (uretimYili/aninYili)*1000 + (bosAgirlik/250M);
+      return vergiMiktari;
+    }
+}
+class MainClass {
+  public static void Main (string[] args) {
+    Motor skypower = new Motor();
+    skypower.gucu = 1200;
+    skypower.silindirSayisi = 5;
+    skypower.hacmi = 1.6M;
+    Otomobil aracim = new Otomobil();
+    aracim.marka = "Honda";
+    aracim.modeli = "Civic";
+    aracim.uretimYili = 2000;
+    aracim.agirlik = 2000M;
+    aracim.aracinMotoru = skypower;
+    decimal tyakit = aracim.tuketilenYakit("sehirici", 1.2M, 600);
+    decimal vmiktar = aracim.vergiHesapla();
+    Console.WriteLine ("Tuketilen yakit "+tyakit+" litredir." );
+    Console.WriteLine("Vergi miktari : " + vmiktar + "TL'dir.");
+  }
+}
+----
+
