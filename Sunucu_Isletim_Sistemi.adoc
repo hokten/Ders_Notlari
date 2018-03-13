@@ -183,6 +183,47 @@ Active Directory sistem yöneticilerinin, domain kapsamındaki tüm bilgisayarla
 merkezi bir noktadan yönetebilmelerini sağlar. +
 Active Directory ayrıca, kullanıcıların sisteme bir kez dahil olmasını, yani logon olmasını ve ardından ağdaki birçok kaynağa tek bir logonla güvenli bir şekilde erişebilmesi konusunda da sistem yöneticilerine merkezi erişim kontrolü sağlar.
 
-=== Domain Controller
+==== Domain Controller
 Domain Controller, domain yapısını kuran ve domain veritabanının depolandığı bilgisayarlara verilen isimdir. Kısaca DC denir. 
 
+==== Active Directory Objeleri
+Active Directory, veritabanında ağ objeleri hakkındaki bilgileri saklar. Bu Active Directory objeleri başta kullanıcılar, gruplar, bilgisayarlar ve yazıcılar olmak üzere ağ kaynaklarını temsil etmektedir. Dahası, Active Directory çapındaki tüm sunucular, Domain’ler ve Site’lar da Active Directory objeleri arasında yer almaktadır. Active Directory tüm objeleri dağıtılmış bir veritabanı üzerinde sakladığı için sistem yönticisi bu objelerin yönetimi kolaylıkla tek bir noktadan yürütebilir.
+Yeni bir obje oluşturulduğu zaman bu objenin özellikleri (attribute) obje hakkında onu tanımlayan bilgiler içerir. Kullanıcılar bu objeye erişmek istediği zaman objeye atanan bu özelliklerden faydalanabilirler. Örneğin, bir kullanıcı domain içerisinde bir yazıcıya ulaşıyorken yazıcının bulunduğu yere (kat, bina, departman) göre arama yapabilir.
+
+==== Active Directory’nin Mantıksal Yapısı
+
+Active Directory’nin mantıksal yapısı, esnekliğinin yanısıra Active Directory içerisinde kullanıcı ve yönetici kapsamında hiyerarşik bir yapı kurulmasına olanak verir.
+Söz konusu mantıksal komponentler
+
+. Domain
+. Organizational unit
+. Tree and forest
+. Global catalog
+
+===== Domain
+Active Directory en temel mantıksal bileşeni Domain’dir. Domain, aynı dizin veritabanını paylaşan bilgisayarlar bütünüdür ve sistem yöneticisi tarafından oluşturulur. Her bir Domain benzersiz bir isme sahiptir ve sistem yöneticisi tarafından belirlenmiş olan kullanıcı ve grup hesaplarına erişim sağlar.
+Ayrıca Domain’ler güvenlik sınırı (Security Boundary) olarak da bilinir. Güvenlik sınırı sayesinde, eğer sistem yöneticisi ayrıca bir izin belirlememişse, bir kullanıcının hakları sadece o Domain içerisinde geçerli olacaktır. Her bir Domain kendi güvenlik yapısına sahiptir.
+Domain’ler ayrıca replikasyon birimi olarak adlandırılır. Bir Domain içerisinde, Active Directory veritabanı kopyalarını bulunduran Domain Controller’lar bu koyaları Domain içerisinde yapılan değişiklikleri birbirlerine kopyalarak replikasyon yaparlar.
+
+===== Organizational Units
+Organizational Unit bir Domain içerisindeki objeleri organize etmek amacıyla oluşturulmuş objelerdir. Bir Organizational Unit kendi içerisinde kullanıcılar, gruplar, bilgisayarlar veya başka OU’lar olmak üzere başka objeler barındırabilirler.
+OU’ları, organizasyonun ihtiyacını en iyi şekilde karşılayacak mantıksal bir hiyerarşi oluşturuyorken objeleri gruplamak amacıyla kullanabilirsiniz.
+Örneğin, objeleri grupluyorken yönetimsel gereksinimleri ön planda tutabilirsiniz. Mesela, organizasyonda bir yönetici kullanıcılarda bir diğer kullanıcı da bilgisayarlardan sorumlu olacaksa, biri kullanıcılar için biri de bilgisayarlar için iki adet OU oluşturulur ve kullanıcılar birinde bilgisayarlar da diğerin toplanır. Son olarak da ikisini de ilgili kullanıcı yönetici olarak atanabilir.
+OU birimlerinin kullanılabileceği bir başka örnek ise organizasyonun departmansal birimlere ayrılmasında geçerli olabilir. Örneğin bir “Muhasebe” bir de “Pazarlama” departmanları için OU oluşturulur ve bu departmanlarda çalışan kullanıcılar ilgili Oulara yerleştirildikten sonra departman şefleri bu birimlere yönetici olarak atanabilir.,
+
+===== Trees ve Forests
+Oluşturulan ilk Windows Server 2016 Domain’i, Active Directory yapısındaki Kök Domain’i (Root Domain) ifade eder. Bundan sonra oluşturulacak olan yeni ek Domain’ler dizinin mantıksal Tree veya Forest yapısını oluşturacaktır.
+
+* **Tree** +
+Birbirine ardışık bir isim aralığını paylaşan Windows Server 2003 Domain’lerinin hiyerarşik olarak düzenlenmiş şeklidir.Önceden oluşturulmuş bir Tree yapısında yeni bir Domain eklediğiniz zaman, yeni eklenen Domain sondan eklendiği Domain’inin Child Domain’i durumunda olur ve eklendiği Domain de eklenen Domain için Parent Domain olur. Yeni oluşturulan Child Domain’in ismi Parent Domain’den gelen isimle birleştirilir ve yeni oluşan Domain’in DNS ismi ortaya çıkar.
+Örneğin bakicubuk.com bir Root Domain’dir. Bu Domain’e eklenecek yeni bir Domain baki.com Domain’inin Child Domain’i olacaktır, buna örnek olarak it.baki.com Domain’ini gösterebiliriz. Bu örnekte it.baki.com, baki.com Domain’inin Child Domain’i olacaktır. baki.com Domain’i ise Parent Domain konumundadır.
+* **Forests** : 
+Forest, birden fazla Tree’nin birleşmiş halidir. Forest içerisindeki Tree’ler ardışık isim aralığına sahip değildirler. Oluşturulan ilk Domain bir Tree’yi ifade edecektir ve ilk Tree’nin oluşturulmasıyla Forest’da oluşmuş olacaktır. Sonradan bu Forest’a eklenecek olan Tree’ler, diğer Tree’lerle aynı isim aralığını paylaşmayacak olasalar da aynı Schema ve Global Catalog’a sahip olacaktır. Forest oluşturulurken kurulmuş olan ilk Tree Forest-Root olarak bilinir ve diğer Tree’ler bu Forest Root altında toplanırlar.
+* **Global Catalog** : 
+Global Catalog, Active Directory’deki tüm objelerin özelliklerinin bir alt kümesini taşıyan bilgi deposudur. Bu barındırılan özellikler, varsayılan olarak, sorgulamalar esnasında en sık kullanılan özelliklerdir (örneğin kullanıcı ön ismi, son ismi ve logon ismi). Global Catalog kullanıcılara şu hizmetleri sunar:
+
+** Gereken verinin nerede olduğundan bağımsız olarak Active Directory objeleri hakkında bilgiler sunar.
+** Bir ağa logon oluyorken Universal Group Membership bilgisini kullanır.
+Global Catalog Sunucusu Domain’deki bir Domain Controller’dır ve Domain’de oluşturulan ilk Domain Controller otomatik olarak Global Catalog seviyesine yükseltilir. Sonradan ek Global Catalog Sunucular eklenebilir.
+* **Active Directory Schema** :
+Active Directory Schema: Kullanıcı, grup, bilgisayar ve yazıcılar gibi bütün objelere ait bilgileri içerir. Windows 2000 ve sonrasında tüm Network yapınız (forest) içerisinde, sadece bir Schema bulunur ve bütün obje bilgileri Schema üzerine yazılır.
