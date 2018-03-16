@@ -253,8 +253,11 @@ Site oluşturmaktaki başlıca sebepler şunlardır:
 
 ==== DNS
 DNS, anlamlı alan isimleri ile ip adreslerini birbirine eşlemeye yarayan sistemdir.
+
 ===== DNS Sorgu Çeşitleri
+
 * **Recursive DNS Sorgular** : + 
 Recursive sorgulama tipinde istemci DNS sunucuya recursive bir sorgu gönderir ve cevap olarak sorgusuna karşılık gelen tam cevabı ya da bir hatayı bekler. DNS sorgulamaları için kullanılan “nslookup” komutu ön tanımlı olarak recursive sorgular gönderir, non-recursive sorgu göndermek için “nslookup” komutu “set norecurse” seçenekleri ile çalıştırılması gerekir. Genellikle son kullanıcı – DNS sunucu arasındaki sorgulamalar Recursive tipte olur.
+
 * **Iterative DNS Sorgular** : + 
 Iterative sorgu tipinde, istemci DNS sunucuya sorgu yollar ve ondan verebileceği en iyi cevabı vermesini bekler, yani gelecek cevap ya ben bu sorgunun cevabını bilmiyorum şu DNS sunucuya sor ya da bu sorgunun cevabı şudur şeklindedir. Genellikle DNS sunucular arasındaki sorgulamalar Iterative tipte olur.
