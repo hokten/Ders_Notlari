@@ -225,5 +225,31 @@ Global Catalog, Active Directory’deki tüm objelerin özelliklerinin bir alt k
 ** Gereken verinin nerede olduğundan bağımsız olarak Active Directory objeleri hakkında bilgiler sunar.
 ** Bir ağa logon oluyorken Universal Group Membership bilgisini kullanır.
 Global Catalog Sunucusu Domain’deki bir Domain Controller’dır ve Domain’de oluşturulan ilk Domain Controller otomatik olarak Global Catalog seviyesine yükseltilir. Sonradan ek Global Catalog Sunucular eklenebilir.
-* **Active Directory Schema** :
-Active Directory Schema: Kullanıcı, grup, bilgisayar ve yazıcılar gibi bütün objelere ait bilgileri içerir. Windows 2000 ve sonrasında tüm Network yapınız (forest) içerisinde, sadece bir Schema bulunur ve bütün obje bilgileri Schema üzerine yazılır.
+
+* ** Active Directory Schema** : Kullanıcı, grup, bilgisayar ve yazıcılar gibi bütün objelere ait bilgileri içerir. 
+Windows 2000 ve sonrasında tüm Network yapınız (forest) içerisinde, sadece bir Schema bulunur ve bütün obje bilgileri Schema üzerine yazılır. Schema yapısında, obje sınıfı ve niteliği tanımlanabilir. 
+Obje sınıfı: Bilgisayar, kullanıcı veya yazıcı olabilir. Nitelik: Schema içinde bir
+kez tanımlandıktan sonra, arama(search) işlemlerinde kullanılabilir.
+Örneğin: Kullanıcıların çalıştıkları bölümler, doğum yeri gibi.
+Schema bilgileri: Active Directory veri tabanı(database) içerisinde depolanır.
+Dolayısı ile
+• Kullanıcı uygulamaları için dinamik bir yapı sunar. Kullanıcıların obje araştırma işlemleri, Schema üzerinden gerçekleşir.
+• Yeni oluşturulan veya değiştirilen obje dinamik olarak Schema içerisinde
+güncellenir.
+
+==== Active Directory’nin Fiziksel Yapısı
+Active Directory içinde mantıksal yapı, fiziksel yapıdan bağımsız ve farklı bir yapıya sahiptir. Mantıksal yapı ile Network kaynaklarını organize ederken, fiziksel yapı ile Network trafiğini kontrol ve konfıgüre edebilirsiniz.
+Active Directory’nin fiziksel yapısını; DC(Domain Controller) ve Siteler oluşturur. Active Directory’nin fiziksel yapısı, replikasyonun yer ve zamanı ile Network’e katılımını(logon) belirler. Network trafiği ile logon işlemlerinin optimizasyonu ve bu işlemlerde olabilecek hataların giderilmesi, fiziksel yapının anlaşılmasına bağlıdır.
+
+===== Domain Controllers
+Domain Controller, üzerinde Active Directory veritabanının bir kopyasını (replica) bulunduran bilgisayardır.Domain’de gerşekleştirilen herhangi bir değişiklik bir Domain Controller üzerinde gerçekleştirilir ve daha sonra domain’deki tüm Domain Controller’lar bu değişiklikleri replikasyon yoluyla birbirlerine kopyalarlar. Domain Controller’lar dizin bilgisini bulundururlar ve kullanıcıların logon işlemlerini, kimlik doğrulama işlemlerini ve dizin arama işlemlerini yürütürler.
+Bir Domain’de bir veya daha çok Domain Controller olabilir. Ufak çapta bir organizasyona (LAN) bir Domain ve iki Domain Controller yetecekken farklı fiziksel lokasyonlara yayılmış büyük bir işletme için (WAN), her bir bölge başına bir veya iki Domain Controller daha uygun olacaktır. Bir Domain’e birden fazla Domain Controller yerleştirmenin amacı hem hata toleransı sağlamak hem de Domain Controller’lar arasında yük dağılımı yapmaktır.
+
+===== Sites
+Bir Site, birbirlerine yüksek bant genişliğine sahip dış hatlarlar bağlanmış bir veya birden fazla IP (Internet Protocol) alt ağlarını ifade etmektedir. Site’ları doğru bir şekilde yapılandırarak kullanıcıların logon işlemlerinde oluşan ağ trafiğini ve replikasyon işlemleri sırasında oluşan yoğunluğu en aza indirgemek için Active Directory’nin alt ağlar arasındaki fiziksel bağlantıları en efektif şekilde kullanmasını sağlayabiliriz.
+Site oluşturmaktaki başlıca sebepler şunlardır:
+• Replikasyon trafiğinin optimize edilmesi
+• Kullanıcıların logon olması esnasında en hızlı ve en güvenilir bağlantıyı kullanarak doğru Domain Controller’ı bulabilmelerii
+
+==== DNS
+DNS, anlamlı alan isimleri ile ip adreslerini birbirine eşlemeye yarayan sistemdir.
