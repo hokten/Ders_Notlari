@@ -528,3 +528,110 @@ class MainClass {
 Bir sınıfın statik üyesi `public static degiskenTuru degiskenAdi` şeklinde tanımlanır. Statik üyeler 
 sınıfa aittir. Bu, statik üyelerin sadece sınıf üzerinde değiştirilebileceği anlamına gelir. Nesne 
 aracılığıyla statik üyeye erişmek ve değiştirmek mümkün değildir. 
+
+=== Interfaces(Arayüzler)
+Bir veya birden fazla sınıfa kılavuzluk eden yapılara _interface(arayüz)_ denir. Interface oluşturma işlemi 
+sınıf oluşturma işlemine çok benzer. `class` deyimi yerine `interface` deyimi kullanılır. Ayrıca interface 
+içindeki üye metodlar gövde içermezler. Sadece tanımlanırlar. 
+
+[source, csharp]
+----
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication3
+{
+    interface IEvcilHayvanlar
+    {
+        void SesCikar();
+    }
+    public class Kediler : IEvcilHayvanlar
+    {
+        public void SesCikar()
+        {
+            Console.WriteLine("Miyaavv");
+        }
+    }
+    public class Kopekler : IEvcilHayvanlar
+    {
+        public void SesCikar()
+        {
+            Console.WriteLine("HavHav");
+        }
+    }
+
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            IEvcilHayvanlar tekirim = new Kediler();
+            IEvcilHayvanlar karabasim = new Kopekler();
+            tekirim.SesCikar();
+            karabasim.SesCikar();
+            Console.ReadLine();
+
+        }
+    }
+}
+----
+
+[source, csharp]
+----
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication3
+{
+    interface IUcanNesneler
+    {
+        void Uc(int yukseklik);
+    }
+    public class Kus : IUcanNesneler
+    {
+        public void Uc(int yukseklik)
+        {
+            Console.WriteLine("{0} metre yükseklikte kanatlarıyla uçuyor", yukseklik);
+        }
+    }
+    public class Ucak : IUcanNesneler
+    {
+        public void Uc(int yukseklik)
+        {
+            Console.WriteLine("{0} metre yükseklikte motoruyla uçuyor", yukseklik);
+        }
+    }
+    public class Helikopter : IUcanNesneler
+    {
+        public void Uc(int yukseklik)
+        {
+            Console.WriteLine("{0} metre yükseklikte pervanesiyle uçuyor", yukseklik);
+        }
+    }
+
+
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            IUcanNesneler ucagim = new Ucak();
+            IUcanNesneler kus = new Kus();
+            IUcanNesneler kobra = new Helikopter();
+
+            ucagim.Uc(7000);
+            kus.Uc(200);
+            kobra.Uc(3000);
+           
+            Console.ReadLine();
+
+        }
+    }
+}
+----
