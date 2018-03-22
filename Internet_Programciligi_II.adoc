@@ -635,3 +635,111 @@ namespace ConsoleApplication3
     }
 }
 ----
+==== IEnumerable Arayüzü
+Bu arayüz, içerisinde başka bir sınıfdan türetilmiş nesnelerin bir dizisi bulunan nesnelerde `foreach` döngüsünün 
+kullanılmasına olanak sağlar.
+
+[source, csharp]
+----
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication3
+{
+    class Program
+    {
+        public class Araba
+        {
+            public int tekerSayisi;
+            public int maksimumHiz;
+            public string marka;
+        }
+        public class Garaj
+        {
+            public Araba[] arabalar;
+        }
+
+
+        static void Main(string[] args)
+        {
+            Araba[] arabalar = new Araba[3];
+            arabalar[0] = new Araba { tekerSayisi = 4, maksimumHiz = 100, marka = "Toyota" };
+            arabalar[1] = new Araba { tekerSayisi = 6, maksimumHiz = 180, marka = "Honda" };
+            arabalar[2] = new Araba { tekerSayisi = 8, maksimumHiz = 280, marka = "Fiat" };
+
+            Garaj garajim = new Garaj { arabalar = arabalar };
+            
+
+            foreach(Araba arb in garajim)
+            {
+                Console.WriteLine(arb.maksimumHiz);
+            }
+            Console.ReadLine();
+        }
+    }
+}
+----
+
+
+[source, csharp]
+----
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication3
+{
+    class Program
+    {
+        public class Araba
+        {
+            public int tekerSayisi;
+            public int maksimumHiz;
+            public string marka;
+        }
+        public class Garaj : IEnumerable<Araba>
+        {
+            public List<Araba> arabalar { get; set; }
+
+            public IEnumerator<Araba> GetEnumerator()
+            {
+                return arabalar.GetEnumerator();
+            }
+
+            IEnumerator IEnumerable.GetEnumerator()
+            {
+                return GetEnumerator();
+            }
+        }
+
+
+        static void Main(string[] args)
+        {
+            IEnumerable<Araba> garajim = new Garaj
+            {
+                arabalar = new List<Araba> {
+                    new Araba { tekerSayisi = 4, maksimumHiz = 100, marka = "Toyota" },
+                    new Araba { tekerSayisi = 6, maksimumHiz = 180, marka = "Honda" },
+                    new Araba { tekerSayisi = 8, maksimumHiz = 280, marka = "Fiat" }
+                }
+            };
+            
+
+            foreach(Araba arb in garajim)
+            {
+                Console.WriteLine(arb.marka);
+            }
+            Console.ReadLine();
+
+        }
+    }
+}
+
+----
