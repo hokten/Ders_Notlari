@@ -637,7 +637,9 @@ namespace ConsoleApplication3
 ----
 ==== IEnumerable Arayüzü
 Bu arayüz, içerisinde başka bir sınıfdan türetilmiş nesnelerin bir dizisi bulunan nesnelerde `foreach` döngüsünün 
-kullanılmasına olanak sağlar.
+kullanılmasına olanak sağlar. Örneğin aşağıdaki programda `foreach` satırında hata oluşacaktır. `Garaj` sınıfından türetilen 
+`garajim` nesnesi `Araba` sınıfının örnekleri olan nesnelerin bir dizisi olmasına rağmen, `garajim` değişkenine `foreach` 
+işlemi uygulanamaz.
 
 [source, csharp]
 ----
