@@ -126,3 +126,25 @@ Alan adı kiralamanın maliyeti, hizmet aldığınız yere ve hizmetinizin özel
 300 dolara kadar çıkabilir. 
 
 = awardspace.com
+=== Okuma Ayarları
+
+* Ana Sayfa Görüntülenmesi : Sitemizin web adresini yazdığımızda karşımıza çıkan sayfa olan 
+ana sayfanın seçimini yapar. En son yazılarınız seçeneği seçildiğinde ana sayfada son makaleler
+gözükür. Sabit sayfa seçildiğinde, Hakkında, İletişim gibi sabit sayfalardan birini ana sayfa 
+olarak belirlemiş oluruz.
+
+=== Tartışma Ayarları
+* **Yazıda bağlantı verilen blogları haberdar etmeyi dene : ** +
+Bu sçenek seçildiğinde, bloğunuzda oluşturduğunuz bir girdi eğer bir başka bloğa bağlantı içeriyorsa 
+ilgili bloğa bi bildirim(trackback) yollanır.
+* **Diğer bloglardan yeni makaleler için bağlantı bildirimlerini (geri bildirimler ve geri izlemeler) etkinleştir** : +
+Bu seçenek seçildiğinde, diğer bloglardan size yollanan trackbak bildirimleri kabul edilir. Bir girdinizle ilgili alınan 
+trackbak, o giridinin yorumlar kısmına otomatik olarak eklenir.
+* **Yeni yazılar üzerine yorum yapılmasına izin ver :** +
+Oluşturduğuuz girdilere yorum yapılmasına izin verir.
+* **Yorumu yazan isim ve e-posta adresini doldurmak zorunda : ** +
+İsim ve eposta bilgileri olmadan yorum yazılamayacağını belirtir. Bu özellik spam(istenmeyen) yorumları
+engellemek için kullanılabilir.
+* **Kullanıcılar yorum yapmak için kayıt olmalı ve giriş yapmalılar : **
+Ancak kayıtlı kullanıcılar giriş yaptıkları durumda bir girdiye yorum yazabilirler. 
+Kayıtsız kullanıcılar yorumyapamazlar.
