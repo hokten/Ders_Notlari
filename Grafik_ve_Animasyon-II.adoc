@@ -40,3 +40,19 @@ Flash Player sadece bir video oynatıcısı değildir. Tıklama ve fare hareketl
 Flash'da *.fla*, *.xfl*, *.swf* ve *.html* olmak üzere dört adet dosya türü kullanılır. *.fla* Flash'ın proje dosya biçimidir. 
 Proje dosyalarında; resim, ses ve video gibi kaynkları oluşturabilir ve düzenleyebilirsiniz. *.fla* dosyalarını web tarayıcıları tanımazlar. 
 Projeniz tamamlandığında *.fla* dosyasını kullanarak, projenizin ürünü olan *.swf* dosyası oluşturulur.
+== Flash'da Çizim Yapma
+Flash'da çizimler _Merge Drawing Mode_ ve _Object Drawing Mode_ olmak üzere iki modda yapılabilir. 
+
+=== Merge Drawing Mode Kullanma
+Flash'da varsayılan mod Merge Drawing Mode'dur. Bu modda şekiller bir çamur gibidir. Kolayca parçalanabilirler.
+Mesela, bu modda çizilen bir dairenin içi ve çevresi ayrı ayrı seçilebilir. Ayrıca bu modda çizilen iki nesne 
+üst üsteyken, seçili nesneye çift tıklanırsa bu iki nesne kaynaşır yani bir bütün haline gelir.
+
+Object Drawing nesnesini geçici olarak Merge Drawing modda düzenlenmek istenilirse, o nesnenin üstüne çift tıklanır. 
+Bu durumda _Drawing Object_ sahnesi açılır ve gerekli düzenlemeler Merge Drawing modda yapılarak ana sahneye geri dönülür. 
+Son durumda, ana sahnemizde bu nesne yine _Object Drawing_ nesnesi olarak klacaktır. +
+Object Drawing nesnesi kalıcı olarak Merged Drawing nesnesin dönüştürülmek istenilirse `Modify` menüsünden `Break Apart`
+seçilir. Bu durumda şekil artık _Merge Drawing_ nesnesi olacaktır. + 
+Merged Drawing nesnesini çerçevesinin uçları, eğer _Snap to object_ aktif ise otomatik olarak birlerşir. 
+
+
