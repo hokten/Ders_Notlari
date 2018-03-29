@@ -261,3 +261,57 @@ Recursive sorgulama tipinde istemci DNS sunucuya recursive bir sorgu gönderir v
 
 * **Iterative DNS Sorgular** : + 
 Iterative sorgu tipinde, istemci DNS sunucuya sorgu yollar ve ondan verebileceği en iyi cevabı vermesini bekler, yani gelecek cevap ya ben bu sorgunun cevabını bilmiyorum şu DNS sunucuya sor ya da bu sorgunun cevabı şudur şeklindedir. Genellikle DNS sunucular arasındaki sorgulamalar Iterative tipte olur.
+
+===== DNS İle İlgili Bazı Kavramlar
+*Start Of Authority* : Her bir DNS bölgesinini(zone) sahip olması gereken bir kayıttır. DNS bölgesi oluşturulduğunda yaratılır. 
+DNS bölgesinin aşağıdaki gibi genel bilgilerini tutar.
+
+* **Birincil Sunucu(Primary Server)** : DNS bölgesi için en iyi sunucuyu ifade eder
+* **Sorumlu Kişi(Responsible Person)** : DNS bölgesinin yöneticisinin eposta adresi.
+* **Seri Numarası(Serial Number)** : Zone için güncellik bilgisidir. Zone içerisindeki her bir değişiklik ( ekleme, çıkarma, değiştirme vb ) bu sayıyı "1" arttırmaktadır. Bu sayı eğer bu zone ikinci bir dns üzerinde secodary zone olarak eklenmiş ise, bu ikincil zone' un güncelleme olup olmadığını anlaması için kullanılır. Örneğin serial number primary zone üzerinde 53, secondary üzerinde 50, ikincil dns yine bu soa kaydındaki "Refresh interval" süresi dolunca birincil dns sunucusuna gelir ve bu numarayı kontrol eder, eğer numara aynı ise bir zone transferi talep etmez, ama numara daha güncel ise bu durumda bir değişiklik olduğu belli olur ve zone transferi talep eder.
+* **Yenileme Aralığı(Refresh Interval)** : Bu zone için secondary bir zone tanımlanmış ise, bu secondary zone' un hangi sürede bir güncelleme kontrolü yapacağını belirleyebiliyoruz.
+* **Tekrar Deneme Aralığı(Retry Interval)** : Zone transferi için birincil dns sunucusuna erişimde sorun yaşanması durumunda ( yani refresh interval süresi doldu, dns sunucusuna gittiniz ancak cevap alamadınız ) bir sonraki deneme süresini belirleye biliyoruz.
+* **Zaman Aşımı Süresi(Expires After)** : Herhangi bir nedenden dolayı ikincil dns sunucusu, birincil dns sunucusuna ulaşamaz ise bu durumda üzerindeki kayıtları ne kadar süre saklayacağını ayarlayabiliyoruz.
+* **Minimum TTL(Time To Live)** : Bu zone için varsayılan kayıt cache süresidir. Yani bir istemci veya diğer bir dns bizden sorgu ile bir kayıt öğrenirse bunu cache inde ne kadar süre ile tutacağını belirleyen bir kayıttır.
+
+===== DNS Kayıt Türleri
+
+* **MX (Mail) kayıtları** +
+MX kayıtları, alan adınıza gelen e-posta iletilerinin hangi sunucuya yönlendirileceğinin bilgisini içerir.Server alanında belirtebileceğiniz örnek veriler mail.alanadiniz.com ya da aspmx.L.google.com gibi e-posta sunucularının adresleridir. Priority olarak adlandırılan değer iletilerin hangi öncelik sırasında belirtilen sunuculara yönlendirileceğini belirleyen değerdir. Alan adınız için birden fazla MX kaydı tanımlayabilirsiniz.Bu durumda iletileriniz öncelikli olarak en düşük Priority değerine sahip sunucuya, bu sunucudan cevap alınılmazsa sıralamadaki diğer sunuculara yönlendirilir.
+* **A (Host) kayıtları** +
+Adres (A) kaydı, host adını bir IP adresine yönlendirir. Örneğin, mycomputer.yourdomain.com adresinin direkt olarak sizin ana bilgisayarınıza (ip adresi 192.168.0.3 olsun) yönlendirilmesini istiyorsanız, şunun gibi bir kayıt girmeniz gerekir:
+domainisminiz.com. A 192.168.0.1
+En çok kullanılan kayıt türü denilebilir. Alan adınıza bağlı bir alt alan adının hangi IP adresine yönlendirileceği bilgisini içerir. Örnek olarak alan adınıza bağlı “www” alt alan adının, web sitenizin barındırıldığı sunucu IP adresine yönlendirilmesinde kullanılır.
+* **CNAME (Alias) kayıtları** +
+CNAME, bir bilgisayarın, bir veya daha fazla host adı tarafından bilinmesini sağlar. Öncelikli olarak bir A kaydı mutlaka olmalıdır ki bu resmi bir isim olmalı. Örneğin:
+domainisminiz.com. A 192.168.0.1
+CNAME’i kullanarak, diğer host adlarını bir resmi (A kaydı) adrese yönlendirebilirsiniz. Örneğin:
+ftp.domaininiz.com. CNAME domaininiz.com.
+mail.domaininiz.com. CNAME domaininiz.com.
+ssh.domaininiz.com. CNAME domaininiz.com.
+CNAME kayıtları, domaininizi ftp.domaininiz.com, mail.domaininiz.com vb. vasıtasıyla görüntülemenize yardımcı olur. Uygun bir CNAME kaydınız yoksa bu tip adresleri kullanarak, sunucunuza bağlanamazsınız.
+* **PTR (Pointer Record)** +
+Sadece Reverse Lookup Zone da kullanılabilir. Ip adresinden isme eşleşme yapan kayıttır. Yani 192.168.1.1 li ip ye sahip makinenin ismi nedir sorusuna DNS server PTR kayıtlarına bakarak cevap verir.
+
+Pointer (imleç) kaydı, aramaları tersine çevirmek için kullanılır. Örneğin, 192.168.0.1‘i www.domainisminiz.com ile eşleştirmek istediniz, kaydınız şu şekilde görünür: 1.0.168.192.in-addr.arpa PTR www.domainisminiz.com.
+
+Not: İlk kısımda IP adresi tersine çevrilmiştir. İkinci kısımda, host adınızdan sonra bir boşluk bırakın.PTR kaydı, sadece web siteniz kendi IP’sine sahipse etkili olur.
+
+* **NS (Name Server)** +
+Network üzerinde bulunan ve kullanım da olan Dns Serverları tanımlar. Yani bir dns server network deki diğer Dns server dan bu kayıt sayesinde daha kolay ve hızlı bir şekilde haberdar olabiliyor denilebilir.
+NS kayıtları, alan adları için, geçerli sunucu isimlerini belirlemeyi sağlar.NS kayıtları, sitenizin çalışmaya son vermesine neden olabilir. Genelde NS kayıtlarını değiştirmeye gerek yoktur.
+
+=== Zonelar(DNS Bölgeleri)
+DNS bölgeleri iki kategoriye ayrılmıştır. İsimden IP adresi sorgulaması yapan *Forward Lookup Zones* ve IP adresinden isim sorgulaması yapan 
+*Reverse Lookup Zones*.
+
+* **Primary Zone(Birincil DNS Bölgesi) :** Üzerindeki kayıtların doğrudan güncellenebildiği zone türüdür. Manuel kayıt güncellemesi ya da IP’si değişen bir bilgisayar tarafından otomatik kayıt güncellemesi doğrudan yapılabilir.
+* **Secondary Zone(İkincil DNS Bölgesi) :** Adından anlaşılabileceği gibi ikincil bölge türüdür. Doğrudan güncellenemez. Bir birinci bölgenin kopyası olarak yapılandırılabilir. Birinci bölgeye gelen kayıtlar Active Directory replikasyonu ile birlikte güncellenir.,
+* **Stub Zone : ** Diğer bir secondary zone türüdür. Secondary zone’dan farkı Primary zone üzerindeki tüm kayıtlar buraya kopyalanmaz. Sıklıkla iki farklı domaine sahip yapıların ya da şirketlerin birleşmeleri ve birbirlerine doğru isim çözümlemeleri ihtiyacı oluştuğunda kullanılır. A, NS ve SOA tipi kayıtlar buraya kopyalanır.
+
+[bibliography]
+== Referanslar
+- _DNS kayıt tipleri MX, A, CNAME ve TXT ne demektir?_, *Fatih GÜLSUYU*, https://blog.hosting.com.tr/dns-kayit-tipleri-mx-a-cname-ve-txt-ne-demektir/
+- _start of authority (SOA)_, *Hakan UZUNER*, http://sozluk.cozumpark.com/goster.aspx?id=1179&kelime=start-of-authority-SOA
+- _DNS Zone Tipleri_, *Hakkı İNKAYA*, http://www.hakkiinkaya.com/dns-zone-tipleri/
+
