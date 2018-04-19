@@ -148,3 +148,6 @@ engellemek için kullanılabilir.
 * **Kullanıcılar yorum yapmak için kayıt olmalı ve giriş yapmalılar : **
 Ancak kayıtlı kullanıcılar giriş yaptıkları durumda bir girdiye yorum yazabilirler. 
 Kayıtsız kullanıcılar yorumyapamazlar.
+
+== İçeriğinize Resim Ekleme
+Yönetim panelinden `Yazılar -> Yeni Ekle` menü yolu izlenerek `Ortam Ekle` düğmesine basılır.
