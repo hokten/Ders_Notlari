@@ -309,9 +309,67 @@ DNS bölgeleri iki kategoriye ayrılmıştır. İsimden IP adresi sorgulaması y
 * **Secondary Zone(İkincil DNS Bölgesi) :** Adından anlaşılabileceği gibi ikincil bölge türüdür. Doğrudan güncellenemez. Bir birinci bölgenin kopyası olarak yapılandırılabilir. Birinci bölgeye gelen kayıtlar Active Directory replikasyonu ile birlikte güncellenir.,
 * **Stub Zone : ** Diğer bir secondary zone türüdür. Secondary zone’dan farkı Primary zone üzerindeki tüm kayıtlar buraya kopyalanmaz. Sıklıkla iki farklı domaine sahip yapıların ya da şirketlerin birleşmeleri ve birbirlerine doğru isim çözümlemeleri ihtiyacı oluştuğunda kullanılır. A, NS ve SOA tipi kayıtlar buraya kopyalanır.
 
+=== DHCP
+Dinamik Makine Yapılandırma Protokolü (DHCP), bir TCP/IP ağı üzerindeki her bir makineye dinamik olarak IP dağıtmak ve diğer yapılandırma
+ayarlarının yönetimini kolaylaştırmak için kullanılan bir IP standartıdır. +
+TCP/IP protokolü ile çalışan bir ağ üzerindeki her bilgisayarın kendine özgü bir IP adresi olmalıdır. 
+IP adresi ve alt ağ maskesi (subnetmask), ana makineyi  (host) ve bağlı olunan alt ağı belirlediği için; 
+bir bilgisayar farklı bir alt ağa taşındığında IP adresinin de değişmesi gerekir. 
+DHCP sunucusu, kurulduğu yerel ağ içerisindeki makinelere dinamik olarak IP dağıtır. 
+Böylelikle, hem o ağ içerisinde kullanılan bir IP adresinin tekrar kullanılarak IP çakışmalarına neden olması önlenir 
+hem de yapılandırma ayarlarının elle girilmesinden oluşabilecek hata ve zaman kaybı minimuma indirilir. +
+DHCP, "istemci-sunucu (client-server)" modeline dayanan bir protokoldür. DHCP sunucusu veritabanı içerisinde; gerekli yapılandırma parametreleri, istemcilere ayrılmış belirli bir IP bloğuna ait geçerli adresler ve sunucular tarafından tutulan kira süreleri bulunur.
+DHCP IP dağıtımı için kiralama yöntemini kullanır. Dolayısıyla, bir istemciye tahsis edilen IP konfigürasyonu kalıcı değildir. DHCP sunucusu, IP konfigürasyonlarını 
+istemciye belirli bir süre için tahsis eder. Bu süreye `lease duration` yani kiralama süresi denir. Eğer istemci kiralama süresini geçirirse, kiralama işlemleri 
+tekrarda gerçekleşir.
+
+==== DHCP Kavramları
+* *Kapsam(Scope) :* Bir ağ üzerinde, istemcilere dağıtılmak üzere oluşturulan IP havuzudur. 
+Bir kapsam alanı, DHCP hizmeti sunulan tek bir fiziksel alt ağı tanımlar ve istemcilere gerekli yapılandırma ayarları ile IP 
+adreslerinin gönderilmesinde sunucuya başlıca yolu sağlar. 
+Bir ağ üzerinde tanımlı alt ağlar fiziksel altyapıya göre belirlenir ve yönetim kolaylığı sağlamak amacıyla gruplandırılır. 
+Kapsamlar sayesinde de bu gruplandırılmış alt ağlar dhcp sunucusu üzerinde tanımlanabilir.
+* *Üstkapsam (Superscope) :*  Aynı fiziksel alt ağda bulunan birden çok kapsamın yönetimsel olarak gruplandırılmasıdır. 
+Birlikte etkinleştirilebilecek kapsamların listesini içerir.
+* *Dışlama Aralığı (Exclusion Range) :* Kapsam içerisindeki, istemcilere sunulmamak üzere ayrılmış sınırlı IP adresleridir.
+* *Adres Havuzu (Addres Range) :* Tanımlanmış bir kapsam üzerinde, dışlama aralığına ait IP adreslerinin çıkarılmasıyla oluşan, 
+kullanılabilir IP adresleri havuzudur. İstemcilere dinamik olarak IP ataması bu havuz üzerinden yapılır.
+* *Kira (Lease) :*  İstemci bilgisayar için atanan IP adresinin, DHCP sunucusu tarafından belirlenen kullanım süresidir. 
+Bu süre belirlendiğinde kira etkin duruma getirilmiş olur ve kira süresi dolmadan bu sürenin yenilenmesi gerekir. 
+Yenilenmezse ya da silinirse kira etkinliği sona erer. İstemcinin kirayı ne sıklıkta yenilemesi gerektiği ise kira süresi ile ilgilidir.
+* *Ayırma (Reservation) :* Bir alt ağ içerisindeki  bir makinenin her zaman aynı IP adresini kullanmasını sağlamak amacıyla kalıcı bir adres kira ataması oluşturulmasıdır.
+
+==== DHCP Sunucu ile İstemci Durumundaki Bir Makinenin Haberleşmesi (Kira Oluşum Süreci)
+Bir istemci makine TCP/IP ağı üzerinde çalışmaya başlayınca, DHCP sunucu ile haberleşerek ondan TCP/IP parametrelerini alır. 
+Sunucu ve istemci aralarında şu paketlerle haberleşirler:
+
+* *DHCP Discover :* DHCP istemci bilgisayar tarafından ağa gönderilen ilk pakettir. 
+Bu paket genel yayım (broadcast) olarak tüm ağa gönderilir. 
+Bu paketin kaynak IP adresi kısmında istemci henüz bir IP adresine sahip olmadığı için 0.0.0.0 adresi bulunur.
+Hedef IP adresinde ise 255.255.255.255 bulunur. Bu pakette istemci makinenin MAC adresi, kaynak MAC adresi kısmında bulunur.
+İstemci makine bu mesaja gerekli cevabı alamadığı zaman periyodik olarak bu mesajı yayınlamaya devam eder.
+Bu mesaj 342 veya 590 byte uzunluğunda olabilir (eski sürümlerinde 590 baytdır). İlk 14 bayt Ethernet başlık bölümünü içerir. 
+Daha sonraki 20 bayt'ta ise kaynak ve hedef IP adresleri bulunur. Sonraki 8 bayt ise UDP başlık kısmıdır. 
+Burada UDP kaynak ve hedef port adresleri bulunur. Daha sonra ise "Dhcpdiscover" mesajının parametreleri gelir. 
+Bu mesajda MAC adresi bulunduğundan eğer istemci makine için bir IP adresi tahsis edilmiş ise bu MAC adresini tanıyarak önceden tanımlı bu adresi gönderir.
+* *DHCP Offer :* DHCP sunucu "discover" mesajını alınca adres alanında kullanılmamış bir IP adresi seçerek bunu bu mesaj ile istemci makineye gönderir.
+Bu pakette henüz istemci makinenin IP adresi bulunmadığından broadcast olarak yayınlanır. 
+Bu mesajda ayrıca alt ağ maskesi, varsayılan ağ geçidi gibi parametreler de bulunur. 
+Bu mesajın hedef MAC adresi kısmında istemci makinenin MAC adresi bulunur.
+Bu mesaj 342 bayt uzunluğundadır. İlk 14 bayt ethernet başlık kısmıdır. Daha sonraki 20 bayt IP başlık kısmıdır. 
+Bu mesaj da broadcast olarak yayınlandığından hedef IP adresi 255.255.255.255'dir. 
+Burada dikkat edilecek husus kaynak makine IP adresi kısmında DHCP sunucusunun IP adresinin bulunmasıdır. 
+Daha sonra ise 8 baytlık UDP başlık kısmı gelir. Geri kalan 300 baytlık kısımda ise "Dhcpoffer" paketinin parametreleri gelir.
+
+==== Otomatik IP Dağıtımının Aşamaları
+*DHCP Discover* :  
+
 [bibliography]
 == Referanslar
 - _DNS kayıt tipleri MX, A, CNAME ve TXT ne demektir?_, *Fatih GÜLSUYU*, https://blog.hosting.com.tr/dns-kayit-tipleri-mx-a-cname-ve-txt-ne-demektir/
 - _start of authority (SOA)_, *Hakan UZUNER*, http://sozluk.cozumpark.com/goster.aspx?id=1179&kelime=start-of-authority-SOA
 - _DNS Zone Tipleri_, *Hakkı İNKAYA*, http://www.hakkiinkaya.com/dns-zone-tipleri/
+- _Understanding the Basic Operations of DHCP_, *Netmanias*,  https://www.netmanias.com/en/post/techdocs/5998/dhcp-network-protocol/understanding-the-basic-operations-of-dhcp
+- _DHCP (Dynamic Host Configuration Protocol - Dinamik Makine Yapılandırma Protokolü)_, *ITUBDB*, http://bidb.itu.edu.tr/eskiler/seyirdefteri/blog/2013/09/06/dhcp-(dynamic-host-configuration-protocol---dinamik-makine-yap%C4%B1land%C4%B1rma-protokol%C3%BC)
+
 

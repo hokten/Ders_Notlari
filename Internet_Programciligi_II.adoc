@@ -752,4 +752,6 @@ http://www.erenguvercin.com/2013/05/c-delegate-kullanm.html +
 http://onursalkaya.blogspot.com.tr/2011/03/c-delegate-nedir.html +
 http://www.kazimcesur.com/delegates-anonymous-methods-lambda-expressions-delegeler-anonimisimsiz-metodlar-lambda-ifadeleri/
 
-
+==== Delegate Kavramı
+Delege basit anlamda düşünürsek aracılık yapandır. Burada ise delege aracılık yapan metod olarak karşımıza çıkar. 
+Yani başka bir metodun tetiklenmesine yardım eden metottur. Bu sayede metodların tetiklenmesi dinamik olarak gerçekleşir. 
