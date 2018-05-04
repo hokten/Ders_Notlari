@@ -53,6 +53,31 @@ Bu durumda _Drawing Object_ sahnesi açılır ve gerekli düzenlemeler Merge Dra
 Son durumda, ana sahnemizde bu nesne yine _Object Drawing_ nesnesi olarak klacaktır. +
 Object Drawing nesnesi kalıcı olarak Merged Drawing nesnesin dönüştürülmek istenilirse `Modify` menüsünden `Break Apart`
 seçilir. Bu durumda şekil artık _Merge Drawing_ nesnesi olacaktır. + 
-Merged Drawing nesnesini çerçevesinin uçları, eğer _Snap to object_ aktif ise otomatik olarak birlerşir. 
+Merged Drawing nesnesini çerçevesinin uçları, eğer _Snap to object_ aktif ise otomatik olarak birlerşir.
+
+=== Semboller
+Sembol, Flash’ta bir kez oluşturduktan sonra belgenizde veya diğer
+belgelerde tekrar tekrar kullanabildiğiniz grafikler, düğmeler ve movie clip’ler
+için kullanılan bir terimdir. Semboller birçok animasyonda dosya boyutunu
+küçültebilir ve yükleme süresini kısaltabilir. Belirli bir sembolü bir projede
+sayısız kez kullanabilirsiniz, fakat Flash’a bu sembolle ilgili veriler bir kez dahil
+edilir. +
+Semboller Kitaplık panelinde saklanır. Bir sembolü sahne’nin üzerine
+sürüklediğinizde, Flash orijinal sembolü kitaplıkta bırakarak sembolün bir
+örneğini oluşturur. Örnek, bir sembolün sahne’ye yerleştirilen veya başka bir
+sembol içinde yuvalanan bir kopyasıdır.
+Flash’ta üç tip sembol vardır ve bunların her biri kendine özgü avantajlara ve
+kısıtlamalara sahiptir. Kitaplık panelinde bir sembolün yanındaki simgeye
+bakarak bunun bir grafik mi düğme mi yoksa Film klibi mi olduğunu
+anlayabilirsiniz. Flash'da yer alan sembol türleri şunlardır:
+
+* Film Klibi Sembolleri
+* Düğme Sembolleri
+* Grafik Sembolleri
 
 
+
+
+[bibliography]
+== Referanslar
+- _Sembollerle Çalışma_, *Meryem AKSU*, https://meryemaksu.weebly.com/sembollerle-ccedilal305351ma.html
