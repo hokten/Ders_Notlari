@@ -4,6 +4,35 @@
 = Hello, AsciiDoc!
 Doc Writer <doc@example.com>
 
+Metin İşlemleri
+PHP, string türünden değişkenler üzerinde işlem yapan birçok 
+fonksiyona sahiptir.
+
+**String Doğrulama
+Srting doğrulama, bir string türünden değişkenin veya sabitin 
+belli koşulları sağlayıp sağlamadığını kontrol etmektir.
+
+*trim() Fonksiyonu : String türünden bir değişken veya sabitin
+basşında ve sonunda bulunan 
+beyaz karakterleri(boşluk, tab, yeni satır) siler. trim İngilizce 
+budamak anlamına gelir.
+
+$_POST değişkeni PHP'nin özel değşkenidir. 
+Bu değişkenler PHP'de yerleşik bulunur ve temel 
+eylemler için genel bilgiler saklar.
+Bütün özel değişkenler $ işaretini takip eden
+bir _ karakteri ve _ karakterinden sonra büyük
+hafli bir değişken ismin sahiptirler.
+
+*var_dump() Fonksiyonu : Bir değişkenin; değişken türü, içerik gibi 
+ayrıntılarını gösterir. Genellikle dizi türünden değişkenlerin 
+ayrıntılı incelenmesi için kullanılır.
+
+*strlen() Fonksiyonu : string türünden bir değişkenin karakter uzunluğunu
+döndürürü. Karakter uzunluğu hesaplanırken bütün 
+karakterler(boşluk ve özel karakterler gibi) sayıya dahil edilir.
+
+
 == Değişkenlere Değer Atamak
 Değişkenlere değer atamak için `=` operatörü kullanılır. 
 Atama işleminde öncelik sağ tarafdadır. Yani önce `=` operatörünün sağ tarafı 
