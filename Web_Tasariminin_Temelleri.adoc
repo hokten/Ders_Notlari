@@ -1,4 +1,52 @@
 = Web Tasarımının Temelleri
+
+
+**Dosya İsimleri
+Başka web sayfasına veya dökümana bağlantı vermek 
+için dosya isimlerine gerek duyulur.
+
+*** Dosya isimleri küçük harflerden oluşmalıdır.
+Örneğin Anasayfa.htmly erine anasayfa.html,
+SuperSayfa.asp yerine supersayfa.asp kullanmak daha yerinde olacaktır.
+
+*** Dosya ismindeki kelimeler biribirinden ayrılmak istendiğinde 
+_ karakteri yerine - karakteri kullanılmalıdır.
+Örneğin
+haticenin_mutfagi.html yerine haticenin-mutfagi.html kullanmak daha 
+uygundur.
+
+**URLler
+Uniform Resource Address
+Bilgisayar ortamında dosya ve klasör adreslemesi için kullanılan bir 
+
+kavramdır.
+http://www.abc.com/klasor/dosya www.abc.com bilgisayarının içinde bulunan 
+klasor klasörünün içindeki dosya dosyası. Dosya transferi http protokolü 
+ile yapılacak.
+
+
+**Absolute(Mutlak) ve (Göreceli) URLler
+Uygulama geliştirdiğimiz bilgisayarın bilgisayar adi METIN olsun. 
+HTML kodlarında bağlantı vereceğimiz dökümanların mutlak yolunu 
+kullandığımızı düşünelim. Burada mutlak yol, dosyanın bilgisayardaki tam yolu 
+
+anlamına gelmektedir. Örneğin 
+<img src="C:\\Users\METIN\Projem\Resimler\logo.jpg" />
+şeklinde bir resim eklendiğini düşünelim. 
+Projeyi, bilgisayar ismi AHMET olan bir bilgisayara kopyaladığımda, 
+bağlantılar tam yol kullanılarak verildiğinden, hiç bir bağlantı 
+
+çalışmayacaktır. 
+
+** Başlık Oluşturma
+HTML dökümanında başlıklar oluşturmak için h1,h2,h3,h4,h5,h6 etiketleri
+kullanılır. Varsayılan olarak; h1 en üst seviye başlık, h6 ise en alt 
+seviye başlık olarak tanımlanmıştır.
+Tarayıcıların varsayılan CSS ayarları, başlık etiketlerini blok türü
+olarak tanımlar.
+
+
+
 == Semantik Etiketler
 
 === `aside` Etiketi
