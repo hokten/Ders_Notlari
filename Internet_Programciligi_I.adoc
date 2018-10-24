@@ -31,6 +31,37 @@ ayrıntılı incelenmesi için kullanılır.
 *strlen() Fonksiyonu : string türünden bir değişkenin karakter uzunluğunu
 döndürürü. Karakter uzunluğu hesaplanırken bütün 
 karakterler(boşluk ve özel karakterler gibi) sayıya dahil edilir.
+=== printf değişken belirtecinin yapısı
+ Değişken temsilcisi % işareti ile başlar. Yapısı
+	%idhunb
+şeklindedir. 
+Burada i, sayısal türlerin işaret gösteriminin nasıl yapılacağını
+belirtir. - veya + değerleri alabilir.
+- değer alması durumunda, negatif sayıların işareti gösterilir, 
+pozitif sayıların işareti gösterilmez.
++ değer alması durumunda, egatif sayıların işareti gösterilir, 
+pozitif sayıların işareti de gösterilir. Varsayılan değer - dir.
+
+d, boşluk karakteri olarak işlev görür. Eğer değişkenin uzunluğu, 
+toplam uzunluktan kısaysa, boşta kalan alan bu karakter ile doldurulur. 
+Varsayılan değer boşluk karakteridir. Eğer 0 haricinde bir karakter 
+atanmak istenirse başına ' karakteri konulur.
+
+h hizalama belirtecidir. Eğer değişkenin uzunluğu, toplam uzunluktan kısaysa, 
+değişken varsayılan olarak sağa hizalanır. Sağa hizalama için -, sola 
+hizalama için + karakteri kullanılır. 
+
+u, ilgili değişkenin yerleştirileceği alanın toplam karakter uzunluğunu belirler.
+
+n, kayan noktalı sayılarda, . karakterinden sonra kaç basamak geleceğini belirler. 
+.3  .5   .2   şeklinde ifade edilir. 
+
+b, ilgili değişkenin hangi değişken türü dikkate alınarak yerleştirileceğini belirler.
+
+%d Onluk Sayı sisteminde bir sayılarda
+%f Kayan noktalı sayılarda
+%s string
+
 
 === `strtolower` ve `strtoupper` Fonksiyonları
 Metin türünden ifadeleri, küçük harflerden büyük harflere veya büyük harflerden küçük harflere 
