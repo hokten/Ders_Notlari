@@ -1,0 +1,37 @@
+== Web Editörü
+
+=== Var Olan CSS Şablonunu Düzenleme
+Var Olan CSS Şablonunu Düzenleme
+
+. File->New menü yolu izlenir.
+. Blank Page -> HTML -> HTML5: 2 Column fixed, right sidebar
+seçeneği seçilir.
+. CSS stil şablonları aktif olmadığında sayfanın nasıl
+gözüktüğünü görmek için View -> Style Rendering -> Display Styles
+seçeneği üzerindeki tik kaldırılır.
+
+=== Header Bölümüne Arkaplan Resmi Ekleme
+. Insert_Logo yer tutucusuna tıklanır ve sonra Del tuşuna
+basılır. Bu işlem ile yer tutucu nesnesi silinmiş olur.
+. Görünür değilse Styles panelini gösterelim. Bunun için
+Window &#9654; CSS Styles menü yolu izlenebilir.
+. CSS Styles panelinde header kuralı bulunur ve çift tıklanır.
+Karşımıza "CSS Rule Definition for header" dialog pnceresi
+gelecektir.
+. Bu dialog penceresinin "Background" kategorisi altında bulunan
+"background-image" alanındaki Browse butonuna tıklanır.
+5 "banner.jpg" seçilir ve Apply, OK buttonları ile devam edilir.
+. Arkaplan resmi, header nesnesin daha büyük yüksekliğe
+sahip olduğundan resmin sadece bir bölümü gözükmektedir.
+Bunu düzeltmek için, header nesnesinin yüksekliğini, resmin
+yüksekliğiyle aynı yapmak gerekir. Resmin yüksekliği 130px ol
+duğunu düşünelim. header nesnesinin yüksekliğini ayarlamak için
+CSS Styles panelinde header kuralına çift tıklarnır.
+Rule Definition dialog penceresinin Box kategorisi altından
+ height alanı 130px olarak ayarlanır.
+
+=== Yeni Bileşenler Ekleme
+. İmleci *header* nesnesi içinde herhangi bir yere konumlandır. Klavyeden 
+*Sol Ok* tuşuna basılır.
+. *Konumlandırılabilir Kutu* eklemek için, * Insert &#9654 Layout Objects -> AP Div 
+menü yolu izlenir.
