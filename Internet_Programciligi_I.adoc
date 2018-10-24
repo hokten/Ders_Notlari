@@ -4,7 +4,7 @@
 = Hello, AsciiDoc!
 Doc Writer <doc@example.com>
 
-Metin İşlemleri
+== Metin İşlemleri
 PHP, string türünden değişkenler üzerinde işlem yapan birçok 
 fonksiyona sahiptir.
 
@@ -32,6 +32,42 @@ ayrıntılı incelenmesi için kullanılır.
 döndürürü. Karakter uzunluğu hesaplanırken bütün 
 karakterler(boşluk ve özel karakterler gibi) sayıya dahil edilir.
 
+=== `strtolower` ve `strtoupper` Fonksiyonları
+Metin türünden ifadeleri, küçük harflerden büyük harflere veya büyük harflerden küçük harflere 
+çevirmek için kullanılırlar. Bir metinde bulunan küçük harfleri, büyük harflere çevirmek için 
+`strtoupper` fonksiyonu, büyük harfleri küçük harflere çevirmek için `strtolower` fonksiyonu kullanılır.
+`strtolower` ve `strtoupper` fonksiyonları Türkçe karakterlerin çevriminde yetersiz kalmaktadır. 
+Türkçe karakterler büyük-küçük harf dönüşümü için, UTF-8 karakter kodlaması ve `mb_strtolower`, 
+`mb_strtoupper` fonksiyonları kullanılabilir.
+
+=== `ucwords` Fonksiyonu
+Bir cümlenin her kelimesinin baş harfinin büyük harf yapmak için kullanılan fonksiyondur.
+Örneğin,
+
+[source,php]
+$baslik = "amasyanın turistik yerleri";
+echo ucwords($baslik); // Amasyanın Turistik Yerleri
+
+Türkçe karakterler için bu işlem yapılmak istenirse `mb_convert_case` 
+fonksiyonu kullanılmalıdır. Örneğin,
+
+[source,php]
+$baslik = "çalışma şartları";
+echo mb_convert_case($baslik, MB_CASE_TITLE, "UTF-8"); // Çalışma Şartları
+
+`mb_convert_case` fonksiyonu, `mb_strtoupper` ve `mb_strtolower` fonksiyonlarının işlevlerini de yerine getirir.
+Örneğin,
+
+[source,php]
+$baslik = "çalışma şartları";
+echo mb_convert_case($baslik, MB_CASE_UPPER, "UTF-8"); // ÇALIŞMA ŞARTLARI
+
+[source,php]
+$baslik = "çalışma şartları";
+echo mb_convert_case($baslik, MB_CASE_LOWER, "UTF-8"); // çalışma şartları
+
+=== `substr` Fonksiyonu
+Metin türünden bir ifadenin bir parçasını almak için kullanılan fonksiyondur.
 
 == Değişkenlere Değer Atamak
 Değişkenlere değer atamak için `=` operatörü kullanılır. 
