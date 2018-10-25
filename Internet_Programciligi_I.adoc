@@ -100,6 +100,27 @@ echo mb_convert_case($baslik, MB_CASE_LOWER, "UTF-8"); // çalışma şartları
 === `substr` Fonksiyonu
 Metin türünden bir ifadenin bir parçasını almak için kullanılan fonksiyondur.
 
+PHP'de değişken isimlendirme, $ işareti ve bu dolar işaretini 
+takip eden değişken ismi ile yapılır.
+Değişken isimleri latin alfabesinden büyük veya küçük harfleri içerebilir.
+Değişken isimleri rakamları içerebilir.
+Alt tire (_) karakteri içerebilir.
+UTF-8 karakter kodlamasında bulunan karakterleri içerebilir.
+Değişken isminin ilk karakteri rakam olamaz.
+Değişken isimleri büyük küçük harfe duyarlıdır. Örneğin $sayi 
+ile $Sayi ayni değişken değillerdir
+*/
+
+PHP'de her ifade aslında true ya da false değerine sahiptir. 
+0 hariç tüm tamsayılar true olarak düşünülür.
+0.0 hariç tüm kayan noktalı sayılar true olarak değerlendirilir. 
+0 ve 0.0 sayıları ya da bunlara eşit olan ifadeler false olarak 
+kabul edilir.
+"", '' şekilinde hiç bir karakter içermeyen metin türünden ifadeler ve "0",'0' 
+stringleri false, bunlar haricindeki tüm metin türünden ifadeler true olarak 
+değerlendirilir.
+
+
 == Değişkenlere Değer Atamak
 Değişkenlere değer atamak için `=` operatörü kullanılır. 
 Atama işleminde öncelik sağ tarafdadır. Yani önce `=` operatörünün sağ tarafı 
@@ -119,7 +140,7 @@ $sayi3 = $sayi3 + 2; // $sayi3 = 13 + 2 olur ve $sayi3 değişkeninin yeni değe
 * Boolean : Mantıksal ifade (true, false) içeren değişkenler ve sabitler için kullanılır.
 * Object : Sınıf örneklerini saklmak için kullanılır.
 
-== Sabitler
+== Sabitler$
 Program içerisinde değişmez olarak kalacak değerlere sabitler denir. Sabitler değiştirilemez. 
 PHP'de sabit oluşturmak için `define` fonksiyonu kullanılır. `define` fonksiyonu aşağıdaki şekilde 
 kullanılır.
