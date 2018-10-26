@@ -48,6 +48,35 @@ olarak tanımlar.
 
 
 == Semantik Etiketler
+=== `section` Etiketi
+Section Etiketi
+İçeriğinizi oluşturan kısım ve kesimleri belirtmek için kullanılan etikettir.
+
+[source, html]
+----
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Section Konusu</title>
+	</head>
+	<body>
+		<section>
+			<h1 class="ahmet">Amasya'nın Coğrafi Yapısı</h1>
+			Amasya dağlıktır.
+
+		</section>
+		<section>
+			<h1 class="ahmet">Amasya'nın Turistik Yerleri</h1>
+			Kral Kaya Mezarlıkları
+		</section>
+		<section>
+			<h1 id="memet">Amasya'nın Yeraltı Zenginlikleri</h1>
+			Kömür
+		</section>
+	</body>
+</html>
+----
 
 === `aside` Etiketi
 İçerik ile direkt olarak ilgisi olmayan bölümler için kullanılan *semantik* bir etikettir.
