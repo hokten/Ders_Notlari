@@ -63,6 +63,28 @@ Bir içeriğin başlık ve künyesi gibi giriş bölümünü işaretlemek için
 
 kullanılır.
 
+[source, html]
+----
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Section Konusu</title>
+	</head>
+	<body>
+		<article>
+			<header>
+				<h1>Peynirli Makarna</h1>
+			</header>
+			<p>Gerekli malzemeler : makarna, peynir.</p>
+			<footer>
+				<div class="yazar">Yazar:ayseteyze</div>
+				<div class="tarih">12/10/2018</div>
+			</footer>
+		</article>
+	</body>
+</html>
+----
 
 [source, html]
 ----
