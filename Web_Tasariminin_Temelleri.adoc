@@ -52,6 +52,18 @@ olarak tanımlar.
 Section Etiketi
 İçeriğinizi oluşturan kısım ve kesimleri belirtmek için kullanılan etikettir.
 
+
+=== article etiketi
+Anlamsal olarak bütünlük sağlayan bir içeriği işaretlemek için kullanılır.
+Bu tür içeriklere örnek olarak bir blog girdisi verilebilir. Ya da 
+bir kullanıcı yorumu bu şekilde bir içerik olarak düşünülebilir.
+
+=== header Etiketi
+Bir içeriğin başlık ve künyesi gibi giriş bölümünü işaretlemek için 
+
+kullanılır.
+
+
 [source, html]
 ----
 <!DOCTYPE html>
