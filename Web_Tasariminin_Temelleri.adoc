@@ -613,3 +613,38 @@ Seçiciler, seçimlerini 5 kritere göre yapar.
 . `id` ve `class` özelliklerine göre
 . pseudo-class ve pseud-element kavramlarına göre
 . Etiketin özelliklerinin veya değerlerinin bulunup bulunmamasına göre
+
+
+=== HTML Nesnelerini Sınıflandırmak ve Kimliklendirmek
+HTML nesnelerine sınıf veya sınıflar atama ya da kimlik 
+verme bir zorunluluk olmasa da, CSS kuralı uygulayacağınız 
+nesnelerin seçimi gerektiğinde mutlaka yapılması gereken bir 
+eylemdir.
+
+Bir veya bir kaç HTML nesnesi, belli bir amaç çerçevesinde(CSS kuralı 
+ekleme, Javascript'de tümüne erişme) tek bir sınıf altında 
+toplanmak istenirse ilgili etiketler class özelliği eklenir. class
+özelliği aynı olan nesneler bir sınıf altında toplanmış olur.
+
+<div class="mavi">Yazı</div>
+<p class="mavi">Başka Yazı</p>
+<strong class="mavi">Super</strong>
+<div class="sari">Yazı</div>
+<p class="sari">Başka Yazı</p>
+<strong class="sari">Super</strong>
+
+Yukarıdaki örnekte, "mavi" ve "sari" isimli iki sınıf vardır. 
+Bu sınıflar içerisinde üçer tane nesne mevcuttur.
+
+Bir HTML nesnesini, sayfadaki diğer bütün nesnelerden kesin bir şekilde 
+ayıracak bir kimlik verilmek istenirse "id" özelliği kullanılır.
+İki veya daha fazla nesneye aynı id değeri verilemez. Bu "id" özelliğinin
+tanımına aykırıdır. Aşağıdaki kod parçası yanlış kullanıma bir örnektir.
+
+<p id="kimlik">Paragraf1</p>
+<h1 id="kimlik">Başlık</h1>
+Aynı id değeri birden fazla nesneye atanamz.
+
+
+
+
