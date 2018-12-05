@@ -645,6 +645,12 @@ tanımına aykırıdır. Aşağıdaki kod parçası yanlış kullanıma bir örn
 <h1 id="kimlik">Başlık</h1>
 Aynı id değeri birden fazla nesneye atanamz.
 
+**********CSS(Cascading Style Sheet)*********  HTML ile içeriğimizi ve içeriğin anlamsal yapısını tanımlarız. Ama web sayfaları içeriği en sade şeklinde sunmaktansa, zengin ve okunurluluğu yüksek formatlarda sunar. İçeriğin görünüm olarak zengin olması ayağını CSS gerçekleştirir. Ayrıca böylelikle, içerik tanımlaması ile görünüm tanımlamaları birbirinden ayrılarak izole edilmiş olur.  Bir sayfanının CSS tanımlamaları, stil sayfası(style sheet) ismi verilen yapılarla sayfay eklenir. Stil sayfaları, stil kuralları ismi verilen birimlerden oluşur. Stil kuralları, seçici ve tanımlama bloğu ismi verilen iki ana bölümden oluşur. Tanımlama bloğu, küme parantezleri {} içinde, bir veya birden fazla özellik değer çiftinden oluşur. Özellik değer çiftleri, özellik:değer şeklinde belirtilir. Eğer tanımlama bloğu birden fazla özellik/değer çiftine sahipse, her bir özellik/değer çifti arasına noktalı virgül(;) karakteri koyulur. Bu karakter genellikle özellik/değer çiftinin sonuna yazılır. Örnek secici { 	özellik1 : deger1; 	özellik2 : deger2 }  Sayfa Style Sheet Ekleme Sayfanıza stil kuralları bütününden oluşan style sheet'i üç türlü ekleyebilirsiniz. 1. Harici Stil Sayfaları Bu yöntemde tüm CSS kuralları, genellikle .css uzantısı verilen bir metin dosyasında saklanır. Bu dosya, istenilen HTML dökümanına <link> etiketi yardımıyla dahil edilir. Örneğin CSS dosyamız, stillerim.css olsun. Bu stil sayfasını <link rel="stylesheet" type="text/css" href="stillerim.css" /> etliketin <head> etiketi içerisine yazarak dahil edebilirsiniz.            
+Stil Sayfalarına Yorum Ekleme Stil sayfalarında yorumlar /* ile */ arasına yazılır. Örnek /* Birinci derece başlığın stil kuralı */ h1 { 	color:red; } /* İkinci derece başlığın stil kuralı */ h2 { 	color:green }
 
 
+
+=== Stil Çakışmaları
+Stil sayfalarının birden fazla şeklide eklenebildiğini öğrendik. Bunun bir sonucu olarak,birden fazla kaynak aynı nesne üzerinde bir stil kuralı işletmek isteyebilir. Bu durumda stil kuralı çakışması meydan gelmektedir.
+Bu du
 

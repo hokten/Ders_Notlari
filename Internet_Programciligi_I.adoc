@@ -1095,3 +1095,145 @@ $statement3->closeCursor();
 </body>
 </html>
 ----
+
+
+[source, php]
+----
+// Varsayılan anahtarlama (0,1,2,3...) kullanan bir dizi oluşturma
+$isimler = array("ali", "ahmet", "akif");
+$sansli_sayilar = array(3, 5, 11, 45, 23, 32);
+
+// $isimler dizisinde "ahmet" değerine ulaşmak için aşağıdaki yapı kullanılır.
+echo $isimler[1];
+// Burada köşeli parantezler içerisine yazılan 1 sayısı ahmet değerinin
+// $isimler dizisi içindeki anahtarıdır.
+
+// Varsayılan anahtarlama ile dizi oluşturmak için aşağıdaki yöntem de kullanılabilir.
+$isimler = ["ali", "ahmet", "akif"];
+$sansli_sayilar = [3, 5, 11, 45, 23, 32];
+
+// Ayrıca boş bir dizi oluşturmak için
+$bos_dizi = array();
+// veya
+$bos_dizi = [];
+// ifadeleri kullanılabilir.
+
+// İsteğe bağlı anahtarlama yapılmak istendiğinde, dizinin elemanları 
+// anahtar => değer biçiminde yazılır.
+
+$kisi_bilgileri = ["hasan", "ökten", 1980, "denizli"];
+
+// Yukarıdaki dizi daha anlamlı anahtarlama ile
+$kisi_bilgileri = ["adi" => "hasan", "soyadi" => "ökten", "dogrumtarihi" => 1980 , "dogumyeri" => "denizli"];
+// Kodun sadeliği için aşağıdaki yöntem kullanılır.
+$kisi_bilgileri = [
+    "adi" => "hasan",
+    "soyadi" => "ökten",
+    "dogumtarihi" => 1980, 
+    "dogumyeri" => "denizli"
+    ];
+// $kisi_bilgileri dizisinde 1980 değerine ulaşmak için
+$kisi_bilgileri["dogumtarihi"]; // 1980
+// ifadesi kullanılır.
+
+// $kisi_bilgileri dizisine anahtar kullanarak bir değer eklenebilir.
+$kisi_bilgileri["medenihali"] = "Evli";
+
+// Bir diziye eleman eklemek için aşağıdaki yöntem kullamılabilir.
+$cift_sayilar = [0, 2, 4, 6];
+$cift_sayilar[] = 8;
+// $cift_sayilar = [0, 2, 4, 6, 8] olacaktır
+----
+
+=== Dizini Eleman Sayısını Bulma
+Bir dizinin toplam eleman sayısını bulmak için `count()` fonksiyonu kullanılır.
+
+[source, php]
+----
+$meyveler = array("elma", "armut", "portakal");
+$meyve_sayisi = count($meyveler);
+echo "Sepetde $meyve_sayisi tane meyve var";
+---- 
+
+=== Dizini Elemanlarını Döngüde Kullanmak
+Bir dizinin tüm elemanları ile teker teker yapacağınız işlemler varsa 
+bu dizinin elemanlarını bir döngü yardımıyla taramamız gerekir.
+Döngü ile dizinin ilk elemanında son elemanına kadar bütün elemanlarını 
+döngü içerisinde kullanabiliriz. Bu işlem değişik biçimlerde yapılabilir.
+
+[source, php]
+----
+$dogum_tarihleri= [1980, 2000, 1965];
+$dogum_tarihleri[0];
+$dogum_tarihleri[1];
+$dogum_tarihleri[2];
+
+for($i=0; $i<=count($dogum_tarihleri)-1; $i++) {
+    $yas = 2018 - $dogum_tarihleri[$i];
+    echo "Yaşı $yas<br />";
+
+}
+
+    /*
+        $cift_sayilar = [0, 2, 4, 6];
+        var_dump($cift_sayilar);
+
+        $cift_sayilar[] = 8;
+        var_dump($cift_sayilar);
+
+        $kisi_bilgileri = [
+            'adi' => 'ali',
+            'soyadi' => 'demir'
+        ];
+        var_dump($kisi_bilgileri);
+        $kisi_bilgileri[] = 1980;
+        var_dump($kisi_bilgileri);
+
+        $kisi_bilgileri = [
+            'adi' => 'ali',
+            'soyadi' => 'demir',
+            3 => "denizli"
+        ];
+        var_dump($kisi_bilgileri);
+        $kisi_bilgileri[] = 1980;
+        var_dump($kisi_bilgileri);
+        */
+$dogum_tarihleri= [1980, 2000, 1965];
+
+for($i=0; $i<=count($dogum_tarihleri)-1; $i++) {
+    $yas = 2018 - $dogum_tarihleri[$i];
+    echo "Yaşı $yas<br />";
+}
+$j=0;
+
+while($j<=count($dogum_tarihleri)-1) {
+    $yas = 2018 - $dogum_tarihleri[$j];
+    echo "Yaşı $yas<br />";
+    $j++;
+}
+
+foreach($dogum_tarihleri as $dtarihi) {
+    $yas = 2018 - $dtarihi;
+    echo "Yaşı $yas<br />";
+}
+
+
+
+
+$kisiler = [
+    "adi" => "hasan",
+    "soyadi" => "ökten",
+    "dogumtarihi" => 1980
+];
+
+
+foreach($kisiler as $deger) {
+    echo "Deger : $deger <br />";
+}
+
+
+foreach($kisiler as $anahtar => $deger) {
+    echo "Anahtarı $anahtar olan elemanın değeri $deger <br />";
+}
+
+----
