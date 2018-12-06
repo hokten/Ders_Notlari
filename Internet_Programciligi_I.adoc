@@ -1237,3 +1237,41 @@ foreach($kisiler as $anahtar => $deger) {
 }
 
 ----
+
+[source, php]
+----
+<html>
+<?php
+$arkaplan="white";
+if(!empty($_POST)) $arkaplan = $_POST["renk"];
+?>
+<style>
+.tek {
+    background-color : #dddddd;
+}
+.cift {
+    background-color : yellow;
+}
+</style>
+<body>
+<?php
+
+$yemekler = array(
+    "kahvalti" => "Tereyağ, Menemen, Çay",
+    "ogle" => "Fasulye, Makarna, Ayran",
+    "aksam" => "Tas Kebabı, Pilav, Salata"
+);
+echo "<table border='1'>";
+$stil = "tek";
+foreach($yemekler as $ogun => $yemek) {
+    echo "<tr class='$stil'>";
+    echo "<td>$ogun</td>";
+    echo "<td>$yemek</td>";
+    echo "</tr>";
+    $stil = $stil=="tek" ? "cift" : "tek";
+}
+echo "</table>";
+?>
+</body>
+</html>
+----
