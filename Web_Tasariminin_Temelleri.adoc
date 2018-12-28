@@ -654,3 +654,8 @@ Stil Sayfalarına Yorum Ekleme Stil sayfalarında yorumlar /* ile */ arasına ya
 Stil sayfalarının birden fazla şeklide eklenebildiğini öğrendik. Bunun bir sonucu olarak,birden fazla kaynak aynı nesne üzerinde bir stil kuralı işletmek isteyebilir. Bu durumda stil kuralı çakışması meydan gelmektedir.
 Bu du
 
+CSS Seçicileri Linkler
+https://www.erbilen.net/css-seciciler-1-10/
+https://www.erbilen.net/css-seciciler-11-20/
+
+
