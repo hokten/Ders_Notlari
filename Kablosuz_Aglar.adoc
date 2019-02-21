@@ -1,0 +1,32 @@
+= İçerik Yönetim Sistemi
+Kablosuz Ağların Avantajları
+* Kolay Kurulum Kullanım
+* Erişilebilirlik/Kapsama Alanı
+* Yatırım ve İşletme Maliyeti
+* İşletme Kolaylığı
+
+Kablosuz Ağların Dezavantajları
+* Güvenlik
+Ağ herkese açık olduğu için, yetkisiz kullanımlar ve ağı dinleme
+gibi sorunlarla karşılaşabilinir.
+* İletişim Kalitesi
+* Kapasite Yönetimi
+
+Kablosuz Ağ Bileşenleri ve Topolojileri
+* Terminaller(Uç Birimler)
+Terminal, iletişimi başlatan veya iletişim talebine cevap veren birimlerdir.
+Gönderilen bir sinyalin ulaştığı en son noktadır.
+Laptoplar, akıllı cep telefonları terminallere örnek olarak verilebilir.
+*Taşıyıcı Birimler(AP: Access Point)
+Bir terminalden aldığı bilgiyi, doğrudan hedef terminale veya  hedef terminale en 
+yakın başka bir taşıyıcı birime ileten ağ bileşenleridir. 
+Mobil iletişimde kullanılan baz istasyonları bir taşıyıcı birim olarak 
+düşünülebilir.
+Taşıyıcı birimler arasındaki bağlantıya Uplink denir. 
+Taşıyıcı birimler, ana görevi olan taşıma eyleminin yanında 
+* veri paketlerinin anhtarlanması(switching)
+* yönlendirme(routing)
+* veri filtreleme(firewall)
+gibi görevler de üstlenebilir.
+
+
