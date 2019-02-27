@@ -45,5 +45,24 @@ Kablosuz bir ağın dış dünyaya ve komşu ağlara uzantısı olmayan kısmın
 En az iki düzenli BSS'den oluşan sistemlere *Genişletilmiş Temel Servis Seti* denir.
 
 * Servis Seti Tanımlayıcısı (Service Set Identifier) [SSID] +
-Her BSS kendisine ait isimle yanımlanır. 
+Her BSS kendisine ait isimle yanımlanır. BSS'ye verilen bu isme *Servis Seti Tanımlayıcısı* denir.
+
+= Kablosuz Ağ Standartları
+== Kapsama Alan Tanımları
+Kapsama alanını belirleyen temel etkenler, iletişi için kullanılan ağ bileşenlerinin yayın gücü ve frekansıdır. 
+Yüksek frekans değerleri uzak mesafe iletişim için uygun değildir. 
+=== Kapsama Alanını Tasarlarken Dikkat Edilecek Kriterler
+- Kapsama alanının gereğinden büyük olması elektromanyetik kirlilğe neden olabilir.
+- Kaynağın gücünün ihtiyaca göre belirlenmesi.
+- Yasal düzenlemelerle belirlenmiş olan yayın frekansları ve yayın güçlerine uyulmuş olması.
+Kapsama alanları büyüklüklerine aşağıdaki tablodaki şekilde isimlendirilirler.
+
+|=======
+|Indoor |Bina İçi | 0-30 Metre
+|Outdoor | Bina Dışı | 50 - 200 Metre
+|Mid Range Outdoor | Bina Dışı Orta Menzil | 200 - 4000 Metre
+|Long Range Outdoor | Bina Dışı Uzun Menzil | 5000 - 20000 Metre
+|=======
+
+
 
