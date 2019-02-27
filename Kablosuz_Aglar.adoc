@@ -1,4 +1,4 @@
-= İçerik Yönetim Sistemi
+= Kablosuz Ağlar
 Kablosuz Ağların Avantajları
 * Kolay Kurulum Kullanım
 * Erişilebilirlik/Kapsama Alanı
@@ -63,6 +63,25 @@ Kapsama alanları büyüklüklerine aşağıdaki tablodaki şekilde isimlendiril
 |Mid Range Outdoor | Bina Dışı Orta Menzil | 200 - 4000 Metre
 |Long Range Outdoor | Bina Dışı Uzun Menzil | 5000 - 20000 Metre
 |=======
+
+== Kanal Kapasitesi
+İki nokta arasında, saniyede aktarılabilecek maksimum bit oranına *Kanal Kapasitesi* denir. Kanal kapasitesi 
+birimleri; *Kbps, Mbps, Gbps* dir.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
