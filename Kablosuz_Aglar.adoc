@@ -28,5 +28,22 @@ Taşıyıcı birimler, ana görevi olan taşıma eyleminin yanında
 * yönlendirme(routing)
 * veri filtreleme(firewall)
 gibi görevler de üstlenebilir.
+== Kablosuz Ağların Çalışma Biçimleri
+* Düzensiz Bağlantı (AD HOC Mode) +
+Herhangi bir AP'nin yer almadığı kablosuz ağ ortamıdır. Dolayısıyla, 
+birbirinin kapsama alanına giren terminaller, doğrudan kendi aralarında iletişim kurarlar.
+Örnek olarak, Bluetooth ve Kızılötesi verilebilir. 
 
+* Düzenli Bağlantı(Infrastructure Mode) +
+İçinde en az bir tane AP bulunan kablosuz ağ ortamlarıdır. 
+
+== Topolojiler
+* Temel Servis Seti (Basic Service Set) [BSS] +
+Kablosuz bir ağın dış dünyaya ve komşu ağlara uzantısı olmayan kısmına *Temel Servis Seti* denir. 
+
+* Genişletilmiş Temel Servis Seti (Extended Service Set) [ESS] +
+En az iki düzenli BSS'den oluşan sistemlere *Genişletilmiş Temel Servis Seti* denir.
+
+* Servis Seti Tanımlayıcısı (Service Set Identifier) [SSID] +
+Her BSS kendisine ait isimle yanımlanır. 
 
