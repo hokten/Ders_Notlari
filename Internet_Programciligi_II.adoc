@@ -191,6 +191,110 @@ That means you can include raw HTML, like this embedded Gist:
 <script src="https://gist.github.com/hokten/3daa17a3478cff668a9d31c8b9c0aa52.js">
 </script>
 ++++
+== Modeller
+
+[[AlbumModeli]]
+[source, csharp, linenums, numbered]
+.Albüm modeline ait sınıf
+----
+public class Album
+{
+  public virtual int AlbumId { get; set; }
+  public virtual int TurId { get; set; }
+  public virtual int SanatciId { get; set; }
+  public virtual string Ad { get; set; }
+  public virtual decimal Fiyat { get; set; }
+  public virtual string KapakResmiURL { get; set; }
+  public virtual Tur Turu { get; set; }
+  public virtual Sanatci Sanatcisi { get; set; }
+}
+----
+
+
+[[SanatciModeli]]
+[source, csharp, linenums, numbered]
+.Sanatçı modeline ait sınıf
+----
+public class Sanatci
+{
+ public virtual int SanatciId { get; set; }
+ public virtual string AdSoyad { get; set; }
+}
+----
+
+[[MuzikTuruModeli]]
+[source, csharp, linenums, numbered]
+.Müzik Türü modeline ait sınıf
+----
+public class MuzikTuru
+{
+ public virtual int MuzikTuruId { get; set; }
+ public virtual string Ad { get; set; }
+ public virtual string Aciklama { get; set; }
+ public virtual List<Album> Albumler { get; set; }
+}
+----
+
+
+=== Scaffolding
+
+ASP.NET MVC çatısı, bir modele ait temel eylemler olan ekleme, listeleme, silme ve düzenleme gibi işlemler 
+için gerekli olan asgari controller ve view yapısını sizin için otomatik olarak üretebilir. 
+Bu işleme *scaffolding* denir.
+
+=== Müzik Mağazası İskeleti
+
+Modelleri oluşturduktan sonra, albüm bilgilerini düzenlememize olanak sağlayacak bir controller eklemememiz 
+gerekecektir. Bu controller sınıfını baştan sona kendimiz yapmamız seçeneklerden bir tanesidir. 
+Diğer seçenek ise ASP.NET MVC çatısının sunmuş olduğu scaffolding mekanizmasını kullanmaktır. 
+
+Scaffolding, modele ait temel eylemler olan; ekleme, listeleme, düzenleme ve silme (CRUD) işlemleri için 
+asgari ihtiyaçlara cevap verecek ve dilerseniz özelleştirebileceğiniz bir yapının kodlarını sizin için otomatik olarak 
+üretir. Scaffolding sistemi, işlem yapacağı modelin tanımını ve özelliklerini gözden geçirir ve CRUD işlemleri için 
+gerekli olan controller ve controllerlar ile ilişkili olan viewleri otomatik olarak oluşturur.
+
+Bir kaç tane Scaffolding şablon seçeneği vardır. Bu seçenekler kod üretiminin yapısını ve hangi seviyeye 
+kadar olacağını belirler. 
+
+* *MVC 5 Controller - Empty* +
+Controllers klasörü içinde, ismini sizin verdiğiniz ve Controller sınıfından türetilmiş bir sınıf oluşturulur. 
+Bu controller içerisinde sadece _Index_ action metodu vardır ve gövdesi boştur. Bu seçenek herhangi bir 
+view oluşturmaz.
+* *MVC 5 Controller with read/write Actions* +
+Index, Create, Delete ve Edit action metodlarını içeren bir controller oluşturur. Bu action metodların gövdesi, 
+geliştirici tarafından oluşturulacağı düşünülerek boş bırakılmıştır. 
+* *Web API 2 API Controller Scaffolders* 
+_ApiController_ sınıfından türetilmiş bir kaç controller ekler. Uygulamanız ait Web API oluşturmak istiyorsanız 
+bu seçeneği kullanabilirsiniz.
+* *MVC 5 Controller with Views, Using Entity Framework* +
+Bu seçenek, _MVC 5 Controller with read/write Actions_ ile oluşturulan controller yapılarının yanı sıra, 
+veritabanından veri çekme ve ekleme için kullanılan view yapılarını da oluşturur.
+
+
+=== Entity Framework Nedir?
+Entity Framework yapsısını tanımlayabilmek içi öncelikle ORM kavramını hakkında bilgi sahibi olmamız gerekir.
+
+==== ORM (Object Relational Mapping)
+Uygulamamızda oluşturduğumuz model sınıfları genellikle veritabanında yer alan kayıt türlerinin bir kalıbıdır. 
+Veritabanında kayıtlar, bu model sınıflarının örneği olan nesneler ile özdeşleştirilerek veritabanı yapısının da 
+nesne tabanlı programlamaya ayak uydurması sağlanır. Bu durumda geliştiricilerin veritabanı işlemlerinde, 
+veritabanındaki kayıtlara direkt müdahele etmesi yerine bu işlemi kayıtlara karşılık gelen nesneler üzerinden 
+yapması daha iyi bir senaryodur. Ayrıca, veritabanı katmanın nesnesel olarak model sınıfları bünyesinde 
+soyutlanması da sağlanmış olacaktır. Bu mekanizmayı geliştiriciler için kolayca gerçekleştiren sistemlere
+Object Relational Mapping (ORM) denir.
+
+Entity Framework (EF), .NET için tasarlanmış bir ORM aracıdır. Entity Framework ile kolayca 
+CRUD(Create Read Update Delete) işlemleri yapılabilir. Peki, neden ORM? Çünkü;
+
+* Veritabanı işlemleri ile ilgili kod yazımı en aza ineceğinden minimum zamanda maksimum iş çıkartmayı sağlar.
+* OOP düzeninde kod yazmayı sağlar.
+* Veritabanı olarak esnek yapıya sahiptir. Örneğin yazdığınız proje MSSQL ile çalışmakta ve birden Oracle’a geçmeniz istendi. Bunu yapabilmek için birçok ayar gerekirken Entity Framework ile direkt geçiş yapabilirsiniz.
+* Veritabanı bağımlılığı yoktur. Yani EF’yi oluşturmadan önce veritabanı tablo ve kolonlarını oluşturmalısınız gibi bir kural yoktur. Siz EF ile modellemeyi yaparken olmayan tabloları ve kolonları sizin yerinize açacaktır.
+* Bakım ve onarımı daha kolaydır.
+
+
+
+
 == Nesne Yönelim Kavramları
 === Soyutlama (Abstraction)
 Bir hedefe varmak için otomobilinize bindiğinizi düşünelim. İlk olarak yapacağımız 
