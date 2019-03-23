@@ -107,6 +107,20 @@ Frekans : 2.4GHz
 Radyo Teknolojisi : OFDM
 
 
+Bir metni şifrelemek ve şifrelenmiş metni açmak için aynı anahtar kullanılıyorsa bu şifreleme algoritmasına 
+simetrik şifreleme denir.
+AES, DES, RC4 gibi şifreleme yöntemleri simetrik şifreleme algoritmalarıdır.
+
+Gönderici tarafında özel, alıcı tarafında açık olacak şekilde iki farklı anahtar kullanan şifreleme algoritmasına 
+asimetrik şifreleme denir.
+
+PGP, DSA asimetrik şifreleme algoritmalarıdır.
+
+
+Başlatma Vektörü
+Şifrelenmiş bir metnin parçalanarak bir uçtan diğer uca gönderilmesi sürecinde, akış sırassı oluşturarak bütünlüğü korumak.
+
+
 
 
 
