@@ -106,6 +106,9 @@ Bilgi Taşıma Kapasitesi : 54Mbps
 Frekans : 2.4GHz
 Radyo Teknolojisi : OFDM
 
+[#add_view_dialog]
+.Add View dialog penceresi.
+image::https://www.tech-worm.com/wp-content/uploads/2018/10/802-11a-802-11b-802-11g-802-11n-802-11ac.jpg[]
 
 Bir metni şifrelemek ve şifrelenmiş metni açmak için aynı anahtar kullanılıyorsa bu şifreleme algoritmasına 
 simetrik şifreleme denir.
