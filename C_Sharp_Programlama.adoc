@@ -1,0 +1,49 @@
+
+
+=Java Programlama
+== Sık Yapılan Hatalar
+=== Değişkenler
+Programlama dilinden bağımsız olarak; değişkenler, program çalışırken hafızada bilgi saklamak
+için kullanılan yapılardır. 
+
+Örneğin, programınızda bir oyuncunun skorunu veya ismini saklamak ve programın herhangi bir 
+zamanında bu bilgileri kullanmak veya değiştirmek isteyebilirsiniz. 
+
+Her değişkenin bir ismi ve türü vardır. Değişkenini değerine ulaşırken veya değerini değiştirirken 
+değişkenin ismi kullanılır.
+
+C# da, yerleşik olarak gelen bir çok veri türü vardır.
+Ayrıca, dilerseniz kendi veri türünüzü oluşturmanız da mümkündür. 
+Önceki örneklerimizde primitive ya da yerleşik olarak isimlendirilen değişken türlerinden bahsetmiştik. 
+Bu tür değişken türlerine programlarda sıklıkla ihtiyaç duyulduğu için programcıya kolaylık olması adına programlama dilinin içinde doğal olarak yer alırlar. Yerleşik veri türleri olarak adlandırılmasının sebebi budur. 
+
+int veri türü
+int veri türü, hafızada tamsayı türünden değişkenleri saklamak için kullanılır. Hafızada 4 byte (32 bit) büyüklüğünde bir alan işgal eder. Matemetiksel olarak dilediğiniz kadar büyüklükte veya küçüklükte tamsayılar oluşturabilirsiniz. Ama bilgisayar hafızasında tamsayıları saklayabilmek için 4 byte uzunluğunda bir alan sınırlaması olduğundan dolayı int değişken türünden değişkenlere atayacağınız tamsay değerlerlerinin alt ve üst sınırları olacaktır. Örneğin, kabaca ifade edersek int değişken türünden bir değişkenin değerleri -2 milyar ile 2 milyar arasında olmalıdır.
+
+= Byte Short ve Long Veri Türleri
+Programlarınızda kullanacağınız tamsayı değerlerin alt ve üst sınırları programcı tarafında yaklaşık olarak tahmin edildiği için, int türü haricinde farklı aralıklara uygun olacak şekilde başka tamsayı veri türleri de mevcuttur.
+Örneğin, öğrencilerin sinav notlarını tutan bir değişkeniniz var ise bu değişkenin alabileceği değerler 0 ile 100 aasında olacaktır. Bu durumda, bu değişken için int türünü kullanmak hafızada gereğinden fazla uzunluğa sahip alan kullanmak anlamına gelecektir. 
+O yüzden böyle bbir değişken için 0 ile 255 arasında tamsayı değerler alabilen ve hafızada sadece 1 byte uzunluğunda bir alan kaplayan byte değişkeni kullanmanın kaynakları etikili kullanmak adına daha tasarruflu olacağı açıktır. Aşağıdaki tabloda farklı aralıklar için kullanabileceğiniz tüm tamsayı değişken türleri verilmiştir.
+byte 1 0 to 255
+short 2 -32,768 to 32,767
+int 4 -2,147,483,648 to 2,147,483,647
+long 8 -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807
+
+Değişkenleri kutu, değişkenlere atanan değerleri içerik olarak düşünürsek; bu değişken türleri farklı büyüklükteki kutulara benzemektedir. İçeriğiniz, bu kutulardan hangisine düzgün yerleşecekse o kutuyu kullanmak mantıklı olacaktır.
+
+
+int sayi = 5;
+short adet = 30000
+byte vize = 100
+
+
+
+= sbyte ushort uint ulong Türleri
+Sayısal değişken türleri aslında işaretli veya işaretsiz olabilir. Örnneğin bir tamsayının işaretli olması başında - veya + karakterinin bulunması anlamaına gelir. Hafızada bu işarette yer kapladığından, işaretin olmadığı durumda bir değişken türünün alt sınırı sıfır olacak ama üst sınırı ise karşılığı olan işaretli veri türünün iki katı olacaktır. 
+Örneği short değişken türü yuvarlarsak -32.000 ile 32.000 arasında tamsayı değerler alırken, ushort veri türü 0 ile 64.000 arasında değerler alır.
+
+= Char Veri Türü
+
+
+ 
+
