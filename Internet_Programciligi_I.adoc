@@ -848,6 +848,72 @@ ifade6;
 </html>
 ----
 
+==Diziler
+Diziler, birbiriyle ilişkili verileri tek bir değişken içinde saklamak
+için kullanılır. Böylelikle, her bir ilişkili veri için ayrı bir değişken
+kullanmak zorunda kalmayız. Bir sınıftaki tüm öğrencilerin ad soyadlarını
+programda kullanacakasak, dizi yapısı olmasaydı her bir ad soyad için 
+bir değişken oluşturmak zorunda kalırdıdık.
+
+[source,php]
+----
+<?php
+$ahmet_ali = "Ahmet Ali";
+$ali_kaya = "Ali Kaya";
+$ayse_cetin = "Ayşe Çetin";
+
+$kirmizi_mermer = "Red"
+
+$ad_soyad_1 = "Ahmet Ali";
+$ad_soyad_2 = "Ali Kaya";
+$ad_soyad_3 = "Ayşe Çetin";
+
+$ad_soyad[1] = "Ahmet Ali";
+$ad_soyad[2] = "Ali Kaya";
+$ad_soyad[3] = "Ayşe Çetin";
+
+$ad_soyad
+?>
+----
+
+
+[source,php]
+----
+<?php
+$ogrenciler = array(
+    "Ahmet KAYA",
+    "Ali ŞAHİN",
+    "Zeynep ARSLAN",
+    "Ali Akif Bir",
+    "Ayşe SAYIN",
+    "Meltem AKAR",
+    "Hasan Ali TAŞ",
+    "Mehmet EKER"
+);
+for($i=0; $i < count($ogrenciler); $i++ ) {
+
+    $parcali_isim = explode(" ", $ogrenciler[$i]);
+    if(count($parcali_isim) > 2) {
+        echo $parcali_isim[0][0] . ". " . $parcali_isim[1] . " " . $parcali_isim[2];
+    }
+    else {
+        echo $ogrenciler[$i];
+    }
+    echo "<br />";
+}
+?>
+----
+
+=== PHP'De Dizi Türleri
+
+İndeksli Diziler : Dizi elemanlarına erişmek için sayısal değerler
+kullanılır.
+
+İlişkisel Diziler : Dizi elemanlarına erişmek için string türünde 
+sabitler kullanılır.
+
+Çok Boyutlu Diziler : Dizinin elemanları da bir dizi olabilir.
+
 
 //07.11.207 GBIL Ders sonu
 === MySQL ve PHP
