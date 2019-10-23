@@ -904,6 +904,76 @@ for($i=0; $i < count($ogrenciler); $i++ ) {
 ?>
 ----
 
+[source,php]
+----
+<?php
+$ogrenciler = array(
+    "Ahmet KAYA",
+    "Ali ŞAHİN",
+    "Zeynep ARSLAN",
+    "Ali Akif Bir",
+    "Ayşe SAYIN",
+    "Meltem AKAR",
+    "Hasan Ali TAŞ",
+    "Mehmet EKER"
+);
+
+
+foreach ($ogrenciler as $ogrenci) {
+
+    $parcali_isim = explode(" ", $ogrenci);
+    if(count($parcali_isim) > 2) {
+        echo $parcali_isim[0][0] . ". " . $parcali_isim[1] . " " . $parcali_isim[2];
+    }
+    else {
+        echo $ogrenci;
+    }
+    echo "<br />";
+
+
+}
+?>
+----
+
+
+[source,php]
+----
+<?php
+$ogrenciler = array(
+    102 => "Ali ŞAHİN",
+    103 => "Zeynep BULUT",
+    501 => "Metin TEKİN"
+);
+echo $ogrenciler[501];
+
+$notlar = array(
+   array(
+        "adi_soyadi" => "Ali Veli",
+        "numarasi" => 134,
+        "vize" => 45,
+        "final" => 85
+    ),
+    array(
+        "adi_soyadi" => "Ali KAYA",
+        "numarasi" => 143,
+        "vize" => 65,
+        "final" => 85
+    ),
+    array(
+        "adi_soyadi" => "Zeynep KAYA",
+        "numarasi" => 135,
+        "vize" => 5,
+        "final" => 75
+    )
+
+);
+
+echo $notlar[1]["numarasi"];
+
+
+?>
+----
+
 === PHP'De Dizi Türleri
 
 İndeksli Diziler : Dizi elemanlarına erişmek için sayısal değerler
