@@ -934,6 +934,19 @@ foreach ($ogrenciler as $ogrenci) {
 }
 ?>
 ----
+[source,csv]
+----
+123|Ahmet Ali|Bilgisayar Programcılığı|Matematik|45|63
+123|Ahmet Ali|Bilgisayar Programcılığı|Fizik|35|73
+124|Zeynep ŞAHİN|Moda Tasarımı|Tekstil|55|63
+124|Zeynep ŞAHİN|Moda Tasarımı|Meslek Etiği|55|63
+125|Hasan KAÇAN|Elektrik|Matematik|12|87
+125|Hasan KAÇAN|Elektrik|Fizik|12|87
+125|Akif TAŞ|Elektrik|Matematik|22|37
+125|Akif TAŞ|Elektrik|Fizik|32|12
+----
+
+
 
 
 [source,php]
