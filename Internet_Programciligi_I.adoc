@@ -987,6 +987,44 @@ echo $notlar[1]["numarasi"];
 ?>
 ----
 
+[source, php]
+----
+<?php
+
+
+if(isset($_POST["sonhal"])) {
+    $sayilar = explode(",", $_POST["sonhal"]);
+}
+
+$mesaj = "";
+
+
+if(!empty($_POST)) {
+    $tahmini = $_POST["tahmin"];
+    $dizi_son_eleman = $sayilar[count($sayilar)-1];
+    if($tahmini == $dizi_son_eleman) {
+        array_pop($sayilar);
+        $mesaj = "Tebrikler bildiniz.". sizeof($sayilar) . " sayı kaldı";
+    }
+    else {
+        $mesaj = "Bilemediniz. Tekrar deneyiniz.";
+    }
+}
+
+?>
+<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>"
+<label for="tahmin">Tahmin Et</label>
+<input type="text" name="tahmin" />
+<input type="hidden" name="sonhal" value="<?php echo implode(',', $sayilar) ?>" />
+<input type="submit" value="Gönder" />
+<br>
+<?php echo $mesaj ?>
+
+</form>
+
+
+----
+
 === PHP'De Dizi Türleri
 
 İndeksli Diziler : Dizi elemanlarına erişmek için sayısal değerler
