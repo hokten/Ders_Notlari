@@ -653,7 +653,79 @@ Stil Sayfalarına Yorum Ekleme Stil sayfalarında yorumlar /* ile */ arasına ya
 === Stil Çakışmaları
 Stil sayfalarının birden fazla şeklide eklenebildiğini öğrendik. Bunun bir sonucu olarak,birden fazla kaynak aynı nesne üzerinde bir stil kuralı işletmek isteyebilir. Bu durumda stil kuralı çakışması meydan gelmektedir.
 Bu du
+[source, html]
+----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        .baslik {
+            text-align: center;
+            background-color: green;
+        }
+        table {
+            background-color: yellow;
+        }
 
+        td {
+            background-color: yellow;
+        }
+
+        table, td, th {
+            width: 75px;
+            border: 1px solid red;
+            border-collapse: collapse;
+
+        }
+    </style>
+</head>
+<body>
+<table>
+    <tr><!-- 1. satır -->
+        <td class="baslik" colspan="5">DERS PROGRAMI</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>08:00</td>
+        <td>09:00</td>
+        <td>10:00</td>
+        <td>11:00</td>
+    </tr>
+    <tr>
+        <td>Pzt.</td>
+        <td colspan="3">Mate.</td>
+        <td>PHP</td>
+    </tr>
+    <tr>
+        <td>Salı</td>
+        <td>Mate.</td>
+        <td colspan="3">HTML</td>
+    </tr>
+    <tr>
+        <td>Çrş.</td>
+        <td colspan="4">Programlama</td>
+    </tr>
+    <tr>
+        <td>Perş.</td>
+        <td colspan="4"></td>
+    </tr>
+    <tr>
+        <td>Cuma</td>
+        <td>HTML</td>
+        <td>Java</td>
+        <td>PHP</td>
+        <td>Mate.</td>
+    </tr>
+
+</table>
+
+</body>
+</html>
+----
 CSS Seçicileri Linkler
 https://www.erbilen.net/css-seciciler-1-10/
 https://www.erbilen.net/css-seciciler-11-20/
