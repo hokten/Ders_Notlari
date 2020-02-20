@@ -1,3 +1,9 @@
+=Antenler ve Dalgaların Yayılma Biçimleri
+
+[#add_view_menu]
+Yer Dalgası Yayılması
+image::https://image.slidesharecdn.com/hfhorizonradar-180701145019/95/hf-horizon-radar-high-frequency-radar-yksek-frekans-radar-13-638.jpg[]
+
 = Kablosuz Ağlar
 Kablosuz Ağların Avantajları
 * Kolay Kurulum Kullanım
