@@ -1,4 +1,4 @@
-=Antenler ve Dalgaların Yayılma Biçimleri
+=A ntenler ve Dalgaların Yayılma Biçimleri
 
 [#add_view_menu]
 Yer Dalgası Yayılması
