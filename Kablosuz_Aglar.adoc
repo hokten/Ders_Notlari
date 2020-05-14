@@ -8,6 +8,100 @@ image::https://image.slidesharecdn.com/hfhorizonradar-180701145019/95/hf-horizon
 .Gök Dalgası Yayılması
 image::https://image.slidesharecdn.com/hfhorizonradar-180701145019/95/hf-horizon-radar-high-frequency-radar-yksek-frekans-radar-19-638.jpg[]
 
+Kablosuz İletişim
+Bilgi taşıyan anlammlı sinyallerin amaca uygun şekilde atmosfer yoluyla bir uçtan bir uca taşınması eylemidir.
+
+Hava da tıpkı bakır, fiber gibi bir iletim ortamıdır.
+
+EM Dalga,
+Birbirine dik olan elektrik ve manyrtik bileşene sahip boşlukta bir düz çizgi 
+üzerinde ışık hızıyla hareket eden yapılardır. Uzayda bu dalgalar, uzay boşluğunda bir engelle 
+karşılaşmadığı sürece dolanım halindedir. Dünyadaki atmosferik ve coğrafi şartlar
+EM dalgaların bileşke yönünü ve enerjilerini değiştirirler.
+
+f : Frekans
+lambda = Dalga Boyu
+
+f=v/lambda    (v : ışık hızı 3x10^8 m/s)
+
+
+Frekans : Bir sinyalinin, saniyede kendini kaç defa tekrar ettiği anlamına gelir. 
+frekans birimi Hertz(HZ)
+
+3-30 KHZ : Very Low Frequencies (VLF)
+30-300 KHZ : Long Wave (LW)
+300 - 3000KHZ KHZ (Medium Wave) MW
+3-30 MHZ (Short Wave) SW
+30 - 300MHZ (Very High Frequencies) VHF
+300 - 3000MHZ(3GHZ) (Ultra High Frequencies) UHF
+3GZ - 30GHZ (Super High Frequencies) SHF   
+300 - 3000GHZ (Mikro Dalga Frekansları)
+
+
+Sinyalin Zayıflaması ve Bozulması
+Boşlukta yayılan bir em dalgasının enerjisi, dalganın üretildiği kaynaktan uzaklaştıkça aradaki mesafenin 
+karesiyle ters orantılıdır. 
+Ayrıca EM dalga, vericiden alıcıya ulaşırken aşağıda belirtile olaylara maruz kalabilir.
+Kırılma
+Saçılma
+Emilim
+Girişim
+
+
+Sinyal gücü, frekans arttıkça azalır. 
+Frekansın artması, kapsama alanını daraltır. 
+
+Girişim Gönderilen sinyalin, başka sinyallerin etkisiyle kısmen veya tamamen bozulmaya uğramasına 
+denir. Birbiriyle aynı veya yakın frekansı kullanan sistemler için girişim riski çok fazladır. 
+
+Çoklu yol etkisi de girişime neden olur. 
+
+
+
+
+
+
+LLC Katmanı (Logic Link Control)(Mantıksal Link Kontrolü)
+TCP/IP katmanı ile sorunsuz çalışmayı sağlar. İşletim sisteminden bağımsız olarak TCP/IP katmanı ile bağlantı kurmayı sağlar.
+
+
+MAC Katmanı(Media Access Control)
+Fiziksel Katman 
+
+
+
+
+
+
+WLAN Tasarım ve Yönetim Kriterleri
+
+
+* Terminallerin Erişim Noktasına Bağlanması
+
+
+
+Bir terminalin bir AP'ye bağlanabilmesi için aşağıdaki koşulları sağlaması gerekir.
+1. Yeterli sinyal seviyesine sahip olması.
+2. AP'nin destekleği standartlardan birine sahip olması. 802.11b 802.11a 802.11g
+3. AP ile terminal aynı SSID'ye sahip olmalı
+4. Terminallerin şifreleme/doğrulama kabiliyetleri AP ile uyumlu olmalıdır. 
+
+
+AP, kendisine bağlanmak isteyen her terminalin talebini kontrol eder ve eğer gerekli koşulları sağlıyorsa talebi kabul eder ve listesine ekler.
+
+* Yeterli Sinyal Seviyesi
+** Alıcı Hassasiyeti
+Her RF alıcının, belirli bir bit değerine ulaşabilmesi için ihtiyaç duyduğu eşik sinyal değeridir.
+** Sinyal Gürültü Oranı
+Sinyalin yayıldığımı ortamın elektriksel gürültüsünün sinyali etkileme oranı.
+
+* Kanalların Üst Üste Binmesi
+Birbirinin kapsama alanı içerisinde birden fazla AP'nin aynı zamanda kullanılması
+* Gerçek Aktarım Kapasitesi
+* Kullanıcı Başına Düşen Kapasite
+Aynı AP'ye bağlanan terminaller aynı kanalı paylaşırlar.
+* Servis Kalitesi
+
 
 
 = Kablosuz Ağlar
@@ -137,7 +231,63 @@ Başlatma Vektörü
 
 
 
+WEP(Wired Equivalent Privacy/Kabloluya Eşdeğer Gizlilik)
 
+WEP aşağıdaki güvenlik servislerini bize sunar.
+* Gönderici tarafında bilginin şifrelenmesi
+* Alıcı tarafında bilgilerin çözülmesi
+* Terminaller için açık sistem ve Paylaşımlı Anahtar Doğrulama mekanizmaları.
+
+WEP bilgiyi şifreleme 40 bitlik gizli anahtar ile açık ve değişken olan 
+24 bitlik bir IV kullanır.
+64bitlik
+RC4 simetrik şifreleme algoritmasını kullanır.
+
+
+
+
+WPA(Wifi Protected Access/Wifi Korunmuş Erişim)
+WPA aşağıdaki güvenlik servislerini bize sunar.
+* İki farklı doğrulama mekanizması kullanılabilir. 
+802.1X EAP doğrulaması ve ön paylaşımlı anahahta doğrulaması (Pre-Shared Key PSK)
+* Şifreleme anahtarı (TKIP)
+* Veri Bütünlüğü (MMIC)
+
+WPA2
+RC4 yerine AES-CCMP 
+
+
+
+
+* SSID Yayınını Engelleme
+
+** Satın aldığınız AP'nin ön tanımlı SSID bilgisini değiştirin.
+** AP'nizi SSID bilgisini yayınlamayacak şekilde yapılandırın. 
+** Başkalarınca tahmin edilmesi kolay olmayan bir SSID kullanın.
+
+
+* MAC Adresine Göre Filtreleme
+
+1. Kablosuz ağ istemcisi, Doğrulama Yönetim Çerçevesi ismin verilen kimlik 
+bilgisini AP'ye gönderirir.
+2. AP, kendisine gönderilen Doğrulama Yönetim Çerçevesi paketini MAC adreslerine
+bakarak kontrol eder. Eğer terminalain MAC adresi mevcutsa, terminale Doğrulama Onay Çerçevesi
+göndererek yetki verir.
+
+00:AA:BB:CC:34:11
+
+
+Linux'da MAC adresini görebilmek için verilen komut.
+ifconfig 
+
+Windows'da  MAC adresini görebilmek için verilen komut.
+ipconfig \all
+
+Otomatik IP ataması için kullanılan protokol : DHCP
+Ağ paketlerini koklamak için kullanılan programlar
+TCPDump, Wireshark, NetStumbler, Fiddler
+
+iwconfig
 
 
 
