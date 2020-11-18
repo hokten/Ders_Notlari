@@ -45,5 +45,68 @@ Sayısal değişken türleri aslında işaretli veya işaretsiz olabilir. Örnne
 = Char Veri Türü
 
 
+using System;
+
+class Program {
+    static void Main(string[] args) {
+        
+	int[] matris1 = new int[4];
+	int[] matris2 = new int[4];
+         
+	for(int i=0; i<=3; i++) {
+	    Console.WriteLine((i/2+1)+ " satir " + (i%2+1) +" sütundaki elemanı giriniz : ");
+	    matris1[i]=Convert.ToInt32(Console.ReadLine());
+	}
+
+
+	for(int i=0; i<=3; i++) {
+	    Console.WriteLine((i/2+1)+ " satir " + (i%2+1) +" sütundaki elemanı giriniz : ");
+	    matris2[i]=Convert.ToInt32(Console.ReadLine());
+	}
+
+	for(int i=0; i<=3; i++) {
+	    if(i==2)
+		Console.Write("\n");
+	    if(i%2==0)
+		Console.Write("|" + matris1[i] + "\t");
+	    else
+		Console.Write(matris1[i] + "|");
+		 
+	}
+       
+	Console.WriteLine("\n\t + ");
+
+	
+	for(int i=0; i<=3; i++) {
+	    if(i==2)
+		Console.Write("\n");
+	    if(i%2==0)
+		Console.Write("|" + matris2[i] + "\t");
+	    else
+		Console.Write(matris2[i] + "|");
+		 
+	}
+
+	Console.WriteLine("\t = ");
+
+
+	for(int i=0; i<=3; i++) {
+	    if(i==2)
+		Console.Write("\n");
+	    if(i%2==0)
+		Console.Write("|" + (matris1[i]+matris2[i]) + "\t");
+	    else
+		Console.Write((matris1[i]+matris2[i]) + "|");
+		 
+	}
+	
+	 
+	 
+	 
+    }
+}
+
+
+
  
 
