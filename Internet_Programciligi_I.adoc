@@ -1545,3 +1545,66 @@ for($i=$bas; $i<=$son; $i++) {
     echo $yazi[$i];
 }
 ----
+
+----
+[source, php]
+----
+<?php
+$ogrenciler = [
+    1233 => "Ali Demir",
+    1234 => "Ali Veli",
+    1235 => "Fatma Şahin",
+    1236 => "Bekir Kavruk"
+    ];
+
+
+for($i=1234; $i<=1236; $i++) {
+    echo $ogrenciler[$i];
+    echo "\n";
+}
+
+foreach($ogrenciler as $isim) {
+    echo $isim;
+    echo "\n";
+}
+
+foreach($ogrenciler as $numara => $isim) {
+    echo "Numarası $numara, adı soyadı $isim\n";
+}
+----
+
+
+[source, php]
+----
+<?php
+$sifre = "DENEmfmfff";
+if (strlen($sifre) <= 6) {
+    echo "Şifre alanı 6 karakterden fazla olmalıdır.";
+}
+else {
+    echo "Şifreniz geçerli.";
+}
+
+$kulismi = "alidemi";
+$sifre = "12345";
+
+if($kulismi=="alidemir") {
+    if($sifre=="12345") {
+        echo "Kullanıcı ismi ve şifreniz doğru.";
+    }
+    else {
+        echo "Şifreniz yanlış";
+    }
+}
+else {
+    echo "Kullanıcı isminiz yanlış";
+}
+
+if($kulismi=="alidemir" && $sifre=="12345") {
+    echo "Kullanıcı ismi ve şifreniz doğru.";
+    
+}
+else {
+    echo "Kullanıcı ismi veya şifreniz yanlış";
+}
+----
