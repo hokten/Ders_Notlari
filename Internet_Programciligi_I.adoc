@@ -1481,3 +1481,23 @@ Program tekrar for satırına geri dönüp for deyiminin ikinci ; karakterinden 
 
 Sonrasında tekrar koşul ifadesine bakılır. Eğer koşul ifadesi doğru ise aynı işlemler tekrarlanır. Eğer koşu ifadesi false ise döngünün kod bloğunun bittiği yerden(8. satır) program devam eder. 
 
+[source, php]
+----
+echo "Döngüden önceki satır.\n";
+for ($i = 1; $i <= 3; $i++) {
+    echo "Adım $i\n";
+
+}
+echo "Döngüden sonraki satır.\n";
+----
+Yukarıdaki döngü ile aşağıdaki döngü birbirinin aynısıdır. 
+
+[source, php]
+----
+echo "Döngüden önceki satır.\n";
+for ($i = 1; $i <= 3;) {
+    echo "Adım $i\n";
+     $i++;
+}
+echo "Döngüden sonraki satır.\n";
+----
