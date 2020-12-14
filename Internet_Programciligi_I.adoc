@@ -1546,7 +1546,8 @@ for($i=$bas; $i<=$son; $i++) {
 }
 ----
 
-----
+
+
 [source, php]
 ----
 <?php
@@ -1608,3 +1609,25 @@ else {
     echo "Kullanıcı ismi veya şifreniz yanlış";
 }
 ----
+
+
+[source, php]
+----
+<?php
+$yas=80;
+
+if($yas<=3) {
+    echo "Bebek";
+}
+elseif ($yas<=18) {
+    echo "Çocuk";
+}
+else if ($yas<=45) {
+    echo "Genç";
+}
+else if($yas<=75) 
+    echo "Yaşlı";
+else 
+    echo "Allah uzun ömür versin.";
+----
+
