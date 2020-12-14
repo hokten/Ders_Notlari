@@ -1524,3 +1524,24 @@ for ($i = 1; $i <= 3; $i++) {
 }
 echo "Döngüden sonraki satır.\n";
 ----
+[source, php]
+----
+<?php
+$yazi="DENEME";
+
+for($i=0; $i<strlen($yazi); $i++) {
+    for($j=0; $j<=$i; $j++) {
+        echo $yazi[$j];
+    }
+    echo "\n";
+}
+
+// Bir metnin herhangi bir kesitini bulmak
+$yazi = "Merhaba Dünya";
+
+$bas=2;
+$son=5;
+for($i=$bas; $i<=$son; $i++) {
+    echo $yazi[$i];
+}
+----
