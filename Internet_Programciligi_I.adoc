@@ -1501,3 +1501,26 @@ for ($i = 1; $i <= 3;) {
 }
 echo "Döngüden sonraki satır.\n";
 ----
+
+
+[source, php]
+----
+echo "Döngüden önceki satır.\n";
+{
+$i = 1
+for (; $i <= 3; $i++) {
+    echo "Adım $i\n";
+}
+}
+echo "Döngüden sonraki satır.\n";
+----
+Yukarıdaki döngü ile aşağıdaki döngü birbirinin aynısıdır. 
+
+[source, php]
+----
+echo "Döngüden önceki satır.\n";
+for ($i = 1; $i <= 3; $i++) {
+    echo "Adım $i\n";
+}
+echo "Döngüden sonraki satır.\n";
+----
