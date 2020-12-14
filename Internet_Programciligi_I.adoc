@@ -1462,3 +1462,22 @@ echo "</table>";
 </body>
 </html>
 ----
+
+[source, php]
+----
+<?php
+echo "Döngüden önceki satır."
+for ($i = 1; $i <= 3; $i++) {
+    echo $i;
+    echo "Bitti";
+}
+----
+Program 4. satıra geldiğinde, programımız for döngüsünün başlangıç ifadesi adı verilen ve ilk noktalı virgüle kadar olan ifadeyi hiçbir koşul gözetmeksizin çalıştıracaktır. O halde, 4. satıra gelindiğinde $i=1 olacaktır. 
+
+Yine 4. satırda, bu işlemini hemen sonrasında döngünün çalışıp çalışmayacağını anlamak için, birinci ; ile ikinci ; arasında kalan ifadenin sonucuna bakılır. Eğer bu sonuç true ise döngünün kod bloğu çalıştırılmaya başlanır ve program 5.satırdan(döngünün kod bloğunun başı) 6. satıra(döngünün kod bloğunun sonu) kadar çalıştırılır. 
+
+6. satır çalıştıktan sonra döngünün kod bloğu baştan sona çalıştırılmış olur.
+Program tekrar for satırına geri dönüp for deyiminin ikinci ; karakterinden sonra gelen bitiş ifadesi çalıştırır.
+
+Sonrasında tekrar koşul ifadesine bakılır. Eğer koşul ifadesi doğru ise aynı işlemler tekrarlanır. Eğer koşu ifadesi false ise döngünün kod bloğunun bittiği yerden(8. satır) program devam eder. 
+
