@@ -1631,3 +1631,24 @@ else
     echo "Allah uzun ömür versin.";
 ----
 
+
+[source, php]
+----
+<?php
+$ad="Ali";
+
+if($ad=="Ali") {
+    echo "Adı Ali\n";
+    echo "If blok içi\n";
+}
+echo "If deyiminin sonu\n";
+
+
+if($ad=="Ali"):
+    echo "Adı Ali\n";
+    echo "If blok içi\n";
+    echo "If deyiminin sonu\n";
+else:
+    echo "Tersi";
+endif;
+----
