@@ -145,8 +145,40 @@ echo "Karakter sayısı : $karakter_sayisi";
   }
 #+END_SRC
 
-#+RESULTS:
-: ün
+#+CAPTION: Bir metni merdiven formunda yazdırmak.
+#+BEGIN_SRC php
+/*
+D        $m[0] 0->0
+DE       $m[0]$m[1]  0->1
+DEN      $m[0]$m[1]$m[2]  0->2
+DENE     $m[0]$m[1]$m[2]$m[3]  0->3
+DENEM    $m[0]$m[1]$m[2]$m[3]$m[4]  0->4
+DENEME   $m[0]$m[1]$m[2]$m[3]$m[4]$m[5]  0->5
+
+
+D        $m[0] 0->($i=0)
+DE       $m[0]$m[1]  0->($i=1)
+DEN      $m[0]$m[1]$m[2]  0->($i=2)
+DENE     $m[0]$m[1]$m[2]$m[3]  0->($i=3)
+DENEM    $m[0]$m[1]$m[2]$m[3]$m[4]  0->($i=4)
+DENEME   $m[0]$m[1]$m[2]$m[3]$m[4]$m[5]  0->($i=5)
+
+
+D        $m[0] 0->($i=0)
+DE       $m[0]$m[1]  0->($i=1)
+DEN      $m[0]$m[1]$m[2]  0->($i=2)
+DENE     $m[0]$m[1]$m[2]$m[3]  0->($i=3)
+DENEM    $m[0]$m[1]$m[2]$m[3]$m[4]  0->($i=4)
+DENEME   $m[0]$m[1]$m[2]$m[3]$m[4]$m[5]  0->($i= strlen($m)-1 )
+*/
+
+$m="DENEME";
+for($i=0; $i<strlen($m); $i++) {
+    for($j=0; $j<=$i; $j++)
+        echo $m[$j];
+    echo "\n";
+}
+#+END_SRC
 
 * Fonksiyonlar
 ** Fonksiyonun Tanımı
