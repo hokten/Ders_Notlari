@@ -179,6 +179,36 @@ for($i=0; $i<strlen($m); $i++) {
     echo "\n";
 }
 #+END_SRC
+** foreach Döngüsü
+for-each Döngüsü
+Dizi türünden değişkenlerin yada değerlerin elemanlarını taramak için kullanılır. Bu döngünün 
+her bir adımında, dizinin önceki ademda erişilen elemanını takip eden elemanına döngü kod bloğu 
+içerisinde bir değişken vasıtasıyla erişebiliriz.
+
+#+BEGIN_SRC php
+$dizi=[3,9,2,5];
+for($i=0; $i<count($dizi); $i++) {
+    echo $dizi[$i];
+    echo "\n";
+}
+
+foreach($dizi as $eleman) {
+    echo "$eleman\n";
+}
+#+END_SRC
+
+
+#+BEGIN_SRC php
+$ogranciler=[
+    123 => "Ali Veli",
+    125 => "Fatma Şahin",
+    345 => "Suat AK"
+    ];
+
+foreach($ogranciler as $numara => $adsoyad) {
+    echo "$adsoyad isimli öğrencinin numarası $numara\n";
+}
+#+END_SRC
 
 * Fonksiyonlar
 ** Fonksiyonun Tanımı
