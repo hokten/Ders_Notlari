@@ -66,8 +66,46 @@ Birden fazla operatör bir ifade içinde yer aldığında, hangi operatöre ait 
 |      |          |                   |                       |
 
 * Kontrol Yapıları
-** do-while Döngüsü
-do-while döngüsü while döngüsüne çok benzer. 
+do-while döngüsü 
+
+do {
+	deyim1;
+	deyim2;
+} while(kosul)
+
+
+Bu dögü, while ile değil do ile başlar. Dolayısıyla, programın akışında do 
+anahtar kelimesi ve dongo blogu while anahrar kelimesinden daha önce gelir. 
+Bu sebeple kışulun sınanması döngü blogu bir defa çalıştırıldıktan sonra gerçekleşir. 
+
+Örnek,
+$renk="Siyah";
+$sayi=5;
+
+while($sayi>7) {
+    $renk="Beyaz";
+}
+
+echo $renk;
+
+$renk="Siyah";
+$sayi=5;
+
+
+do {
+     $renk="Beyaz";
+} while($sayi>7);
+
+echo $renk;
+
+
+
+
+
+
+
+
+
 ** for Döngüsü
 #+BEGIN_SRC php
   for(baslangic_ifadesi; dongu_kosulu; adim_sonu_ifadesi)
