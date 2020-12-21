@@ -1,1 +1,278 @@
-dd
+* PHP İle Programlama
+:PROPERTIES:
+:NOTER_DOCUMENT: ../../Calibre Library/Peter MacIntyre/Programming PHP, 4th Edition (14)/Programming PHP, 4th Edition - Peter MacIntyre.pdf
+:END:
+** Büyük Küçük Harfe Duyarlılık
+:PROPERTIES:
+:NOTER_PAGE: (62 . 0.7670720299345182)
+:END:
+Kullanıcılar tarafından tanımlanan sınıf isimleri, yerleşik yapılar ve anahtar kelimeler(~echo~, ~while~, ~class~, ~if~ gibi) büyük-küçük harfe duyarlı değildir.
+
+Örneğin aşağıdaki üç satırın birbirinden farkı yoktur.
+#+BEGIN_SRC php
+echo("hello, world");
+ECHO("hello, world");
+EcHo("hello, world");
+#+END_SRC
+
+Fakat, değişken isimleri büyük-küçük harfe duyarlıdır. =$Ad$=, =$ad=, =$AD= değişkenleri birbirinden farklıdır ve farklı değerler alabilirler.
+** Boşluk ve Yeni Satır Karakterleri
+:PROPERTIES:
+:NOTER_PAGE: (64 . 0.5893358278765201)
+:END:
+PHP'de deyimler arasında kullanılan boşluk veya yeni satır karakterleri yorumlayıcı tarafından dikkate alınmaz. 
+** Direkt Değişmez Veriler(Literals)
+:PROPERTIES:
+:NOTER_PAGE: (71 . 0.15715622076707203)
+:END:
+Programlama dili içerisinde tek başına bir veri taşıma yeteneğine sahip yapılardır. Program içerisinde kullanılan tamsayılar ve kayan noktalı sayılar, tırnak içerisinde yazılan metin ifadeler, =true=, =false=, =null= direkt değişmez verilere örnektirler.
+#+BEGIN_EXAMPLE
+2001
+0xFE
+1.343
+"Merhaba Dünya"
+'Selam'
+true
+null
+#+END_EXAMPLE
+
+
+** xzxx
+:PROPERTIES:
+:NOTER_PAGE: 95
+:END:
+*** Expressions(İfadeler)
+Bir ya da daha fazla değişkenden, operatörden (örn. +) veya fonksiyondan meydana gelen ve programlama dili tarafından yorumlandığında bir değer döndüren ifadelerdir.
+=4=, =$a+5=, ="Yaz"= ifadelere örnektir.
+
+*** Statements(Deyimler)
+Programlama dilinin cümleleridir. Programın en küçük birimleridir. Deyimler ifadelerden oluşur.  PHP'de deyimlerin sonuna noktalı virgül(=;=) karakteri gelir.
+** Operatörler
+Operatörler, bir veya birden fazla değeri herhangi bir işleme sokan ve yeni bir değer üreten yapılardır. Operatörlerin üzerinde işlem yaptığı değerlere operand denir.
+Operatörler aslında fonksiyonların daha kullanışlı halleri olarak düşünülebilir.
+Çoğu operatör operandlarının değerini değiştirmemesine rağmen bazı operandlar operandlarının değerlerini değiştirir.
+*** Operatörlerin Öncelik Sırası
+Birden fazla operatör bir ifade içinde yer aldığında, hangi operatöre ait işlemin önce yapılacağına göre ifadenin değeri değişebilir. Dolayısıyla net değer için hangi operatörün hangisinden önce yapılacağı bilinmelidir. PHP yorumlayıcısı operatörlerden hangisinin diğerinden önce yapılacağını tespit etmek için aşağıdaki operatör öncelik tablosounu kullanır.
+
+| Sıra | Birleşim | Operatör          | Operasyon             |
+|   24 | N        | clone, new        | Yeni nesne oluşuturur |
+|   23 | L        | [                 | Dizi elemanına erişim |
+|   22 | R        | **                | Üst alma              |
+|   21 | R        | ~                 | Bitsel Hayır          |
+|   21 | R        | ++                | Bir arttırma          |
+|   21 | R        | --                | Bir azaltma           |
+|   21 | R        | (int), (bool),... | Tür dünüşümü          |
+|   21 | R        | @                 | Hataları gizleme      |
+|      |          |                   |                       |
+
+* Kontrol Yapıları
+** do-while Döngüsü
+do-while döngüsü while döngüsüne çok benzer. 
+** for Döngüsü
+#+BEGIN_SRC php
+  for(baslangic_ifadesi; dongu_kosulu; adim_sonu_ifadesi)
+    tek_deyim;
+#+END_SRC
+
+#+BEGIN_SRC php
+  for(baslangic_ifadesi; dongu_kosulu; adim_sonu_ifadesi) {
+      deyim1;
+      deyim2;
+  }
+#+END_SRC
+
+#+BEGIN_SRC php
+  for(baslangic_ifadesi; dongu_kosulu; adim_sonu_ifadesi):
+      deyim1;
+      deyim2;
+  endfor;
+#+END_SRC
+
+Döngüler, belirli bir kod bloğunu tekrar tekrar çalıştırmaya yarayan yapılardır. Bu kod bloğuna döngünün *gövdesi* denir. ~for~ döngüsünün gövdesi tek bir deyimden oluşuyorsa, bu gövdeyi küme parantezleri arasına almamız gerekmez.
+Fakat gövde birden fazla deyimden oluşuyorsa parantezler arasına yazılmalıdır.
+*** For Döngüsünün Çalışma Şekli
+1. Program ~for~ döngüsünün başladığı satıra geldiğinde, önce baslangic_ifadesi bölümünü çalıştırır. Bu çalıştırma işlemi koşulsuz ve bir kereye mahsus yapılır.
+2. dongu_kosulu mantıksal bir ifade ya da boolean türüne dönüşebilen bir ifade olmak üzere, dongu_kosulu ifadesinin =true= değer döndürüp döndürmediğine bakılır. Eğer =true= değer dönüyorsa, döngünün gövdesi baştan sona çalıştırılır.
+3. Gövdenin çalıştırılması işlemi bittikten sonra =adim_sonu_ifadesi= bölümü çalıştırılır. =adim_sonu_ifadesi= her döngü gövdesi çalıştırma işleminden sonra tekrar çalıştırılır.
+4.  Program, ~for~ satırına geri döner ve döngü koşulunun =true= değer döndürüp döndürmediğine bakılır. Dönen değer =true= ise 2. ve 3. adım tekrarlanır. =false= ise program, döngü gövdesinin bittiği satırdan sonraki satırdan itibnaren çalışmaya devam eder.
+ #+BEGIN_SRC php
+   echo "Döngüden önceki satır."
+   for ($i = 1; $i <= 3; $i++) {
+       echo $i;
+       echo "Bitti";
+   }
+echo "Döngünün bitiş satırı";
+ #+END_SRC
+
+ Program 2. satıra geldiğinde, programımız for döngüsünün başlangıç ifadesi adı verilen ve ilk noktalı virgüle kadar olan ifadeyi hiçbir koşul gözetmeksizin çalıştıracaktır. O halde, 2. satıra gelindiğinde $i=1 olacaktır.
+
+Yine 2. satırda, bu işlemini hemen sonrasında döngünün çalışıp çalışmayacağını anlamak için, birinci ; ile ikinci ; arasında kalan ifadenin sonucuna bakılır. Eğer bu sonuç true ise döngünün kod bloğu çalıştırılmaya başlanır ve program 3.satırdan(döngünün kod bloğunun başı) 4. satıra(döngünün kod bloğunun sonu) kadar çalıştırılır.
+
+satır çalıştıktan sonra döngünün kod bloğu baştan sona çalıştırılmış olur. Program tekrar for satırına geri dönüp for deyiminin ikinci ; karakterinden sonra gelen bitiş ifadesi çalıştırır.
+
+Sonrasında tekrar koşul ifadesine bakılır. Eğer koşul ifadesi doğru ise aynı işlemler tekrarlanır. Eğer koşu ifadesi false ise döngünün kod bloğunun bittiği yerden(6. satır) program devam eder.
+
+#+BEGIN_SRC php
+echo "Döngüden önceki satır.\n";
+for ($i = 1; $i <= 3; $i++) {
+    echo "Adım $i\n";
+
+}
+echo "Döngüden sonraki satır.\n";
+#+END_SRC
+
+
+#+BEGIN_SRC php
+  $yazi = "MerhabaDünya";
+  $bas=8;
+  $son=10;
+  for($i=$bas; $i<=$son; $i++) {
+      echo $yazi[$i];
+  }
+#+END_SRC
+
+#+RESULTS:
+: ün
+
+* Fonksiyonlar
+** Fonksiyonun Tanımı
+Tekrar etmesi muhtemel belirli bir görevi yerine getiren kod bloğunun isim verilmiş haline *fonksiyon* denir.
+Program içerisinde, isim verilen bu kod bloğunun görevi gerektiğinde, sadece ismi ile çağırılıp çalıştırılabilir.
+
+İsim verilen bu kod bloğu(fonksiyon), ayrıca icra edeceği görevi gerekirse özelleştiribilmek için *parametre* adı verilen değer veya değerleri kullanılabilir.
+
+Ayrıca, icra edilen görev tamamlandığında, görevin bir çözümü olarak değer veya değerler döndürebilir. Bu değere *fonksiyonun dönen değeri* denir ve bu şekildeki fonksiyonlara *değer döndüren fonksiyonlar* denir.
+
+Fonksiyonlar, matematiksel fonksiyonlar gibidir. Örneğin ~f(x)=x*x+2~ fonksiyonunu düşünürsek, burada ~x~ fonksiyonun bir parametresidir ve fonksiyon bir parametrelidir. ~x*x+2~ fonksiyonun hem icra ettiği görev hem de dönen değeridir. Örneğin ~x=3~ alınırsa, fonksiyonun dönen değeri ~11~ olur.
+** Fonksiyonların Önemi
+Aynı işlevi gören kod bloğu, işlevin gerektiği her yerde bir bütün olarak kullanılması gerekecekti. Kod bloğunuzda bir hata tespit ettiğinizde veya bir geliştirme yapmak istediğinizde, programınızın çeşitli yerlerine eklemiş olduğunuz bu kod bloklarını bulup gerekli düzeltmeleri veya iyileştirmeleri her biri için teker teker yapmanız gerekecek.
+Bu kod bloğu fonksiyon olarak tanımlanmış olsaydı, sadece fonksiyonun tanımlandığı kod bloğunda yapılan değişiklikler fonksiyonun çağırıldığı her noktaya etki eder. 
+** Fonksiyon Türleri
+*** Yerleşik(Built-In) Fonksiyonlar
+Tüm programcılar tarafından kullanılması muhtemel bazı görevler(çıktı yazdırma, karekök alma gibi), dili oluşturanlar tarafından yerleşik olarak fonksiyon haline getirilmiştir. Herhangi bir tanımlama yapılmadan, programcı bu fonksiyonları kullanabilir. Örneğin, ~echo~, ~var_dump~, ~sqrt~ yerleşik fonksiyonlardır.
+*** Kullanıcı Tanımlı Fonksiyonlar
+Progrmcı tarafından tanımlanan fonksiyonlardır.
+** Fonksiyonların Tanımlanması
+Bir PHP fonksiyonu,
+#+BEGIN_SRC php
+  function fonksiyon_ismi(parametre1, parametre2, ...) {
+      deyim_veya_deyimler;
+  }
+#+END_SRC
+
+Fonksiyon isminden sonra gelen parantezler arasına yazılan ve virgüllerle birbirinden ayrılan yapılar fonksiyonun parametreleridir. Fonksiyonun sıfır veya daha fazla parametresi olabilir.
+
+Deyim bölümünde HTML kodları da kullanılabilir. Hatta hiç PHkodu içermeyen Fonksiyonlarda oluşturulabilir. Örneğin,
+#+BEGIN_SRC php
+  <?php
+  function sutun()
+  { ?>
+      </td></td>
+  <?php } ?>
+#+END_SRC
+
+Yukarıdaki ~sutun~ fonksiyonunun hiç parametresi yoktur.
+*** Fonksiyon İsimlendirme Kuralları
+- Fonksiyon isimleri, harf, alt tire, rakam sembollerinin bir veya daha fazla kombinasyonundan oluşmalıdırlar. 
+- Fonksiyon isimleri harf veya _ ile başlamalıdır.
+- Fonksiyonları isimleri büyük-küçük harflere duyarlı değildir.
+
+  #+BEGIN_EXAMPLE
+  #+BEGIN_SRC php
+  8tas() // Yanlış fonksiyon ismi. (Rakam ile başlamış)
+  -aktif(5) // Yanlış fonksiyon ismi. (- ile başlamış)
+  bas harfi al("Ali") // Yanlış fonksiyon ismi. (Boşluk içeriyor)
+  buyut("ali") // Doğru fonksiyon ismi.
+  _aktifet($pasif) // Doğru fonksiyon ismi.
+  altiniciz("metin"); // Yandaki üç
+  AltiniCiz("metin"); // fonksiyonda aslında
+  ALTINICIZ("metin"); // aynı fonksiyondur. Aynı işleve sahiptirler.
+  #+END_SRC
+  #+END_EXAMPLE
+** Fonksiyonların Çağırılması
+Tanımlanmış fonksiyonlar, programın herhangi yerinde isimleri ile çağırılabilirler. Ayrıca, fonksiyon isminden sonra varsa, iki parantez arasına parametreleri yazılır.
+~echo("Yaz")~, ~kareal(3)~, ~tabloyap()~
+
+Fonksiyonlara verilen parametreler, fonksiyonun tanımının gerektirdiği sayıda ve sırada olmalıdır.
+#+BEGIN_SRC php
+  function cikar(eksilen, cikan) {
+      return eksilen-cikan;
+  }
+#+END_SRC
+Örneğin yukarıda tanımlanan ~cikar~ fonksiyonu, ~eksilen~ ve ~cikan~ isimlerine sahip iki parametre almaktadır. Bu durumda, ~cikan~ fonksiyonu, ~cikan(5)~ veya ~cikan(1,2,3)~ şeklinde çağırılmaya çalışıldığında hata oluşur. Çünkü ~cikar~ fonksiyonu tanumı gereği tam olarak iki parametre almak zorundadır.
+Benzer şekilde, 10 sayısından 7 sayısını çıaramak için ~cikar~ fonksiyonunu kullandığımızı düşünelim. Eğer fonksiyonui ~cikar(7,10)~ şeklide kullanırsak program hata üretmemesine rağmen, parametreleri yanlış sırada kullandığımız için hesaplama hatası ile karşı karşıya kalırız.
+*** Yerleşik Fonksiyon Örnekleri
+**** strlen($metin)
+Metin türünden bir değerin toplam karakter sayısını döndürür. ~strlen~ fonksiyonun icra ettiği görev düşünüldüğünde, parametre sayıısının 1 olduğu ve tamsayı türünden bir değer döndürdüğü kolaylıkla anlaşılabilir.
+**** sin(
+
+
+Fonksiyonlar çoğu zaman değer döndürürler ve bu tip fonksiyonlara *değer döndüren fonksiyonlar* denir. Fonksiyonun kod bloğunda değer döndürme eylemi ~return~ deyimi ile gerçekleştirilir. ~return~ deyimi, ~return ifade~ veya ~return $degisken~ şeklinde kullanılır. Fonksiyon çalışırken ~return~ deyimi ile karşılaşırsa, fonksiyonun çalışması sonlanır ve ~return~ ile dönen değer fonksiyonun çağırıldığı deyime aktarılır. Bir fonksiyon içerisinde birden fazla ~return~ deyimi kullanılabilir.
+
+  #+BEGIN_SRC php
+    function birlestir($sol, $sag) {
+        $bilesik = $sol . $sag;
+        return $bilesik;
+    }
+  #+END_SRC
+
+
+Yukarıdaki fonksiyon, ~$sol~ ve ~$sag~ adlı iki parametre alır ve bunların birleşmesi ile elde ettiği metni döndürür. ~return~ deyiminden sonra ifadelerde kullanılabileceği için aynı fonksiyon daha sade,
+
+  #+BEGIN_SRC php
+    function birlestir($sol, $sag) {
+        return $sol . $sag;
+    }
+  #+END_SRC
+
+şeklinde tanımlanabilir.
+Tanımlanan fonksiyonlar, programın herhangi bir yerinde kullanılabilir.
+
+#+BEGIN_SRC php
+  echo birlestir("Hasan", "ÖKTEN");
+
+  function birlestir($sol, $sag) {
+      return $sol . $sag;
+  }
+  #+END_SRC
+
+  #+RESULTS:
+  : HasanÖKTEN
+** Değişken Kapsamı
+Eğer programınızda hiçbir fonksiyon kullanmıyorsanız, bir değişkeni oluşturduktan satırdan sonra herhangi bir yerde bu değişkeni kullanabilirsiniz.
+Fakat fonksiyonlar içinde tanımlananan değişkenler, özel teknikler kullanılmadıysa sadece fonksiyon içinde geçerli olurlar.
+Benzer şekilde genel olarak, programın ana kod parçasında veya bir başka fonksiyonda tanımlanan değişkenler, diğer fonksiyon içerisinde kullanılamazlar.
+Fonksiyon dışında kullanılamazlar. Bir değişkenin geçerli olduğu(kullanılabildiği) kod parçasına, o değişkenin *kapsamı* denir.
+
+#+BEGIN_SRC php
+  $a = 3;
+  function foo()
+  {
+      $a += 2;
+  }
+  foo();
+  echo $a;
+#+END_SRC
+
+#+RESULTS:
+: 3
+Yukarıdaki programın çıktısı 3 olacaktır. Baştaki ~$a~ değişkeni ana program bloğunda tanımlanmıştır. ~foo~ fonksiyonu içinde ~$a~ değişkeninin değerini kullanmak mümkündür fakat bu ancak ~$a~ değişkenin ~foo~ fonksiyonuna parametre olarak verilmesiyle olur. Bu durumda bile aslında ~foo~ fonksiyonuna ~$a~ değişkeninin kendisini değil o anki değerinin bir kopyasını gönderöiş oluyoruz. Benzer şekilde, ~foo~ fonksiyonun içindeki ~$a~ değişkeni de ana kod bloğunda kullanılamaz. Ana kod parçasındaki ~$a~ değişkeni ile ~foo~ fonksiyonu iççindeki ~$a~ değişkeninin birbirleriyle hiçbir ilgisi yoktur. Bunlar kapsamları farklı olan iki farklı değişkendirler.
+Fonksiyon içinde tanımlanan değişkenlerin kapsamları en fazla fonksiyonun kod bloğu kadar olur. Bu kapsama *fonksiyon seviyesi kapsam* denir. Örneğin ~foo~ fonksiyonu içinde tanımlanan ~$a~ değişkenini ömrü fonksiyon kod bloğunun kapama parantezine kadardır.
+Fonksiyonların ve sınıfların dışında tanımlanan değişkenlerin kapsamına *global seviye kapsam* denir.
+*Super global seviye kapsama* sahip değişkenler ise her iki kapsam içinde kullanılabilirler.
+
+** Global Değişkenler
+Global kapsamda yer alan bir değişkeni bir fonksiyon içinde kullanmak için ~global~ anahtar deyimi kullanılır. Bir önceki örneği bu şekilde düzenlersek, ana kod parçasında ve ~foo~ fonksiyonu içinde kullandığımız ~$a~ değişkenleri artık aynı değişken olacaktır. 
+
+#+BEGIN_SRC php
+  $a = 3;
+  function foo()
+  {
+      global $a;
+      $a += 2;
+  }
+  foo();
+  echo $a;
+#+END_SRC
+
+
