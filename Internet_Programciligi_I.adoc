@@ -1652,3 +1652,4 @@ else:
     echo "Tersi";
 endif;
 ----
+deneme
