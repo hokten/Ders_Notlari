@@ -859,3 +859,4 @@ http://www.kazimcesur.com/delegates-anonymous-methods-lambda-expressions-delegel
 ==== Delegate Kavramı
 Delege basit anlamda düşünürsek aracılık yapandır. Burada ise delege aracılık yapan metod olarak karşımıza çıkar. 
 Yani başka bir metodun tetiklenmesine yardım eden metottur. Bu sayede metodların tetiklenmesi dinamik olarak gerçekleşir. 
+dddd
