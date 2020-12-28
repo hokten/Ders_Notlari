@@ -132,7 +132,6 @@ echo "Döngüden sonraki satır.\n";
 #+RESULTS:
 : ün
 
-
 ** foreach Döngüsü
 Dizi türünden değişkenlerin yada değerlerin elemanlarını taramak için kullanılır. Bu döngünün 
 her bir adımında, dizinin önceki adımda erişilen elemanını takip eden elemanına döngü kod bloğu 
@@ -221,7 +220,16 @@ foreach($ogrenciler as $numara => $adsoyad) {
 : Fatma Şahin isimli öğrencinin numarası 125
 : Suat AK isimli öğrencinin numarası 345
 ** try-catch Yapısı
-try-catch, hata ve istisna tespiti için kullanılan bir yapıdır.
+try-catch, hata ve istisna tespiti için kullanılan bir yapıdır. try-catch yapısı,
+#+BEGIN_SRC php
+    try {
+      // Hata yada istisna üretebilecek kod
+    }
+    catch (Exception $error) {
+      // Hata durumunda yapılacaklar
+    }
+#+END_SRC
+
 #+BEGIN_SRC php
   try {
       $dbhandle = new PDO('mysql:host=localhost; dbname=library', $username, $pwd);
@@ -236,7 +244,6 @@ echo "devam";
 #+END_SRC
 
 Program try bloğu içerisindeki kodları çalıştırmayı dener. Eğer bu çalıştırma işlemi sorunsuz olarak gerçekleşirse, program direkt olarak ~echo "devam"~ satırına atlar ve çalışmaya devam eder. Fakat, try bloğu içerisinde bir sorunla karşılaşılırsa catch bloğu işletilir. catch bloğu, parametre olarak Exception nesnesi alır ve bu nesne try bloğunda oluşan sorunu tanımlayabilmek için bize yardımcı olur.
-
 ** exit Deyimi
 ~exit~ deyimi, programın çalışmasını sonlandırır. 
 ~exit~ deyimi, ~exit 3~ şeklinde parametre alır. Bu parametre, programın doğru çalışıp çalışmadığı hakkında bize bilgi verir.
@@ -292,7 +299,7 @@ Program try bloğu içerisindeki kodları çalıştırmayı dener. Eğer bu çal
 34
 #+end_example
 ** include Deyimi
-Harici dosyalar ~include~ deyimi ile çalışılan koda eklenebilir. Bu dosyalar, çalıştırılabilir dosyalar ise çalıştırma işlemi de yapılacaktır.
+Harici dosyalar ~include~ deyimi ile herhangi bir dosyaya eklenebilir. Bu eklenen kodlar, eklendiği yerde çalıştırılır. Dolayısıyla eklenenen bu dosyadaki değişkenleri ve fonksiyonları eklediğimiz dosya içerisinde kullanabiliriz.
 ~include~ deyimi aşağıdaki şekilde kullanılır.
 #+BEGIN_SRC  php
   include "klasor1/dosya1.php";
@@ -302,7 +309,10 @@ Harici dosyalar ~include~ deyimi ile çalışılan koda eklenebilir. Bu dosyalar
   include "http://www.abc.com/xyz.php"
 #+END_SRC
 
-~include~ deyiminden sonra gelen ve koda eklenecek olan dosyayı gösteren parametre, bir dosya yolu olmak zorundadır. Bu dosya yolu, PHP'nin ayarlarında yer ala ~include_path~ klasörü içinde aranır. İlgili dosyayı ~include_path~ ayarında belirtilen klasörlerde bulamazsa, ~include~ deyiminin kullanıldığı PHP dosyasının bulunduğu klasöre bakılır.
+~include~ deyiminden sonra gelen ve koda eklenecek olan dosyayı gösteren parametre, bir dosya yolu olmak zorundadır. Bu dosya yolu, PHP'nin ayarlarında yer alan, ~include_path~ klasörü içinde aranır. İlgili dosyayı ~include_path~ ayarında belirtilen klasörlerde bulamazsa, ~include~ deyiminin kullanıldığı PHP dosyasının bulunduğu klasöre bakılır. Eğer, ilgili dosya belirtilen konumlarda bulunamazsa, PHP bu dosyanın bulunamadığına dair bir uyarı(Warning) mesajı verecektir. Fakat, ana kod programımızın çalışması kesintiye uğramayacak ve programımız ~include~ deyiminden sonraki satırdan çalışmaya devam edecektir.
+#+BEGIN_VERSE
+PHP'den, *Warning* tipinde bir bildirim aldığımızda, programın çalışması kesintiye uğramadan devam edecektir.
+#+END_VERSE
 
 Mesela, PHP ayarlarında, ~include_path=/home/php/~ olsun.
 Ben, ~/var/www/localhost/htdocs/~ klasörü içerisindeki ~deneme.php~ dosyasını düzenliyor olayım.
@@ -310,6 +320,32 @@ deneme.php
 #+BEGIN_SRC php
 include "abc.php"
  #+END_SRC
+
+** require Deyimi
+~require~ deyimi, ~include~ deyimi ile aynı işleve sahiptir. Kullanım şekli ve amacı ~include~ ile aynıdır. İkisi arasındaki tek fark, ~require~ deyimi, ~require~ ile eklenecek olan dosyayı bulamaması durumunda, bir *Fatal Error* üretecektir. PHP, *Fatal Error* bildirimi aldığında, programın çalışmasına o noktada son verecektir. Dolayısıyla, var olmayan bir dosyayı ~include~ ile programımıza dahil ettiğimizde bir *Warning* bildirimi alırız ve programımız çalışmaya devam eder. Aynı şekilde, var olmayan bir dosyayı ~require~ ile programımıza dahil ettiğimizde bir *Fatal Error* bildirimi alırız ve program o noktada sonlanır ve çalışmaya devam etmez.
+** return Deyimi
+~return~ deyiminin fonksiyonlar içinde kullanımını fonksiyonlar konusunda işleyeceğiz. ~return~ deyimi ana program kodu içerisinde kullanıldığında programı sonlandırır.
+
+#+BEGIN_SRC php
+  $deneme="abc";
+  if($deneme=="abc") {
+      for($i=0; $i<=5; $i++) {
+          if($i==3) {
+              return;
+          }
+          echo $i."- Döngü içi\n";
+      }
+      echo "Döngü dışı";
+  }
+  echo "İf dışı";
+#+END_SRC
+
+#+RESULTS:
+: 0- Döngü içi
+: 1- Döngü içi
+: 2- Döngü içi
+
+Yukarıdaki programda görüldüğü gibi, ~return~ deyimi ~break~ deyiminden farklı olarak bir bloğun çalışmasını değil tüm programın çalışmasını sonlandırır. 
 * Fonksiyonlar
 ** Fonksiyonun Tanımı
 Tekrar etmesi muhtemel belirli bir görevi yerine getiren kod bloğunun isim verilmiş haline *fonksiyon* denir.
