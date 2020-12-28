@@ -559,3 +559,4 @@ $sayi=15;
   echo "\n";
   echo deneme();
 #+END_SRC
+kk
