@@ -35,3 +35,56 @@ Rule Definition dialog penceresinin Box kategorisi altından
 *Sol Ok* tuşuna basılır.
 . *Konumlandırılabilir Kutu* eklemek için, * Insert &#9654 Layout Objects -> AP Div 
 menü yolu izlenir.
+
+
+Web sitesi oluşturmanın temelleri
+
+Bir web sitesi oluşrumaan önce aşağıdaki sorulara cevap vermek gerekir.
+
+1. Web sitesinin amacı nedir?
+
+2. Web sitesinin hedef kitlesi kimlerdir?
+
+3. Ziyaretçiler web sitesini nasıl ziyaret edecekler?
+
+
+
+Web Sitesinin Amacı.
+
+Bir e-ticaret veya ürün destek sitesi mi oluşturacağız?
+
+Bir blog veya günlük sitesi mi?
+
+Servis sağlayan bir hizmet sitesi mi?
+
+Ziyaretçiler, web sitesini gezinirken kredi kartına ihitiyaç duyacaklar mı?
+
+Web sitemiz için veritabanına ihtiyaç var mı?
+
+Benzer sorulara cevap verdiğimizde, web sitemizin içeriğinin nasıl olacağını ve web sitesinin oluştururken hangi teknolojileri kullanıcığımız öngürmüş oluruz. 
+
+
+
+* Web sitesinin Hedef Kitlesi
+
+Web sitenizi zayeret edecek kullanıcılar bir profil oluşturuyorlar mı?
+
+Örneğin, genellikle çocuklar tarafından ilgi duyulan içeriklere mi sahipsiniz?
+
+Ya da sadece yetişkinlerin anlayabileceği konular mı mevcut?
+
+Veya sadece kadınlara yada erkeklere de hitap eden bir web sayfası mı?
+
+Örneğin sadece belli bir hobisi olan ziyaretçilere mi sahipsiniz?
+
+Örneğin, çocuklara hitap eden bir içeriğie sahipse, sitemizi kolay kullanılabilir, renkli ve animasyonlu olması yararlı olacaktır. 
+
+Benzer tarz siteler mevcutsa, bu sitelerin tasarım ve içerikleri incelenebilir. 
+
+* Nereden gelecekler?
+
+Sitenizi nasıl ziyaret edecekler? Mesela, telefondan, tabletten ya da bilgisayardan mı? 
+
+Ziyaretçilerin ortalama internet hızları ne olacak?
+
+Hangi web tarayıcılarını kullanacakalar?
