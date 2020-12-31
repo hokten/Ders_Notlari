@@ -527,6 +527,8 @@ Fakat fonksiyonlar içinde tanımlananan değişkenler, özel teknikler kullanı
 Benzer şekilde genel olarak, programın ana kod parçasında veya bir başka fonksiyonda tanımlanan değişkenler, diğer fonksiyon içerisinde kullanılamazlar.
 Bir değişkenin geçerli olduğu(kullanılabildiği) kod parçasına, o değişkenin *kapsamı* denir.
 
+#+CAPTION: HelloWorldCaption
+#+srcname: HelloWorldSrcName
 #+BEGIN_SRC php
   $a = 3;
 
