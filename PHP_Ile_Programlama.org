@@ -64,7 +64,6 @@ Birden fazla operatör bir ifade içinde yer aldığında, hangi operatöre ait 
 |   21 | R        | (int), (bool),... | Tür dünüşümü          |
 |   21 | R        | @                 | Hataları gizleme      |
 |      |          |                   |                       |
-
 * Kontrol Yapıları
 ** for Döngüsü
 #+BEGIN_SRC php
@@ -560,3 +559,6 @@ $sayi=15;
   echo deneme();
 #+END_SRC
 xxkkdd
+
+ddd
+
