@@ -531,7 +531,7 @@ Normalde, bir fonksiyon her çağırıldığında fonksiyonun içindeki değişk
 
 Örnekte görüldüğü gibi, =$b= değişkeninin kapsamı =deneme= fonksiyonunu gövdesi olduğundan dolayı, değişken her fonksiyon çağırılışında tekrardan oluşturuluyor. =deneme= fonksiyonu ilk defa çağırıldığında =$b= en son olarak =3= değerini aldı ve fonksiyon görevini bitirdiğinde =$b= değişkeni bellekten silindi.  =deneme= fonksiyonu tekrar çağırıldığında, =$b= değişkeni yeniden oluşturuldu ve varsayılan olarak =0= değerini aldı.
 Bir değişkeni; fonksiyonun her çağırılışında, bu değişkenin fonksiyonun önceki çağırılışlarında aldığı değerleri kaybetmeden kullanmak istiyorsak ~static~ anahtar kelimesini kullanmalıyız. Aşağıdaki örnekte bir fonksiyonun kaç defa çağırıldığını statik değişkenler yardımıyla bulacağız.
-#+BEGIN_SRC php
+#+BEGIN_SRC php :exports both
   function deneme()
   {
       static $cagirilma_sayisi=0;
