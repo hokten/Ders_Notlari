@@ -432,6 +432,7 @@ Tanımlanan fonksiyonlar, programın herhangi bir yerinde kullanılabilir.
   ALTINICIZ("metin"); // aynı fonksiyondur. Aynı işleve sahiptirler.
   #+END_SRC
   #+END_EXAMPLE
+  
 ** Fonksiyonların Çağırılması
 Tanımlanmış fonksiyonlar, programın herhangi yerinde isimleri ile çağırılabilirler. Ayrıca, fonksiyon isminden sonra varsa, iki parantez arasına parametreleri yazılır.
 ~echo("Yaz")~, ~kareal(3)~, ~tabloyap()~
@@ -444,6 +445,7 @@ Fonksiyonlara verilen parametreler, fonksiyonun tanımının gerektirdiği sayı
 #+END_SRC
 Örneğin yukarıda tanımlanan ~cikar~ fonksiyonu, ~eksilen~ ve ~cikan~ isimlerine sahip iki parametre almaktadır. Bu durumda, ~cikan~ fonksiyonu, ~cikan(5)~ veya ~cikan(1,2,3)~ şeklinde çağırılmaya çalışıldığında hata oluşur. Çünkü ~cikar~ fonksiyonu tanumı gereği tam olarak iki parametre almak zorundadır.
 Benzer şekilde, 10 sayısından 7 sayısını çıaramak için ~cikar~ fonksiyonunu kullandığımızı düşünelim. Eğer fonksiyonui ~cikar(7,10)~ şeklide kullanırsak program hata üretmemesine rağmen, parametreleri yanlış sırada kullandığımız için hesaplama hatası ile karşı karşıya kalırız.
+
 *** Yerleşik Fonksiyon Örnekleri
 **** strlen
 Metin türünden bir değerin toplam karakter sayısını döndürür. ~strlen~ fonksiyonun icra ettiği görev düşünüldüğünde, parametre sayıısının 1 olduğu ve tamsayı türünden bir değer döndürdüğü kolaylıkla anlaşılabilir.
@@ -487,6 +489,7 @@ echo $b;
 
 #+RESULTS:
 : 3
+
 Yukarıdaki programın çıktısı 3 olacaktır. Baştaki ~$a~ değişkeni ana program bloğunda tanımlanmıştır. ~foo~ fonksiyonu içinde ~$a~ değişkeninin değerini kullanmak mümkündür fakat bu ancak ~$a~ değişkenin ~foo~ fonksiyonuna parametre olarak verilmesiyle olur. Bu durumda bile aslında ~foo~ fonksiyonuna ~$a~ değişkeninin kendisini değil o anki değerinin bir kopyasını gönderöiş oluyoruz. Benzer şekilde, ~foo~ fonksiyonun içindeki ~$a~ değişkeni de ana kod bloğunda kullanılamaz. Ana kod parçasındaki ~$a~ değişkeni ile ~foo~ fonksiyonu iççindeki ~$a~ değişkeninin birbirleriyle hiçbir ilgisi yoktur. Bunlar kapsamları farklı olan iki farklı değişkendirler.
 Fonksiyon içinde tanımlanan değişkenlerin kapsamları en fazla fonksiyonun kod bloğu kadar olur. Bu kapsama *fonksiyon seviyesi kapsam* denir. Örneğin ~foo~ fonksiyonu içinde tanımlanan ~$a~ değişkenini ömrü fonksiyon kod bloğunun kapama parantezine kadardır.
 Fonksiyonların ve sınıfların dışında tanımlanan değişkenlerin kapsamına *global seviye kapsam* denir.
@@ -508,6 +511,7 @@ Global kapsamda yer alan bir değişkeni bir fonksiyon içinde kullanmak için ~
 
 #+RESULTS:
 : 5
+
 ** Static Değişkenler
 Normalde, bir fonksiyon her çağırıldığında fonksiyonun içindeki değişkenler tekrardan tanımlanır. Yani, değerlerini saklamazlar. Aşağıdaki örneği inceleyelim.
 #+BEGIN_SRC php
@@ -524,6 +528,7 @@ Normalde, bir fonksiyon her çağırıldığında fonksiyonun içindeki değişk
 #+RESULTS:
 : 3
 : 3
+
 Örnekte görüldüğü gibi, =$b= değişkeninin kapsamı =deneme= fonksiyonunu gövdesi olduğundan dolayı, değişken her fonksiyon çağırılışında tekrardan oluşturuluyor. =deneme= fonksiyonu ilk defa çağırıldığında =$b= en son olarak =3= değerini aldı ve fonksiyon görevini bitirdiğinde =$b= değişkeni bellekten silindi.  =deneme= fonksiyonu tekrar çağırıldığında, =$b= değişkeni yeniden oluşturuldu ve varsayılan olarak =0= değerini aldı.
 Bir değişkeni; fonksiyonun her çağırılışında, bu değişkenin fonksiyonun önceki çağırılışlarında aldığı değerleri kaybetmeden kullanmak istiyorsak ~static~ anahtar kelimesini kullanmalıyız. Aşağıdaki örnekte bir fonksiyonun kaç defa çağırıldığını statik değişkenler yardımıyla bulacağız.
 #+BEGIN_SRC php
