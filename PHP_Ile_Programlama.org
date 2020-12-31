@@ -1,10 +1,53 @@
+* Main ToC: Itself excluded
+:PROPERTIES:
+:TOC:      :include all :ignore this
+:END:
+:CONTENTS:
+- [[#php-i̇le-programlama][PHP İle Programlama]]
+  - [[#büyük-küçük-harfe-duyarlılık][Büyük Küçük Harfe Duyarlılık]]
+  - [[#boşluk-ve-yeni-satır-karakterleri][Boşluk ve Yeni Satır Karakterleri]]
+  - [[#direkt-değişmez-verilerliterals][Direkt Değişmez Veriler(Literals)]]
+  - [[#xzxx][xzxx]]
+    - [[#expressionsi̇fadeler][Expressions(İfadeler)]]
+    - [[#statementsdeyimler][Statements(Deyimler)]]
+  - [[#operatörler][Operatörler]]
+    - [[#operatörlerin-öncelik-sırası][Operatörlerin Öncelik Sırası]]
+- [[#kontrol-yapıları][Kontrol Yapıları]]
+  - [[#for-döngüsü][for Döngüsü]]
+    - [[#for-döngüsünün-çalışma-şekli][For Döngüsünün Çalışma Şekli]]
+  - [[#foreach-döngüsü][foreach Döngüsü]]
+  - [[#try-catch-yapısı][try-catch Yapısı]]
+  - [[#exit-deyimi][exit Deyimi]]
+  - [[#include-deyimi][include Deyimi]]
+  - [[#require-deyimi][require Deyimi]]
+  - [[#return-deyimi][return Deyimi]]
+- [[#fonksiyonlar][Fonksiyonlar]]
+  - [[#fonksiyonun-tanımı][Fonksiyonun Tanımı]]
+  - [[#fonksiyonların-önemi][Fonksiyonların Önemi]]
+  - [[#fonksiyon-türleri][Fonksiyon Türleri]]
+    - [[#yerleşikbuilt-in-fonksiyonlar][Yerleşik(Built-In) Fonksiyonlar]]
+    - [[#kullanıcı-tanımlı-fonksiyonlar][Kullanıcı Tanımlı Fonksiyonlar]]
+  - [[#fonksiyonların-tanımlanması][Fonksiyonların Tanımlanması]]
+    - [[#fonksiyon-i̇simlendirme-kuralları][Fonksiyon İsimlendirme Kuralları]]
+  - [[#fonksiyonların-çağırılması][Fonksiyonların Çağırılması]]
+    - [[#yerleşik-fonksiyon-örnekleri][Yerleşik Fonksiyon Örnekleri]]
+      - [[#strlen][strlen]]
+      - [[#sin][sin]]
+      - [[#substr][substr]]
+  - [[#değişken-kapsamı][Değişken Kapsamı]]
+  - [[#global-değişkenler][Global Değişkenler]]
+  - [[#static-değişkenler][Static Değişkenler]]
+  - [[#referans-değişkenler][Referans Değişkenler]]
+:END:
 * PHP İle Programlama
 :PROPERTIES:
+:TOC:    :include siblings
 :NOTER_DOCUMENT: ../../Calibre Library/Peter MacIntyre/Programming PHP, 4th Edition (14)/Programming PHP, 4th Edition - Peter MacIntyre.pdf
 :END:
 ** Büyük Küçük Harfe Duyarlılık
 :PROPERTIES:
 :NOTER_PAGE: (62 . 0.7670720299345182)
+:TOC:      :depth 0
 :END:
 Kullanıcılar tarafından tanımlanan sınıf isimleri, yerleşik yapılar ve anahtar kelimeler(~echo~, ~while~, ~class~, ~if~ gibi) büyük-küçük harfe duyarlı değildir.
 
@@ -300,6 +343,7 @@ Program try bloğu içerisindeki kodları çalıştırmayı dener. Eğer bu çal
 ** include Deyimi
 Harici dosyalar ~include~ deyimi ile herhangi bir dosyaya eklenebilir. Bu eklenen kodlar, eklendiği yerde çalıştırılır. Dolayısıyla eklenenen bu dosyadaki değişkenleri ve fonksiyonları eklediğimiz dosya içerisinde kullanabiliriz.
 ~include~ deyimi aşağıdaki şekilde kullanılır.
+
 #+BEGIN_SRC  php
   include "klasor1/dosya1.php";
   include "dosya.php";
@@ -308,24 +352,28 @@ Harici dosyalar ~include~ deyimi ile herhangi bir dosyaya eklenebilir. Bu eklene
   include "http://www.abc.com/xyz.php"
 #+END_SRC
 
-~include~ deyiminden sonra gelen ve koda eklenecek olan dosyayı gösteren parametre, bir dosya yolu olmak zorundadır. Bu dosya yolu, PHP'nin ayarlarında yer alan, ~include_path~ klasörü içinde aranır. İlgili dosyayı ~include_path~ ayarında belirtilen klasörlerde bulamazsa, ~include~ deyiminin kullanıldığı PHP dosyasının bulunduğu klasöre bakılır. Eğer, ilgili dosya belirtilen konumlarda bulunamazsa, PHP bu dosyanın bulunamadığına dair bir uyarı(Warning) mesajı verecektir. Fakat, ana kod programımızın çalışması kesintiye uğramayacak ve programımız ~include~ deyiminden sonraki satırdan çalışmaya devam edecektir.
+~include~ deyiminden sonra gelen ve koda eklenecek olan dosyayı gösteren parametre, bir dosya yolu olmak zorundadır. Bu dosya yolu, PHP'nin ayarlarında yer alan, ~include_path~ klasörü içinde aranır. İlgili dosya, ~include_path~ ayarında belirtilen klasörlerde bulanamazsa, ~include~ deyiminin kullanıldığı PHP dosyasının bulunduğu klasöre bakılır. Eğer, ilgili dosya belirtilen konumlarda bulunamazsa, PHP bu dosyanın bulunamadığına dair bir uyarı(Warning) mesajı verecektir. Fakat, ana kod programımızın çalışması kesintiye uğramayacak ve programımız ~include~ deyiminden sonraki satırdan çalışmaya devam edecektir.
+
 #+BEGIN_VERSE
 PHP'den, *Warning* tipinde bir bildirim aldığımızda, programın çalışması kesintiye uğramadan devam edecektir.
 #+END_VERSE
 
 Mesela, PHP ayarlarında, ~include_path=/home/php/~ olsun.
 Ben, ~/var/www/localhost/htdocs/~ klasörü içerisindeki ~deneme.php~ dosyasını düzenliyor olayım.
+
 deneme.php
 #+BEGIN_SRC php
 include "abc.php"
  #+END_SRC
 
 ** require Deyimi
-~require~ deyimi, ~include~ deyimi ile aynı işleve sahiptir. Kullanım şekli ve amacı ~include~ ile aynıdır. İkisi arasındaki tek fark, ~require~ deyimi, ~require~ ile eklenecek olan dosyayı bulamaması durumunda, bir *Fatal Error* üretecektir. PHP, *Fatal Error* bildirimi aldığında, programın çalışmasına o noktada son verecektir. Dolayısıyla, var olmayan bir dosyayı ~include~ ile programımıza dahil ettiğimizde bir *Warning* bildirimi alırız ve programımız çalışmaya devam eder. Aynı şekilde, var olmayan bir dosyayı ~require~ ile programımıza dahil ettiğimizde bir *Fatal Error* bildirimi alırız ve program o noktada sonlanır ve çalışmaya devam etmez.
-** return Deyimi
-~return~ deyiminin fonksiyonlar içinde kullanımını fonksiyonlar konusunda işleyeceğiz. ~return~ deyimi ana program kodu içerisinde kullanıldığında programı sonlandırır.
+~require~ deyimi, ~include~ deyimi ile aynı işleve sahiptir. Kullanım şekli ve amacı ~include~ ile aynıdır. İkisi arasındaki tek fark, ~require~ deyimi, ~require~ ile eklenecek olan dosyayı bulamaması durumunda, bir *Fatal Error* üretecektir. PHP, *Fatal Error* bildirimi aldığında, programın çalışmasına o noktada son verecektir. Dolayısıyla, var olmayan bir dosyayı ~include~ ile programımıza dahil ettiğimizde, bir *Warning* bildirimi alırız ve programımız çalışmaya devam eder. Aynı şekilde, var olmayan bir dosyayı ~require~ ile programımıza dahil ettiğimizde bir *Fatal Error* bildirimi alırız ve program o noktada sonlanır, çalışmaya devam etmez.
 
-#+BEGIN_SRC php
+** return Deyimi
+~return~ deyiminin fonksiyonlar içinde kullanımını fonksiyonlar konusunda işleyeceğiz. ~return~ deyimi ana program kodu içerisinde kullanıldığında programı sonlandırır. Bu bağlamda düşünüldüğünde ~exit~ ile aynı işleve sahip olacaktır. 
+
+#+NAME: ~return~ deyiminin fonksiyon gövdesi dışında kullanılması.
+#+BEGIN_SRC php :exports both
   $deneme="abc";
   if($deneme=="abc") {
       for($i=0; $i<=5; $i++) {
@@ -339,12 +387,16 @@ include "abc.php"
   echo "İf dışı";
 #+END_SRC
 
-#+RESULTS:
+#+RESULTS: ~return~ deyiminin fonksiyon gövdesi dışında kullanılması.
 : 0- Döngü içi
 : 1- Döngü içi
 : 2- Döngü içi
 
-Yukarıdaki programda görüldüğü gibi, ~return~ deyimi ~break~ deyiminden farklı olarak bir bloğun çalışmasını değil tüm programın çalışmasını sonlandırır. 
+Yukarıdaki programda görüldüğü gibi, ~return~ deyimi ~break~ deyiminden farklı olarak bir bloğun çalışmasını değil tüm programın çalışmasını sonlandırır.
+
+~return~ anahtar kelimesi, ~include~ ve ~require~ içinde de kullanılabilir. ~include~ deyiminin parametresi olan dosyaya *dahil edilen dosya*, ~include~ deyiminin kullanıldığı dosyaya da *ana kod dosyası* şeklinde tanımlayalım. ~return~ deyimi dahil edilen dosya içerisinde direkt kullanıldıysa (yani bir fonksiyon gövdesinde kullanılmadıysa), kullanıldığı satırda dahil edilen dosyanın çalışmasını sonlandırır. Program, ana kod dosyasının, ilgili ~include~ deyiminden sonraki satırdan itibaren çalışmaya devam edecektir. Diğer bir deyişle, ~return~ deyiminin kullanıldığı satırdan itibaren programın çalışmasını sırasını ana kod dosyasına devreder.
+Aynı durumlar ~require~ içinde geçerlidir.
+
 * Fonksiyonlar
 ** Fonksiyonun Tanımı
 Tekrar etmesi muhtemel belirli bir görevi yerine getiren kod bloğunun isim verilmiş haline *fonksiyon* denir.
