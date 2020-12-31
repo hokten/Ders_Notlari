@@ -402,7 +402,7 @@ Aynı durumlar ~require~ içinde geçerlidir.
 Tekrar etmesi muhtemel belirli bir görevi yerine getiren kod bloğunun isim verilmiş haline *fonksiyon* denir.
 Program içerisinde, isim verilen bu kod bloğunun görevi gerektiğinde, sadece ismi ile çağırılıp çalıştırılabilir.
 
-İsim verilen bu kod bloğu(fonksiyon), ayrıca icra edeceği görevi gerekirse özelleştiribilmek için *parametre* adı verilen değer veya değerleri kullanılabilir.
+İsim verilen bu kod bloğu(fonksiyon), ayrıca icra edeceği görevi özelleştirebilmek için *parametre* adı verilen değer veya değerleri kullanılabilir.
 
 Ayrıca, icra edilen görev tamamlandığında, görevin bir çözümü olarak değer veya değerler döndürebilir. Bu değere *fonksiyonun dönen değeri* denir ve bu şekildeki fonksiyonlara *değer döndüren fonksiyonlar* denir.
 
@@ -414,9 +414,10 @@ Bu kod bloğu fonksiyon olarak tanımlanmış olsaydı, sadece fonksiyonun tanı
 *** Yerleşik(Built-In) Fonksiyonlar
 Tüm programcılar tarafından kullanılması muhtemel bazı görevler(çıktı yazdırma, karekök alma gibi), dili oluşturanlar tarafından yerleşik olarak fonksiyon haline getirilmiştir. Herhangi bir tanımlama yapılmadan, programcı bu fonksiyonları kullanabilir. Örneğin, ~echo~, ~var_dump~, ~sqrt~ yerleşik fonksiyonlardır.
 *** Kullanıcı Tanımlı Fonksiyonlar
-Progrmcı tarafından tanımlanan fonksiyonlardır.
+Programcı tarafından tanımlanan fonksiyonlardır. 
 ** Fonksiyonların Tanımlanması
 Bir PHP fonksiyonu,
+
 #+BEGIN_SRC php
   function fonksiyon_ismi(parametre1, parametre2, ...) {
       deyim_veya_deyimler;
@@ -425,7 +426,7 @@ Bir PHP fonksiyonu,
 
 Fonksiyon isminden sonra gelen parantezler arasına yazılan ve virgüllerle birbirinden ayrılan yapılar fonksiyonun parametreleridir. Fonksiyonun sıfır veya daha fazla parametresi olabilir.
 
-Deyim bölümünde HTML kodları da kullanılabilir. Hatta hiç PHkodu içermeyen Fonksiyonlarda oluşturulabilir. Örneğin,
+Deyim bölümünde HTML kodları da kullanılabilir. Hatta hiç PHP kodu içermeyen Fonksiyonlarda oluşturulabilir. Örneğin,
 #+BEGIN_SRC php
   <?php
   function sutun()
@@ -435,7 +436,7 @@ Deyim bölümünde HTML kodları da kullanılabilir. Hatta hiç PHkodu içermeye
 #+END_SRC
 
 Yukarıdaki ~sutun~ fonksiyonunun hiç parametresi yoktur.
-Fonksiyonlar çoğu zaman değer döndürürler ve bu tip fonksiyonlara *değer döndüren fonksiyonlar* denir. Fonksiyonun kod bloğunda değer döndürme eylemi ~return~ deyimi ile gerçekleştirilir. ~return~ deyimi, ~return ifade~ veya ~return $degisken~ şeklinde kullanılır. Fonksiyon çalışırken ~return~ deyimi ile karşılaşırsa, fonksiyonun çalışması sonlanır ve ~return~ ile dönen değer fonksiyonun çağırıldığı deyime aktarılır. Bir fonksiyon içerisinde birden fazla ~return~ deyimi kullanılabilir.
+Fonksiyonlar çoğu zaman değer döndürürler. Fonksiyonun kod bloğunda değer döndürme eylemi ~return~ deyimi ile gerçekleştirilir. ~return~ deyimi, ~return ifade~ veya ~return $degisken~ şeklinde kullanılır. Fonksiyon çalışırken ~return~ deyimi ile karşılaşırsa, fonksiyonun çalışması sonlanır ve ~return~ ile dönen değer fonksiyonun çağırıldığı deyime aktarılır. Bir fonksiyon içerisinde birden fazla ~return~ deyimi kullanılabilir.
 
   #+BEGIN_SRC php
     function birlestir($sol, $sag) {
@@ -486,7 +487,7 @@ Tanımlanan fonksiyonlar, programın herhangi bir yerinde kullanılabilir.
   #+END_EXAMPLE
   
 ** Fonksiyonların Çağırılması
-Tanımlanmış fonksiyonlar, programın herhangi yerinde isimleri ile çağırılabilirler. Ayrıca, fonksiyon isminden sonra varsa, iki parantez arasına parametreleri yazılır.
+Tanımlanmış fonksiyonlar, programın herhangi bir yerinde isimleri ile çağırılabilirler. Ayrıca, fonksiyon isminden sonra varsa, iki parantez arasına parametreleri yazılır.
 ~echo("Yaz")~, ~kareal(3)~, ~tabloyap()~
 
 Fonksiyonlara verilen parametreler, fonksiyonun tanımının gerektirdiği sayıda ve sırada olmalıdır.
@@ -495,25 +496,25 @@ Fonksiyonlara verilen parametreler, fonksiyonun tanımının gerektirdiği sayı
       return eksilen-cikan;
   }
 #+END_SRC
-Örneğin yukarıda tanımlanan ~cikar~ fonksiyonu, ~eksilen~ ve ~cikan~ isimlerine sahip iki parametre almaktadır. Bu durumda, ~cikan~ fonksiyonu, ~cikan(5)~ veya ~cikan(1,2,3)~ şeklinde çağırılmaya çalışıldığında hata oluşur. Çünkü ~cikar~ fonksiyonu tanumı gereği tam olarak iki parametre almak zorundadır.
-Benzer şekilde, 10 sayısından 7 sayısını çıaramak için ~cikar~ fonksiyonunu kullandığımızı düşünelim. Eğer fonksiyonui ~cikar(7,10)~ şeklide kullanırsak program hata üretmemesine rağmen, parametreleri yanlış sırada kullandığımız için hesaplama hatası ile karşı karşıya kalırız.
+Örneğin yukarıda tanımlanan ~cikar~ fonksiyonu, ~eksilen~ ve ~cikan~ isimlerine sahip iki parametre almaktadır. Bu durumda, ~cikar~ fonksiyonu, ~cikar(5)~ veya ~cikan(1,2,3)~ şeklinde çağırılmaya çalışıldığında hata oluşur. Çünkü ~cikar~ fonksiyonu tanımı gereği tam olarak iki parametre almak zorundadır.
+Benzer şekilde, 10 sayısından 7 sayısını çıkarmak için ~cikar~ fonksiyonunu kullandığımızı düşünelim. Eğer fonksiyonu, ~cikar(7,10)~ şeklinde kullanırsak, program hata üretmemesine rağmen, parametreleri yanlış sırada kullandığımız için hesaplama hatası ile karşı karşıya kalırız.
 
 *** Yerleşik Fonksiyon Örnekleri
 **** strlen
-Metin türünden bir değerin toplam karakter sayısını döndürür. ~strlen~ fonksiyonun icra ettiği görev düşünüldüğünde, parametre sayıısının 1 olduğu ve tamsayı türünden bir değer döndürdüğü kolaylıkla anlaşılabilir.
+Metin türünden bir değerin toplam karakter sayısını döndürür. ~strlen~ fonksiyonun icra ettiği görev düşünüldüğünde, parametre sayısının bir olduğu ve tamsayı türünden bir değer döndürdüğü kolaylıkla anlaşılabilir.
 **** sin
 ~sin~ fonksiyonun dökümantasyonuna incelendiğinde, =sin(float $num) : float= biçiminde tanımlandığı görülebilir.
-=float $num=, ~sin~ fonksiyonunun =$num= isimli bir parametre alacağını ve bu parametrenin =float= türünden olacağını belirtmektedir. Ayrıca, ~sin~ fonksiyonu sadece bir tana parametre alır ve bu parametrede =$num= parametresidir.
-=:= karakterinden sonra gelen sözcük ise, fonksiyonunun döndürdüğü Değişken türünü göstermektedir. O halde =sin= fonksiyonu =float= türünden bir değer döndürmektedir.
+=float $num=, ~sin~ fonksiyonunun =$num= isimli bir parametre alacağını ve bu parametrenin =float= türünden olacağını belirtmektedir. Ayrıca, ~sin~ fonksiyonu sadece bir tane parametre alır ve bu parametrede =$num= parametresidir.
+=:= karakterinden sonra gelen sözcük ise, fonksiyonunun döndürdüğü değişken türünü göstermektedir. O halde =sin= fonksiyonu =float= türünden bir değer döndürmektedir.
 **** substr
-~substr~ fonksiyonu, =substr(string $dizge, int $başlangıç [,integer $uzunluk]) : string= şeklinde tanımlanmıştır. Fonksiyon tanımlamalarında, =[]= arasında verilen parametreler *opsiyonel* yani seçimliktir. Bu parametreler fonksiyona verilmesede fonksiyon çalışır. O halde =substr= fonksiyonu, iki zorunlu ve bir seçimlik parametreye sahiptir. Zorunlu parametreler =$dizge= ve =$başlangıç= parametreleridir. =$dizge= kesit alacağınız metni temsil eder ve =$başlangıç= ise kesit alma işleminin hangi sıradaki karakterden yapılacağını belirtir.
+~substr~ fonksiyonu, =substr(string $dizge, int $başlangıç [,int $uzunluk]) : string= şeklinde tanımlanmıştır. Fonksiyon tanımlamalarında, =[]= arasında verilen parametreler *opsiyonel* yani seçimliktir. Bu parametreler fonksiyona verilmese de fonksiyon çalışır. O halde =substr= fonksiyonu, iki zorunlu ve bir seçimlik parametreye sahiptir. Zorunlu parametreler =$dizge= ve =$başlangıç= parametreleridir. =$dizge= kesit alacağınız metni temsil eder ve =$başlangıç= ise kesit alma işleminin hangi sıradaki karakterden başlanarak yapılacağını belirtir.
 Eğer =$uzunluk= parametresi kullanılmazsa, kesit alma işlemi belirtilen sıradan metnin son karakterine kadar yapılır. =$uzunluk= parametresi kullanılırsa, kesit alma işlemi belirtilen sıradaki karakter =$uzunluk= kadar ilerlenerek yapılır.
 
 #+BEGIN_SRC php
   $metin="Merhaba";
   echo substr($metin, 2); // $uzunluk parametresi olmadığından metnin sonuna kadar ilerledi.
   echo "\n";
-  echo substr($metin, 3,3) 
+  echo substr($metin, 3, 3) 
 #+END_SRC
 
 #+RESULTS:
@@ -524,7 +525,7 @@ Eğer =$uzunluk= parametresi kullanılmazsa, kesit alma işlemi belirtilen sıra
 Eğer programınızda hiçbir fonksiyon kullanmıyorsanız, bir değişkeni oluşturduktan satırdan sonra herhangi bir yerde bu değişkeni kullanabilirsiniz.
 Fakat fonksiyonlar içinde tanımlananan değişkenler, özel teknikler kullanılmadıysa sadece fonksiyon içinde geçerli olurlar.
 Benzer şekilde genel olarak, programın ana kod parçasında veya bir başka fonksiyonda tanımlanan değişkenler, diğer fonksiyon içerisinde kullanılamazlar.
-Fonksiyon dışında kullanılamazlar. Bir değişkenin geçerli olduğu(kullanılabildiği) kod parçasına, o değişkenin *kapsamı* denir.
+Bir değişkenin geçerli olduğu(kullanılabildiği) kod parçasına, o değişkenin *kapsamı* denir.
 
 #+BEGIN_SRC php
   $a = 3;
@@ -532,10 +533,10 @@ Fonksiyon dışında kullanılamazlar. Bir değişkenin geçerli olduğu(kullan�
   function foo()
   {
       $a += 2;
-    $b=5;
+      $b=5;
   }
   foo();
-echo $b;
+  echo $b;
   echo $a;
 #+END_SRC
 
