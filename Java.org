@@ -1,0 +1,724 @@
+#+HTML_HEAD: <style type="text/css">
+#+HTML_HEAD: .foo  { width: 400px;}
+#+HTML_HEAD: .foo table>tbody>tr>:nth-child(1) { width: 25%; background: yellow; }
+#+HTML_HEAD: .foo table>tbody>tr>:nth-child(2) { width: 50%; background: magenta; }
+#+HTML_HEAD: .foo table>tbody>tr>:nth-child(3) { width: 25%; background: cyan; }
+#+HTML_HEAD: </style>
+* Tanımlayıcılar
+Program içerisinde, programcı tarafından değişkenlere, sınıflara, fonksiyonlara verilen isimlerdir.
+- Tanımlayıcılar, ingiliz alfabesindeki karakterler, rakamlar, alt tire(-) ve dolar($) işaretleriyle oluşturulurlar.
+- Tanımlayıcılar; alfabetik karakter, alt tire veya dolar işareti ile başlayabilir fakat rakam ile başlayamaz.
+ Doğru kullanımlar :  _sayi1, $sayi2
+ Yanlış kullanım : 2sayi, d+4
+- Tanımlayıcılar dilin kendi içinde kullandığı anahtar kelimeler olmazlar.
+  Yanlış : while, true, if
+** Uyarı
+Javada, tanımlayılarda büyük-küçük harf ayrımı vardır. Yani =alanHesapla=, =Alanhesapla= isimli iki değişken aynı değeri taşımayabilirler.
+#+HEADERS: :classname Deneme
+#+BEGIN_SRC java  :results output :exports both
+  public class Deneme {
+      public static void main(String[] args) {
+          int Buyuksayi = 13;
+          int buyukSayi = 15;
+          System.out.println(Buyuksayi);
+      }
+  }
+#+END_SRC
+
+#+RESULTS:
+: 13
+
+Tanımlayıcılar, tanımlama işlevini yerine getirdikleri takdirde daha yararlı olurlar. Sınıftaki toplam öğrenci sayısını saklayan bir değişken için =a= tanımlayacısını kullanmak yararlı olmaz. Bunun yerine =toplamOgrenciSayisi=, =topOgrSay=, =tpl_Ogr_Say= gibi tanımlayıcılar kullanmak daha açıklayıcı olacaktır.
+* Değişkenler
+Program içinde, değeri değişecek veriler için kullanılır.
+Değişkenler bir çok türde veri(sayısal, metin)  saklayabilir. Değişkenlerin hangi türden veri saklayacağını değişkeni oluştururken belirtmek gerekir. Bu işleme *değişken tanımlama* denir.
+Değişkenler =değiskenturu degiskenadi;= şeklinde tanımlanır.
+
+=int sayi=  // tamsayı türünden sayi isimli bir değişken oluşturur.
+=double yaricap= // kayan noktalı(reel sayı) türünden yaricap isimli bir değişken oluştur.
+
+Aynı türden birden fazla değişken aynı satırda tanımlanabilir.
+=int sayi1, sayi2, sayi3;=
+
+Değişken tanımlama ve ilk değer verme aynı satırda yapılabilir.
+=int sayac = 0=;
+
+Aynı türden olanbBirden fazla değişken için tanımlama ve ilk değer verme işlemi aynı satırda yapılabilir.
+=int sayi = 3, sayi1 = 5, toplam = 10;=
+
+* Değişken Kapsamı
+Değişkenin geçerli olduğu program alanına /değişken kapsamı/ denir.
+
+#+BEGIN_SRC  java
+  {
+      int a=5;
+      // burada ne b ne de c kullanılamaz
+      {
+          int b = 5;
+          //burada c kullanılamaz ama a kullanılabilir.
+          {
+              //burada hem a gem de b kullanılabilir
+              int c=7;
+          }
+      }
+  }
+     #+END_SRC
+
+* Değişkene Değer Atama İşlemleri
+Javada değişkene değer atamak için === operatörü kullanılır.
+=a=5;=
+
+Atama operatörü olan === karakterinin sol tarafına bir sabit(sayı, metin) gelemez. Aşağıdaki kullanımlar yanlıştır.
+=1=a;=
+~"Ali"=adi~
+#+HEADERS: :classname Deneme
+#+BEGIN_SRC java  :results output :exports both
+  public class Deneme {
+      public static void main(String[] args) {
+          int x;
+          System.out.println(x=6);
+      }
+  }
+#+END_SRC
+
+#+RESULTS:
+: 6
+
+Birden fazla değişkene tek satırda değer verilebilir.
+~i=j=k=5;~
+* Sabitler
+Program boyunca değeri değişmeyecek veriler için kullanılan yapılardır. Sabitler;
+~final tur SABITADI =deger;~
+şeklinde tanımlanırlar. Örneğin;
+~final int CARPAN=7;~
+* İsimlendirme Kuralları
+- Değişken  isimlerinde ve fonksiyon isimlerinde küçük harfler kullanmak. Eğer isminiz birden dazla kelimeden oluşuyorsa, ilk harfini küçük ve her kelimenin baş harfini büyük yapabilirsin. Örneğin ~ogrenciNumarasi~.
+- Sınıf isimlerinde tüm kelimelerin baş harfi büyük yapılabilir. ~KaraTasitlari~
+- Sabitlerde, bütün harfler büyük yapılır ve boşluk yerine _ karakteri koyulur. ~PI_DEGERI~
+* Değişken Türleri
+** Sayısal Değişken Türleri
+Java, tamsayı ve kayan noktalı sayılar olan toplam 8 sayısal değişken türüne sahiptir.
+| byte   | -2^7 ~ 2^7-1 (-128, 127)                           | 8 bit  |
+| short  | -2^15 ~ 2^15-1 (-32768, 32767)                     | 16 bit |
+| int    | -2^31 ~ 2^31-1 (-2147483648,  2147483647)          | 32-bit |
+| long   | -2^63 ~ 2^63-1                                     | 64 bit |
+| float  | Negatif : -3.4028235E + 38 ~ -1.4E -45             | 32-bit |
+|        | Pozitif : 1.4E -45 ~ 3.4028235E +38                |        |
+| double | Negatif :  -1.7976931348623157E + 308 ~ -4.9E -324 |        |
+|        | Pozitif : 4.9E -324 ~ 1.7976931348623157E +308     | 64-bit |
+
+
+#+HEADERS: :classname Deneme
+#+BEGIN_SRC java  :results output :exports both :cmdline < in.txt
+  import java.util.Scanner;
+  public class Deneme {
+      public static void main(String[] args) {
+          Scanner input = new Scanner(System.in);
+          System.out.print("Toplam saniyeyi giriniz : ");
+          int saniyeler = input.nextInt();
+        
+          int dakikalar= saniyeler / 60;
+          int artiksaniye = saniyeler % 60;
+          System.out.println(saniyeler + " saniye, " + dakikalar +
+                             " dakika ve " + artiksaniye + " saniyedir");
+      }
+  }
+#+END_SRC
+
+#+RESULTS:
+: Toplam saniyeyi giriniz : 120 saniye, 2 dakika ve 0 saniyedir
+
+#+HEADERS: :classname Deneme
+#+BEGIN_SRC java  :results output :exports both 
+  import java.util.Scanner;
+  public class Deneme {
+      public static void main(String[] args) {
+          System.out.println("1.0 / 3.0 is " + 1.0 / 3.0);
+          System.out.println("1.0F / 3.0F is " + 1.0F / 3.0F);
+      }
+  }
+#+END_SRC
+
+#+RESULTS:
+: 1.0 / 3.0 is 0.3333333333333333
+: 1.0F / 3.0F is 0.33333334
+
+** Aritmetik Operatörlerde Öncelik Sırası
+1. Parantez içindeki ifadeler yapılır.
+2. ~*~ ve ~/~ operatörleri yapılır.
+3. ~+~ ve ~-~ operatörleri yapılır.
+
+   Fahreneit Celcius dönüşüm programı.
+
+#+HEADERS: :classname FahrenheitToCelsius
+#+BEGIN_SRC java  :results output :exports both :cmdline < fahr.txt
+  import java.util.Scanner;
+  public class FahrenheitToCelsius {
+      public static void main(String[] args) {
+          Scanner input = new Scanner(System.in);
+          System.out.print("Fahrenheit türünden değer giriniz : ");
+          double fahrenheit = input.nextDouble();
+          // Convert Fahrenheit to Celsius
+          double celsius = (5.0 / 9) * (fahrenheit - 32);
+          System.out.println("Fahrenheit " + fahrenheit + " is " + celsius + " Celsius");
+      }
+  }
+#+END_SRC
+
+#+RESULTS:
+: Fahrenheit türünden değer giriniz : Fahrenheit 250.0 is 121.11111111111111 Celsius
+
+
+Epoch zaman formatı, 1 Ocak 1970 saat 00:00  dan itibaren bulunduğunuz ana kadar olan toplam geçen milisaniye miktarıdır. Java dilinde Epoch formatından zamanı öğrenmek için ~System.currentTimeMillis()~ fonksiyonu kullanılır. Aşağıdaki program, Epoch formatını gündelik kullandığımız zaman formuna çeviririr.
+#+HEADERS: :classname ShowCurrentTime
+#+BEGIN_SRC java  :results output :exports both
+  public class ShowCurrentTime {
+      public static void main(String[] args) {
+          long totalMilliseconds = System.currentTimeMillis();
+          long totalSeconds = totalMilliseconds / 1000;
+          long currentSecond = totalSeconds % 60;
+          long totalMinutes = totalSeconds / 60;
+          long currentMinute = totalMinutes % 60;
+          long totalHours = totalMinutes / 60; 
+          long currentHour = totalHours % 24;
+          System.out.println("Current time is " + currentHour + ":"
+                             + currentMinute + ":" + currentSecond + " GMT");
+      }
+  }
+#+END_SRC
+
+#+RESULTS:
+: Current time is 19:30:10 GMT
+
+** İlaveli Atama Operatörleri
+~+=    -=    *=    /=    %=~   operatörleri, ilaveli atama operatörleridir. Bu operatörlerde, operatörün sağ tarafındaki ifade, sol tarafındaki değişken ile ilgili işlem tabi tutulur ve sonuç tekrar sol taraftaki değişkene atanır.
+
+~sayac += 5~  deyimi aslından ~sayac = sayac + 5~ deyiminin kısayoludur.
+
+#+HEADERS: :classname Ilaveli
+#+BEGIN_SRC java  :results output :exports both
+  public class Ilaveli {
+      public static void main(String[] args) {
+          int sayi = 6;
+          sayi += 5; // sayi = sayi + 5
+          System.out.println(sayi);
+      }
+  }
+#+END_SRC
+
+#+RESULTS:
+: 11
+
+** Arttırma ve Azaltma Operatörleri
+~++~ ve ~--~ bir artırma ve bir azaltma operatörleridir.
+
+#+HEADERS: :classname ArtirmaAzaltma
+#+BEGIN_SRC java  :results output :exports both
+  public class ArtirmaAzaltma {
+      public static void main(String[] args) {
+          int sayi1 = 6;
+          int sayi2 = 13;
+          sayi1++; // sayi1 = 6 + 1 = 7
+          sayi2--; // sayi2 = 13-1 = 12
+          ++sayi1;
+          --sayi2;
+          System.out.println(sayi1);
+          System.out.println(sayi2);
+      }
+  }
+#+END_SRC
+
+#+RESULTS:
+: 8
+: 11
+
+
++----------+-------------------------------------+-------------------+
+| Operator | Açıklama                            | Örnek(i=1 alalım) |
++----------+-------------------------------------+-------------------+
+| ++var    | var degiskenini değerini bir arttır | int j = ++i       |
++----------+-------------------------------------+-------------------+
+|          |ii                                   | i=2   j=2         |
+|          |                                     |                   |
+|          |sdasd                                |                   |
+|          |fadenin sonucu olarak var            |                   |
++----------+-------------------------------------+-------------------+
+|          | değişkeninin yeni değerini kullan.  |                   |
++----------+-------------------------------------+-------------------+
+| var++    | var. değişkeninin değerini bir      |                   |
++----------+-------------------------------------+-------------------+
+|          | arttır fakat var++ ifadesinin       | int j = i++       |
++----------+-------------------------------------+-------------------+
+|          | değeri olarak var değişkenin önceki | i=2    j=1        |
++----------+-------------------------------------+-------------------+
+|          | değerini kullan.                    |                   |
++----------+-------------------------------------+-------------------+
+
+
+#+BEGIN_SRC java  :results output :exports both
+  public class ArtirmaAzaltma {
+      public static void main(String[] args) {
+          int i=10;
+          int yenisayi = 10 * i++; // yenisayi = 10 * 10 , i=11
+          int yenisayi1 = 11 * i++;
+          System.out.println(i);
+          System.out.println(yenisayi);
+          System.out.println(yenisayi1);
+      }
+  }
+#+END_SRC
+
+#+RESULTS:
+: 12
+: 100
+: 121
+
+#+BEGIN_SRC java  :results output :exports both
+  public class ArtirmaAzaltma {
+      public static void main(String[] args) {
+          int i=10;
+          int yenisayi = 10 * ++i; // yenisayi = 10 * 10 , i=11
+          System.out.println(i);
+          System.out.println(yenisayi);
+      }
+  }
+#+END_SRC
+
+#+RESULTS:
+: 11
+: 110
+
+** Tür Dönüşümü
+Java'da küçük boyutlu değişkenleri sorunsuz şekilde büyük boyutlu değişkenlere dönüştürebiliriz.
+#+BEGIN_SRC java  :results output :exports both
+  public class ArtirmaAzaltma {
+      public static void main(String[] args) {
+          int i = 257;
+          byte b = (byte) i;
+          System.out.println(b);
+          System.out.println(3/4.0);
+          System.out.println(3/4);
+          System.out.println((int) 1.7);
+          System.out.println((double) 1 / 2); // 1.0/2
+
+      }
+  }
+#+END_SRC
+
+#+RESULTS:
+: 1
+: 0.75
+: 0
+: 1
+: 0.5
+
+
+#+HEADERS: :classname SalesTax
+#+BEGIN_SRC java  :results output :exports both
+  import java.util.Scanner;
+  public class SalesTax {
+      public static void main(String[] args) {
+          Scanner input = new Scanner(System.in);
+          System.out.print("Vergisiz Fiyatını Giriniz: ");
+          double vergisizFiyat = input.nextDouble();
+          double vergi = vergisizFiyat * 0.06;
+          System.out.println("Satış fiyatı $" + (int)(vergi * 100) / 100.0);
+      }
+  }
+#+END_SRC
+0.0  <= x  < 1.0
+ 0.0+1 <= 49x < 49.0+1
+  
+* Matematiksel ve Metin Fonksiyonları
+** Üstel Fonksiyonlar
+- =exp(x)= : e^x
+- =log(x)= : ln(x)=log_e(x)
+- =log10(x)= :  log_10(x)
+- =pow(a,b)= : a^b
+- =sqrt(x)= : x sayısının karekökü
+
+  =Math.sqrt(4)= fonksiyonu ~2.0~ değerini döndürecektir.
+
+#+BEGIN_SRC java  :results output :exports both
+  import java.util.Scanner;
+  public class Kokbul {
+      public static void main(String[] args) {
+          int c=4;
+          int b=-4;
+          int a=1;
+          double delta = b*b-4*a*c;
+          double kok1 = (-b + Math.sqrt(delta))/2.0*a;
+          double kok2 = (-b - Math.sqrt(delta))/2.0*a;
+          System.out.println("Birinci kök : " + kok1);
+          System.out.println("İkinci kök : " + Math.ceil(2.0));
+      }
+  }
+#+END_SRC
+
+#+RESULTS:
+: Birinci kök : 2.0
+: İkinci kök : 2.0
+** Yuvarlama Fonksiyonları
+- =Math.ceil(x)= : x sayısınında büyük olan ilk tamsayı döner. Dönen değer =double= türünden olur.
+- =Math.floor(x)= : x sayısından küçük olan ilk tamsayı döner. Dönen değer =double= türünden olur.
+- =Math.rint(x)= : x sayısına en yakın tam sayı döner. Eğer x sayısı iki tamsayıya da eşit uzaklıkta ise çift olan döner. Dönen değer =double= türünden olur.
+- =Math.round(x)= : Eğer x =float= türündense =(int)Math.floor(x + 0.5)= değerini, x =double= türündense =(long)Math.floor(x + 0.5)= değerini döndürür.
+
+  #+BEGIN_SRC java
+    Math.ceil(2.1) //  3.0
+    Math.ceil(2.0)  // 2.0
+    Math.ceil(−2.0) // −2.0
+    Math.ceil(−2.1) // −2.0
+    Math.floor(2.1) //  2.0
+    Math.floor(2.0) //  2.0
+    Math.floor(−2.0) // −2.0
+    Math.floor(−2.1) // −3.0
+    Math.rint(2.1) // 2.0
+    Math.rint(−2.0) // −2.0
+    Math.rint(−2.1) // −2.0
+    Math.rint(2.5) // 2.0
+    Math.rint(4.5) // 4.0
+    Math.rint(−2.5) // −2.0
+    Math.rint(-5.2) // −5.0
+    Math.round(2.6f) // 3  (int)
+    Math.round(2.0) // 2 (long)
+    Math.round(-5.2f) // -4 (int)
+    Math.round(−2.0f) // −2  (int)
+    Math.round(−2.6)  // −3 (long)
+    Math.round(−2.4) // −2 (long)
+  #+END_SRC
+
+** Minimum, Maksimum ve Mutlak Değer Fonksiyonları
+- =Math.min(a,b)= : a ile b sayılarından küçük olanı döndürür.
+- =Math.max(a,b)= : aile b sayılarından büyük olanı döndürür.
+- =Math.abs(a)= : a sayısının mutlak değerini döndürür.
+
+#+BEGIN_SRC java
+Math.max(2, 3) // 3
+Math.min(2.5, 4.6)  // 2.5
+Math.max(Math.max(2.5, 4.6), Math.min(3, 5.6)) // 4.6
+Math.abs(−2) // 2
+Math.abs(−2.1) // 2.1
+  #+END_SRC
+
+** Metin Fonksiyonları
+*** Karakter(char) Veri Türü
+Tek bir karakteri(sembolü) ifade etmek için kullanılan türü veri türüdür. =char= değerleri tek tırnaklar arasına yazılmalıdır.
+~char degisken = 'a'~
+Bazı önemli karakterlerin Unicode değerleri aşağıdaki tablodadır.
+#+BEGIN_CENTER
+| Karakterler | Onluk Sayı Karşılığı | Onaltılık Sayı Karşılığı | 
+| '0' ile '9' | 48 ile 57            | \u0030 ile \u0039        | 
+| 'A' ile 'Z' | 65 ile 90            | \u0041 ile \u005A        | 
+| 'a' to 'z'  | 97 ile 122           | \u0061 ile \u007A        |  
+#+END_CENTER
+
+#+BEGIN_SRC java  :results output :exports both
+  public class Kokbul {
+      public static void main(String[] args) {
+          char karakter='w';
+          char buyuk = (char) (65 + (karakter - 97));
+          System.out.println(buyuk);
+      }
+  }
+#+END_SRC
+
+#+RESULTS:
+: W
+
+#+CAPTION: Küçük harfli bir sözcüğü büyük harfe döndüren program
+#+BEGIN_SRC java  :results output :exports both
+  public class Kokbul {
+      public static void main(String[] args) {
+          String metin="deneme";
+          String sonuc="";
+          for(int i=0; i<metin.length(); i++) {
+              char karakter=metin.charAt(i);
+              char buyuk = (char) (65 + (karakter - 97));
+              sonuc += buyuk;
+          }
+          System.out.println(sonuc);
+      }
+  }
+#+END_SRC
+
+#+RESULTS:
+: DENEME
+
+
+
+#+CAPTION: HelloWorldCaption
+#+srcname: HelloWorldSrcName
+#+BEGIN_SRC java  :results output :exports both
+  public class Kokbul {
+      public static void main(String[] args) {
+          char karakter='a';
+          System.out.println(++karakter);
+      }
+  }
+#+END_SRC
+
+#+RESULTS:
+: b
+
+*** Özel Karakterleri Kaçma
+#+BEGIN_SRC java  :results output :exports both
+  import java.util.Scanner;
+  public class Tirnak {
+      public static void main(String[] args) {
+          System.out.println("O dedi ki : \"Java çok eğlenceli\"");
+          // O dedi ki : "Java çok eğlenceli"
+
+      }
+  }
+#+END_SRC
+
+#+RESULTS:
+: O dedi ki : "Java çok eğlenceli"
+
+Java'da özel görevi olan sembollerin veya karakterlerin bu özel görevlerini iptal etmek için ~\~ karakteri kullanılır. Ayrıca ~\~ karakteri ile, bazı karakterlere özel görevler yüklenebilir.
+\" => "
+| Kaçış Dizisi | Karşılığı       |
+| \b           | Backspace       |
+| \t           | Tab             |
+| \n           | Satır Sonu      |
+| \f           | Formfeed        |
+| \r           | Carriage Return |
+| \\           | \               |
+| \"           | "               |
+
+
+#+BEGIN_SRC java  :results output :exports both
+  import java.util.Scanner;
+  public class Tirnak {
+      public static void main(String[] args) {
+          System.out.println("Adet\t:3");
+          System.out.println("Fiyat\t:10TL");
+          System.out.println("Satir1\nSatir2");
+          System.out.println("Deneme\b");
+      }
+  }
+#+END_SRC
+
+#+RESULTS:
+: Adet	:3
+: Fiyat	:10TL
+: Satir1
+: Satir2
+: Deneme
+
+** String Türü
+Char türünden değerlerin birleşmesiyle oluşan türdür. ~string~ türünde sıfır veya daha fazla sayıda ~char~ türünden değer bulunur. Dolayısıyla ~string~ türüne, elemanları ~char~ olan bir dizi gözüyle bakılabilir.
+*** String Türü İçin Kullanılan Bazı Önemli Fonksiyonlar
+
+#+CAPTION: String fonksiyonları
+| length()      | String türünden bir değişkenin veya değerin toplam karakter sayısını verir   |
+| charAt(index) | Strring türünden ifadenin index ile belirtilen sıradaki karakterini döndürür |
+| concat(s1)    | Kullanıldığı String nesnesi ile s1 Stringini birleştirir                     |
+| toUpperCase() | Büyük harflere döndürür                                                      |
+| toLowerCase() | Küçük harflere döndürür                                                      |
+| trim()        | Stringin iki tarafındaki boşlukları temizler                                 |
+
+Metnin karakter sayısını bulmak. 
+#+BEGIN_SRC java  :results output :exports both
+  import java.util.Scanner;
+  public class Uzunluk {
+      public static void main(String[] args) {
+          String mesaj = "Merhaba Dünya";
+          System.out.println("Toplam karakter sayısı : " + mesaj.length());
+      }
+  }
+#+END_SRC
+
+#+RESULTS:
+: Toplam karakter sayısı : 13
+
+
+Metnin bir sıradaki karakterini bulmak. 
+#+BEGIN_SRC java  :results output :exports both
+  import java.util.Scanner;
+  public class Karakter {
+      public static void main(String[] args) {
+          String mesaj = "Merhaba Dünya";
+          int sira = 7;
+          System.out.println(sira + " sırasındaki karakter : " + mesaj.charAt(sira-1));
+      }
+  }
+#+END_SRC
+
+#+RESULTS:
+: 7 sırasındaki karakter : a
+
+
+Son karakteri bulmak
+#+BEGIN_SRC java  :results output :exports both
+  import java.util.Scanner;
+  public class Karakter {
+      public static void main(String[] args) {
+          String mesaj = "Merhaba Dünyap";
+          int son = mesaj.length()-1;
+          System.out.println("Metnin son karakteri : " + mesaj.charAt(son));
+      }
+  }
+#+END_SRC
+
+#+RESULTS:
+: Metnin son karakteri : p
+
+
+String birleştirme
+#+BEGIN_SRC java  :results output :exports both
+  import java.util.Scanner;
+  public class Karakter {
+      public static void main(String[] args) {
+          String ad = "Ali";
+          String soyad = "DEMİR";
+          System.out.println(ad.concat(" ").concat(soyad));
+      }
+  }
+#+END_SRC
+
+#+RESULTS:
+: Ali DEMİR
+
+
+İki stringi karşılaştırma
+#+BEGIN_SRC java  :results output :exports both
+  import java.util.Scanner;
+  public class Karakter {
+      public static void main(String[] args) {
+          String s1 = "Abd";
+          String s2 = "Abd";
+          System.out.println(s2.compareTo(s1));
+      }
+  }
+#+END_SRC
+
+#+RESULTS:
+: 0
+
+
+Dosya uzantısından çeşit bulma
+#+BEGIN_SRC java  :results output :exports both
+  import java.util.Scanner;
+  public class Karakter {
+      public static void main(String[] args) {
+          String dosya = "beşiktaş";
+          if(dosya.endsWith("ta")) {
+              System.out.println("TAŞ ile bitiyor");
+          }
+          else {
+              System.out.println("Bu bir PDF dökümanı değil");
+          }
+      }
+  }
+#+END_SRC
+
+#+RESULTS:
+: Bu bir PDF dökümanı değil
+
+**** String Türde Bir Değerden Parça Alma
+String tüde bir değerden parça almak için ~substring~ fonksiyonu kullanılır. ~substring~, tamsayı türünden olmak üzere bir veya iki parametre alır. Birinci parametre, alınacak parçanın asıl metinde hangi indeksden başlayarak yapılacağını tayin eder. İkinci parametre ise, alınacak parçanın nerede tamamlanacağını tayin eder. Alınacak parçanın tamamlanacağı indeks, ikinci parametreden bir çıkartılarak elde edilir.
+
+| M | E | R | H | A | B | A |
+| 0 | 1 | 2 | 3 | 4 | 5 | 6 |
+
+HAB parçasını almak istediğimizi varsyalım. Bu durumda H harfinin indeksi olan 3'den başlayıp, 5. indekse kadar ilerlemeliyiz. O yüzden ikinci parametre 5+1=6 olmalıdır.
+
+
+#+BEGIN_SRC java  :results output :exports both
+  import java.util.Scanner;
+  public class Parca {
+      public static void main(String[] args) {
+          String dosya = "İkiyüzellibeş";
+              System.out.println(dosya.substring(6));
+	          System.out.println(dosya.substring(6,10));
+      }
+  }
+#+END_SRC
+
+#+RESULTS:
+: ellibeş
+: elli
+
+**** Bir Metin Başka Bir Metni veya Karakteri Bulma
+Bir metin içerisinde başka bir metni veya karakteri aramak için ~indexOf~ fonksiyonu kullanılır.
+
+| sdssds | dasdsad |
+|--------+---------|
+|        |         |
+
+
+#+CAPTION: sda asas
+
+#+NAME: dasdasd asd
+#+CAPTION: This is the caption for the next table (or link)
+#+ATTR_HTML: :width 100%
+|
+#+BEGIN_foo
++----------------+--------------------------------------------------------+
+|Fonksiyon       | Açıklaması                                             |
++----------------+--------------------------------------------------------+
+|                |cs karakterinin veya metninin ilk bulunduğu indeksi     |
+|indexOf(cs)     |döndürür. Eğer cs karakteri veya metni, metin içerisinde|
+|                |bulunmuyorsa -1 döndürür.                               |
++----------------+--------------------------------------------------------+
+|                |cs karakterinin veya metnini, metnin bas indeksli       |
+|indexOf(k,bas)  |karakterinden başlayarak arar. Bulduğu takdirde indeksi,|
+|                |aksi halde -1 döndürür.                                 |
++----------------+--------------------------------------------------------+
+|                |cs karakterinin veya metninin son bulunduğu noktanın    |
+|lastIndexOf(cs) |ideksin döndürür. Eğer metin içinde bulunmuyorsa -1     |
+|                |döndürür                                                |
++----------------+--------------------------------------------------------+
+|                |k karakterinin veya metninin ilk bulunduğu indeksi      |
+|lastindexOf(k)  |döndürür. Eğer k karakteri veya metni, metin içerisinde |
+|                |bulunmuyorsa -1 döndürür.                               |
++----------------+--------------------------------------------------------+
+#+END_foo
+
+#+BEGIN_SRC java
+"Welcome to to Java".indexOf('W') // 0
+"Welcome to Java".indexOf('o') // 4
+"Welcome to Java".indexOf('o', 5) // 9
+"Welcome to Java".indexOf("come") // 3
+"Welcome to Java".indexOf("Java", 5) // 11
+"Welcome to Java".indexOf("java", 5) // -1
+#+END_SRC
+
+#+BEGIN_SRC java
+"Welcome to Java".lastIndexOf('W') // 0
+"Welcome to Java".lastIndexOf('o') // 9
+"Welcome to Java".lastIndexOf('o', 5) //4
+"Welcome to Java".lastIndexOf("come") // 3
+"Welcome to Java".lastIndexOf("Java", 5) // -1
+"Welcome to Java".lastIndexOf("Java") // 11
+#+END_SRC
+
+
+
+
+#+BEGIN_SRC java  :results output :exports both
+  import java.util.Scanner;
+  public class AdSoyadParcala {
+      public static void main(String[] args) {
+          String adsoyad = "Ali DEMİR";
+          int bosluk=adsoyad.indexOf(' ');
+          String ad = adsoyad.substring(0,bosluk);
+          String soyad = adsoyad.substring(bosluk+1);
+          System.out.println("Adınız : " + ad);
+          System.out.println("Soydınız : " + soyad);
+      }
+  }
+#+END_SRC
+
+#+RESULTS:
+: Adınız : Ali
+: Soydınız : DEMİR
+
+**** Metin ve Syılar Arasındaki Dönüşümler
+***** Metni Tamsayıya Döndürme
+Metin türünde sayısal bir ifadeyi tamsayıyta çevirmek için ~parseInt~ fonksiyonu lullaknılırç.
+Örnek kullanım, ~Integer.parseInt("123")~ deyimi tamsayı türünden 123 sayısını verecektir.
+***** Metin Türünde Ondalıklı Sayıya çevirmek
+~double doubleValue = Double.parseDouble("12.33");~ 12.33
