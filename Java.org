@@ -649,33 +649,15 @@ Bir metin içerisinde başka bir metni veya karakteri aramak için ~indexOf~ fon
 |        |         |
 
 
-#+CAPTION: sda asas
-
 #+NAME: dasdasd asd
 #+CAPTION: This is the caption for the next table (or link)
-#+ATTR_HTML: :width 100%
-|
-#+BEGIN_foo
-+----------------+--------------------------------------------------------+
-|Fonksiyon       | Açıklaması                                             |
-+----------------+--------------------------------------------------------+
-|                |cs karakterinin veya metninin ilk bulunduğu indeksi     |
-|indexOf(cs)     |döndürür. Eğer cs karakteri veya metni, metin içerisinde|
-|                |bulunmuyorsa -1 döndürür.                               |
-+----------------+--------------------------------------------------------+
-|                |cs karakterinin veya metnini, metnin bas indeksli       |
-|indexOf(k,bas)  |karakterinden başlayarak arar. Bulduğu takdirde indeksi,|
-|                |aksi halde -1 döndürür.                                 |
-+----------------+--------------------------------------------------------+
-|                |cs karakterinin veya metninin son bulunduğu noktanın    |
-|lastIndexOf(cs) |ideksin döndürür. Eğer metin içinde bulunmuyorsa -1     |
-|                |döndürür                                                |
-+----------------+--------------------------------------------------------+
-|                |k karakterinin veya metninin ilk bulunduğu indeksi      |
-|lastindexOf(k)  |döndürür. Eğer k karakteri veya metni, metin içerisinde |
-|                |bulunmuyorsa -1 döndürür.                               |
-+----------------+--------------------------------------------------------+
-#+END_foo
+#+ATTR_HTML: :width 35%
+| Fonksiyon       | Açıklaması                                                                                                                         |
+|-----------------+------------------------------------------------------------------------------------------------------------------------------------|
+| indexOf(cs)     | cs karakterinin veya metninin ilk bulunduğu indeksi döndürür. Eğer karakteri veya metni, metin içerisinde bulamıyorsa -1 döndürür  |
+| indexOf(k,bas)  | cs karakterinin veya metnini, metnin bas indeksli karakterinden başlayarak arar. Bulduğu takdirde indeksi, aksi halde -1 döndürür. |
+| lastIndexOf(cs) | cs karakterinin veya metninin son bulunduğu noktanın    indeksini döndürür. Eğer metin içinde bulunmuyorsa -1 döndürür.            |
+| lastindexOf(k)  | döndürür. Eğer k karakteri veya metni, metin içerisinde bulunmuyorsa -1 döndürür.                                                  |
 
 #+BEGIN_SRC java
 "Welcome to to Java".indexOf('W') // 0
