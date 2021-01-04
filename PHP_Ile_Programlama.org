@@ -407,9 +407,11 @@ Program içerisinde, isim verilen bu kod bloğunun görevi gerektiğinde, sadece
 Ayrıca, icra edilen görev tamamlandığında, görevin bir çözümü olarak değer veya değerler döndürebilir. Bu değere *fonksiyonun dönen değeri* denir ve bu şekildeki fonksiyonlara *değer döndüren fonksiyonlar* denir.
 
 Fonksiyonlar, matematiksel fonksiyonlar gibidir. Örneğin ~f(x)=x*x+2~ fonksiyonunu düşünürsek, burada ~x~ fonksiyonun bir parametresidir ve fonksiyon bir parametrelidir. ~x*x+2~ fonksiyonun hem icra ettiği görev hem de dönen değeridir. Örneğin ~x=3~ alınırsa, fonksiyonun dönen değeri ~11~ olur.
+Mesela, ~f(x,y)=x+y~ fonksiyonu iki parametrelidir ve bu iki parametrenin toplamını döndürür. 
 ** Fonksiyonların Önemi
 Aynı işlevi gören kod bloğu, işlevin gerektiği her yerde bir bütün olarak kullanılması gerekecekti. Kod bloğunuzda bir hata tespit ettiğinizde veya bir geliştirme yapmak istediğinizde, programınızın çeşitli yerlerine eklemiş olduğunuz bu kod bloklarını bulup gerekli düzeltmeleri veya iyileştirmeleri her biri için teker teker yapmanız gerekecek.
-Bu kod bloğu fonksiyon olarak tanımlanmış olsaydı, sadece fonksiyonun tanımlandığı kod bloğunda yapılan değişiklikler fonksiyonun çağırıldığı her noktaya etki eder. 
+Bu kod bloğu fonksiyon olarak tanımlanmış olsaydı, sadece fonksiyonun tanımlandığı kod bloğunda yapılan değişiklikler fonksiyonun çağırıldığı her noktaya etki eder.
+Ayrıca, programınızın uğraştığı problemi, küçün birimlere ayırarak baş çıkması daha kolay hale getirir. 
 ** Fonksiyon Türleri
 *** Yerleşik(Built-In) Fonksiyonlar
 Tüm programcılar tarafından kullanılması muhtemel bazı görevler(çıktı yazdırma, karekök alma gibi), dili oluşturanlar tarafından yerleşik olarak fonksiyon haline getirilmiştir. Herhangi bir tanımlama yapılmadan, programcı bu fonksiyonları kullanabilir. Örneğin, ~echo~, ~var_dump~, ~sqrt~ yerleşik fonksiyonlardır.
@@ -431,7 +433,7 @@ Deyim bölümünde HTML kodları da kullanılabilir. Hatta hiç PHP kodu içerme
   <?php
   function sutun()
   { ?>
-      </td></td>
+      </td><td>
   <?php } ?>
 #+END_SRC
 
@@ -443,7 +445,12 @@ Fonksiyonlar çoğu zaman değer döndürürler. Fonksiyonun kod bloğunda değe
         $bilesik = $sol . $sag;
         return $bilesik;
     }
+    $adsoyad = birlestir("Ali", "Veli");
+    echo $adsoyad;
   #+END_SRC
+
+  #+RESULTS:
+  : AliVeli
 
 
 Yukarıdaki fonksiyon, ~$sol~ ve ~$sag~ adlı iki parametre alır ve bunların birleşmesi ile elde ettiği metni döndürür. ~return~ deyiminden sonra ifadelerde kullanılabileceği için aynı fonksiyon daha sade,
@@ -470,7 +477,7 @@ Tanımlanan fonksiyonlar, programın herhangi bir yerinde kullanılabilir.
 
 *** Fonksiyon İsimlendirme Kuralları
 - Fonksiyon isimleri, harf, alt tire, rakam sembollerinin bir veya daha fazla kombinasyonundan oluşmalıdırlar. 
-- Fonksiyon isimleri harf veya _ ile başlamalıdır.
+- Fonksiyon isimleri harf veya _ ile başlamalıdır. Rakam ile başlayamazlar. 
 - Fonksiyonları isimleri büyük-küçük harflere duyarlı değildir.
 
   #+BEGIN_EXAMPLE
@@ -492,23 +499,23 @@ Tanımlanmış fonksiyonlar, programın herhangi bir yerinde isimleri ile çağ�
 
 Fonksiyonlara verilen parametreler, fonksiyonun tanımının gerektirdiği sayıda ve sırada olmalıdır.
 #+BEGIN_SRC php
-  function cikar(eksilen, cikan) {
-      return eksilen-cikan;
+  function cikar($eksilen, $cikan) {
+      return $eksilen-$cikan;
   }
 #+END_SRC
-Örneğin yukarıda tanımlanan ~cikar~ fonksiyonu, ~eksilen~ ve ~cikan~ isimlerine sahip iki parametre almaktadır. Bu durumda, ~cikar~ fonksiyonu, ~cikar(5)~ veya ~cikan(1,2,3)~ şeklinde çağırılmaya çalışıldığında hata oluşur. Çünkü ~cikar~ fonksiyonu tanımı gereği tam olarak iki parametre almak zorundadır.
+Örneğin yukarıda tanımlanan ~cikar~ fonksiyonu, ~eksilen~ ve ~cikan~ isimlerine sahip iki parametre almaktadır. Bu durumda, ~cikar~ fonksiyonu, ~cikar(5)~ veya ~cikar(1,2,3)~ şeklinde çağırılmaya çalışıldığında hata oluşur. Çünkü ~cikar~ fonksiyonu tanımı gereği tam olarak iki parametre almak zorundadır.
 Benzer şekilde, 10 sayısından 7 sayısını çıkarmak için ~cikar~ fonksiyonunu kullandığımızı düşünelim. Eğer fonksiyonu, ~cikar(7,10)~ şeklinde kullanırsak, program hata üretmemesine rağmen, parametreleri yanlış sırada kullandığımız için hesaplama hatası ile karşı karşıya kalırız.
 
 *** Yerleşik Fonksiyon Örnekleri
 **** strlen
-Metin türünden bir değerin toplam karakter sayısını döndürür. ~strlen~ fonksiyonun icra ettiği görev düşünüldüğünde, parametre sayısının bir olduğu ve tamsayı türünden bir değer döndürdüğü kolaylıkla anlaşılabilir.
+Metin türünden bir değerin toplam karakter sayısını döndürür. ~strlen~ fonksiyonun icra ettiği görev düşünüldüğünde, parametre sayısının bir olduğu ve tamsayı türünden bir değer döndürdüğü kolaylıkla anlaşılabilir. Fakat bu fonksiyon, karakter sayısını döndürecek olduğu metin içerisinde, Türkçe karakterler gibi Unicode karakterler mevcutsa yanlış değerler döndürmektedir. 
 **** sin
 ~sin~ fonksiyonun dökümantasyonuna incelendiğinde, =sin(float $num) : float= biçiminde tanımlandığı görülebilir.
 =float $num=, ~sin~ fonksiyonunun =$num= isimli bir parametre alacağını ve bu parametrenin =float= türünden olacağını belirtmektedir. Ayrıca, ~sin~ fonksiyonu sadece bir tane parametre alır ve bu parametrede =$num= parametresidir.
-=:= karakterinden sonra gelen sözcük ise, fonksiyonunun döndürdüğü değişken türünü göstermektedir. O halde =sin= fonksiyonu =float= türünden bir değer döndürmektedir.
+=:= karakterinden sonra gelen sözcük ise, fonksiyonun döndürdüğü değişken türünü göstermektedir. O halde =sin= fonksiyonu =float= türünden bir değer döndürmektedir.
 **** substr
 ~substr~ fonksiyonu, =substr(string $dizge, int $başlangıç [,int $uzunluk]) : string= şeklinde tanımlanmıştır. Fonksiyon tanımlamalarında, =[]= arasında verilen parametreler *opsiyonel* yani seçimliktir. Bu parametreler fonksiyona verilmese de fonksiyon çalışır. O halde =substr= fonksiyonu, iki zorunlu ve bir seçimlik parametreye sahiptir. Zorunlu parametreler =$dizge= ve =$başlangıç= parametreleridir. =$dizge= kesit alacağınız metni temsil eder ve =$başlangıç= ise kesit alma işleminin hangi sıradaki karakterden başlanarak yapılacağını belirtir.
-Eğer =$uzunluk= parametresi kullanılmazsa, kesit alma işlemi belirtilen sıradan metnin son karakterine kadar yapılır. =$uzunluk= parametresi kullanılırsa, kesit alma işlemi belirtilen sıradaki karakter =$uzunluk= kadar ilerlenerek yapılır.
+Eğer =$uzunluk= parametresi kullanılmazsa, kesit alma işlemi belirtilen sıradan metnin son karakterine kadar yapılır. =$uzunluk= parametresi kullanılırsa, kesit alma işlemi belirtilen sıradaki karakterden, =$uzunluk= kadar karakter ilerlenerek yapılır.
 
 #+BEGIN_SRC php
   $metin="Merhaba";
@@ -523,8 +530,8 @@ Eğer =$uzunluk= parametresi kullanılmazsa, kesit alma işlemi belirtilen sıra
 
 ** Değişken Kapsamı
 Eğer programınızda hiçbir fonksiyon kullanmıyorsanız, bir değişkeni oluşturduktan satırdan sonra herhangi bir yerde bu değişkeni kullanabilirsiniz.
-Fakat fonksiyonlar içinde tanımlananan değişkenler, özel teknikler kullanılmadıysa sadece fonksiyon içinde geçerli olurlar.
-Benzer şekilde genel olarak, programın ana kod parçasında veya bir başka fonksiyonda tanımlanan değişkenler, diğer fonksiyon içerisinde kullanılamazlar.
+Fakat fonksiyonlar içinde tanımlananan değişkenler(yerel değişkenler), özel teknikler kullanılmadıysa sadece fonksiyon içinde geçerli olurlar.
+Benzer şekilde genel olarak, programın ana kod parçasında veya bir başka fonksiyonda tanımlanan değişkenler, diğer fonksiyonlar içerisinde kullanılamazlar.
 Bir değişkenin geçerli olduğu(kullanılabildiği) kod parçasına, o değişkenin *kapsamı* denir.
 
 #+CAPTION: HelloWorldCaption
@@ -535,17 +542,17 @@ Bir değişkenin geçerli olduğu(kullanılabildiği) kod parçasına, o değiş
   function foo()
   {
       $a += 2;
-      $b=5;
+      $b = 5;
   }
   foo();
   echo $b;
   echo $a;
 #+END_SRC
 
-#+RESULTS:
+#+RESULTS: HelloWorldSrcName
 : 3
 
-Yukarıdaki programın çıktısı 3 olacaktır. Baştaki ~$a~ değişkeni ana program bloğunda tanımlanmıştır. ~foo~ fonksiyonu içinde ~$a~ değişkeninin değerini kullanmak mümkündür fakat bu ancak ~$a~ değişkenin ~foo~ fonksiyonuna parametre olarak verilmesiyle olur. Bu durumda bile aslında ~foo~ fonksiyonuna ~$a~ değişkeninin kendisini değil o anki değerinin bir kopyasını gönderöiş oluyoruz. Benzer şekilde, ~foo~ fonksiyonun içindeki ~$a~ değişkeni de ana kod bloğunda kullanılamaz. Ana kod parçasındaki ~$a~ değişkeni ile ~foo~ fonksiyonu iççindeki ~$a~ değişkeninin birbirleriyle hiçbir ilgisi yoktur. Bunlar kapsamları farklı olan iki farklı değişkendirler.
+Yukarıdaki programın çıktısı 3 olacaktır. Baştaki ~$a~ değişkeni ana program bloğunda tanımlanmıştır. ~foo~ fonksiyonu içinde ~$a~ değişkeninin değerini kullanmak mümkündür fakat bu ancak ~$a~ değişkenin ~foo~ fonksiyonuna parametre olarak verilmesiyle olur. Bu durumda bile aslında ~foo~ fonksiyonuna ~$a~ değişkeninin kendisini değil o anki değerinin bir kopyasını göndermiş oluyoruz. Benzer şekilde, ~foo~ fonksiyonun içindeki ~$a~ değişkeni de ana kod bloğunda kullanılamaz. Ana kod parçasındaki ~$a~ değişkeni ile ~foo~ fonksiyonu içindeki ~$a~ değişkeninin birbirleriyle hiçbir ilgisi yoktur. Bunlar kapsamları farklı olan iki farklı değişkendirler.
 Fonksiyon içinde tanımlanan değişkenlerin kapsamları en fazla fonksiyonun kod bloğu kadar olur. Bu kapsama *fonksiyon seviyesi kapsam* denir. Örneğin ~foo~ fonksiyonu içinde tanımlanan ~$a~ değişkenini ömrü fonksiyon kod bloğunun kapama parantezine kadardır.
 Fonksiyonların ve sınıfların dışında tanımlanan değişkenlerin kapsamına *global seviye kapsam* denir.
 *Super global seviye kapsama* sahip değişkenler ise her iki kapsam içinde kullanılabilirler.
@@ -584,14 +591,14 @@ Normalde, bir fonksiyon her çağırıldığında fonksiyonun içindeki değişk
 : 3
 : 3
 
-Örnekte görüldüğü gibi, =$b= değişkeninin kapsamı =deneme= fonksiyonunu gövdesi olduğundan dolayı, değişken her fonksiyon çağırılışında tekrardan oluşturuluyor. =deneme= fonksiyonu ilk defa çağırıldığında =$b= en son olarak =3= değerini aldı ve fonksiyon görevini bitirdiğinde =$b= değişkeni bellekten silindi.  =deneme= fonksiyonu tekrar çağırıldığında, =$b= değişkeni yeniden oluşturuldu ve varsayılan olarak =0= değerini aldı.
+Örnekte görüldüğü gibi, =$b= değişkeninin kapsamı =deneme= fonksiyonunun gövdesi olduğundan dolayı, değişken her fonksiyon çağırılışında tekrardan oluşturuluyor. =deneme= fonksiyonu ilk defa çağırıldığında =$b= en son olarak =3= değerini aldı ve fonksiyon görevini bitirdiğinde =$b= değişkeni bellekten silindi.  =deneme= fonksiyonu tekrar çağırıldığında, =$b= değişkeni yeniden oluşturuldu ve varsayılan olarak =0= değerini aldı.
 Bir değişkeni; fonksiyonun her çağırılışında, bu değişkenin fonksiyonun önceki çağırılışlarında aldığı değerleri kaybetmeden kullanmak istiyorsak ~static~ anahtar kelimesini kullanmalıyız. Aşağıdaki örnekte bir fonksiyonun kaç defa çağırıldığını statik değişkenler yardımıyla bulacağız.
 #+BEGIN_SRC php :exports both
   function deneme()
   {
       static $cagirilma_sayisi=0;
       $cagirilma_sayisi++;
-      echo "deneme() fonksiyonunu {$cagirilma_sayisi}. çağırışınız.\n";
+      echo "deneme() fonksiyonunun {$cagirilma_sayisi}. çağırışınız.\n";
   }
   deneme();
   deneme();
@@ -603,6 +610,22 @@ Bir değişkeni; fonksiyonun her çağırılışında, bu değişkenin fonksiyon
 : deneme() fonksiyonunu 2. çağırışınız.
 : deneme() fonksiyonunu 3. çağırışınız.
 
+#+BEGIN_SRC php :exports both
+  function deneme()
+  {
+      $cagirilma_sayisi=0;
+      $cagirilma_sayisi++;
+      echo "deneme() fonksiyonunun {$cagirilma_sayisi}. çağırışınız.\n";
+  }
+  deneme();
+  deneme();
+  deneme();
+#+END_SRC
+
+#+RESULTS:
+: deneme() fonksiyonunun 1. çağırışınız.
+: deneme() fonksiyonunun 1. çağırışınız.
+: deneme() fonksiyonunun 1. çağırışınız.
 
 ** Referans Değişkenler
 Bir fonksiyona, değişkenin değerini değil, değişkenin bulunduğu bellek adresini kullanarak parametre olarak verebiliriz. Bu durumda, fonksiyon içinde bu referans değişkeni uygulanan tüm işlemler, değişkeni de doğrudan etkileyecektir.
@@ -689,7 +712,6 @@ Bu kod doğrudur.
 : Yaşınız 12, uyruğunuz Almanya
 : Yaşınız 18, uyruğunuz T.C
 
-
 ** Parametre Fonksiyonları
 Fonksiyonun tanımalama gövdesinde kullanabileceğiniz ve fonksiyonun parametreleri bilgi veren yerleşik fonksiyonlardır.
 - ~func_get_args()~ : Bu fonksiyon, başka bir fonksiyonun gövdesinde kullanıldığında o fonksiyonun bütün parametrelerinden oluşan bir dizi döndürür.
@@ -762,7 +784,6 @@ array(2) {
 İkinci parametresi : 1999
 #+end_example
 
-
 ** Parametre Türünü Belirtme(Type Hinting)
 PHP'de bir fonksiyon tanımlarken parametrelerinin hangi değişken türünden olacağını belirtmeye gerek yoktur. Fakat, fonksiyonunuzun daha tutarlı olması ve hata riskini azaltmak için, istenildiği takdirde parametreleri değişken türleri belirtilebilir.
 
@@ -779,3 +800,79 @@ PHP'de bir fonksiyon tanımlarken parametrelerinin hangi değişken türünden o
 
 Type hinting yapmak istediğimiz parametrenin önüne, o parametrenin olacağı değişken türünü yazmalıyız : ~int $dogumtarihi~
 
+** Fonksiyondan Birden Fazla Değer Döndürme
+Dizi türünüden bir değer döndürerek bir fonksiyondan birden fazla değerin dönmesi sağlanabilir.
+
+#+BEGIN_SRC php :exports both
+  function yasveSansliSayi($dogumyili)
+  {
+      $yas = 2020-$dogumyili;
+      $sansli_sayi = $yas%10 + 2;
+      return array($yas, $sansli_sayi);
+  }
+  $veri = yasveSansliSayi(1980);
+  echo "Yaşınız {$veri[0]}, şanslı sayınız {$veri[1]}";  
+#+END_SRC
+
+#+RESULTS:
+: Yaşınız 40, şanslı sayınız 2
+
+#+BEGIN_alistirma
+Kişinin doğduğu ayı parametre olarak alan ve kişinin sahip olabileceği burçları dizi olarak döndüren bir program yapınız.
+Örnek: ~burcHesapla(7) => array("Yengeç", "Aslan")~
+#+END_alistirma
+
+
+** Fonksiyonun Dönüş Değerini Bildirme
+Fonksiyonun hangi türden değer döndüreceği bildirilebilir.
+
+#+BEGIN_SRC php exports: both
+  function yasHesapla($dogumtarihi) : int {
+    return 2021-$dogumtarihi;
+  }
+  echo yasHesapla(1980);
+#+END_SRC
+
+#+RESULTS:
+: 41
+
+Dönüş değerinin türünün bildirilmesi durumunda, bu türden bağımsız olarak fonksiyon ~NULL~ değer de döndürebilir.
+
+#+BEGIN_SRC php exports: both
+  function yasHesapla($dogumtarihi) {
+    $yas = 2021-$dogumtarihi;
+  }
+  $deger = yasHesapla(2022);
+echo $deger;
+#+END_SRC
+
+#+RESULTS:
+
+
+#+BEGIN_SRC php exports: both
+  $names = array("Fred", "Barney", "Wilma", "Betty");
+  function &birinciyiBul($n) {
+      global $names;
+      return $names[$n];
+  }
+  $person =& birinciyiBul(1); // Barney
+  $person = "Barnetta"; // changes $names[1]
+  var_dump($names);
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+array(4) {
+  [0]=>
+  string(4) "Fred"
+  [1]=>
+  &string(8) "Barnetta"
+  [2]=>
+  string(5) "Wilma"
+  [3]=>
+  string(5) "Betty"
+}
+#+end_example
+
+** İsimsiz Fonksiyonlar
+Bazı PHP fonksiyonları parametre olarak bir fonksiyon alabilir. Örneğin, ~usort(array &$array, callable $callback) : bool~ fonksiyonu bir dizinin elemanlarını sıralar. İkinci parametresi ~$callback~ ~callable~ türündendir. ~callable~ türü bu değişkenin bir fonksiyon olması gerektiğini ifade eder. Açıktır ki bu fonksiyon, dizini elemanlarının nasıl sıralacağını belirleyen fonksiyondur. 
