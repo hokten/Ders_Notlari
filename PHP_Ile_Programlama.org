@@ -1,50 +1,58 @@
-* Main ToC: Itself excluded
+* İnternet Programcılığı - I Ders Notları
+** İçindekiler
 :PROPERTIES:
 :TOC:      :include all :ignore this
 :END:
 :CONTENTS:
-- [[#php-i̇le-programlama][PHP İle Programlama]]
-  - [[#büyük-küçük-harfe-duyarlılık][Büyük Küçük Harfe Duyarlılık]]
-  - [[#boşluk-ve-yeni-satır-karakterleri][Boşluk ve Yeni Satır Karakterleri]]
-  - [[#direkt-değişmez-verilerliterals][Direkt Değişmez Veriler(Literals)]]
-  - [[#xzxx][xzxx]]
-    - [[#expressionsi̇fadeler][Expressions(İfadeler)]]
-    - [[#statementsdeyimler][Statements(Deyimler)]]
-  - [[#operatörler][Operatörler]]
-    - [[#operatörlerin-öncelik-sırası][Operatörlerin Öncelik Sırası]]
-- [[#kontrol-yapıları][Kontrol Yapıları]]
-  - [[#for-döngüsü][for Döngüsü]]
-    - [[#for-döngüsünün-çalışma-şekli][For Döngüsünün Çalışma Şekli]]
-  - [[#foreach-döngüsü][foreach Döngüsü]]
-  - [[#try-catch-yapısı][try-catch Yapısı]]
-  - [[#exit-deyimi][exit Deyimi]]
-  - [[#include-deyimi][include Deyimi]]
-  - [[#require-deyimi][require Deyimi]]
-  - [[#return-deyimi][return Deyimi]]
-- [[#fonksiyonlar][Fonksiyonlar]]
-  - [[#fonksiyonun-tanımı][Fonksiyonun Tanımı]]
-  - [[#fonksiyonların-önemi][Fonksiyonların Önemi]]
-  - [[#fonksiyon-türleri][Fonksiyon Türleri]]
-    - [[#yerleşikbuilt-in-fonksiyonlar][Yerleşik(Built-In) Fonksiyonlar]]
-    - [[#kullanıcı-tanımlı-fonksiyonlar][Kullanıcı Tanımlı Fonksiyonlar]]
-  - [[#fonksiyonların-tanımlanması][Fonksiyonların Tanımlanması]]
-    - [[#fonksiyon-i̇simlendirme-kuralları][Fonksiyon İsimlendirme Kuralları]]
-  - [[#fonksiyonların-çağırılması][Fonksiyonların Çağırılması]]
-    - [[#yerleşik-fonksiyon-örnekleri][Yerleşik Fonksiyon Örnekleri]]
-      - [[#strlen][strlen]]
-      - [[#sin][sin]]
-      - [[#substr][substr]]
-  - [[#değişken-kapsamı][Değişken Kapsamı]]
-  - [[#global-değişkenler][Global Değişkenler]]
-  - [[#static-değişkenler][Static Değişkenler]]
-  - [[#referans-değişkenler][Referans Değişkenler]]
+- [[#i̇nternet-programcılığı---i-ders-notları][İnternet Programcılığı - I Ders Notları]]
+  - [[#php-dilinin-temelleri][PHP Dilinin Temelleri]]
+    - [[#büyük-küçük-harfe-duyarlılık][Büyük Küçük Harfe Duyarlılık]]
+    - [[#boşluk-ve-yeni-satır-karakterleri][Boşluk ve Yeni Satır Karakterleri]]
+    - [[#direkt-değişmez-verilerliterals][Direkt Değişmez Veriler(Literals)]]
+    - [[#xzxx][xzxx]]
+      - [[#expressionsi̇fadeler][Expressions(İfadeler)]]
+      - [[#statementsdeyimler][Statements(Deyimler)]]
+    - [[#operatörler][Operatörler]]
+      - [[#operatörlerin-öncelik-sırası][Operatörlerin Öncelik Sırası]]
+  - [[#kontrol-yapıları][Kontrol Yapıları]]
+    - [[#for-döngüsü][for Döngüsü]]
+      - [[#for-döngüsünün-çalışma-şekli][For Döngüsünün Çalışma Şekli]]
+    - [[#foreach-döngüsü][foreach Döngüsü]]
+    - [[#try-catch-yapısı][try-catch Yapısı]]
+    - [[#exit-deyimi][exit Deyimi]]
+    - [[#include-deyimi][include Deyimi]]
+    - [[#require-deyimi][require Deyimi]]
+    - [[#return-deyimi][return Deyimi]]
+  - [[#fonksiyonlar][Fonksiyonlar]]
+    - [[#fonksiyonun-tanımı][Fonksiyonun Tanımı]]
+    - [[#fonksiyonların-önemi][Fonksiyonların Önemi]]
+    - [[#fonksiyon-türleri][Fonksiyon Türleri]]
+      - [[#yerleşikbuilt-in-fonksiyonlar][Yerleşik(Built-In) Fonksiyonlar]]
+      - [[#kullanıcı-tanımlı-fonksiyonlar][Kullanıcı Tanımlı Fonksiyonlar]]
+    - [[#fonksiyonların-tanımlanması][Fonksiyonların Tanımlanması]]
+      - [[#fonksiyon-i̇simlendirme-kuralları][Fonksiyon İsimlendirme Kuralları]]
+    - [[#fonksiyonların-çağırılması][Fonksiyonların Çağırılması]]
+      - [[#yerleşik-fonksiyon-örnekleri][Yerleşik Fonksiyon Örnekleri]]
+        - [[#strlen][strlen]]
+        - [[#sin][sin]]
+        - [[#substr][substr]]
+    - [[#değişken-kapsamı][Değişken Kapsamı]]
+    - [[#global-değişkenler][Global Değişkenler]]
+    - [[#static-değişkenler][Static Değişkenler]]
+    - [[#referans-değişkenler][Referans Değişkenler]]
+    - [[#varsayılan-parametreler][Varsayılan Parametreler]]
+    - [[#parametre-fonksiyonları][Parametre Fonksiyonları]]
+    - [[#parametre-türünü-belirtmetype-hinting][Parametre Türünü Belirtme(Type Hinting)]]
+    - [[#fonksiyondan-birden-fazla-değer-döndürme][Fonksiyondan Birden Fazla Değer Döndürme]]
+    - [[#fonksiyonun-dönüş-değerini-bildirme][Fonksiyonun Dönüş Değerini Bildirme]]
+      - [[#i̇simsiz-fonksiyonlar][İsimsiz Fonksiyonlar]]
 :END:
-* PHP İle Programlama
+** PHP Dilinin Temelleri
 :PROPERTIES:
 :TOC:    :include siblings
 :NOTER_DOCUMENT: ../../Calibre Library/Peter MacIntyre/Programming PHP, 4th Edition (14)/Programming PHP, 4th Edition - Peter MacIntyre.pdf
 :END:
-** Büyük Küçük Harfe Duyarlılık
+*** Büyük Küçük Harfe Duyarlılık
 :PROPERTIES:
 :NOTER_PAGE: (62 . 0.7670720299345182)
 :TOC:      :depth 0
@@ -59,12 +67,12 @@ EcHo("hello, world");
 #+END_SRC
 
 Fakat, değişken isimleri büyük-küçük harfe duyarlıdır. =$Ad$=, =$ad=, =$AD= değişkenleri birbirinden farklıdır ve farklı değerler alabilirler.
-** Boşluk ve Yeni Satır Karakterleri
+*** Boşluk ve Yeni Satır Karakterleri
 :PROPERTIES:
 :NOTER_PAGE: (64 . 0.5893358278765201)
 :END:
 PHP'de deyimler arasında kullanılan boşluk veya yeni satır karakterleri yorumlayıcı tarafından dikkate alınmaz. 
-** Direkt Değişmez Veriler(Literals)
+*** Direkt Değişmez Veriler(Literals)
 :PROPERTIES:
 :NOTER_PAGE: (71 . 0.15715622076707203)
 :END:
@@ -80,21 +88,21 @@ null
 #+END_EXAMPLE
 
 
-** xzxx
+*** xzxx
 :PROPERTIES:
 :NOTER_PAGE: 95
 :END:
-*** Expressions(İfadeler)
+**** Expressions(İfadeler)
 Bir ya da daha fazla değişkenden, operatörden (örn. +) veya fonksiyondan meydana gelen ve programlama dili tarafından yorumlandığında bir değer döndüren ifadelerdir.
 =4=, =$a+5=, ="Yaz"= ifadelere örnektir.
 
-*** Statements(Deyimler)
+**** Statements(Deyimler)
 Programlama dilinin cümleleridir. Programın en küçük birimleridir. Deyimler ifadelerden oluşur.  PHP'de deyimlerin sonuna noktalı virgül(=;=) karakteri gelir.
-** Operatörler
+*** Operatörler
 Operatörler, bir veya birden fazla değeri herhangi bir işleme sokan ve yeni bir değer üreten yapılardır. Operatörlerin üzerinde işlem yaptığı değerlere operand denir.
 Operatörler aslında fonksiyonların daha kullanışlı halleri olarak düşünülebilir.
 Çoğu operatör operandlarının değerini değiştirmemesine rağmen bazı operandlar operandlarının değerlerini değiştirir.
-*** Operatörlerin Öncelik Sırası
+**** Operatörlerin Öncelik Sırası
 Birden fazla operatör bir ifade içinde yer aldığında, hangi operatöre ait işlemin önce yapılacağına göre ifadenin değeri değişebilir. Dolayısıyla net değer için hangi operatörün hangisinden önce yapılacağı bilinmelidir. PHP yorumlayıcısı operatörlerden hangisinin diğerinden önce yapılacağını tespit etmek için aşağıdaki operatör öncelik tablosounu kullanır.
 
 | Sıra | Birleşim | Operatör          | Operasyon             |
@@ -107,8 +115,8 @@ Birden fazla operatör bir ifade içinde yer aldığında, hangi operatöre ait 
 |   21 | R        | (int), (bool),... | Tür dünüşümü          |
 |   21 | R        | @                 | Hataları gizleme      |
 |      |          |                   |                       |
-* Kontrol Yapıları
-** for Döngüsü
+** Kontrol Yapıları
+*** for Döngüsü
 #+BEGIN_SRC php
   for(baslangic_ifadesi; dongu_kosulu; adim_sonu_ifadesi)
     tek_deyim;
@@ -130,7 +138,7 @@ Birden fazla operatör bir ifade içinde yer aldığında, hangi operatöre ait 
 
 Döngüler, belirli bir kod bloğunu tekrar tekrar çalıştırmaya yarayan yapılardır. Bu kod bloğuna döngünün *gövdesi* denir. ~for~ döngüsünün gövdesi tek bir deyimden oluşuyorsa, bu gövdeyi küme parantezleri arasına almamız gerekmez.
 Fakat gövde birden fazla deyimden oluşuyorsa parantezler arasına yazılmalıdır.
-*** For Döngüsünün Çalışma Şekli
+**** For Döngüsünün Çalışma Şekli
 1. Program ~for~ döngüsünün başladığı satıra geldiğinde, önce baslangic_ifadesi bölümünü çalıştırır. Bu çalıştırma işlemi koşulsuz ve bir kereye mahsus yapılır.
 2. dongu_kosulu mantıksal bir ifade ya da boolean türüne dönüşebilen bir ifade olmak üzere, dongu_kosulu ifadesinin =true= değer döndürüp döndürmediğine bakılır. Eğer =true= değer dönüyorsa, döngünün gövdesi baştan sona çalıştırılır.
 3. Gövdenin çalıştırılması işlemi bittikten sonra =adim_sonu_ifadesi= bölümü çalıştırılır. =adim_sonu_ifadesi= her döngü gövdesi çalıştırma işleminden sonra tekrar çalıştırılır.
@@ -174,7 +182,7 @@ echo "Döngüden sonraki satır.\n";
 #+RESULTS:
 : ün
 
-** foreach Döngüsü
+*** foreach Döngüsü
 Dizi türünden değişkenlerin yada değerlerin elemanlarını taramak için kullanılır. Bu döngünün 
 her bir adımında, dizinin önceki adımda erişilen elemanını takip eden elemanına döngü kod bloğu 
 içerisinde bir değişken vasıtasıyla erişebiliriz.
@@ -261,7 +269,7 @@ foreach($ogrenciler as $numara => $adsoyad) {
 : Ali Veli isimli öğrencinin numarası 123
 : Fatma Şahin isimli öğrencinin numarası 125
 : Suat AK isimli öğrencinin numarası 345
-** try-catch Yapısı
+*** try-catch Yapısı
 try-catch, hata ve istisna tespiti için kullanılan bir yapıdır. try-catch yapısı,
 #+BEGIN_SRC php
     try {
@@ -286,7 +294,7 @@ echo "devam";
 #+END_SRC
 
 Program try bloğu içerisindeki kodları çalıştırmayı dener. Eğer bu çalıştırma işlemi sorunsuz olarak gerçekleşirse, program direkt olarak ~echo "devam"~ satırına atlar ve çalışmaya devam eder. Fakat, try bloğu içerisinde bir sorunla karşılaşılırsa catch bloğu işletilir. catch bloğu, parametre olarak Exception nesnesi alır ve bu nesne try bloğunda oluşan sorunu tanımlayabilmek için bize yardımcı olur.
-** exit Deyimi
+*** exit Deyimi
 ~exit~ deyimi, programın çalışmasını sonlandırır. 
 ~exit~ deyimi, ~exit 3~ şeklinde parametre alır. Bu parametre, programın doğru çalışıp çalışmadığı hakkında bize bilgi verir.
 Örneğin, ~exit(0)~ veya ~exit 0~ ile programı sonlandırmak, programın başarılı bir şekilde çalıştığı anlamına gelir.
@@ -340,7 +348,7 @@ Program try bloğu içerisindeki kodları çalıştırmayı dener. Eğer bu çal
 33
 34
 #+end_example
-** include Deyimi
+*** include Deyimi
 Harici dosyalar ~include~ deyimi ile herhangi bir dosyaya eklenebilir. Bu eklenen kodlar, eklendiği yerde çalıştırılır. Dolayısıyla eklenenen bu dosyadaki değişkenleri ve fonksiyonları eklediğimiz dosya içerisinde kullanabiliriz.
 ~include~ deyimi aşağıdaki şekilde kullanılır.
 
@@ -366,10 +374,10 @@ deneme.php
 include "abc.php"
  #+END_SRC
 
-** require Deyimi
+*** require Deyimi
 ~require~ deyimi, ~include~ deyimi ile aynı işleve sahiptir. Kullanım şekli ve amacı ~include~ ile aynıdır. İkisi arasındaki tek fark, ~require~ deyimi, ~require~ ile eklenecek olan dosyayı bulamaması durumunda, bir *Fatal Error* üretecektir. PHP, *Fatal Error* bildirimi aldığında, programın çalışmasına o noktada son verecektir. Dolayısıyla, var olmayan bir dosyayı ~include~ ile programımıza dahil ettiğimizde, bir *Warning* bildirimi alırız ve programımız çalışmaya devam eder. Aynı şekilde, var olmayan bir dosyayı ~require~ ile programımıza dahil ettiğimizde bir *Fatal Error* bildirimi alırız ve program o noktada sonlanır, çalışmaya devam etmez.
 
-** return Deyimi
+*** return Deyimi
 ~return~ deyiminin fonksiyonlar içinde kullanımını fonksiyonlar konusunda işleyeceğiz. ~return~ deyimi ana program kodu içerisinde kullanıldığında programı sonlandırır. Bu bağlamda düşünüldüğünde ~exit~ ile aynı işleve sahip olacaktır. 
 
 #+NAME: ~return~ deyiminin fonksiyon gövdesi dışında kullanılması.
@@ -397,8 +405,8 @@ Yukarıdaki programda görüldüğü gibi, ~return~ deyimi ~break~ deyiminden fa
 ~return~ anahtar kelimesi, ~include~ ve ~require~ içinde de kullanılabilir. ~include~ deyiminin parametresi olan dosyaya *dahil edilen dosya*, ~include~ deyiminin kullanıldığı dosyaya da *ana kod dosyası* şeklinde tanımlayalım. ~return~ deyimi dahil edilen dosya içerisinde direkt kullanıldıysa (yani bir fonksiyon gövdesinde kullanılmadıysa), kullanıldığı satırda dahil edilen dosyanın çalışmasını sonlandırır. Program, ana kod dosyasının, ilgili ~include~ deyiminden sonraki satırdan itibaren çalışmaya devam edecektir. Diğer bir deyişle, ~return~ deyiminin kullanıldığı satırdan itibaren programın çalışmasını sırasını ana kod dosyasına devreder.
 Aynı durumlar ~require~ içinde geçerlidir.
 
-* Fonksiyonlar
-** Fonksiyonun Tanımı
+** Fonksiyonlar
+*** Fonksiyonun Tanımı
 Tekrar etmesi muhtemel belirli bir görevi yerine getiren kod bloğunun isim verilmiş haline *fonksiyon* denir.
 Program içerisinde, isim verilen bu kod bloğunun görevi gerektiğinde, sadece ismi ile çağırılıp çalıştırılabilir.
 
@@ -408,16 +416,16 @@ Ayrıca, icra edilen görev tamamlandığında, görevin bir çözümü olarak d
 
 Fonksiyonlar, matematiksel fonksiyonlar gibidir. Örneğin ~f(x)=x*x+2~ fonksiyonunu düşünürsek, burada ~x~ fonksiyonun bir parametresidir ve fonksiyon bir parametrelidir. ~x*x+2~ fonksiyonun hem icra ettiği görev hem de dönen değeridir. Örneğin ~x=3~ alınırsa, fonksiyonun dönen değeri ~11~ olur.
 Mesela, ~f(x,y)=x+y~ fonksiyonu iki parametrelidir ve bu iki parametrenin toplamını döndürür. 
-** Fonksiyonların Önemi
+*** Fonksiyonların Önemi
 Aynı işlevi gören kod bloğu, işlevin gerektiği her yerde bir bütün olarak kullanılması gerekecekti. Kod bloğunuzda bir hata tespit ettiğinizde veya bir geliştirme yapmak istediğinizde, programınızın çeşitli yerlerine eklemiş olduğunuz bu kod bloklarını bulup gerekli düzeltmeleri veya iyileştirmeleri her biri için teker teker yapmanız gerekecek.
 Bu kod bloğu fonksiyon olarak tanımlanmış olsaydı, sadece fonksiyonun tanımlandığı kod bloğunda yapılan değişiklikler fonksiyonun çağırıldığı her noktaya etki eder.
 Ayrıca, programınızın uğraştığı problemi, küçün birimlere ayırarak baş çıkması daha kolay hale getirir. 
-** Fonksiyon Türleri
-*** Yerleşik(Built-In) Fonksiyonlar
+*** Fonksiyon Türleri
+**** Yerleşik(Built-In) Fonksiyonlar
 Tüm programcılar tarafından kullanılması muhtemel bazı görevler(çıktı yazdırma, karekök alma gibi), dili oluşturanlar tarafından yerleşik olarak fonksiyon haline getirilmiştir. Herhangi bir tanımlama yapılmadan, programcı bu fonksiyonları kullanabilir. Örneğin, ~echo~, ~var_dump~, ~sqrt~ yerleşik fonksiyonlardır.
-*** Kullanıcı Tanımlı Fonksiyonlar
+**** Kullanıcı Tanımlı Fonksiyonlar
 Programcı tarafından tanımlanan fonksiyonlardır. 
-** Fonksiyonların Tanımlanması
+*** Fonksiyonların Tanımlanması
 Bir PHP fonksiyonu,
 
 #+BEGIN_SRC php
@@ -475,7 +483,7 @@ Tanımlanan fonksiyonlar, programın herhangi bir yerinde kullanılabilir.
   #+RESULTS:
   : HasanÖKTEN
 
-*** Fonksiyon İsimlendirme Kuralları
+**** Fonksiyon İsimlendirme Kuralları
 - Fonksiyon isimleri, harf, alt tire, rakam sembollerinin bir veya daha fazla kombinasyonundan oluşmalıdırlar. 
 - Fonksiyon isimleri harf veya _ ile başlamalıdır. Rakam ile başlayamazlar. 
 - Fonksiyonları isimleri büyük-küçük harflere duyarlı değildir.
@@ -493,7 +501,7 @@ Tanımlanan fonksiyonlar, programın herhangi bir yerinde kullanılabilir.
   #+END_SRC
   #+END_EXAMPLE
   
-** Fonksiyonların Çağırılması
+*** Fonksiyonların Çağırılması
 Tanımlanmış fonksiyonlar, programın herhangi bir yerinde isimleri ile çağırılabilirler. Ayrıca, fonksiyon isminden sonra varsa, iki parantez arasına parametreleri yazılır.
 ~echo("Yaz")~, ~kareal(3)~, ~tabloyap()~
 
@@ -506,14 +514,14 @@ Fonksiyonlara verilen parametreler, fonksiyonun tanımının gerektirdiği sayı
 Örneğin yukarıda tanımlanan ~cikar~ fonksiyonu, ~eksilen~ ve ~cikan~ isimlerine sahip iki parametre almaktadır. Bu durumda, ~cikar~ fonksiyonu, ~cikar(5)~ veya ~cikar(1,2,3)~ şeklinde çağırılmaya çalışıldığında hata oluşur. Çünkü ~cikar~ fonksiyonu tanımı gereği tam olarak iki parametre almak zorundadır.
 Benzer şekilde, 10 sayısından 7 sayısını çıkarmak için ~cikar~ fonksiyonunu kullandığımızı düşünelim. Eğer fonksiyonu, ~cikar(7,10)~ şeklinde kullanırsak, program hata üretmemesine rağmen, parametreleri yanlış sırada kullandığımız için hesaplama hatası ile karşı karşıya kalırız.
 
-*** Yerleşik Fonksiyon Örnekleri
-**** strlen
+**** Yerleşik Fonksiyon Örnekleri
+***** strlen
 Metin türünden bir değerin toplam karakter sayısını döndürür. ~strlen~ fonksiyonun icra ettiği görev düşünüldüğünde, parametre sayısının bir olduğu ve tamsayı türünden bir değer döndürdüğü kolaylıkla anlaşılabilir. Fakat bu fonksiyon, karakter sayısını döndürecek olduğu metin içerisinde, Türkçe karakterler gibi Unicode karakterler mevcutsa yanlış değerler döndürmektedir. 
-**** sin
+***** sin
 ~sin~ fonksiyonun dökümantasyonuna incelendiğinde, =sin(float $num) : float= biçiminde tanımlandığı görülebilir.
 =float $num=, ~sin~ fonksiyonunun =$num= isimli bir parametre alacağını ve bu parametrenin =float= türünden olacağını belirtmektedir. Ayrıca, ~sin~ fonksiyonu sadece bir tane parametre alır ve bu parametrede =$num= parametresidir.
 =:= karakterinden sonra gelen sözcük ise, fonksiyonun döndürdüğü değişken türünü göstermektedir. O halde =sin= fonksiyonu =float= türünden bir değer döndürmektedir.
-**** substr
+***** substr
 ~substr~ fonksiyonu, =substr(string $dizge, int $başlangıç [,int $uzunluk]) : string= şeklinde tanımlanmıştır. Fonksiyon tanımlamalarında, =[]= arasında verilen parametreler *opsiyonel* yani seçimliktir. Bu parametreler fonksiyona verilmese de fonksiyon çalışır. O halde =substr= fonksiyonu, iki zorunlu ve bir seçimlik parametreye sahiptir. Zorunlu parametreler =$dizge= ve =$başlangıç= parametreleridir. =$dizge= kesit alacağınız metni temsil eder ve =$başlangıç= ise kesit alma işleminin hangi sıradaki karakterden başlanarak yapılacağını belirtir.
 Eğer =$uzunluk= parametresi kullanılmazsa, kesit alma işlemi belirtilen sıradan metnin son karakterine kadar yapılır. =$uzunluk= parametresi kullanılırsa, kesit alma işlemi belirtilen sıradaki karakterden, =$uzunluk= kadar karakter ilerlenerek yapılır.
 
@@ -528,7 +536,7 @@ Eğer =$uzunluk= parametresi kullanılmazsa, kesit alma işlemi belirtilen sıra
 : rhaba
 : hab
 
-** Değişken Kapsamı
+*** Değişken Kapsamı
 Eğer programınızda hiçbir fonksiyon kullanmıyorsanız, bir değişkeni oluşturduktan satırdan sonra herhangi bir yerde bu değişkeni kullanabilirsiniz.
 Fakat fonksiyonlar içinde tanımlananan değişkenler(yerel değişkenler), özel teknikler kullanılmadıysa sadece fonksiyon içinde geçerli olurlar.
 Benzer şekilde genel olarak, programın ana kod parçasında veya bir başka fonksiyonda tanımlanan değişkenler, diğer fonksiyonlar içerisinde kullanılamazlar.
@@ -557,7 +565,7 @@ Fonksiyon içinde tanımlanan değişkenlerin kapsamları en fazla fonksiyonun k
 Fonksiyonların ve sınıfların dışında tanımlanan değişkenlerin kapsamına *global seviye kapsam* denir.
 *Super global seviye kapsama* sahip değişkenler ise her iki kapsam içinde kullanılabilirler.
 
-** Global Değişkenler
+*** Global Değişkenler
 Global kapsamda yer alan bir değişkeni bir fonksiyon içinde kullanmak için ~global~ anahtar deyimi kullanılır. Bir önceki örneği bu şekilde düzenlersek, ana kod parçasında ve ~foo~ fonksiyonu içinde kullandığımız ~$a~ değişkenleri artık aynı değişken olacaktır. 
 
 #+BEGIN_SRC php
@@ -574,7 +582,7 @@ Global kapsamda yer alan bir değişkeni bir fonksiyon içinde kullanmak için ~
 #+RESULTS:
 : 5
 
-** Static Değişkenler
+*** Static Değişkenler
 Normalde, bir fonksiyon her çağırıldığında fonksiyonun içindeki değişkenler tekrardan tanımlanır. Yani, değerlerini saklamazlar. Aşağıdaki örneği inceleyelim.
 #+BEGIN_SRC php
   function deneme()
@@ -627,7 +635,7 @@ Bir değişkeni; fonksiyonun her çağırılışında, bu değişkenin fonksiyon
 : deneme() fonksiyonunun 1. çağırışınız.
 : deneme() fonksiyonunun 1. çağırışınız.
 
-** Referans Değişkenler
+*** Referans Değişkenler
 Bir fonksiyona, değişkenin değerini değil, değişkenin bulunduğu bellek adresini kullanarak parametre olarak verebiliriz. Bu durumda, fonksiyon içinde bu referans değişkeni uygulanan tüm işlemler, değişkeni de doğrudan etkileyecektir.
 
 #+BEGIN_SRC php :results value pp
@@ -665,7 +673,7 @@ echo "\n";
 #+RESULTS:
 : 18
 : 1815
-** Varsayılan Parametreler
+*** Varsayılan Parametreler
 Fonksiyonda bazı parametrelerin seçimlik(opsiyonel) olması mümkündür. Bu durumda, ilgili parametrelerin kullanılıp kullanımayacağının takdiri programcıyı bırakılmış olur. Bu şekildeki parametreler /seçimlik parametreler/ denir. Seçimlik parametresi olan bir fonksiyonda, bu seçimlik parametrenin kullanılmaması durumunda, foksiyonun tanımı içerisinde bu parametre için varsayılan bir değer kullanılmamasını sağlayabiliriz.
 
 #+BEGIN_SRC php :results value pp
@@ -712,7 +720,7 @@ Bu kod doğrudur.
 : Yaşınız 12, uyruğunuz Almanya
 : Yaşınız 18, uyruğunuz T.C
 
-** Parametre Fonksiyonları
+*** Parametre Fonksiyonları
 Fonksiyonun tanımalama gövdesinde kullanabileceğiniz ve fonksiyonun parametreleri bilgi veren yerleşik fonksiyonlardır.
 - ~func_get_args()~ : Bu fonksiyon, başka bir fonksiyonun gövdesinde kullanıldığında o fonksiyonun bütün parametrelerinden oluşan bir dizi döndürür.
 - ~func_num_args()~ : Bu fonksiyon, başka bir fonksiyonun gövdesinde kullanıldığında o fonksiyonun toplam parametre sayısını döndürür.
@@ -784,7 +792,7 @@ array(2) {
 İkinci parametresi : 1999
 #+end_example
 
-** Parametre Türünü Belirtme(Type Hinting)
+*** Parametre Türünü Belirtme(Type Hinting)
 PHP'de bir fonksiyon tanımlarken parametrelerinin hangi değişken türünden olacağını belirtmeye gerek yoktur. Fakat, fonksiyonunuzun daha tutarlı olması ve hata riskini azaltmak için, istenildiği takdirde parametreleri değişken türleri belirtilebilir.
 
 
@@ -800,7 +808,7 @@ PHP'de bir fonksiyon tanımlarken parametrelerinin hangi değişken türünden o
 
 Type hinting yapmak istediğimiz parametrenin önüne, o parametrenin olacağı değişken türünü yazmalıyız : ~int $dogumtarihi~
 
-** Fonksiyondan Birden Fazla Değer Döndürme
+*** Fonksiyondan Birden Fazla Değer Döndürme
 Dizi türünüden bir değer döndürerek bir fonksiyondan birden fazla değerin dönmesi sağlanabilir.
 
 #+BEGIN_SRC php :exports both
@@ -823,7 +831,7 @@ Kişinin doğduğu ayı parametre olarak alan ve kişinin sahip olabileceği bur
 #+END_alistirma
 
 
-** Fonksiyonun Dönüş Değerini Bildirme
+*** Fonksiyonun Dönüş Değerini Bildirme
 Fonksiyonun hangi türden değer döndüreceği bildirilebilir.
 
 #+BEGIN_SRC php exports: both
@@ -874,5 +882,5 @@ array(4) {
 }
 #+end_example
 
-** İsimsiz Fonksiyonlar
+**** İsimsiz Fonksiyonlar
 Bazı PHP fonksiyonları parametre olarak bir fonksiyon alabilir. Örneğin, ~usort(array &$array, callable $callback) : bool~ fonksiyonu bir dizinin elemanlarını sıralar. İkinci parametresi ~$callback~ ~callable~ türündendir. ~callable~ türü bu değişkenin bir fonksiyon olması gerektiğini ifade eder. Açıktır ki bu fonksiyon, dizini elemanlarının nasıl sıralacağını belirleyen fonksiyondur. 
