@@ -603,22 +603,179 @@ Bir değişkeni; fonksiyonun her çağırılışında, bu değişkenin fonksiyon
 : deneme() fonksiyonunu 2. çağırışınız.
 : deneme() fonksiyonunu 3. çağırışınız.
 
+
 ** Referans Değişkenler
 Bir fonksiyona, değişkenin değerini değil, değişkenin bulunduğu bellek adresini kullanarak parametre olarak verebiliriz. Bu durumda, fonksiyon içinde bu referans değişkeni uygulanan tüm işlemler, değişkeni de doğrudan etkileyecektir.
 
-#+BEGIN_SRC php
-
-$sayi=15;
+#+BEGIN_SRC php :results value pp
+  $sayi=15;
   function deneme(&$giren)
   {
-      $b +=3; // $b=$b+3; $b=0+3 = 3; 
-      return $b;
+      $giren +=3; // $b=$b+3; $b=0+3 = 3; 
+      return $giren;
   }
-  echo deneme();
+  echo deneme($sayi); // $sayi değişkenin değeri 3 artar: 18
   echo "\n";
-  echo deneme();
+  echo deneme($sayi); // $sayi değişkeninin değeri 3 artat: 21
+  echo $sayi; // $sayi değişkeninin en son değeri 21
 #+END_SRC
-xxkkdd
 
-ddd
+#+RESULTS:
+: 18
+: 2121
+
+
+#+BEGIN_SRC php :results value pp
+  $sayi=15;
+  function deneme($giren)
+  {
+      $giren +=3; // $b=$b+3; $b=0+3 = 3; 
+      return $giren;
+  }
+  echo deneme($sayi); // $sayi değişkenin değeri 3 artar: 18
+  echo "\n";
+  echo deneme($sayi); // $sayi değişkeninin değeri 3 artat: 21
+echo "\n";
+  echo $sayi; // $sayi değişkeninin en son değeri 21
+#+END_SRC
+
+#+RESULTS:
+: 18
+: 1815
+** Varsayılan Parametreler
+Fonksiyonda bazı parametrelerin seçimlik(opsiyonel) olması mümkündür. Bu durumda, ilgili parametrelerin kullanılıp kullanımayacağının takdiri programcıyı bırakılmış olur. Bu şekildeki parametreler /seçimlik parametreler/ denir. Seçimlik parametresi olan bir fonksiyonda, bu seçimlik parametrenin kullanılmaması durumunda, foksiyonun tanımı içerisinde bu parametre için varsayılan bir değer kullanılmamasını sağlayabiliriz.
+
+#+BEGIN_SRC php :results value pp
+  function uyrukYazdir($uyruk="T.C") {
+      echo "$uyruk\n";
+  }
+  uyrukYazdir("Almanya");
+  uyrukYazdir("Belçika");
+  uyrukYazdir();
+#+END_SRC
+
+#+RESULTS:
+: Almanya
+: Belçika
+: T.C
+
+
+Bir fonksiyonun birden fazla seçimlik parametresi olabilir. Seçimlik parametreler, seçimlik olmayan(zorunlu olan) parametrelerden sonra yazılmalıdırlar.
+
+
+Bu kod hatalıdır. 
+#+BEGIN_SRC php :results value pp
+  function uyrukYazdir($uyruk="T.C", $yas) { // Seçimlik parametreler, parametre listesinde zorunlu olanlarda sonra gelmeliler. 
+      echo "Yaşınız $yas, uyruğunuz $uyruk\n";
+  }
+  uyrukYazdir("Almanya", 17);
+  uyrukYazdir("Belçika");
+  uyrukYazdir(17);
+#+END_SRC
+
+#+RESULTS:
+
+
+Bu kod doğrudur.
+#+BEGIN_SRC php :results value pp
+  function uyrukYazdir($yas, $uyruk="T.C") {
+      echo "Yaşınız $yas, uyruğunuz $uyruk\n";
+  }
+  uyrukYazdir(12, "Almanya");
+  uyrukYazdir(18);
+#+END_SRC
+
+#+RESULTS:
+: Yaşınız 12, uyruğunuz Almanya
+: Yaşınız 18, uyruğunuz T.C
+
+
+** Parametre Fonksiyonları
+Fonksiyonun tanımalama gövdesinde kullanabileceğiniz ve fonksiyonun parametreleri bilgi veren yerleşik fonksiyonlardır.
+- ~func_get_args()~ : Bu fonksiyon, başka bir fonksiyonun gövdesinde kullanıldığında o fonksiyonun bütün parametrelerinden oluşan bir dizi döndürür.
+- ~func_num_args()~ : Bu fonksiyon, başka bir fonksiyonun gövdesinde kullanıldığında o fonksiyonun toplam parametre sayısını döndürür.
+- ~func_get_arg($sira)~ : Bu fonksiyon, başka bir fonksiyonun gövdesinde kullanıldığında o fonksiyonun ~$sira~ sırasındaki parametresini döndürür.
+
+  #+BEGIN_SRC php :results value pp
+    function bilgiler($kimlikno, $dogumtarihi) {
+        $toplam_parametre_sayisi = func_num_args();
+        $parametrelerin_dizisi = func_get_args();
+        $ikinci_parametre = func_get_arg(1);
+        echo "Bu fonksiyonun $toplam_parametre_sayisi tane parametresi var\n";
+        var_dump($parametrelerin_dizisi);
+    echo "\n";
+        echo "İkinci parametresi : $ikinci_parametre\n";
+    }
+    bilgiler(2345,1980);
+    bilgiler(232323, 1999);
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+Bu fonksiyonun 2 tane parametresi vararray(2) {
+  [0]=>
+  int(2345)
+  [1]=>
+  int(1980)
+}
+İkinci parametresi : 1980Bu fonksiyonun 2 tane parametresi vararray(2) {
+  [0]=>
+  int(232323)
+  [1]=>
+  int(1999)
+}
+İkinci parametresi : 1999
+#+end_example
+
+
+#+BEGIN_SRC php :results value verbatim
+  function bilgiler($kimlikno, $dogumtarihi=2000) {
+      $toplam_parametre_sayisi = func_num_args();
+      $parametrelerin_dizisi = func_get_args();
+      $ikinci_parametre = func_get_arg(1);
+      echo "Bu fonksiyonun $toplam_parametre_sayisi tane parametresi var\n";
+      var_dump($parametrelerin_dizisi);
+    echo "\n";
+      echo "İkinci parametresi : $ikinci_parametre\n";
+  }
+  bilgiler(2345);
+  bilgiler(232323, 1999);
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+Bu fonksiyonun 1 tane parametresi var
+array(1) {
+  [0]=>
+  int(2345)
+}
+
+İkinci parametresi : 
+Bu fonksiyonun 2 tane parametresi var
+array(2) {
+  [0]=>
+  int(232323)
+  [1]=>
+  int(1999)
+}
+
+İkinci parametresi : 1999
+#+end_example
+
+
+** Parametre Türünü Belirtme(Type Hinting)
+PHP'de bir fonksiyon tanımlarken parametrelerinin hangi değişken türünden olacağını belirtmeye gerek yoktur. Fakat, fonksiyonunuzun daha tutarlı olması ve hata riskini azaltmak için, istenildiği takdirde parametreleri değişken türleri belirtilebilir.
+
+
+#+BEGIN_SRC php :results value verbatim
+  function yasHesapla(int $dogumtarihi) {
+    echo 2021-$dogumtarihi;
+  }
+  yasHesapla(198);
+  yasHesapla("abc"); // PHP Fatal error:  Uncaught TypeError: Argument 1 passed to yasHesapla() must be of the type int
+#+END_SRC
+
+#+RESULTS:
+
+Type hinting yapmak istediğimiz parametrenin önüne, o parametrenin olacağı değişken türünü yazmalıyız : ~int $dogumtarihi~
 
