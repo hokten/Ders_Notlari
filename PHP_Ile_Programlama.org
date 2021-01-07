@@ -614,14 +614,15 @@ Bir değişkeni; fonksiyonun her çağırılışında, bu değişkenin fonksiyon
 #+END_SRC
 
 #+RESULTS:
-: deneme() fonksiyonunu 1. çağırışınız.
-: deneme() fonksiyonunu 2. çağırışınız.
-: deneme() fonksiyonunu 3. çağırışınız.
+: deneme() fonksiyonunun 1. çağırışınız.
+: deneme() fonksiyonunun 2. çağırışınız.
+: deneme() fonksiyonunun 3. çağırışınız.
 
 #+BEGIN_SRC php :exports both
+$cagirilma_sayisi=16;
   function deneme()
   {
-      $cagirilma_sayisi=0;
+      static $cagirilma_sayisi=0;
       $cagirilma_sayisi++;
       echo "deneme() fonksiyonunun {$cagirilma_sayisi}. çağırışınız.\n";
   }
@@ -648,12 +649,14 @@ Bir fonksiyona, değişkenin değerini değil, değişkenin bulunduğu bellek ad
   echo deneme($sayi); // $sayi değişkenin değeri 3 artar: 18
   echo "\n";
   echo deneme($sayi); // $sayi değişkeninin değeri 3 artat: 21
+ echo "\n";
   echo $sayi; // $sayi değişkeninin en son değeri 21
 #+END_SRC
 
 #+RESULTS:
 : 18
-: 2121
+: 21
+: 21
 
 
 #+BEGIN_SRC php :results value pp
@@ -674,10 +677,10 @@ echo "\n";
 : 18
 : 1815
 *** Varsayılan Parametreler
-Fonksiyonda bazı parametrelerin seçimlik(opsiyonel) olması mümkündür. Bu durumda, ilgili parametrelerin kullanılıp kullanımayacağının takdiri programcıyı bırakılmış olur. Bu şekildeki parametreler /seçimlik parametreler/ denir. Seçimlik parametresi olan bir fonksiyonda, bu seçimlik parametrenin kullanılmaması durumunda, foksiyonun tanımı içerisinde bu parametre için varsayılan bir değer kullanılmamasını sağlayabiliriz.
+Fonksiyonda bazı parametrelerin seçimlik(opsiyonel) olması mümkündür. Bu durumda, ilgili parametrelerin kullanılıp kullanımayacağının takdiri programcıyı bırakılmış olur. Bu şekildeki parametreler /seçimlik parametreler/ denir. Seçimlik parametresi olan bir fonksiyonda, bu seçimlik parametrenin kullanılmaması durumunda, foksiyonun tanımı içerisinde bu parametre için varsayılan bir değer kullanılmasını sağlayabiliriz.
 
 #+BEGIN_SRC php :results value pp
-  function uyrukYazdir($uyruk="T.C") {
+  function uyrukYazdir($uyruk="T.C.") {
       echo "$uyruk\n";
   }
   uyrukYazdir("Almanya");
@@ -717,7 +720,20 @@ Bu kod doğrudur.
 #+END_SRC
 
 #+RESULTS:
+
+
+#+BEGIN_SRC php :results value pp
+  function uyrukYazdir($yas=18, $uyruk="T.C") {
+      echo "Yaşınız $yas, uyruğunuz $uyruk\n";
+  }
+  uyrukYazdir(12, "Almanya");
+  uyrukYazdir(20);
+  uyrukYazdir();
+#+END_SRC
+
+#+RESULTS:
 : Yaşınız 12, uyruğunuz Almanya
+: Yaşınız 20, uyruğunuz T.C
 : Yaşınız 18, uyruğunuz T.C
 
 *** Parametre Fonksiyonları
@@ -739,6 +755,28 @@ Fonksiyonun tanımalama gövdesinde kullanabileceğiniz ve fonksiyonun parametre
     bilgiler(2345,1980);
     bilgiler(232323, 1999);
 #+END_SRC
+
+#+RESULTS:
+#+begin_example
+Bu fonksiyonun 2 tane parametresi var
+array(2) {
+  [0]=>
+  int(2345)
+  [1]=>
+  int(1980)
+}
+
+İkinci parametresi : 1980
+Bu fonksiyonun 2 tane parametresi var
+array(2) {
+  [0]=>
+  int(232323)
+  [1]=>
+  int(1999)
+}
+
+İkinci parametresi : 1999
+#+end_example
 
 #+RESULTS:
 #+begin_example
@@ -800,7 +838,7 @@ PHP'de bir fonksiyon tanımlarken parametrelerinin hangi değişken türünden o
   function yasHesapla(int $dogumtarihi) {
     echo 2021-$dogumtarihi;
   }
-  yasHesapla(198);
+  yasHesapla(1980);
   yasHesapla("abc"); // PHP Fatal error:  Uncaught TypeError: Argument 1 passed to yasHesapla() must be of the type int
 #+END_SRC
 
@@ -818,12 +856,12 @@ Dizi türünüden bir değer döndürerek bir fonksiyondan birden fazla değerin
       $sansli_sayi = $yas%10 + 2;
       return array($yas, $sansli_sayi);
   }
-  $veri = yasveSansliSayi(1980);
+  $veri = yasveSansliSayi(1985);
   echo "Yaşınız {$veri[0]}, şanslı sayınız {$veri[1]}";  
 #+END_SRC
 
 #+RESULTS:
-: Yaşınız 40, şanslı sayınız 2
+: Yaşınız 35, şanslı sayınız 7
 
 #+BEGIN_alistirma
 Kişinin doğduğu ayı parametre olarak alan ve kişinin sahip olabileceği burçları dizi olarak döndüren bir program yapınız.
