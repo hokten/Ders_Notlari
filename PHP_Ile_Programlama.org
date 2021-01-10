@@ -921,7 +921,7 @@ array(4) {
 #+end_example
 
 **** İsimsiz Fonksiyonlar
-Bazı PHP fonksiyonlarının görevlerini icra edebilmesi için parametre olarak değişkenden daha fazlasına ihtiyaç duyarlar. Böyle fonksiyonlar, bu durumun üstrsinden gelmek için başka bir fonksiyonu parametre olarak kullanabilirler. Örneğin, ~usort(array &$array, callable $callback) : bool~ fonksiyonu bir dizinin elemanlarını sıralar. İkinci parametresi ~$callback~ ~callable~ türündendir. ~callable~ türü bu değişkenin bir fonksiyon olması gerektiğini ifade eder. Açıktır ki bu fonksiyon, dizini elemanlarının nasıl sıralacağını belirleyen fonksiyondur.
+Bazı PHP fonksiyonlarının görevlerini icra edebilmesi için parametre olarak değişkenden daha fazlasına ihtiyaç duyarlar. Böyle fonksiyonlar, bu durumun üstrsinden gelmek için başka bir fonksiyonu parametre olarak kullanabilirler. Örneğin, ~usort(array &$array, callable $callback) : bool~ fonksiyonu bir dizinin elemanlarını sıralar. İkinci parametresi ~$callback~ ~callable~ türündendir. ~callable~ türü bu değişkenin bir fonksiyon olması gerektiğini ifade eder. Açıktır ki bu fonksiyon, dizinin elemanlarının nasıl sıralacağını belirleyen fonksiyondur.
 
 Parametre olarak kullanılacak fonksiyon normal bir fonksiyon gibi tanımlanabilir.
 
@@ -1069,3 +1069,78 @@ echo $sortOption;
 : length
 :     [3] => really long string here, boy
 : )
+
+
+* Veritabanları
+Dinamik web siteleri oluşturmak için kullanıcılardan gelen bilgileri Veritabanlarında tutmamız gerekir
+PHP bir çok veritabanı sistemini destekler. PHP veritabanı işlemleri için PDO(PHP Data Objects) kütüphanesini kullanır.
+** Veritabanı İşlemleri İçin PHP Kullanılması
+PHP'de veritabanı işlemlerini yerine getirmek için iki yol vardır. Birincisi, kullandığınız veritabanına özel dil eklentisini kullanmak. Diğeri ise herhangi bir veritabanı ile kullanabileceğiniz PDO.
+İki yönteminde kendine göre avantajları ve dezavantajları vardır. Veritabanı özel eklenti kullandığınzıda, yazdığınız kod tümüyle o veritabanı türüne özel olacaktır. Veritabanınızı değiştirmek istediğinizde kodunuz çalışmayacak ve kodunuzun eski veritabanı ile ilgili tüm kısımlarını değiştirmeniz gerekecek.
+PDO ile yazılan kodlar veritabanın türünden bağımsız olur ve veritabanınızı türünü değiştirmeniz durumunda bile düzgün çalışmaya devam eder. Tabii PDO bir çok farklı veritabanı türünüww uyum sağlayacak şekilde tasarlanmış olduğundan eklenti yöntemine göre biraz hantal kalır.
+** PDO Kullanımı
+PDO, veritabanı işlemeri için kullanılan bir PHP eklentisidir. Bir çok veritabanı türünü destekler. Programınızda PDO kullanabilmek için, PHP konfigürasyonunuzda PDO eklentisini ve PDO'nun kuullanacağınız veritabanı türüne ait eklentisini aktif hale getirmek gerekir. Örneğin PDO mysql veritabanı için kullanılacaksa php.ini dosyası
+
+#+begin_src bash
+extension=php_pdo.dll
+extension=php_pdo_mysql.dll
+#+end_src
+
+satırlarını içermelidir.
+*** Veritabanına Sunucusuna Bağlanma
+Bir Veritabanı üzerinde işlemler yapabilmek için o veritabanının bulunduğu veritabanı sunucusuna bağlanmak gerekir. Bu bağlantıyı sağlayabilmek için,
+- Veritabanı sunucusunun adresi ve portu
+- Veritabanı sunucsuna ait bir kullanıcı ismi ve bu kullanıcının şifresi.
+- İşlem yapacağınız veritabanın ismi.
+  bilgilerine ihtiyaç vardır.
+
+  PDO ile veritabanına bağlanmak için, 
+  #+begin_src php
+$db = new PDO($dsn, $username, $password);
+  #+end_src
+
+  kodu kullanılır. Burada ~$dsn~ /data source name/ anlamındadır ve veritabanı sunucusu ve veritabanınız hakkında bilgilerden oluşur.
+  Örneğin bir mysql veritabanına bağlancaksınız kodunuz, 
+
+    #+begin_src php
+$db = new PDO("mysql:host=localhost;dbname=library", $username, $password);
+  #+end_src
+
+  biçimine benzer olacaktır.
+
+*** Veritabanı Üzerinde İşlem Yapma
+Veritabanı üzerinde en çok yapılan işlemler: sorgu, düzenleme, ekleme ve silmedir.
+Veritabanı sorgularını aşğıdaki şekilde gruplandırmak mümkündür:
+
+1. Veri Döndürmeyen Sorgular
+   INSERT, UPDATE ve DELETE gibi SQL sorgularının veritabanı tablosundan veri döndürmesi beklenmez. Bu durumda ~PDO~ sınıfının ~exec()~ fonksiyonu kullanılabilir. ~exec~ fonksiyonu yalnızca veritabanı sorgusundan etkilenen kayıtların sayısını döndürür.
+2. Veri Döndürmesi Beklenen Sorgular.
+Veritabanı tablosundan kayıt veya kayıtlar döndürmesi beklenen sorgular için ~query~ fonksiyonu kullanılır.
+
+Örneklerde kullanacağımız veritabanının yapısı:
+
+#+PROPERTY: header-args:sql :engine mysql :dbhost localhost :dbuser root :dbpassword root :database ajax_crud
+#+begin_src sql
+  select * from migrations;
+#+end_src
+
+#+RESULTS:
+| id | migration                                      | batch |
+|----+------------------------------------------------+-------|
+|  1 | 2014_10_12_000000_create_users_table           |     1 |
+|  2 | 2014_10_12_100000_create_password_resets_table |     1 |
+|  3 | 2017_02_28_042012_create_tasks_table           |     1 |
+
+| numara | ad   | soyad  | vize | final | durum |
+|    123 | Ali  | ŞAHİN  |   34 |    56 |       |
+|    124 | Veli | ŞİMŞEK |   34 |    76 |       |
+|    125 | Akif | TAŞ    |   67 |    76 |       |
+
+**** Veritabanı Tablosuna Veri Ekleme
+~tablo~ isimli bir veritabanına kayıt eklemek için aşağıdaki şekilde bir kod kullanılabilir.
+#+begin_src php
+  $sorgu = "";
+  $etkilenen = $dbh->exec($sorgu);
+  echo "İşlemden etkilenen kayıt stırı sayısı : $affected";
+#+end_src
+
