@@ -1167,28 +1167,29 @@ $db = new PDO("mysql:host=localhost;dbname=library", $username, $password);
 
   biçimine benzer olacaktır.
 **** Bağlantı Hatalarını Yakalamak
-  Veritabanına bağlantı kurma eylemi, bizim kontrolümüzde olmaya bir çok sorunla karşılaşabilir. Örneğin veritabanı sunucusunun çalışmıyor olması, yada bağlantı sorunları gibi. Bu durumda oluşacak sorunları önceden tespit edebilmek adına ~try-catch~ yapısının kullanırız. ~try-catch~ yapısı, hata benzeri istisna adı verilen durumları yakalar ve bunların tipine göre işlem yapmamızı sağlar.
+Veritabanına bağlantı kurma eylemi, bizim kontrolümüzde olmaya bir çok sorunla karşılaşabilir. Örneğin veritabanı sunucusunun çalışmıyor olması, yada bağlantı sorunları gibi. Bu durumda oluşacak sorunları önceden tespit edebilmek adına ~try-catch~ yapısının kullanırız. ~try-catch~ yapısı, hata benzeri istisna adı verilen durumları yakalar ve bunların tipine göre işlem yapmamızı sağlar.
 
 #+begin_src php
   try {
-      $db = new PDO("mysql:host=localhost;dbname=ogrenciler1", "okten", "QBsfA6Sg73gnfRFg");
+      $db = new PDO("mysql:host=localhost;dbname=ogrenciler", "okten", "QBsfA6Sg73gnfRFg");
   }
   catch (PDOException $e) {
       echo $e->getMessage();
-  } catch (Throwable $e) {
+  }
+  catch (Throwable $e) {
       echo $e->getMessage();
   }
   echo "\nDevam ediyor mu?"
 #+end_src
 
   #+RESULTS:
-  : SQLSTATE[HY000] [1049] Unknown database 'ogrenciler1'
+  : SQLSTATE[HY000] [2002] No such file or directory
   : Devam ediyor mu?
 
 ~try-catch~ yapısında bir istisna ile karşılaşıldığında, istisnanın olduğu satırdan sonraki satırlar çalıştırılmaz. Program akışı ~catch~ bloğundan devam eder.
 #+begin_src php
   try {
-      $db = new PDO("mysql:host=localhost;dbname=ogrenciler1", "okten1", "QBsfA6Sg73gnfRFg");
+      $db = new PDO("mysql:host=localhost;dbname=ogrenciler1", "okten", "QBsfA6Sg73gnfRFg");
       echo "Devam";
   }
   catch (PDOException $e) {
@@ -1200,32 +1201,32 @@ $db = new PDO("mysql:host=localhost;dbname=library", $username, $password);
 #+end_src
 
 #+RESULTS:
-: SQLSTATE[HY000] [1045] Access denied for user 'okten1'@'localhost' (using password: YES)
+: SQLSTATE[HY000] [1049] Unknown database 'ogrenciler1'
 : Devam ediyor mu?
 
 #+begin_src php
   try {
-      $db = new PDO("mysql:host=localhost;dbname=ogrenciler", "okten", "QBsfA6Sg73gnfRFg");
+      $db = new PDO("mysql:host=localhost;dbname=ogrenciler", "okten1", "QBsfA6Sg73gnfRFg");
   }
   catch (PDOException $e) {
       echo $e->getMessage();
-  } catch (Throwable $e) {
+  }
+  catch (Throwable $e) {
       echo $e->getMessage();
   }
 #+end_src
 
 #+RESULTS:
-: 
-: Devam ediyor mu?
+: SQLSTATE[HY000] [1045] Access denied for user 'okten1'@'localhost' (using password: YES)
 
 **** Veritabanı Üzerinde İşlem Yapma
 Veritabanı üzerinde en çok yapılan işlemler: listeleme, düzenleme, ekleme ve silmedir.
 Veritabanı sorgularını aşağıdaki şekilde gruplandırmak mümkündür:
 
 1. Veri Döndürmeyen Sorgular
-   INSERT, UPDATE ve DELETE gibi SQL sorgularının veritabanı tablosundan veri döndürmesi beklenmez. Bu durumda ~PDO~ sınıfının ~exec()~ fonksiyonu kullanılabilir. ~exec~ fonksiyonu yalnızca veritabanı sorgusundan etkilenen kayıtların sayısını döndürür.
-2. Veri Döndürmesi Beklenen Sorgular.
-Veritabanı tablosundan kayıt veya kayıtlar döndürmesi beklenen sorgular için ~query~ fonksiyonu kullanılır.
+   INSERT, UPDATE ve DELETE gibi SQL sorgularının veritabanı tablosundan veri döndürmesi beklenmez. Bunun yerine, sorgunun başarılı olup olmadığıyla igililenilir. Sorgunun başarılı olup olmadığı ise, sorgu sonucu tabloda değişen kayıt sayısı kontrol edilerek tespit edilir. Bu durumda ~PDO~ sınıfının ~exec()~ fonksiyonu kullanılabilir. ~exec~ fonksiyonu yalnızca veritabanı sorgusundan etkilenen kayıtların sayısını döndürür.
+2. Veri Döndürmesi Beklenen Sorgular
+   SELECT sorgusu veritabanı tablosundan kayıtları seçer. Veritabanı tablosundan kayıt veya kayıtlar döndürmesi beklenen sorgular için ~query()~ fonksiyonu kullanılır.
 
 Örneklerde kullanacağımız veritabanının yapısı:
 
@@ -1234,16 +1235,16 @@ Veritabanı tablosundan kayıt veya kayıtlar döndürmesi beklenen sorgular iç
 #+header: :dbuser okten
 #+header: :dbpassword QBsfA6Sg73gnfRFg
 #+header: :database ogrenciler
-#+begin_src sql
+#+begin_src sql :exports results
   select * from new_table;
 #+end_src
 
 #+RESULTS:
-| numara | ad    | soyad | bolum  | dogumyili |
-|--------+-------+-------+--------+-----------|
-|    125 | Ali   | VELİ  | İnşaat |      2000 |
-|    126 | Fatma | MERT  | İnşaat |      2000 |
-|    127 | Ayşe  | MERT  | İnşaat |      2000 |
+| numara | ad    | soyad | bolum    | dogumyili |
+|--------+-------+-------+----------+-----------|
+|    125 | Ali   | VELİ  | İnşaat   |      2000 |
+|    126 | Fatma | MERT  | Otomotiv |      2000 |
+|    127 | Ayşe  | MERT  | Otomotiv |      2000 |
 
 
 
@@ -1252,12 +1253,14 @@ Veritabanı tablosundan kayıt veya kayıtlar döndürmesi beklenen sorgular iç
 #+begin_src php
   try {
       $db = new PDO("mysql:host=localhost;dbname=ogrenciler", "okten", "QBsfA6Sg73gnfRFg");
-      $sorgu = "INSERT INTO new_table (numara, ad, soyad, bolum, dogumyili) VALUES(128, 'Zehra', 'FIRAT', 'Harita', 2000)";
+      $sorgu = "INSERT INTO new_table (numara, ad, soyad, bolum, dogumyili) VALUES(128, 'Zehra', 'FIRAT', 'Harita', 2001)";
       $etkilenen = $db->exec($sorgu);
       echo "İşlemden etkilenen kayıt satırı sayısı : $etkilenen";
-  } catch (PDOException $e) {
+  }
+  catch (PDOException $e) {
       echo $e->getMessage();
-  } catch (Throwable $e) {
+  }
+  catch (Throwable $e) {
       echo $e->getMessage();
   }
 
@@ -1274,37 +1277,40 @@ Tablonun son hali aşağıdaki gibidir.
 #+header: :dbuser okten
 #+header: :dbpassword QBsfA6Sg73gnfRFg
 #+header: :database ogrenciler
-#+begin_src sql
+#+begin_src sql :exports results
   select * from new_table;
 #+end_src
 
 #+RESULTS:
-| numara | ad    | soyad | bolum  | dogumyili |
-|--------+-------+-------+--------+-----------|
-|    125 | Ali   | VELİ  | İnşaat |      2000 |
-|    126 | Fatma | MERT  | İnşaat |      2000 |
-|    127 | Ayşe  | MERT  | İnşaat |      2000 |
-|    128 | Zehra | FIRAT | Harita |      2000 |
+| numara | ad    | soyad | bolum    | dogumyili |
+|--------+-------+-------+----------+-----------|
+|    125 | Ali   | VELİ  | İnşaat   |      2000 |
+|    126 | Fatma | MERT  | Otomotiv |      2000 |
+|    127 | Ayşe  | MERT  | Otomotiv |      2000 |
+|    128 | Zehra | FIRAT | Harita   |      2001 |
 
-***** Veritabanındaki Kayıtı Güncelleme
+***** Veritabanı Tablosundaki Kayıtları Güncelleme
 ~new_table~ isimli bir veritabanındaki kayıtları güncellemek için aşağıdaki şekilde bir kod kullanılabilir.
-Bu kod numarası 124 olan öğrencinin veya öğrencilerin bölümünü Elektronik olarak değiştirmektedir. Kullandığımız tabloda, numarası 124 olan tek bir kayıt olduğundan dolayı, bu işlemden etkilenen kayıt sayısı 1 olacaktır. 
+Bu kod numarası 127 olan öğrencinin veya öğrencilerin bölümünü Elektronik olarak değiştirmektedir. Kullandığımız tabloda, numarası 127 olan tek bir kayıt olduğundan dolayı, bu işlemden etkilenen kayıt sayısı 1 olacaktır.
+
 #+begin_src php
   try {
       $db = new PDO("mysql:host=localhost;dbname=ogrenciler", "okten", "QBsfA6Sg73gnfRFg");
       $sorgu = "UPDATE new_table SET bolum='Tekstil' WHERE numara=126"; 
       $etkilenen = $db->exec($sorgu);
       echo "İşlemden etkilenen kayıt satırı sayısı : $etkilenen";
-  } catch (PDOException $e) {
+  }
+  catch (PDOException $e) {
       echo $e->getMessage();
-  } catch (Throwable $e) {
+  }
+  catch (Throwable $e) {
       echo $e->getMessage();
   }
 
 #+end_src
 
 #+RESULTS:
-: İşlemden etkilenen kayıt satırı sayısı : 1
+: İşlemden etkilenen kayıt satırı sayısı : 0
 
 Tablonun son hali aşağıdaki gibidir. 
 #+header: :engine mysql
@@ -1312,17 +1318,17 @@ Tablonun son hali aşağıdaki gibidir.
 #+header: :dbuser okten
 #+header: :dbpassword QBsfA6Sg73gnfRFg
 #+header: :database ogrenciler
-#+begin_src sql
+#+begin_src sql :exports results
   select * from new_table;
 #+end_src
 
 #+RESULTS:
-| numara | ad    | soyad | bolum   | dogumyili |
-|--------+-------+-------+---------+-----------|
-|    125 | Ali   | VELİ  | İnşaat  |      2000 |
-|    126 | Fatma | MERT  | Tekstil |      2000 |
-|    127 | Ayşe  | MERT  | İnşaat  |      2000 |
-|    128 | Zehra | FIRAT | Harita  |      2000 |
+| numara | ad    | soyad | bolum    | dogumyili |
+|--------+-------+-------+----------+-----------|
+|    125 | Ali   | VELİ  | İnşaat   |      2000 |
+|    126 | Fatma | MERT  | Tekstil  |      2000 |
+|    127 | Ayşe  | MERT  | Otomotiv |      2000 |
+|    128 | Zehra | FIRAT | Harita   |      2001 |
 
 
 
@@ -1331,13 +1337,14 @@ UPDATE işleminden etkilenen kayıtlar birden fazla olabilir. Örneğin; tablomu
 #+begin_src php
   try {
       $db = new PDO("mysql:host=localhost;dbname=ogrenciler", "okten", "QBsfA6Sg73gnfRFg");
-      $sorgu = "UPDATE new_table SET bolum='Makine' WHERE soyad='MERT'"; 
+      $sorgu = "UPDATE new_table SET bolum='İnşaat' WHERE dogumyili=2000"; 
       $etkilenen = $db->exec($sorgu);
       echo "İşlemden etkilenen kayıt satırı sayısı : $etkilenen";
   }
   catch (PDOException $e) {
       echo $e->getMessage();
-  } catch (Throwable $e) {
+  }
+  catch (Throwable $e) {
       echo $e->getMessage();
   }
 
@@ -1354,7 +1361,7 @@ Tablonun son hali aşağıdaki gibidir.
 #+header: :dbuser okten
 #+header: :dbpassword QBsfA6Sg73gnfRFg
 #+header: :database ogrenciler
-#+begin_src sql
+#+begin_src sql :exports results
   select * from new_table;
 #+end_src
 
@@ -1362,9 +1369,9 @@ Tablonun son hali aşağıdaki gibidir.
 | numara | ad    | soyad | bolum  | dogumyili |
 |--------+-------+-------+--------+-----------|
 |    125 | Ali   | VELİ  | İnşaat |      2000 |
-|    126 | Fatma | MERT  | Makine |      2000 |
-|    127 | Ayşe  | MERT  | Makine |      2000 |
-|    128 | Zehra | FIRAT | Harita |      2000 |
+|    126 | Fatma | MERT  | İnşaat |      2000 |
+|    127 | Ayşe  | MERT  | İnşaat |      2000 |
+|    128 | Zehra | FIRAT | Harita |      2001 |
 
 
 ***** Veritabanından Kayıt Silme
@@ -1375,12 +1382,13 @@ Veritababınından kayıt silmek için DELETE sql deyimi kullanılır.
       $sorgu = "DELETE FROM new_table WHERE bolum='Harita'"; 
       $etkilenen = $db->exec($sorgu);
       echo "İşlemden etkilenen kayıt satırı sayısı : $etkilenen";
-  } catch (PDOException $e) {
-      echo $e->getMessage();
-  } catch (Throwable $e) {
+  }
+  catch (PDOException $e) {
       echo $e->getMessage();
   }
-
+  catch (Throwable $e) {
+      echo $e->getMessage();
+  }
 #+end_src
 
 #+RESULTS:
@@ -1392,7 +1400,7 @@ Tablonun son hali aşağıdaki gibidir.
 #+header: :dbuser okten
 #+header: :dbpassword QBsfA6Sg73gnfRFg
 #+header: :database ogrenciler
-#+begin_src sql
+#+begin_src sql :exports results
   select * from new_table;
 #+end_src
 
@@ -1400,8 +1408,8 @@ Tablonun son hali aşağıdaki gibidir.
 | numara | ad    | soyad | bolum  | dogumyili |
 |--------+-------+-------+--------+-----------|
 |    125 | Ali   | VELİ  | İnşaat |      2000 |
-|    126 | Fatma | MERT  | Makine |      2000 |
-|    127 | Ayşe  | MERT  | Makine |      2000 |
+|    126 | Fatma | MERT  | İnşaat |      2000 |
+|    127 | Ayşe  | MERT  | İnşaat |      2000 |
 
 ***** Veritabanındaki Kayıtları Listeleme
 Veritabanındaki kayıtları temel olarak listelemek için PDO nesnesinin ~query~ metodu SELECT sql deyimi ile birlikte kullanılır.
@@ -1417,9 +1425,11 @@ Veritabanındaki kayıtları temel olarak listelemek için PDO nesnesinin ~query
           echo "\n";
       }
 
-  } catch (PDOException $e) {
+  }
+  catch (PDOException $e) {
       echo $e->getMessage();
-  } catch (Throwable $e) {
+  }
+  catch (Throwable $e) {
       echo $e->getMessage();
   }
 
@@ -1435,14 +1445,14 @@ SELECT sql sorgusu sonucu kaç kayıt döneceğini öğrenmek için ~rowCount~ m
 #+begin_src php
   try {
       $db = new PDO("mysql:host=localhost;dbname=ogrenciler", "okten", "QBsfA6Sg73gnfRFg");
-      $sorgu = "SELECT * FROM new_table WHERE bolum='Makine'";
+      $sorgu = "SELECT * FROM new_table WHERE soyad='MERT'";
       $kayitSayisi = $db->query($sorgu)->rowCount();
-    echo "Toplam $kayitSayisi adet kayıt listelenecektir.";
-
+      echo "Toplam $kayitSayisi adet kayıt listelenecektir.";
   }
   catch (PDOException $e) {
       echo $e->getMessage();
-  } catch (Throwable $e) {
+  }
+  catch (Throwable $e) {
       echo $e->getMessage();
   }
 
@@ -1450,7 +1460,6 @@ SELECT sql sorgusu sonucu kaç kayıt döneceğini öğrenmek için ~rowCount~ m
 
 #+RESULTS:
 : Toplam 2 adet kayıt listelenecektir.
-
 
 
 **** Veritabanı Üzerinde İşlemleri Güvenli Yapma
@@ -1476,18 +1485,20 @@ Burada yer tutucular: ~:num~ ve ~:bol~ bölümleridir.
       $sorgu = "UPDATE new_table SET bolum=:blm WHERE soyad=:sad";
       $sqlDeyimi = $db->prepare($sorgu);
       $durum = $sqlDeyimi->execute([':blm'=>'Tekstil', ':sad'=>'MERT']);
-      echo "Toplam $durum adet kayıt listelenecektir.";
+      echo "Durum : $durum";
 
-  } catch (PDOException $e) {
+  }
+  catch (PDOException $e) {
       echo $e->getMessage();
-  } catch (Throwable $e) {
+  }
+  catch (Throwable $e) {
       echo $e->getMessage();
   }
 
 #+end_src
 
 #+RESULTS:
-: Toplam 1 adet kayıt listelenecektir.
+: Durum : 1
   
 
 
@@ -1497,7 +1508,7 @@ Tablonun son hali aşağıdaki gibidir.
 #+header: :dbuser okten
 #+header: :dbpassword QBsfA6Sg73gnfRFg
 #+header: :database ogrenciler
-#+begin_src sql
+#+begin_src sql :exports results
   select * from new_table;
 #+end_src
 
@@ -1516,18 +1527,20 @@ Tablonun son hali aşağıdaki gibidir.
       $sorgu = "UPDATE new_table SET bolum=? WHERE soyad=?";
       $sqlDeyimi = $db->prepare($sorgu);
       $durum = $sqlDeyimi->execute(['Otomotiv', 'MERT']);
-      echo "Toplam $durum adet kayıt listelenecektir.";
+      echo "Durum : $durum";
 
-  } catch (PDOException $e) {
+  }
+  catch (PDOException $e) {
       echo $e->getMessage();
-  } catch (Throwable $e) {
+  }
+  catch (Throwable $e) {
       echo $e->getMessage();
   }
 
 #+end_src
 
 #+RESULTS:
-: Toplam 1 adet kayıt listelenecektir.
+: Durum : 1
 
 Tablonun son hali aşağıdaki gibidir. 
 #+header: :engine mysql
@@ -1535,7 +1548,7 @@ Tablonun son hali aşağıdaki gibidir.
 #+header: :dbuser okten
 #+header: :dbpassword QBsfA6Sg73gnfRFg
 #+header: :database ogrenciler
-#+begin_src sql
+#+begin_src sql :exports results
   select * from new_table;
 #+end_src
 
@@ -1545,3 +1558,62 @@ Tablonun son hali aşağıdaki gibidir.
 |    125 | Ali   | VELİ  | İnşaat   |      2000 |
 |    126 | Fatma | MERT  | Otomotiv |      2000 |
 |    127 | Ayşe  | MERT  | Otomotiv |      2000 |
+
+****** Parametre Bağlama
+Yukarıdaki kullanıma ek olarak, ~prepare~ fonksiyonuna aktarılacak değerler için ~bindParam~ fonksiyonu da kullanılabilir.
+~bindParam~ fonksiyonu =boolean PDOStatement::bindParam(mixed parameter, mixed &variable [, int
+datatype [, int length [, mixed driver_options]]])= biçiminde tanımlanmıştır.
+Burada =parameter=, ~prepare~ fonksiyonu için oluşturuduğumuz SQL sorgularında bulunan isimli yer tutuculardır. Örneğin ~:num~ gibi.
+~variable~ ise, bu yer tutucunun yerine aktaracağınız değeridir.
+~datatype~, yer tutucunun kabul edeceği değerlerin hangi türden olacağını bildirir.
+- ~PDO::PARAM_BOOL~ : Boolean türü
+- ~PDO::PARAM_INT~ : SQL tamsayı türü
+- ~PDO::PARAM_STR~ : SQL metin türü
+
+
+#+begin_src php
+  try {
+      $db = new PDO("mysql:host=localhost;dbname=ogrenciler", "okten", "QBsfA6Sg73gnfRFg");
+      $sorgu = "INSERT INTO new_table (numara, ad, soyad, bolum, dogumyili) VALUES(:num, :ad, :sad, :blm, :dyil)";
+      $sqlDeyimi = $db->prepare($sorgu);
+      $numara = 145;
+      $ad = 'Akif';
+      $soyad = 'BAŞ';
+      $bolum = 'Harita';
+      $dogumyili = 2003;
+      $sqlDeyimi->bindParam(':num', $numara);
+      $sqlDeyimi->bindParam(':ad', $ad);
+      $sqlDeyimi->bindParam(':sad', $soyad);
+      $sqlDeyimi->bindParam(':blm', $bolum);
+      $sqlDeyimi->bindParam(':dyil', $dogumyili);
+      $sqlDeyimi->execute();
+  }
+  catch (PDOException $e) {
+      echo $e->getMessage();
+  }
+  catch (Throwable $e) {
+      echo $e->getMessage();
+  }
+#+end_src
+
+#+RESULTS:
+
+
+
+Tablonun son hali aşağıdaki gibidir. 
+#+header: :engine mysql
+#+header: :dbhost localhost
+#+header: :dbuser okten
+#+header: :dbpassword QBsfA6Sg73gnfRFg
+#+header: :database ogrenciler
+#+begin_src sql :exports results
+  select * from new_table;
+#+end_src
+
+#+RESULTS:
+| numara | ad    | soyad | bolum    | dogumyili |
+|--------+-------+-------+----------+-----------|
+|    125 | Ali   | VELİ  | İnşaat   |      2000 |
+|    126 | Fatma | MERT  | Otomotiv |      2000 |
+|    127 | Ayşe  | MERT  | Otomotiv |      2000 |
+|    145 | Akif  | BAŞ   | Harita   |      2003 |
