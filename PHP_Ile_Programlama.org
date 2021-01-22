@@ -637,20 +637,20 @@ $cagirilma_sayisi=16;
 : deneme() fonksiyonunun 1. çağırışınız.
 
 *** Referans Değişkenler
-Bir fonksiyona, değişkenin değerini değil, değişkenin bulunduğu bellek adresini kullanarak parametre olarak verebiliriz. Bu durumda, fonksiyon içinde bu referans değişkeni uygulanan tüm işlemler, değişkeni de doğrudan etkileyecektir.
+Bir fonksiyona, değişkenin değerini değil, değişkenin bulunduğu bellek adresini kullanarak parametre olarak verebiliriz. Bu durumda, fonksiyon içinde bu referans değişkenine uygulanan tüm işlemler, değişkeni de doğrudan etkileyecektir.
 
 #+BEGIN_SRC php :results value pp
-  $sayi=15;
-  function deneme(&$giren)
-  {
-      $giren +=3; // $b=$b+3; $b=0+3 = 3; 
-      return $giren;
-  }
-  echo deneme($sayi); // $sayi değişkenin değeri 3 artar: 18
+   $sayi=15;
+   function deneme(&$giren)
+   {
+       $giren +=3; // $b=$b+3; $b=0+3 = 3; 
+       return $giren;
+   }
+   echo deneme($sayi); // $sayi değişkenin değeri 3 artar: 18
+   echo "\n";
+   echo deneme($sayi); // $sayi değişkeninin değeri 3 artat: 21
   echo "\n";
-  echo deneme($sayi); // $sayi değişkeninin değeri 3 artat: 21
- echo "\n";
-  echo $sayi; // $sayi değişkeninin en son değeri 21
+   echo $sayi; // $sayi değişkeninin en son değeri 21
 #+END_SRC
 
 #+RESULTS:
@@ -668,14 +668,15 @@ Bir fonksiyona, değişkenin değerini değil, değişkenin bulunduğu bellek ad
   }
   echo deneme($sayi); // $sayi değişkenin değeri 3 artar: 18
   echo "\n";
-  echo deneme($sayi); // $sayi değişkeninin değeri 3 artat: 21
+  echo deneme($sayi); // $sayi değişkeninin değeri 3 artat: 18
 echo "\n";
   echo $sayi; // $sayi değişkeninin en son değeri 21
 #+END_SRC
 
 #+RESULTS:
 : 18
-: 1815
+: 18
+: 15
 *** Varsayılan Parametreler
 Fonksiyonda bazı parametrelerin seçimlik(opsiyonel) olması mümkündür. Bu durumda, ilgili parametrelerin kullanılıp kullanımayacağının takdiri programcıyı bırakılmış olur. Bu şekildeki parametreler /seçimlik parametreler/ denir. Seçimlik parametresi olan bir fonksiyonda, bu seçimlik parametrenin kullanılmaması durumunda, foksiyonun tanımı içerisinde bu parametre için varsayılan bir değer kullanılmasını sağlayabiliriz.
 
@@ -693,6 +694,7 @@ Fonksiyonda bazı parametrelerin seçimlik(opsiyonel) olması mümkündür. Bu d
 : Belçika
 : T.C
 
+- ~uyrukYazdir~ fonksiyonu kaç parametre alır?
 
 Bir fonksiyonun birden fazla seçimlik parametresi olabilir. Seçimlik parametreler, seçimlik olmayan(zorunlu olan) parametrelerden sonra yazılmalıdırlar.
 
@@ -720,8 +722,13 @@ Bu kod doğrudur.
 #+END_SRC
 
 #+RESULTS:
+: Yaşınız 12, uyruğunuz Almanya
+: Yaşınız 18, uyruğunuz T.C
 
+- ~uyrukYazdir~ fonksiyonunun parametre sayısı 1 veya 2 olur.
+  
 
+Fonksiyon tanımında, birden fazla varsayılan değere sahip parametre bulunabilir. Örneğin aşağıdaki programda hem ~$yas~ hem de ~$uyruk~ seçimlik parametrelerdir. 
 #+BEGIN_SRC php :results value pp
   function uyrukYazdir($yas=18, $uyruk="T.C") {
       echo "Yaşınız $yas, uyruğunuz $uyruk\n";
@@ -749,12 +756,34 @@ Fonksiyonun tanımalama gövdesinde kullanabileceğiniz ve fonksiyonun parametre
         $ikinci_parametre = func_get_arg(1);
         echo "Bu fonksiyonun $toplam_parametre_sayisi tane parametresi var\n";
         var_dump($parametrelerin_dizisi);
-    echo "\n";
+        echo "\n";
         echo "İkinci parametresi : $ikinci_parametre\n";
     }
     bilgiler(2345,1980);
     bilgiler(232323, 1999);
 #+END_SRC
+
+#+RESULTS:
+#+begin_example
+Bu fonksiyonun 2 tane parametresi var
+array(2) {
+  [0]=>
+  int(2345)
+  [1]=>
+  int(1980)
+}
+
+İkinci parametresi : 1980
+Bu fonksiyonun 2 tane parametresi var
+array(2) {
+  [0]=>
+  int(232323)
+  [1]=>
+  int(1999)
+}
+
+İkinci parametresi : 1999
+#+end_example
 
 #+RESULTS:
 #+begin_example
@@ -831,7 +860,7 @@ array(2) {
 #+end_example
 
 *** Parametre Türünü Belirtme(Type Hinting)
-PHP'de bir fonksiyon tanımlarken parametrelerinin hangi değişken türünden olacağını belirtmeye gerek yoktur. Fakat, fonksiyonunuzun daha tutarlı olması ve hata riskini azaltmak için, istenildiği takdirde parametreleri değişken türleri belirtilebilir.
+PHP'de bir fonksiyon tanımlarken parametrelerinin hangi değişken türünden olacağını belirtmeye gerek yoktur. Fakat, fonksiyonunuzun daha tutarlı olması ve hata riskini azaltmak için, istenildiği takdirde parametrelerin değişken türleri belirtilebilir.
 
 
 #+BEGIN_SRC php :results value verbatim
@@ -852,7 +881,7 @@ Dizi türünüden bir değer döndürerek bir fonksiyondan birden fazla değerin
 #+BEGIN_SRC php :exports both
   function yasveSansliSayi($dogumyili)
   {
-      $yas = 2020-$dogumyili;
+      $yas = 2021-$dogumyili;
       $sansli_sayi = $yas%10 + 2;
       return array($yas, $sansli_sayi);
   }
@@ -861,13 +890,12 @@ Dizi türünüden bir değer döndürerek bir fonksiyondan birden fazla değerin
 #+END_SRC
 
 #+RESULTS:
-: Yaşınız 35, şanslı sayınız 7
+: Yaşınız 36, şanslı sayınız 8
 
 #+BEGIN_alistirma
 Kişinin doğduğu ayı parametre olarak alan ve kişinin sahip olabileceği burçları dizi olarak döndüren bir program yapınız.
 Örnek: ~burcHesapla(7) => array("Yengeç", "Aslan")~
 #+END_alistirma
-
 
 *** Fonksiyonun Dönüş Değerini Bildirme
 Fonksiyonun hangi türden değer döndüreceği bildirilebilir.
@@ -920,16 +948,16 @@ array(4) {
 }
 #+end_example
 
-**** İsimsiz Fonksiyonlar
+*** İsimsiz Fonksiyonlar
 Bazı PHP fonksiyonlarının görevlerini icra edebilmesi için parametre olarak değişkenden daha fazlasına ihtiyaç duyarlar. Böyle fonksiyonlar, bu durumun üstrsinden gelmek için başka bir fonksiyonu parametre olarak kullanabilirler. Örneğin, ~usort(array &$array, callable $callback) : bool~ fonksiyonu bir dizinin elemanlarını sıralar. İkinci parametresi ~$callback~ ~callable~ türündendir. ~callable~ türü bu değişkenin bir fonksiyon olması gerektiğini ifade eder. Açıktır ki bu fonksiyon, dizinin elemanlarının nasıl sıralacağını belirleyen fonksiyondur.
 
-Parametre olarak kullanılacak fonksiyon normal bir fonksiyon gibi tanımlanabilir.
+Parametre olarak kullanılacak fonksiyon, normal bir fonksiyon gibi tanımlanabilir.
 
 #+begin_src php
   $sayilar = [1,3,5,7];
   function islemuygula($dizi, $islem) {
       foreach($dizi as $sayi) {
-          echo $islem($sayi) . "\n";
+          echo $islem($sayi) . "\n"; // $islem bir parametre alan bir fonksiyon olmalı.
       }
   }
 
@@ -941,8 +969,9 @@ Parametre olarak kullanılacak fonksiyon normal bir fonksiyon gibi tanımlanabil
       return $sayi*$sayi*$sayi;
   }
 
+
   islemuygula($sayilar, kareal);
-  islemuygula($sayilar, kupal)
+  islemuygula($sayilar, kupal);
 #+end_src
 
 #+RESULTS:
@@ -954,6 +983,8 @@ Parametre olarak kullanılacak fonksiyon normal bir fonksiyon gibi tanımlanabil
 : 27
 : 125
 : 343
+
+
 
 Yada isimsiz fonksiyonlar bir değişkene atanır ve bu değişken bir fonksiyona parametre olarak verilebilir. 
 #+begin_src php
@@ -996,11 +1027,18 @@ Fakat isimsiz fonksiyonlar genellikle geçici olarak gerekli olan ve hemen tüke
       }
   }
 
-  islemuygula($sayilar, function($sy) {return sqrt($sy);})
+  islemuygula($sayilar, function($sy) {return sqrt($sy);});
+  islemuygula($sayilar, function($sy) {
+      return sqrt($sy);
+  });
 
-       #+end_src
+#+end_src
 
        #+RESULTS:
+       : 1
+       : 1.7320508075689
+       : 2.2360679774998
+       : 2.6457513110646
        : 1
        : 1.7320508075689
        : 2.2360679774998
@@ -1008,46 +1046,43 @@ Fakat isimsiz fonksiyonlar genellikle geçici olarak gerekli olan ve hemen tüke
 
 
 #+begin_src php
-  $array = array("really long string here, boy", "this", "middling length", "larger");
-  $sortOption = 'random';
-  usort($array, function($a, $b) use ($sortOption)
-  {
-      if ($sortOption == 'random') {
-          // sort randomly by returning (-1, 0, 1) at random
-        $sortOption="abc";
-          return rand(0, 2) - 1;
-      }
-      else {
-          return strlen($a) - strlen($b);
-      }
-  });
+      $array = array("abdulmuttalip", "ramazan", "ali", "levent");
+      $siralamaKriteri = 'random';
 
-  print_r($array);
-echo $sortOption;
+      usort($array, function($a, $b) use ($siralamaKriteri)
+      {
+          if ($siralamaKriteri == 'random') {
+              return rand(0, 2) - 1;
+          }
+          else {
+              return strlen($a) - strlen($b);
+          }
+      });
+      print_r($array);
+      echo $sortOption;
+
 #+end_src
 
 #+RESULTS:
 : Array
 : (
-:     [0] => middling length
-:     [1] => this
-:     [2] => larger
-:     [3] => really long string here, boy
+:     [0] => abdulmuttalip
+:     [1] => levent
+:     [2] => ramazan
+:     [3] => ali
 : )
-: random
 
 
 #+begin_src php
-  $array = array("really long string here, boy", "this", "middling
-  length",
-                 "larger");
-  $sortOption = "random";
-  function sortNonrandom($array)
+  $array = array("abdulmuttalip", "ali", "ramazan", "mehmet");
+  $siralamaKriteri = "random";
+
+  function sirala($array)
   {
       //$sortOption = false;
-      usort($array, function($a, $b) use ($sortOption)
+      usort($array, function($a, $b) use ($siralamaKriteri)
       {
-          if ($sortOption == "random") {
+          if ($siralamaKriteri == "random") {
               // sort randomly by returning (-1, 0, 1) at random
               return rand(0, 2) - 1;
           }
@@ -1057,29 +1092,53 @@ echo $sortOption;
       });
       print_r($array);
   }
-  print_r(sortNonrandom($array));
+  print_r(sirala($array));
 #+end_src
 
 #+RESULTS:
 : Array
 : (
-:     [0] => this
-:     [1] => larger
-:     [2] => middling
-: length
-:     [3] => really long string here, boy
+:     [0] => abdulmuttalip
+:     [1] => mehmet
+:     [2] => ramazan
+:     [3] => ali
 : )
 
+#+begin_src php
+    $deneme = "abc";
+  function fonk() {
+    //global $deneme;
+    echo $deneme;
+  }
+fonk();
+#+end_src
 
-* Veritabanları
+#+RESULTS:
+
+** Diziler
+** Metin İşlemleri
+** PHP'de Sınıf ve Nesne Kavramları
+*** Sınıf
+Gerçek yaşamda problem düşünüldüğünde, kendine ait özellikleri ve davranışları olan ve bu açıdan bir bütün teşkil eden birimlerin programa aktrılmış hallerine *sınıf* denir. Programınızda sınıf olacak yapılar probleminizin özneleridir. Sınıfların özellik ve davranışları tamamiyle probleminize göre şekillenir. Örneğin, bir aracın vergi tutarını hesaplamak istediğinizde, açıktır ki sınıf olarak kullanacağınız yapı araç olacaktır. Benzer şekilde bir araç kiralama uygulaması geliştiriyorsanız yani programnızda kullanacağınız sınıflardan biris araç olacaktır. Her ne kadar iki problemde de aynı sınıfı kullanıyor olsanız da problemlerin farklılığından dolayı bu iki programda kullanılan araç sınıfın özellik ve davranışları biribirinden farklı olacaktır.
+Örneğin, aracın vergi hesabında sadece aracın  yaşı ve motor hacmi ile ilgilenmeniz gerekirken, araç kiralama uygulamasında aracın modeli, koltuk sayısı gibi başka özellikle de ilgilenmeniz gerekir. Probleminizin kapsamına göre bu özellikleri kendinizin belirliyor olmasın çok büyük bir kolaylıktır. Bu açıdan düşünüldüğünde sınıf, problemizde sınıf olarak kullanacağınız yapıların bir tanımıdır.
+*** Nesne
+Sınıflar ile problemimizin uğraştığı yapıları tanımladıktan sonra, bu tanımları ihlal etmemek koşulu ile onların somut bir örneğini oluşturabiliriz. Sınıflar soyut kavramlar olarak düşünülürse, nesneler bu soyut kavramları somut halleridir. Örneğin ~arac~ bir sınıf ise ~hondacivic~ araç sınıfının bir nesnesi olarak düşünülebilir.
+*** Nesne Tabanlı Programlamanın Özellikleri
+**** Abstraction(Soyutlama)
+Sınıf tasarımının nesnenin sadece gerekli olan temel özellikleri ile yapılması anlamına gelir. Örneğin, ~Iletisim~  isimli bir sınıfımız olsun. ~Iletisim~ sınıfının temel davranışı ~MesajGonder~ olsun. ~MesajGonder~ eylemi farklı biçimlerde gerçekleşebileceği için burada bir soyutlama yapılmış olur. ~Iletisim~ sınıfında türetilen farklı nesneler ~MesajGonder~ davranışını farklı biçimlerde ifa edebilirler. Fakat soyut olarak düşünüldüğünde gerçekleştirilen temel eylem aynıdır, yani ~MesajGonder~. Örneğin, SMS ile bir meaj gönderilebilir ya da e-posta ile de mesaj gönderilebilir.
+**** Encapsulation(Kapsülleme)
+Nesnenin, kendine ait verileri ve davranışları bir birim olarak kendi bünyesi içine alabilmesidir. Bu özelliklerdeki ve davranışlardaki değişimler birim olarak direkt nesnenin içinde gerçekleştiğinden; nesne istediği özellik ve davranışlara kendi birimi dışında bir noktadan erişilmesini kısıtlayabilir. Birimin özellik ve davranışları kendi dış dünyasından gizleyebilme yeteneği güvenlik açısından önemli role sahiptir.
+Örneğin, ~Vergi~ ismimli bir sınıfımız ve bu sınıfın ~Hesapla()~ isimli bir davranışı ve ~vergiOrani~ isimli bir özelliği olsun. Başka nesnelerin bir ~Vergi~ nesnesinin ~Hesapla()~ metodunu kullanmasına müsaade edecek, fakat ~vegiOranı~ özelliğini değiştirmesini iatemeyexeğiz. Çünkü 2020 yılında 1.5 olarak belirlenen ~vergiOrani~, başka bir nesneni onu 0.9 ile değiştirmesi sonucu, ~Hesapla()~ fonksiyonunun hatalı değer üretmesine neden olacaktır.
+
+** Veritabanları
 Dinamik web siteleri oluşturmak için kullanıcılardan gelen bilgileri Veritabanlarında tutmamız gerekir
 PHP bir çok veritabanı sistemini destekler. PHP veritabanı işlemleri için PDO(PHP Data Objects) kütüphanesini kullanır.
-** Veritabanı İşlemleri İçin PHP Kullanılması
+*** Veritabanı İşlemleri İçin PHP Kullanılması
 PHP'de veritabanı işlemlerini yerine getirmek için iki yol vardır. Birincisi, kullandığınız veritabanına özel dil eklentisini kullanmak. Diğeri ise herhangi bir veritabanı ile kullanabileceğiniz PDO.
 İki yönteminde kendine göre avantajları ve dezavantajları vardır. Veritabanı özel eklenti kullandığınzıda, yazdığınız kod tümüyle o veritabanı türüne özel olacaktır. Veritabanınızı değiştirmek istediğinizde kodunuz çalışmayacak ve kodunuzun eski veritabanı ile ilgili tüm kısımlarını değiştirmeniz gerekecek.
 PDO ile yazılan kodlar veritabanın türünden bağımsız olur ve veritabanınızı türünü değiştirmeniz durumunda bile düzgün çalışmaya devam eder. Tabii PDO bir çok farklı veritabanı türünüww uyum sağlayacak şekilde tasarlanmış olduğundan eklenti yöntemine göre biraz hantal kalır.
-** PDO Kullanımı
-PDO, veritabanı işlemeri için kullanılan bir PHP eklentisidir. Bir çok veritabanı türünü destekler. Programınızda PDO kullanabilmek için, PHP konfigürasyonunuzda PDO eklentisini ve PDO'nun kuullanacağınız veritabanı türüne ait eklentisini aktif hale getirmek gerekir. Örneğin PDO mysql veritabanı için kullanılacaksa php.ini dosyası
+*** PDO Kullanımı
+PDO, veritabanı işlemleri için kullanılan bir PHP eklentisidir. Bir çok veritabanı türünü destekler. Programınızda PDO kullanabilmek için, PHP konfigürasyonunuzda PDO eklentisini ve PDO kullanacağınız veritabanı türüne ait eklentisini aktif hale getirmek gerekir. Örneğin PDO mysql veritabanı için kullanılacaksa php.ini dosyası
 
 #+begin_src bash
 extension=php_pdo.dll
@@ -1087,10 +1146,10 @@ extension=php_pdo_mysql.dll
 #+end_src
 
 satırlarını içermelidir.
-*** Veritabanına Sunucusuna Bağlanma
-Bir Veritabanı üzerinde işlemler yapabilmek için o veritabanının bulunduğu veritabanı sunucusuna bağlanmak gerekir. Bu bağlantıyı sağlayabilmek için,
+**** Veritabanına Sunucusuna Bağlanma
+Bir veritabanı üzerinde işlemler yapabilmek için o veritabanının bulunduğu veritabanı sunucusuna bağlanmak gerekir. Bu bağlantıyı sağlayabilmek için,
 - Veritabanı sunucusunun adresi ve portu
-- Veritabanı sunucsuna ait bir kullanıcı ismi ve bu kullanıcının şifresi.
+- Veritabanı sunucusuna ait bir kullanıcı ismi ve bu kullanıcının şifresi.
 - İşlem yapacağınız veritabanın ismi.
   bilgilerine ihtiyaç vardır.
 
@@ -1102,15 +1161,66 @@ $db = new PDO($dsn, $username, $password);
   kodu kullanılır. Burada ~$dsn~ /data source name/ anlamındadır ve veritabanı sunucusu ve veritabanınız hakkında bilgilerden oluşur.
   Örneğin bir mysql veritabanına bağlancaksınız kodunuz, 
 
-    #+begin_src php
+ #+begin_src php
 $db = new PDO("mysql:host=localhost;dbname=library", $username, $password);
-  #+end_src
+#+end_src
 
   biçimine benzer olacaktır.
+**** Bağlantı Hatalarını Yakalamak
+  Veritabanına bağlantı kurma eylemi, bizim kontrolümüzde olmaya bir çok sorunla karşılaşabilir. Örneğin veritabanı sunucusunun çalışmıyor olması, yada bağlantı sorunları gibi. Bu durumda oluşacak sorunları önceden tespit edebilmek adına ~try-catch~ yapısının kullanırız. ~try-catch~ yapısı, hata benzeri istisna adı verilen durumları yakalar ve bunların tipine göre işlem yapmamızı sağlar.
 
-*** Veritabanı Üzerinde İşlem Yapma
-Veritabanı üzerinde en çok yapılan işlemler: sorgu, düzenleme, ekleme ve silmedir.
-Veritabanı sorgularını aşğıdaki şekilde gruplandırmak mümkündür:
+#+begin_src php
+  try {
+      $db = new PDO("mysql:host=localhost;dbname=ogrenciler1", "okten", "QBsfA6Sg73gnfRFg");
+  }
+  catch (PDOException $e) {
+      echo $e->getMessage();
+  } catch (Throwable $e) {
+      echo $e->getMessage();
+  }
+  echo "\nDevam ediyor mu?"
+#+end_src
+
+  #+RESULTS:
+  : SQLSTATE[HY000] [1049] Unknown database 'ogrenciler1'
+  : Devam ediyor mu?
+
+~try-catch~ yapısında bir istisna ile karşılaşıldığında, istisnanın olduğu satırdan sonraki satırlar çalıştırılmaz. Program akışı ~catch~ bloğundan devam eder.
+#+begin_src php
+  try {
+      $db = new PDO("mysql:host=localhost;dbname=ogrenciler1", "okten1", "QBsfA6Sg73gnfRFg");
+      echo "Devam";
+  }
+  catch (PDOException $e) {
+      echo $e->getMessage();
+  } catch (Throwable $e) {
+      echo $e->getMessage();
+  }
+  echo "\nDevam ediyor mu?"
+#+end_src
+
+#+RESULTS:
+: SQLSTATE[HY000] [1045] Access denied for user 'okten1'@'localhost' (using password: YES)
+: Devam ediyor mu?
+
+#+begin_src php
+  try {
+      $db = new PDO("mysql:host=localhost;dbname=ogrenciler", "okten", "QBsfA6Sg73gnfRFg");
+  }
+  catch (PDOException $e) {
+      echo $e->getMessage();
+  } catch (Throwable $e) {
+      echo $e->getMessage();
+  }
+#+end_src
+
+#+RESULTS:
+: 
+: Devam ediyor mu?
+
+**** Veritabanı Üzerinde İşlem Yapma
+Veritabanı üzerinde en çok yapılan işlemler: listeleme, düzenleme, ekleme ve silmedir.
+Veritabanı sorgularını aşağıdaki şekilde gruplandırmak mümkündür:
 
 1. Veri Döndürmeyen Sorgular
    INSERT, UPDATE ve DELETE gibi SQL sorgularının veritabanı tablosundan veri döndürmesi beklenmez. Bu durumda ~PDO~ sınıfının ~exec()~ fonksiyonu kullanılabilir. ~exec~ fonksiyonu yalnızca veritabanı sorgusundan etkilenen kayıtların sayısını döndürür.
@@ -1119,28 +1229,319 @@ Veritabanı tablosundan kayıt veya kayıtlar döndürmesi beklenen sorgular iç
 
 Örneklerde kullanacağımız veritabanının yapısı:
 
-#+PROPERTY: header-args:sql :engine mysql :dbhost localhost :dbuser root :dbpassword root :database ajax_crud
+#+header: :engine mysql
+#+header: :dbhost localhost
+#+header: :dbuser okten
+#+header: :dbpassword QBsfA6Sg73gnfRFg
+#+header: :database ogrenciler
 #+begin_src sql
-  select * from migrations;
+  select * from new_table;
 #+end_src
 
 #+RESULTS:
-| id | migration                                      | batch |
-|----+------------------------------------------------+-------|
-|  1 | 2014_10_12_000000_create_users_table           |     1 |
-|  2 | 2014_10_12_100000_create_password_resets_table |     1 |
-|  3 | 2017_02_28_042012_create_tasks_table           |     1 |
+| numara | ad    | soyad | bolum  | dogumyili |
+|--------+-------+-------+--------+-----------|
+|    125 | Ali   | VELİ  | İnşaat |      2000 |
+|    126 | Fatma | MERT  | İnşaat |      2000 |
+|    127 | Ayşe  | MERT  | İnşaat |      2000 |
 
-| numara | ad   | soyad  | vize | final | durum |
-|    123 | Ali  | ŞAHİN  |   34 |    56 |       |
-|    124 | Veli | ŞİMŞEK |   34 |    76 |       |
-|    125 | Akif | TAŞ    |   67 |    76 |       |
 
-**** Veritabanı Tablosuna Veri Ekleme
-~tablo~ isimli bir veritabanına kayıt eklemek için aşağıdaki şekilde bir kod kullanılabilir.
+
+***** Veritabanı Tablosuna Veri Ekleme
+~new_table~ isimli bir veritabanına kayıt eklemek için aşağıdaki şekilde bir kod kullanılabilir.
 #+begin_src php
-  $sorgu = "";
-  $etkilenen = $dbh->exec($sorgu);
-  echo "İşlemden etkilenen kayıt stırı sayısı : $affected";
+  try {
+      $db = new PDO("mysql:host=localhost;dbname=ogrenciler", "okten", "QBsfA6Sg73gnfRFg");
+      $sorgu = "INSERT INTO new_table (numara, ad, soyad, bolum, dogumyili) VALUES(128, 'Zehra', 'FIRAT', 'Harita', 2000)";
+      $etkilenen = $db->exec($sorgu);
+      echo "İşlemden etkilenen kayıt satırı sayısı : $etkilenen";
+  } catch (PDOException $e) {
+      echo $e->getMessage();
+  } catch (Throwable $e) {
+      echo $e->getMessage();
+  }
+
 #+end_src
 
+#+RESULTS:
+: İşlemden etkilenen kayıt satırı sayısı : 1
+
+Yukarıdaki örnekte,  ~new_table~ tablosuna bir kayıt eklendi. ~exec~ fonksiyonu, parametre olarak aldığı SQL sorgusundan etkilenen kayıt sayısını döndürür. Yukarıdaki program, tabloya bir kayıt ekler.  ~new_table~ tablosunun, ~exec~ ile bir sorgu çalıştırılmadan önceki durumu ile çalıştırıldıktan sonraki durumu arasında sadece eklenen satır farkı olduğu için, 1 değerini  döndürdü. 
+
+Tablonun son hali aşağıdaki gibidir. 
+#+header: :engine mysql
+#+header: :dbhost localhost
+#+header: :dbuser okten
+#+header: :dbpassword QBsfA6Sg73gnfRFg
+#+header: :database ogrenciler
+#+begin_src sql
+  select * from new_table;
+#+end_src
+
+#+RESULTS:
+| numara | ad    | soyad | bolum  | dogumyili |
+|--------+-------+-------+--------+-----------|
+|    125 | Ali   | VELİ  | İnşaat |      2000 |
+|    126 | Fatma | MERT  | İnşaat |      2000 |
+|    127 | Ayşe  | MERT  | İnşaat |      2000 |
+|    128 | Zehra | FIRAT | Harita |      2000 |
+
+***** Veritabanındaki Kayıtı Güncelleme
+~new_table~ isimli bir veritabanındaki kayıtları güncellemek için aşağıdaki şekilde bir kod kullanılabilir.
+Bu kod numarası 124 olan öğrencinin veya öğrencilerin bölümünü Elektronik olarak değiştirmektedir. Kullandığımız tabloda, numarası 124 olan tek bir kayıt olduğundan dolayı, bu işlemden etkilenen kayıt sayısı 1 olacaktır. 
+#+begin_src php
+  try {
+      $db = new PDO("mysql:host=localhost;dbname=ogrenciler", "okten", "QBsfA6Sg73gnfRFg");
+      $sorgu = "UPDATE new_table SET bolum='Tekstil' WHERE numara=126"; 
+      $etkilenen = $db->exec($sorgu);
+      echo "İşlemden etkilenen kayıt satırı sayısı : $etkilenen";
+  } catch (PDOException $e) {
+      echo $e->getMessage();
+  } catch (Throwable $e) {
+      echo $e->getMessage();
+  }
+
+#+end_src
+
+#+RESULTS:
+: İşlemden etkilenen kayıt satırı sayısı : 1
+
+Tablonun son hali aşağıdaki gibidir. 
+#+header: :engine mysql
+#+header: :dbhost localhost
+#+header: :dbuser okten
+#+header: :dbpassword QBsfA6Sg73gnfRFg
+#+header: :database ogrenciler
+#+begin_src sql
+  select * from new_table;
+#+end_src
+
+#+RESULTS:
+| numara | ad    | soyad | bolum   | dogumyili |
+|--------+-------+-------+---------+-----------|
+|    125 | Ali   | VELİ  | İnşaat  |      2000 |
+|    126 | Fatma | MERT  | Tekstil |      2000 |
+|    127 | Ayşe  | MERT  | İnşaat  |      2000 |
+|    128 | Zehra | FIRAT | Harita  |      2000 |
+
+
+
+UPDATE işleminden etkilenen kayıtlar birden fazla olabilir. Örneğin; tablomuzda, doğum yılı 2000 olan öğrencilerin bölümünü İnşaat olarak değiştirmek istersek, bu işlemden dört kayıt etkilenecektir.
+
+#+begin_src php
+  try {
+      $db = new PDO("mysql:host=localhost;dbname=ogrenciler", "okten", "QBsfA6Sg73gnfRFg");
+      $sorgu = "UPDATE new_table SET bolum='Makine' WHERE soyad='MERT'"; 
+      $etkilenen = $db->exec($sorgu);
+      echo "İşlemden etkilenen kayıt satırı sayısı : $etkilenen";
+  }
+  catch (PDOException $e) {
+      echo $e->getMessage();
+  } catch (Throwable $e) {
+      echo $e->getMessage();
+  }
+
+#+end_src
+
+#+RESULTS:
+: İşlemden etkilenen kayıt satırı sayısı : 2
+
+
+
+Tablonun son hali aşağıdaki gibidir. 
+#+header: :engine mysql
+#+header: :dbhost localhost
+#+header: :dbuser okten
+#+header: :dbpassword QBsfA6Sg73gnfRFg
+#+header: :database ogrenciler
+#+begin_src sql
+  select * from new_table;
+#+end_src
+
+#+RESULTS:
+| numara | ad    | soyad | bolum  | dogumyili |
+|--------+-------+-------+--------+-----------|
+|    125 | Ali   | VELİ  | İnşaat |      2000 |
+|    126 | Fatma | MERT  | Makine |      2000 |
+|    127 | Ayşe  | MERT  | Makine |      2000 |
+|    128 | Zehra | FIRAT | Harita |      2000 |
+
+
+***** Veritabanından Kayıt Silme
+Veritababınından kayıt silmek için DELETE sql deyimi kullanılır.
+#+begin_src php
+  try {
+      $db = new PDO("mysql:host=localhost;dbname=ogrenciler", "okten", "QBsfA6Sg73gnfRFg");
+      $sorgu = "DELETE FROM new_table WHERE bolum='Harita'"; 
+      $etkilenen = $db->exec($sorgu);
+      echo "İşlemden etkilenen kayıt satırı sayısı : $etkilenen";
+  } catch (PDOException $e) {
+      echo $e->getMessage();
+  } catch (Throwable $e) {
+      echo $e->getMessage();
+  }
+
+#+end_src
+
+#+RESULTS:
+: İşlemden etkilenen kayıt satırı sayısı : 1
+
+Tablonun son hali aşağıdaki gibidir. 
+#+header: :engine mysql
+#+header: :dbhost localhost
+#+header: :dbuser okten
+#+header: :dbpassword QBsfA6Sg73gnfRFg
+#+header: :database ogrenciler
+#+begin_src sql
+  select * from new_table;
+#+end_src
+
+#+RESULTS:
+| numara | ad    | soyad | bolum  | dogumyili |
+|--------+-------+-------+--------+-----------|
+|    125 | Ali   | VELİ  | İnşaat |      2000 |
+|    126 | Fatma | MERT  | Makine |      2000 |
+|    127 | Ayşe  | MERT  | Makine |      2000 |
+
+***** Veritabanındaki Kayıtları Listeleme
+Veritabanındaki kayıtları temel olarak listelemek için PDO nesnesinin ~query~ metodu SELECT sql deyimi ile birlikte kullanılır.
+#+begin_src php
+  try {
+      $db = new PDO("mysql:host=localhost;dbname=ogrenciler", "okten", "QBsfA6Sg73gnfRFg");
+      $sorgu = "SELECT * FROM new_table"; 
+      foreach($db->query($sorgu) as $kayit) {
+          // $kayit tabloda bir satıra karşılık gelir.
+          // Bu yüzden $kayit, tablodaki alanların isimleri anahtarları olcak şekilde
+          // değerleri taşır. 
+          echo $kayit['numara'];
+          echo "\n";
+      }
+
+  } catch (PDOException $e) {
+      echo $e->getMessage();
+  } catch (Throwable $e) {
+      echo $e->getMessage();
+  }
+
+#+end_src
+
+#+RESULTS:
+: 125
+: 126
+: 127
+
+
+SELECT sql sorgusu sonucu kaç kayıt döneceğini öğrenmek için ~rowCount~ metodu kullanılır.
+#+begin_src php
+  try {
+      $db = new PDO("mysql:host=localhost;dbname=ogrenciler", "okten", "QBsfA6Sg73gnfRFg");
+      $sorgu = "SELECT * FROM new_table WHERE bolum='Makine'";
+      $kayitSayisi = $db->query($sorgu)->rowCount();
+    echo "Toplam $kayitSayisi adet kayıt listelenecektir.";
+
+  }
+  catch (PDOException $e) {
+      echo $e->getMessage();
+  } catch (Throwable $e) {
+      echo $e->getMessage();
+  }
+
+#+end_src
+
+#+RESULTS:
+: Toplam 2 adet kayıt listelenecektir.
+
+
+
+**** Veritabanı Üzerinde İşlemleri Güvenli Yapma
+SQL sorgularını çoğunlukla ziyaretçiden alınan verilerle oluşturulur. Bu açıdan bakıldığında, ziyaretçi SQL sorgusu vasıtasıyla dolaylı yoldan da olsa programınızda bir kod çalıştırma yetkisi kazanmış olur. Bu sebepten ziyaretçilerin SQL sorgusuna geçirdikleri verileri incelemek önem arz etmektedir. Kötü niyetli kullanıcılar, SQL sorgularında kullanacakları bazı illegal deyimler vasıtıasıyla veritabanınıza müdahale edbilirler. Bu işleme de SQL injection denir.
+SQL sorgusu içine yerleştireceğimiz verileri, kötü niyetli amaçlardan temizlemek ve SQL sorgusuna güvenli hale getirmek için ~prepare~ metodu kullanılır. 
+***** ~prepare~ Metodunun Kullanımı
+~prepare~ metodunun kullanım biçimi ~PDOStatement PDO::prepare(string query [, array driver_options])~ şeklindedir. Burada, çoğunlukla ~prepare~ içerisine sadece sorgu yazılır. Fakat sorguyu yazarken, sorguda değişken olan bölümler yani sorguya dışarıdan aktarılacak olan veriler direkt yada değişken formunda değil yer tutucu formunda yazılırlar. Bu işlemde iki biçimde yapılabilir.
+- İsimli Paremetreler
+  Her bir yer tutucu ~:isim~ formatında olmalıdır. Yani bir ~:~ karakteri ve onu takip eden bizim seçtiğimiz bir isim.
+  Örnek: ~UPDATE new_table SET numara=:num WHERE bolum=:bol~
+Burada yer tutucular: ~:num~ ve ~:bol~ bölümleridir. 
+- Soru İşareti Parametreleri
+  Örnek: ~UPDATE new_table SET numara=? WHERE bolum=?~
+
+  ~prepare~ ile hazırlanmış bir sorguyu çalıştırmak için ~PDO~ sınıfına ait ~execute~ fonksiyonu kullanılır. ~execute~ fonksiyonu, ~public PDOStatement::execute ( array $input_parameters = null ) : bool~ şeklinde tanımlanmıştır. Yani dizi türünden bir parametre kabul eder. Bu dizi türünden parametre, ~prepare~ fonksiyonundaki yer tutucular ve bu yer tutuculara aktarılacak değerler şeklindedir.
+  Örneğin,   ~$deyim = $db->prepare("UPDATE new_table SET numara=:num WHERE bolum=:bol")~ şeklinde ise, ~execute~ fonksiyonu, ~$deyim->execute([':num' => 145, ':bol' => 'Kimya'])~ şeklinde olacaktır. 
+  
+
+
+#+begin_src php
+  try {
+      $db = new PDO("mysql:host=localhost;dbname=ogrenciler", "okten", "QBsfA6Sg73gnfRFg");
+      $sorgu = "UPDATE new_table SET bolum=:blm WHERE soyad=:sad";
+      $sqlDeyimi = $db->prepare($sorgu);
+      $durum = $sqlDeyimi->execute([':blm'=>'Tekstil', ':sad'=>'MERT']);
+      echo "Toplam $durum adet kayıt listelenecektir.";
+
+  } catch (PDOException $e) {
+      echo $e->getMessage();
+  } catch (Throwable $e) {
+      echo $e->getMessage();
+  }
+
+#+end_src
+
+#+RESULTS:
+: Toplam 1 adet kayıt listelenecektir.
+  
+
+
+Tablonun son hali aşağıdaki gibidir. 
+#+header: :engine mysql
+#+header: :dbhost localhost
+#+header: :dbuser okten
+#+header: :dbpassword QBsfA6Sg73gnfRFg
+#+header: :database ogrenciler
+#+begin_src sql
+  select * from new_table;
+#+end_src
+
+#+RESULTS:
+| numara | ad    | soyad | bolum   | dogumyili |
+|--------+-------+-------+---------+-----------|
+|    125 | Ali   | VELİ  | İnşaat  |      2000 |
+|    126 | Fatma | MERT  | Tekstil |      2000 |
+|    127 | Ayşe  | MERT  | Tekstil |      2000 |
+
+
+
+#+begin_src php
+  try {
+      $db = new PDO("mysql:host=localhost;dbname=ogrenciler", "okten", "QBsfA6Sg73gnfRFg");
+      $sorgu = "UPDATE new_table SET bolum=? WHERE soyad=?";
+      $sqlDeyimi = $db->prepare($sorgu);
+      $durum = $sqlDeyimi->execute(['Otomotiv', 'MERT']);
+      echo "Toplam $durum adet kayıt listelenecektir.";
+
+  } catch (PDOException $e) {
+      echo $e->getMessage();
+  } catch (Throwable $e) {
+      echo $e->getMessage();
+  }
+
+#+end_src
+
+#+RESULTS:
+: Toplam 1 adet kayıt listelenecektir.
+
+Tablonun son hali aşağıdaki gibidir. 
+#+header: :engine mysql
+#+header: :dbhost localhost
+#+header: :dbuser okten
+#+header: :dbpassword QBsfA6Sg73gnfRFg
+#+header: :database ogrenciler
+#+begin_src sql
+  select * from new_table;
+#+end_src
+
+#+RESULTS:
+| numara | ad    | soyad | bolum    | dogumyili |
+|--------+-------+-------+----------+-----------|
+|    125 | Ali   | VELİ  | İnşaat   |      2000 |
+|    126 | Fatma | MERT  | Otomotiv |      2000 |
+|    127 | Ayşe  | MERT  | Otomotiv |      2000 |
