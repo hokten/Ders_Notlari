@@ -704,3 +704,36 @@ Metin türünde sayısal bir ifadeyi tamsayıyta çevirmek için ~parseInt~ fonk
 Örnek kullanım, ~Integer.parseInt("123")~ deyimi tamsayı türünden 123 sayısını verecektir.
 ***** Metin Türünde Ondalıklı Sayıya çevirmek
 ~double doubleValue = Double.parseDouble("12.33");~ 12.33
+
+
+#+BEGIN_SRC java  :results output :exports both
+import java.util.Scanner;
+class Main {
+  public static void main(String[] args) {
+      int sansli = (int) (Math.random() * 100);
+      System.out.print("Bir sayı giriniz : ");
+      Scanner giris = new Scanner(System.in);
+      int tahmin = giris.nextInt();
+
+      int sanslion = sansli / 10;
+      int sanslibir = sansli % 10;
+
+      int tahminon = tahmin / 10;
+      int tahminbir = tahmin % 10;
+
+      if(tahmin == sansli) {
+        System.out.print("Tebrikler 10.000+ kazandınız");
+      }
+      else if((tahminon == sanslibir) && (tahminbir == sanslion)) {
+        System.out.print("Tebrikler 3.000+ kazandınız");
+      }
+      else if((tahminon == sanslibir) || (tahminbir == sanslion) || (tahminon == sanslion) ||  (tahminbir == sanslibir) ) {
+        System.out.print("Tebrikler 1.000+ kazandınız");
+      }
+      else {
+        System.out.print("Kazanamadınız.");
+      }
+      
+  }
+}
+#+END_SRC
