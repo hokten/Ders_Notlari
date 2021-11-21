@@ -47,11 +47,206 @@
     - [[#fonksiyonun-dönüş-değerini-bildirme][Fonksiyonun Dönüş Değerini Bildirme]]
       - [[#i̇simsiz-fonksiyonlar][İsimsiz Fonksiyonlar]]
 :END:
+
+** Webin Temelleri
+*** HTTP ve HTML
+HTTP, kullanıcıların bilgisayarındaki web tarayıcısı ile web sayfalarını barındıran web sunucuları arasındaki iletişimin biçimini, işleyişini kurallara bağlayan bir iletişim standardıdır.
+Web sunucusunun görevi, sunmakla yükümlü olduğu web sayfalarına gelen istekleri beklemek ve eğer istekler geçerli ise ilgili web sayfasını istemci bilgisayara göndermektir.
+Web sunucu ile istemci çoğu zaman direkt iletişim kurmazlar.İstek ve cevapların doğru şekilde aktarılmasını sağlamak için istemci ile sunucu arasında router, gateway, proxy gibi cihazlar yer alabilir.
+Bu cihazlar, istemcinin aynı bilgiyi tekrar istemesi gibi durumlarda veri trafiğini azaltmak ve web sitesinin yüklenme hızını arttırmak için web sayfalarını veya bilgileri /önbellekleyebilir/.
+İstemci tarafından istenilen veri eğer ara cihazlarda önbelleğe alındıysa, cevap sunucudan değil aradaki cihazdan yapılır. Böylelikle verinin istemciye ulaşması için dolaşacağı yol azaltılmış ve verinin yüklenme hızı arttırılmış olur.
+Web sunucuları aynı anda bir çok isteğe cevap verebilecek şekilde dizayn edilmişlerdir. Sunucu herhangi bir isteğe cevap vermediği anlarda dinleme eylemeni gerçekleştirir. Yani, gelebilecek isteklere cevap verebilmek için tetikte bekler.
+
+İstemci ile *statik* bir web sunucu arasındaki iletişim genellikle aşağıdaki sırada gerçekleşir.
+
+1. İstemci web tarayıcısından bir bağlantıya tıklayarak ve adresi bağlantı çubuğuna yazarak http://www.sunucu.com adresine girer.
+2. Tarayıcı www.sunucu.com alan ismine karşılık gelen IP adresini tespit eder.
+3. Tarayıcı öğrendiği IP adresine ait web sunucuya web sitesinin ana sayfasını görüntülemek üzere istekte bulunur.
+4. Bu istek internet ağı vasıtasıyla web sunucuya ulaşır.
+5. Web sunucu isteği alır ve bu istek doğrultusunda web sitesinin ana sayfasını diskinde arar.
+6. Web sunucusu ilgili sayfayı bulur ve iletişim halinde olduğu istemciye yollar.
+7. İstemcinin bilgisayarındaki tarayıcı ilgili sayfayı görüntüler.
+
+Aslında web sayfası içinde düz metinden farklı her bileşen(resim dosyalar, videolar) için aynı işlemler tekrarlanır.
+  
+Bir web sitesine erişmek için tarayıcıya web sitesinin adresini yazarız veya bağlantılara tıklarız. Web sitelerinin adresleri bilindiği üzere www.sunucu.com biçimindedir ve bunlara *alan adı* denir. Alan adları ziyaretçilerin web sitelerine daha kolay ve akılda kalıcı şekilde erişebilmelerine yarar. Aslında bilindiği gibi internet üzerinde her türlü iletişim IP adresleri vasıtasıyla olur. Dolayısıyla istemci ile web sunucu arasındaki iletişim için de hem istemcinin hem de sunucunun IP adresleri gereklidir. İstemcinin web sunucusuna yollamak için hazırladığı istek paketinin içinde kendi IP adresi de vardır. İlk aşamada istemcinin web sunucu hakkındaki tek bilgisi web sunucunun alan adıdır. Tabii ki istemcinin web sunucu ile iletişim kurabilmesi için web sunucunun IP adresine ihtiyacı vardır. Bu aşamada devreye *alan adı sunucuları* girer. Alan adı sunucuları sayesinde bir alan adına karşılık gelen IP adresini öğrenebiliriz. 2. adımda tarayıcı, www.sunucu.com alan adına sahip sunucunun IP adresini öğrenebilmek için alan adı sunucularına bir sorgu gönderir. Alan adı sunucularının bu sorguya cevabı ise www.sunucu.com alan adına karşılık gelen IP adresidir.
+
+Yukarıda istemci ile statik web sayfaları barındıran bir web sunucunun iletişim adımlarını inceledik.
+Eğer web sayfalarımızın *dinamik* olmasını istiyorsak bu iletişim adımları biraz değişecektir. Öncelikle *dinamik web sayfalarının* ne anlama geldiğinden bahsedelim. Dinamik web sayfaları, kullanıcıların farklı isteklerine farklı cevaplar verme beceresine sahip olan web sayfalarıdır. Örneğin saati gösteren bir web sayfası dinamik olmak zorundadır. Çünkü örneğin kullanıcı sayfaya 10:05 itibariyle girdi ise 10:05, 13:50 itibariyle girdi ise 13:50 yazmalıdır. Yani aynı sayfa kullanıcının girdiği saate göre farklı metinler içermelidir. Bu tamda dinamik web sayfalarının davranma biçimidir.
+Dinamik web sayfaları oluşturmak için PHP ve MySql kullanılabilir. PHP
+
+#+NAME: fig:figure name
+#+CAPTION: figure name
+#+ATTR_ORG: :width 600
+[[file:/home/okten/Downloads/2021-09-29-Note-12-25.png]]
+
+*** MariaDB: MySQL Klonu
+Oracle, MySQL'i geliştiren şirket olan Sun MicroSystems'i satın aldıktan sonra, MySQL'e katkı sağlayan geliştirici topluluğu projenin gelecekte  açık kaynak kodlu olarak kalıp kalmayacağı konusunda endişeler duymaya başladılar. 
 ** PHP Dilinin Temelleri
 :PROPERTIES:
 :TOC:    :include siblings
 :NOTER_DOCUMENT: ../../Calibre Library/Peter MacIntyre/Programming PHP, 4th Edition (14)/Programming PHP, 4th Edition - Peter MacIntyre.pdf
 :END:
+*** Literals(Veri Sabitleri)
+Sabit verileri ifade etmek için kullanılan yapılara literal denir.
+134
+-45
+21
+0xA3
+4.56
+-3.245
+2.00
+"Merhaba"
+""
+" "
+'g'
+true
+false
+null
+*** Identifiers(Tanımlayıcılar)
+Değişkenlere, fonsksiyonlara, sınfılara kodlayan kişi tarafından verilen isimlere denir.
+- Tanımlayıcılar, a-z  A-Z _ ve 0-9 içerirler.
+- Tanımlayıcılar Türkç karakterler ve boşluk içermezler.
+- Tanımlayıcıların ilk karakteri rakam olamaz.
+  YaNlış Tanımlayıcılar
+  3tas
+  buyuk sayi
+  küçüksayı
+  en-buyuk
+  en?buyuk
+
+  Dogru Tanımlayıcılar
+  uctas
+  tas8
+  t2tr
+  en_buyuk_sayi
+  _enbuyuk
+**** Değişken İsimleri
+Değişken isimleri, $ karakteri ve onu takip eden bir tanımlayıcıdan oluşur.
+$en_buyuk_sayi
+$sayi7
+
+$ sayidogrusu    //$ karakterinden sonra geçerli bir tanımlayıcı gelmiyor.
+$9tas // 9tas geçerli bir tanımlayıcı değil. Çünkü rakam ile başlıyor.
+$_en_son
+
+Değişken isimleri büyük-küçük harf ayrımı yapar. Yani $buYUK degiskeni ile $buyuk değişkeni aynı değişkenler değillerdir.
+**** Fonksiyon İsimleri
+Fonksiyon isimleri direkt tanımlayıcı olarak seçilirler. Fonksiyon isimleri büyük-küçük harf ayrımı yapmaz.
+echo
+EcHo
+karesini_al
+3tas   // Geçerli bir tanımlayıcı değil
+**** Sınıf İsimleri
+Sınıf isimleri de geçerli bir tanımlayıcı olmalıdır. Büyük-küçük harf ayrımı yapmaz.
+**** Sabitler
+Sabit isimleri geçerli bir tanımlayıcı olmalıdır. Adet olarak, sabit isimleri büyük harflerle ifade edilir.
+sabitler =define= yapısı ile tanımlanır.
+
+~define('PI', 3.14)~
+Yukarıdaki ifade =3.14= değerine sahip PI isimli  bir sabit oluşturur. 
+*** Veri Türleri
+**** Skaler Veri Türleri
+- Integer (Tamsayılar)
+- Floating-Point(reel Sayılar)
+- String(Metin)
+- Boolean(true, false)
+**** Birleşik Veri Türleri
+- Array(Dizi)
+- Object(Nesne)
+**** Özel Veri Türleri
+- Resource
+- Null
+
+**** Integer Veri Türü
+Tamsayı veri türüdür. Platformdan platforma değişmekle beraber -2,147,483,648 ile -2,147,483,647 arasında değerler alabilir.
+
+#+BEGIN_SRC php
+  echo PHP_INT_MIN;
+  echo "\n";
+  echo PHP_INT_MAX;
+  $sayi = 1239223372036854775807;
+  echo "\n";
+  echo $sayi;
+#+END_SRC
+
+#+RESULTS:
+: -9223372036854775808
+: 9223372036854775807
+: 1.2392233720369E+21
+
+PHP'de tamsayılar varsayılan olarak onluk sayı sisteminde ifade edilirler. Fakat, tamsayıarı  farklı sayıs sistemlerinde de ifade etmek mümkündür. PHP, ikilik, sekizlik, onaltılık sayı sistemlerinde tamsayıları ifade etmeeye imkan tanır.
+
+1. İkilik Sayı Sistemi
+   PHP'de ikilik sayı sisteminde bir tamsayı ifade etmek için bu sayının başına 0b koyulur.
+
+   0b0001
+   0b10101
+   0b010001
+   0b0102    // 2 ikilik sayı sisteminin bir rakamı değildir.
+
+2. Sekizlik Sayı Sistemi
+    PHP'de sekizlik sayı sisteminde bir tamsayı ifade etmek için bu sayının başına 0 koyulur.
+    012345
+    066778    // 8 olmaz.
+    012345
+    0895454   // Hatalı, 8 ve 9 sekizlik tabanın rakamları değllerdir
+
+3. Onaltılık Sayıs Sitemi
+    PHP'de onaltılık sayı sisteminde bir tamsayı ifade etmek için bu sayının başına 0x koyulur.
+    0xAF123
+    0xABCDEF
+    0xG123    // G, onaltılık sayı siteminde bir rakam değilidr.
+    
+   
+   #+BEGIN_SRC php
+     $sayi = 0b100;    // 0*2^0  +  0*2^1  +  1*2^2  = 4
+echo $sayi;
+#+END_SRC
+
+#+RESULTS:
+: 4
+
+ #+BEGIN_SRC php
+     $sayi = 016;    // 6*8^0  +  1*8^1 = 6 + 8 = 14
+echo $sayi;
+#+END_SRC
+
+#+RESULTS:
+: 14
+
+ #+BEGIN_SRC php
+     $sayi = -0xFF;    // F*16^0  +  F*16^1 = 15 + 15*160 = 15 + 240 = 255
+echo $sayi;
+#+END_SRC
+
+#+RESULTS:
+: -255
+
+**** Floating-Point Sayılar (Reel Sayılar)
+Onndalıklı sayılar formunda reel sayıoları ifade etmek için kullanılan veri türüdür .
+
+1.456
+-3.4512
+1.45E12    // = 1.45*10^12
+0.3454E-21     // 0.3454*10^-21
+
+#+BEGIN_SRC php
+    $a = 0.17;
+    $b = 1 - 0.83; //0.17
+  printf('%.50f', $a);
+
+    if($a == $b ){
+     echo 'a ile b eşit';
+    }
+    else {
+     echo 'a ile b eşit değil';
+    }
+#+END_SRC
+
+#+RESULTS:
+: .50fa ile b eşit değil
+
 *** Büyük Küçük Harfe Duyarlılık
 :PROPERTIES:
 :NOTER_PAGE: (62 . 0.7670720299345182)
@@ -102,6 +297,64 @@ Programlama dilinin cümleleridir. Programın en küçük birimleridir. Deyimler
 Operatörler, bir veya birden fazla değeri herhangi bir işleme sokan ve yeni bir değer üreten yapılardır. Operatörlerin üzerinde işlem yaptığı değerlere operand denir.
 Operatörler aslında fonksiyonların daha kullanışlı halleri olarak düşünülebilir.
 Çoğu operatör operandlarının değerini değiştirmemesine rağmen bazı operandlar operandlarının değerlerini değiştirir.
+**** Atama Operatörleri
+/=/ atama operatörüdür. Bir çok kez değişkenin önceki değeri işlem yapıp elde edilen sonucun yine aynı değişkene atanmasını isteyebiliriz. 
+
+Atama operatörü olan ~=~ operatörünün önce sağ tarafı çalıştırılır ve elde edilen değer operatörün sol tarafındaki değişkene atanır.
+
+#+BEGIN_SRC php
+  $sayi_toplama = 5;
+  $sayi_toplama = $sayi_toplama + 10;
+
+  $sayi_carpma = 7;
+  $sayi_carpma = $sayi_carpma * 10;
+
+  $sayi_cikarma = 8;
+  $sayi_cikarma = $sayi_cikarma - 9;
+
+  $sayi_bolme = 80;
+  $sayi_bolme = $sayi_bolme / 8;
+
+  $sayi_mod = 17;
+  $sayi_mod = $sayi_mod % 5;
+
+
+  var_dump($sayi_toplama);
+  var_dump($sayi_carpma);
+  var_dump($sayi_cikarma);
+  var_dump($sayi_bolme);
+  var_dump($sayi_mod);
+
+#+END_SRC
+
+#+RESULTS:
+: int(15)
+: int(70)
+: int(-1)
+: int(10)
+: int(2)
+
+#+BEGIN_SRC php
+  // urun_fiyati = urun_ham_fiyati + urun_ham_fiyati * 0.2
+  // urun_fiyati_kdv = urun_fiyati + urun_fiyati * 0.18
+  $urun_fiyat = 100;
+  $urun_fiyat = $urun_fiyat + $urun_fiyat * 0.2;
+  $urun_fiyat = $urun_fiyat + $urun_fiyat * 0.18;
+  var_dump($urun_fiyat);
+#+END_SRC 
+
+#+RESULTS:
+: float(141.6)
+
+#+BEGIN_SRC php
+  // urun_fiyati = urun_ham_fiyati + urun_ham_fiyati * 0.2
+  // urun_fiyati_kdv = urun_fiyati + urun_fiyati * 0.18
+  $urun_fiyat = 100;
+  $urun_fiyat += $urun_fiyat * 0.2;
+  $urun_fiyat += $urun_fiyat * 0.18;
+  var_dump($urun_fiyat);
+#+END_SRC 
+
 **** Operatörlerin Öncelik Sırası
 Birden fazla operatör bir ifade içinde yer aldığında, hangi operatöre ait işlemin önce yapılacağına göre ifadenin değeri değişebilir. Dolayısıyla net değer için hangi operatörün hangisinden önce yapılacağı bilinmelidir. PHP yorumlayıcısı operatörlerden hangisinin diğerinden önce yapılacağını tespit etmek için aşağıdaki operatör öncelik tablosounu kullanır.
 
