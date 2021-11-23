@@ -143,7 +143,34 @@ Java, tamsayı ve kayan noktalı sayılar olan toplam 8 sayısal değişken tür
 : 1.0 / 3.0 is 0.3333333333333333
 : 1.0F / 3.0F is 0.33333334
 
-** Aritmetik Operatörlerde Öncelik Sırası
+** Operatörlerde Öncelik Sırası ve Birleşim
+Birden fazla operatör aynı ifade içinde yer aldığında, bu operatörlere ait işlemlerin belli bir sırada yapılması önemlidir. Çünkü bir ifade içindeki operatörlere ait işlemler farklı sıralarda yapıldığında ifade farklı sonuçlar verebilir.
+
+#+header: :eval "no"
+#+BEGIN_SRC java
+3 + 4 * 4 > 5 * (4 + 3) – 1 && (4 – 3 > 5)
+#+END_SRC
+
+Yukarıdaki ifade de ~+~, ~-~, ~*~, ~&&~ ve ~>~ operatörleri vardır. Burada ~3+4*4~ alt ifadesi düşünüldüğünde, ~+~ operatörü önce yapılırsa sonuç ~28~, ~*~ operatörü önce yapılırsa sonuç ~19~ çıkmaktadır. Görüldüğü gibi operatörlere ait işlemlerin yapılma sırası ifadenin sonucuna direkt etki etmektedir.
+Ayrıca, aynı operatörler yada aynı öncelik sırasına sahip operatörler bir ifade içerisindelerse, bu operatörlere ait işlemlerin hangi sırada yapılacağı da çoğu zaman sonuca etki eder. Örneğin,
+
+#+header: :eval "no"
+#+BEGIN_SRC java
+3 + 4 + 5
+#+END_SRC
+
+ifadesi için operatörlerin işlem sırası herhangi bir önem taşımamasına rağmen,
+
+#+header: :eval "no"
+#+BEGIN_SRC java
+  40 / 10 / 2
+#+END_SRC
+
+ifadesinde sonuca etki eder. Gerçekten, ~(40/10)/2=4/2=2~ iken, ~40/(10/2)=40/5=8~ olur. Görüldüğü gibi birleştirme parantezlerinin soldan veya sağdan yerleştirilmesi sonucu etkilemektedir.
+Bu sebeplerden dolayı, Java dilinde operatörlerin öncelik sırası ve birleşme yönü kavramının kullanılması kaçınılmazdır.
+
+
+
 1. Parantez içindeki ifadeler yapılır.
 2. ~*~ ve ~/~ operatörleri yapılır.
 3. ~+~ ve ~-~ operatörleri yapılır.
@@ -254,7 +281,7 @@ Epoch zaman formatı, 1 Ocak 1970 saat 00:00  dan itibaren bulunduğunuz ana kad
 |          | değerini kullan.                    |                   |
 +----------+-------------------------------------+-------------------+
 
-
+#+HEADERS: :classname ArtirmaAzaltma
 #+BEGIN_SRC java  :results output :exports both
   public class ArtirmaAzaltma {
       public static void main(String[] args) {
@@ -273,6 +300,7 @@ Epoch zaman formatı, 1 Ocak 1970 saat 00:00  dan itibaren bulunduğunuz ana kad
 : 100
 : 121
 
+#+HEADERS: :classname ArtirmaAzaltma
 #+BEGIN_SRC java  :results output :exports both
   public class ArtirmaAzaltma {
       public static void main(String[] args) {
@@ -290,6 +318,8 @@ Epoch zaman formatı, 1 Ocak 1970 saat 00:00  dan itibaren bulunduğunuz ana kad
 
 ** Tür Dönüşümü
 Java'da küçük boyutlu değişkenleri sorunsuz şekilde büyük boyutlu değişkenlere dönüştürebiliriz.
+
+#+HEADERS: :classname ArtirmaAzaltma
 #+BEGIN_SRC java  :results output :exports both
   public class ArtirmaAzaltma {
       public static void main(String[] args) {
@@ -339,6 +369,8 @@ Java'da küçük boyutlu değişkenleri sorunsuz şekilde büyük boyutlu deği�
 
   =Math.sqrt(4)= fonksiyonu ~2.0~ değerini döndürecektir.
 
+
+#+HEADERS: :classname KokBul
 #+BEGIN_SRC java  :results output :exports both
   import java.util.Scanner;
   public class Kokbul {
@@ -363,7 +395,7 @@ Java'da küçük boyutlu değişkenleri sorunsuz şekilde büyük boyutlu deği�
 - =Math.floor(x)= : x sayısından küçük olan ilk tamsayı döner. Dönen değer =double= türünden olur.
 - =Math.rint(x)= : x sayısına en yakın tam sayı döner. Eğer x sayısı iki tamsayıya da eşit uzaklıkta ise çift olan döner. Dönen değer =double= türünden olur.
 - =Math.round(x)= : Eğer x =float= türündense =(int)Math.floor(x + 0.5)= değerini, x =double= türündense =(long)Math.floor(x + 0.5)= değerini döndürür.
-
+#+
   #+BEGIN_SRC java
     Math.ceil(2.1) //  3.0
     Math.ceil(2.0)  // 2.0
@@ -413,8 +445,9 @@ Bazı önemli karakterlerin Unicode değerleri aşağıdaki tablodadır.
 | 'a' to 'z'  | 97 ile 122           | \u0061 ile \u007A        |  
 #+END_CENTER
 
+#+HEADERS: :classname Karakter
 #+BEGIN_SRC java  :results output :exports both
-  public class Kokbul {
+  public class Karakter {
       public static void main(String[] args) {
           char karakter='w';
           char buyuk = (char) (65 + (karakter - 97));
@@ -427,8 +460,8 @@ Bazı önemli karakterlerin Unicode değerleri aşağıdaki tablodadır.
 : W
 
 #+CAPTION: Küçük harfli bir sözcüğü büyük harfe döndüren program
-#+BEGIN_SRC java  :results output :exports both
-  public class Kokbul {
+#+BEGIN_SRC java  :results output :exports both :classname KucukdenBuyuk
+  public class KucukdenBuyuk {
       public static void main(String[] args) {
           String metin="deneme";
           String sonuc="";
@@ -445,6 +478,12 @@ Bazı önemli karakterlerin Unicode değerleri aşağıdaki tablodadır.
 #+RESULTS:
 : DENEME
 
+#+begin_src java :results output
+  System.out.print("hello, world");
+#+end_src
+
+#+RESULTS:
+: hello, world
 
 
 #+CAPTION: HelloWorldCaption

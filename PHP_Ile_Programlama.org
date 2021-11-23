@@ -1870,3 +1870,30 @@ Tablonun son hali aşağıdaki gibidir.
 |    126 | Fatma | MERT  | Otomotiv |      2000 |
 |    127 | Ayşe  | MERT  | Otomotiv |      2000 |
 |    145 | Akif  | BAŞ   | Harita   |      2003 |
+** Kullanıcı Oturumları
+*** Oturumlar(Sessions)
+Masaüstünde çalışan bir sınav uygulaması düşünelim. Program her seferinde karşımıza tek bir soru çıkartacak ve o soruyu cevaplayınca diğer soruya geçecek şekilde tasarlanmış olsun. Bu durumda üçüncü soruya geçtiğimizde birinci soruya verdiğimiz cevap program için bellekte ayrılan alanda saklanmaktadır. Yani her soru ekranını programın ayrı bir durumu olarak düşünürsek, program bütün durumları belleğinde tutabilmektedir.
+Benzer bir uygulamayı web üzerinde yaparsak, her soru geçişinde sayfa yenilenecek ve önceki sayfalardaki bilgiler kaybedilmiş olacaktır. Örneğin üçüncü sorunun sayfasında iken, birinci soruya verilen cevap artık mevcut değildir. Çünkü HTTP'de her sayfa yükleme eylemi bağımsız bir olaydır. Bazı özel mekanizmalar kullanılmadığı sürece, bir ziyaretçinin web sitenizde yaptığı sayfa yüklemeleri arasında veri transferi yapmak mümkün değildir.
+Sunucu taraflı uygulamalar, dinamik web sayfaları oluşturabilmek için web sitesini ziyaret eden çok sayıda kullanıcıyı birbirinden ayırt etmek isteyecektir. Özellikle tekil bir kullanıcının web sitesine girdiği andan web sitesini terkettiği ana kadar ziyaretçiyi tanımlayabilmek, ziyaretçinin izini sürmek ve bu izleri aynı kullanıcının sonraki ziyaretlerinde kullanmak ister. Fakat HTTP'de her bir sayfa yükleme eyleminin bağımsız olmasından dolayı bu işlem için farklı yollar izlenir.
+HTTP'de yapılan her isteğin önceki isteklerden bağımsız olmasına *HTTP'nin durumsuzluğu* denir.
+Bir ziyaretçinin web sitesine girdiği andan web sitesini terkettiği ana kadar geçen süreye o ziyaretçinin *oturumu* denir. 
+
+*** Cookies
+Çerez, ziyaret ettiğiniz bir web sitesi tarafından bilgisayarınızda depolanan bilgilerdir. Bazı tarayıcılarda her çerez ayrı ayrı küçük dosyalar halinde tutulurken Firefox'ta tüm çerezler Firefox'un profil klasöründeki tek bir dosyasında tutulur.
+
+Çerezler genellikle ilgili web sitesine ait dil tercihiniz veya konumunuz gibi ayarlarınızı saklamak için kullanılır. Aynı siteye yeniden girdiğinizde Firefox, o siteye ait çerezleri siteye geri gönderir. Böylece site, ihtiyaçlarınıza uyacak şekilde özelleştirilmiş bilgiler sunabilir.
+
+Ayrıca çerezler, kişisel bilgileriniz (adınız, e-posta adresiniz, telefon numaranız vb.) de dahil olmak üzere birçok farklı bilgi içerebilir. Ancak, bir sitenin ulaşabileceği bilgiler sizin ona sunduklarınızla sınırlıdır. Web siteleri onlara vermediğiniz bilgilere erişemez. Ayrıca hiçbir site, bilgisayarınızdaki diğer dosyaları ulaşamaz.
+
+Varsayılan olarak çerezleri saklama ve gönderme işlemleri tamamen görünmez bir şekilde gerçekleşir.
+[[cite:&CerezlerWebSitelerinin]]
+
+Bir sitesinin web sunucusu, yollayacağı bir HTTP cevabı vasıtası ile tarayıcıya, istemci bilgisayarda o web sitesi ile ilişkilendirilmiş bir çerez oluşturma talimatı verir. Tarayıcı çerezleri kabul edecek şekilde ayarlara sahipse sunucunun talimatlarına uygun bir çerezi oluşturur. Çerezler genellikle bir veya birden fazla dosya şeklinde diske kaydedilir. Sunucunun çerez oluşturma talimatında aynı zamanda çerezin içeriği de yer alır. Çerezler bir anahtar isimle ilişkilendirilmiş veri tutmak içi kullanılır. Genel formatı,
+
+isim=deger; ozellik1=deger1, ozellik2=deger2
+
+biçimindedir.  Burada /deger/ ihtiyaç duyulan veridir. Bu ihtiyaç duyulan veri HTTP isteklerinde /isim/ adı ile transfer edilir. Özellikler ise çerezin; son kullanım tarihi, etki alanı gibi özellikler ve bunların değerlerinden oluşur.
+
+dil=turkce; Expires=Wed, 24 Nov 2021 07:28:00 GMT, Domain=deneme.com
+
+yukarıdaki biçimde oluşturulmuş bir çerez, ~dil~ anahtarı ile =turkce= verisini taşır. 24 Aralık 2021 saat 07:28'e kadar geçerlidir ve /deneme.com/ domaininden yollanmış ve sadece o domain tarafından okunabilir.
