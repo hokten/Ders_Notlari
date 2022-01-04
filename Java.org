@@ -776,3 +776,238 @@ class Main {
   }
 }
 #+END_SRC
+
+* Diziler
+** Dizileri Kopyalama
+Temel değişken türlerinden bir değişken(int, String, float..) bir başka değişkene atandığında, bu değişkenin değeri kopyalanır ve diğer değişkene aktarılır.
+
+#+HEADERS: :classname Deneme
+#+BEGIN_SRC java  :results output :exports both
+  public class Deneme {
+      public static void main(String[] args) {
+          int x, y;
+          x = 7;
+          y = 8;
+          x = y;
+          System.out.println("Atama işleminden sonra x değişkenin değeri : " + x);
+          System.out.println("Atama işleminden sonra y değişkenin değeri : " + y);
+          y = 11;
+          System.out.println("y değişkenine " + y + " değeri atandı");
+          // y değişkenindeki değişim x=y atamasından dolayı x değişkenini de etkiler mi?
+          System.out.println("y değişkenin değeri " + y + " değerini aldıktan sonra x değişkeninin değeri " + x + " olur.");
+      }
+  }
+#+END_SRC
+
+#+RESULTS:
+: Atama işleminden sonra x değişkenin değeri : 8
+: Atama işleminden sonra y değişkenin değeri : 8
+: y değişkenine 11 değeri atandı
+: y değişkenin değeri 11 değerini aldıktan sonra x değişkeninin değeri 8 olur.
+
+Dizi türünden iki değişken birbirine atandığında ise durum çok farklıdır.
+
+#+HEADERS: :classname Deneme
+#+BEGIN_SRC java  :results output :exports both
+  public class Deneme {
+      public static void main(String[] args) {
+          int[] x = {2, 3, 1, 5, 10};
+          int[] y = {1, 2, 5, 7, 23};
+  
+          // y dizisini x dizisine atayalım.
+          x = y;
+          // x ve y dizilerinin değerlerine bakalım
+          for (int i = 0; i < x.length; i++) {
+              System.out.println("x dizisinin " + (i + 1) + ". elemanı : " + x[i]);
+          }
+          // y dizisinin 7 elemanı 167 ile değiştirildi
+          y[3] = 167;
+  
+          // y dizisi değiştirildikten x dizisine göz atalım.
+          System.out.println("y dizisi değiştirildikten x dizisinin elemanarı");
+          for (int i = 0; i < x.length; i++) {
+              System.out.println("x dizisinin " + (i + 1) + ". elemanı : " + x[i]);
+          }
+  
+      }
+  }
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+x dizisinin 1. elemanı : 1
+x dizisinin 2. elemanı : 2
+x dizisinin 3. elemanı : 5
+x dizisinin 4. elemanı : 7
+x dizisinin 5. elemanı : 23
+y dizisi değiştirildikten x dizisinin elemanarı
+x dizisinin 1. elemanı : 1
+x dizisinin 2. elemanı : 2
+x dizisinin 3. elemanı : 5
+x dizisinin 4. elemanı : 167
+x dizisinin 5. elemanı : 23
+#+end_example
+
+Yukarıda görüldüğü gibi dizi türünden iki değişken birbirine atandığında bu ik değişken birbirine bağlanmış olur. Yani bellekte aynı adrese işaret ederler. O yüzden birinde yapılan değişim diğerini de etkiler.
+Bunun olması istemiyorsa
+
+#+HEADERS: :classname Deneme
+#+BEGIN_SRC java  :results output :exports both
+  public class Deneme {
+      public static void main(String[] args) {
+          int[] x = {2, 3, 1, 5, 10};
+          int[] y = {1, 2, 5, 7, 23};
+  
+          // y dizisi x dizisine kopyalanmak istiyoruz.
+          for (int i = 0; i < x.length; i++) {
+              x[i] = y[i];
+              System.out.println("x dizisinin " + (i + 1) + ". elemanı : " + x[i]);
+          }
+          // y dizisinin 7 elemanı 167 ile değiştirildi
+          y[3] = 167;
+  
+          // y dizisi değiştirildikten x dizisine göz atalım.
+          System.out.println("y dizisi değiştirildikten x dizisinin elemanarı");
+          for (int i = 0; i < x.length; i++) {
+              System.out.println("x dizisinin " + (i + 1) + ". elemanı : " + x[i]);
+          }
+  
+      }
+  }
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+x dizisinin 1. elemanı : 1
+x dizisinin 2. elemanı : 2
+x dizisinin 3. elemanı : 5
+x dizisinin 4. elemanı : 7
+x dizisinin 5. elemanı : 23
+y dizisi değiştirildikten x dizisinin elemanarı
+x dizisinin 1. elemanı : 1
+x dizisinin 2. elemanı : 2
+x dizisinin 3. elemanı : 5
+x dizisinin 4. elemanı : 7
+x dizisinin 5. elemanı : 23
+#+end_example
+
+
+Döngü yerine =arraycopy= fonksiyonu da kullanılabilir.
+
+#+HEADERS: :classname Deneme
+#+BEGIN_SRC java  :results output :exports both
+
+  public class Deneme {
+      public static void main(String[] args) {
+          int[] x = {2, 3, 1, 5, 10};
+          int[] y = {1, 2, 5, 7, 23};
+  
+          java.lang.System.arraycopy(y, 0, x, 0, x.length);
+  
+          y[3] = 167;
+  
+          // y dizisi değiştirildikten x dizisine göz atalım.
+          System.out.println("y dizisi değiştirildikten x dizisinin elemanarı");
+          for (int i = 0; i < x.length; i++) {
+              System.out.println("x dizisinin " + (i + 1) + ". elemanı : " + x[i]);
+          }
+  
+      }
+  }
+#+END_SRC
+
+#+RESULTS:
+: y dizisi değiştirildikten x dizisinin elemanarı
+: x dizisinin 1. elemanı : 1
+: x dizisinin 2. elemanı : 2
+: x dizisinin 3. elemanı : 5
+: x dizisinin 4. elemanı : 7
+: x dizisinin 5. elemanı : 23
+
+
+
+** Dizi Türünden Değişkenlerin Fonksiyon Parametresi Olarak Kullanımı
+#+HEADERS: :classname Deneme
+#+BEGIN_SRC java  :results output :exports both
+  
+  public class Deneme {
+      public static void diziYazdir(int[] yazilacakDizi) {
+          for (int i = 0; i < yazilacakDizi.length; i++) {
+              System.out.println("Dizinin " + (i + 1) + ". elemanı : " + yazilacakDizi[i]);
+          }
+      }
+      public static void main(String[] args) {
+          int[] x = {2, 3, 1, 5, 10};
+          diziYazdir(x);
+      }
+  }
+#+END_SRC
+
+#+RESULTS:
+: Dizinin 1. elemanı : 2
+: Dizinin 2. elemanı : 3
+: Dizinin 3. elemanı : 1
+: Dizinin 4. elemanı : 5
+: Dizinin 5. elemanı : 10
+
+** Dizi Döndüren Fonksiyonlar
+#+HEADERS: :classname Deneme
+#+BEGIN_SRC java  :results output :exports both
+  
+  public class Deneme {
+  
+      public static int[] tersle(int[] duz) {
+          int[] ters = new int[duz.length];
+          for (int i = 0, j = ters.length - 1; i < duz.length; i++, j--) {
+              ters[j] =duz[i];
+          }
+          return ters;
+      }
+      public static void diziYazdir(int[] yazilacakDizi) {
+          for (int i = 0; i < yazilacakDizi.length; i++) {
+              System.out.println("Dizinin " + (i + 1) + ". elemanı : " + yazilacakDizi[i]);
+          }
+      }
+      public static void main(String[] args) {
+          int[] x = {2, 3, 1, 5, 10};
+          int[] tersx = tersle(x);
+          diziYazdir(tersx);
+      }
+  }
+#+END_SRC
+
+#+RESULTS:
+: Dizinin 1. elemanı : 10
+: Dizinin 2. elemanı : 5
+: Dizinin 3. elemanı : 1
+: Dizinin 4. elemanı : 3
+: Dizinin 5. elemanı : 2
+
+
+** Değişken Sayıda Parametresi Olan Fonksiyonlar
+
+#+HEADERS: :classname Deneme
+#+BEGIN_SRC java  :results output :exports both
+  public class Deneme {
+      public static void main(String[] args) {
+          printMax(34, 3, 3, 2, 56.5);
+          printMax(new double[]{1, 2, 3});
+      }
+      public static void printMax(double... numbers) {
+          if (numbers.length == 0) {
+              System.out.println("No argument passed");
+              return;
+          }
+  
+          double result = numbers[0];
+          for (int i = 1; i < numbers.length; i++)
+              if (numbers[i] > result)
+                  result = numbers[i];
+          System.out.println("The max value is " + result);
+      }
+  }
+#+END_SRC 
+
+#+RESULTS:
+: The max value is 56.5
+: The max value is 3.0
