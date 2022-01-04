@@ -1370,6 +1370,169 @@ fonk();
 
 ** Diziler
 ** Metin İşlemleri
+*** str_replace Fonksiyonu
+Bir metin içerisinde başka bir metin varsa onu belirtilen metin ile değiştirir.
+=str_replace($degismesiIstenenMetin, $degisecegiMetin, $degismeninYapilacagiMetin)=
+
+#+begin_src php
+  $karsila="Merhaba Ahmet, hoşgeldin. Yaşın kaç Ahmet";
+  echo str_replace("Ahmet", "Ali", $karsila);
+#+end_src
+
+#+RESULTS:
+: Merhaba Ali, hoşgeldin. Yaşın kaç Ali
+
+#+begin_src php
+  $beslen  = "Her gün pizza, dondurma ve kola tüketmelisin.";
+  $sagliksiz = array("pizza", "kola", "dondurma");
+  $saglikli  = array("meyve", "lifli gıda", "sebze");
+  
+  $beslendi = str_replace($sagliksiz, $saglikli, $beslen);
+  echo $beslendi;
+#+end_src
+
+#+RESULTS:
+: Her gün meyve, sebze ve lifli gıda tüketmelisin.
+
+*** explode Fonksiyonu
+Bir metni başka bir metne göre parçalar ve dizi oluşturur.
+=explode($ayrac, $parcalanacak_metin, $limit)=
+
+#+begin_src php
+  $beslen  = "Her gün pizza, dondurma ve kona tüketmelisin.";
+  // Boşluklara göre diziye çevirelim.
+  var_dump(explode(" ", $beslen));
+  
+  // on metnine göre parçala
+    var_dump(explode("on", $beslen));
+  #+end_src
+
+  #+RESULTS:
+  #+begin_example
+  array(7) {
+    [0]=>
+    string(3) "Her"
+    [1]=>
+    string(4) "gün"
+    [2]=>
+    string(6) "pizza,"
+    [3]=>
+    string(8) "dondurma"
+    [4]=>
+    string(2) "ve"
+    [5]=>
+    string(4) "kona"
+    [6]=>
+    string(14) "tüketmelisin."
+  }
+  array(3) {
+    [0]=>
+    string(17) "Her gün pizza, d"
+    [1]=>
+    string(10) "durma ve k"
+    [2]=>
+    string(16) "a tüketmelisin."
+  }
+  #+end_example
+
+*** implode Fonksiyonu
+Diziyi metine çevirmeye yarar.
+
+=implode($ayrac, $birlestirilecek_dizi)=
+
+#+begin_src php
+  $kelimeler  = array("Her","gün", "pizza", "dondurma", "ve", "kola", "tüketmelisin");
+  // Dizi elemanları ayraç olmadan birleştiriliyor.
+  var_dump(implode("", $kelimeler));
+  #+end_src
+
+  #+RESULTS:
+  : string(39) "Hergünpizzadondurmavekolatüketmelisin"
+
+  #+begin_src php
+  $kelimeler  = array("Her","gün", "pizza", "dondurma", "ve", "kola", "tüketmelisin");
+  // Dizi elemanları ayraç olmadan birleştiriliyor.
+  var_dump(implode(" ", $kelimeler));
+  #+end_src
+
+  #+RESULTS:
+  : string(45) "Her gün pizza dondurma ve kola tüketmelisin"
+
+  #+begin_src php
+  $kelimeler  = array("Her","gün", "pizza", "dondurma", "ve", "kola", "tüketmelisin");
+  // Dizi elemanları ayraç olmadan birleştiriliyor.
+  var_dump(implode(" xyz ", $kelimeler));
+  #+end_src
+
+  #+RESULTS:
+  : string(69) "Her xyz gün xyz pizza xyz dondurma xyz ve xyz kola xyz tüketmelisin"
+
+
+*** strpos Fonksiyonu
+Bir metni, bir başka metin içerisinde arar ve varsa ilk bulduğu yerin kararter sırasını döndürür yoksa =false= döndürür.
+=strpos($arama_yapilacak_metin, $aranacak_metin)=
+#+begin_src php
+  $deneme = "ofisdokumalari.pdf";
+  // Dizi elemanları ayraç olmadan birleştiriliyor.
+  var_dump(strpos($deneme, "."));
+  #+end_src
+
+  #+RESULTS:
+  : int(14)
+
+#+begin_src php
+  $deneme = "Ahmet, bugün gelirken bana meyve, sebze ve yoğurt al";
+  // Dizi elemanları ayraç olmadan birleştiriliyor.
+  var_dump(strpos($deneme, ","));
+  #+end_src
+
+  #+RESULTS:
+  : int(5)
+
+  #+begin_src php
+  $deneme = "ofisdokumalari.pdf";
+  // Dizi elemanları ayraç olmadan birleştiriliyor.
+  var_dump(strpos($deneme, ","));
+  #+end_src
+
+  #+RESULTS:
+  : bool(false)
+
+*** substr Fonksiyonu
+Bir metnin belli bir bir parçasını döndürür.
+=substr($parcasi_istenen_metin, $parcanin_basinin_karakter_sirasi, $parca_uzunlugu)=
+
+#+begin_src php
+  $deneme = "Dereotu";
+  // Dizi elemanları ayraç olmadan birleştiriliyor.
+  // D e r e o t u
+  // | | | | | | |
+  // 0 1 2 3 4 5 6
+  //         o t 
+  //         | |
+  //         1 2
+  var_dump(substr($deneme, 4, 2));
+  #+end_src
+
+  #+RESULTS:
+  : string(2) "ot"
+
+#+begin_src php
+  $deneme = "Dereotu";
+  // Dizi elemanları ayraç olmadan birleştiriliyor.
+  // D e r e o t u
+  // | | | | | | |
+  // 0 1 2 3 4 5 6
+  //         o t 
+  //         | |
+  //         1 2
+  var_dump(substr($deneme, 4));
+  #+end_src
+
+  #+RESULTS:
+  : string(3) "otu"
+  
+
 ** PHP'de Sınıf ve Nesne Kavramları
 *** Sınıf
 Gerçek yaşamda problem düşünüldüğünde, kendine ait özellikleri ve davranışları olan ve bu açıdan bir bütün teşkil eden birimlerin programa aktrılmış hallerine *sınıf* denir. Programınızda sınıf olacak yapılar probleminizin özneleridir. Sınıfların özellik ve davranışları tamamiyle probleminize göre şekillenir. Örneğin, bir aracın vergi tutarını hesaplamak istediğinizde, açıktır ki sınıf olarak kullanacağınız yapı araç olacaktır. Benzer şekilde bir araç kiralama uygulaması geliştiriyorsanız yani programnızda kullanacağınız sınıflardan biris araç olacaktır. Her ne kadar iki problemde de aynı sınıfı kullanıyor olsanız da problemlerin farklılığından dolayı bu iki programda kullanılan araç sınıfın özellik ve davranışları biribirinden farklı olacaktır.
