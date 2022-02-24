@@ -3,25 +3,25 @@
   <Subgroup name="Bil. Prog. I. Sınıf Automatic Subgroup">
    <Day name="Pazartesi">
     <Hour name="08:00">
-     <Teacher name="Öğr. Gör. Sabri Serkan TAN"></Teacher><Subject name="BLG106 - VERİ TABANI-I"></Subject><Room name="A301"></Room>
+     <Teacher name="Öğr. Gör. Sabri Serkan TAN"></Teacher><Subject name="BLG104 - VERİ TABANI-I"></Subject><Room name="A301"></Room>
     </Hour>
     <Hour name="09:00">
-     <Teacher name="Öğr. Gör. Sabri Serkan TAN"></Teacher><Subject name="BLG106 - VERİ TABANI-I"></Subject><Room name="A301"></Room>
+     <Teacher name="Öğr. Gör. Sabri Serkan TAN"></Teacher><Subject name="BLG104 - VERİ TABANI-I"></Subject><Room name="A301"></Room>
     </Hour>
     <Hour name="10:00">
-     <Teacher name="Öğr. Gör. Sabri Serkan TAN"></Teacher><Subject name="BLG106 - VERİ TABANI-I"></Subject><Room name="A301"></Room>
+     <Teacher name="Öğr. Gör. Sabri Serkan TAN"></Teacher><Subject name="BLG104 - VERİ TABANI-I"></Subject><Room name="A301"></Room>
     </Hour>
     <Hour name="11:00">
-     <Teacher name="Öğr. Gör. Sabri Serkan TAN"></Teacher><Subject name="BLG106 - VERİ TABANI-I"></Subject><Room name="A301"></Room>
+     <Teacher name="Öğr. Gör. Sabri Serkan TAN"></Teacher><Subject name="BLG104 - VERİ TABANI-I"></Subject><Room name="A301"></Room>
     </Hour>
     <Hour name="12:00">
      
     </Hour>
     <Hour name="13:00">
-     <Teacher name="Dr. Öğr. Üyesi Ahmet YURTÇU"></Teacher><Subject name="BLG112 - TEMEL ELEKTRONİK"></Subject><Room name="A101"></Room>
+     <Teacher name="Dr. Öğr. Üyesi Ahmet YURTÇU"></Teacher><Subject name="BLG110 - TEMEL ELEKTRONİK"></Subject><Room name="A101"></Room>
     </Hour>
     <Hour name="14:00">
-     <Teacher name="Dr. Öğr. Üyesi Ahmet YURTÇU"></Teacher><Subject name="BLG112 - TEMEL ELEKTRONİK"></Subject><Room name="A101"></Room>
+     <Teacher name="Dr. Öğr. Üyesi Ahmet YURTÇU"></Teacher><Subject name="BLG110 - TEMEL ELEKTRONİK"></Subject><Room name="A101"></Room>
     </Hour>
     <Hour name="15:00">
      
@@ -50,10 +50,10 @@
      
     </Hour>
     <Hour name="13:00">
-     <Teacher name="Dr. Öğr. Üyesi Volkan KUKUL"></Teacher><Subject name="BLG108 - BİLGİSAYAR DONANIMI"></Subject><Room name="A301"></Room>
+     <Teacher name="Dr. Öğr. Üyesi Volkan KUKUL"></Teacher><Subject name="BLG106 - BİLGİSAYAR DONANIMI"></Subject><Room name="A302"></Room>
     </Hour>
     <Hour name="14:00">
-     <Teacher name="Dr. Öğr. Üyesi Volkan KUKUL"></Teacher><Subject name="BLG108 - BİLGİSAYAR DONANIMI"></Subject><Room name="A301"></Room>
+     <Teacher name="Dr. Öğr. Üyesi Volkan KUKUL"></Teacher><Subject name="BLG106 - BİLGİSAYAR DONANIMI"></Subject><Room name="A302"></Room>
     </Hour>
     <Hour name="15:00">
      
@@ -82,13 +82,13 @@
      
     </Hour>
     <Hour name="13:00">
-     <Teacher name="Dr. Öğr. Üyesi Volkan KUKUL"></Teacher><Subject name="BLG104 - ANİMASYON"></Subject><Room name="A302"></Room>
+     <Teacher name="Dr. Öğr. Üyesi Volkan KUKUL"></Teacher><Subject name="BLG116 - ANİMASYON"></Subject><Room name="A302"></Room>
     </Hour>
     <Hour name="14:00">
-     <Teacher name="Dr. Öğr. Üyesi Volkan KUKUL"></Teacher><Subject name="BLG104 - ANİMASYON"></Subject><Room name="A302"></Room>
+     <Teacher name="Dr. Öğr. Üyesi Volkan KUKUL"></Teacher><Subject name="BLG116 - ANİMASYON"></Subject><Room name="A302"></Room>
     </Hour>
     <Hour name="15:00">
-     <Teacher name="Dr. Öğr. Üyesi Volkan KUKUL"></Teacher><Subject name="BLG104 - ANİMASYON"></Subject><Room name="A302"></Room>
+     <Teacher name="Dr. Öğr. Üyesi Volkan KUKUL"></Teacher><Subject name="BLG116 - ANİMASYON"></Subject><Room name="A302"></Room>
     </Hour>
     <Hour name="16:00">
      
@@ -114,10 +114,10 @@
      
     </Hour>
     <Hour name="13:00">
-     <Teacher name="Dr. Öğr. Üyesi Mesut TÜRK"></Teacher><Subject name="BLG110 - GÜNCEL TEKNOLOJİLER"></Subject><Room name="A301"></Room>
+     <Teacher name="Dr. Öğr. Üyesi Mesut TÜRK"></Teacher><Subject name="BLG108 - GÜNCEL TEKNOLOJİLER"></Subject><Room name="A301"></Room>
     </Hour>
     <Hour name="14:00">
-     <Teacher name="Dr. Öğr. Üyesi Mesut TÜRK"></Teacher><Subject name="BLG110 - GÜNCEL TEKNOLOJİLER"></Subject><Room name="A301"></Room>
+     <Teacher name="Dr. Öğr. Üyesi Mesut TÜRK"></Teacher><Subject name="BLG108 - GÜNCEL TEKNOLOJİLER"></Subject><Room name="A301"></Room>
     </Hour>
     <Hour name="15:00">
      
