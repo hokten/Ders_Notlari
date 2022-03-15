@@ -860,3 +860,9 @@ http://www.kazimcesur.com/delegates-anonymous-methods-lambda-expressions-delegel
 Delege basit anlamda düşünürsek aracılık yapandır. Burada ise delege aracılık yapan metod olarak karşımıza çıkar. 
 Yani başka bir metodun tetiklenmesine yardım eden metottur. Bu sayede metodların tetiklenmesi dinamik olarak gerçekleşir. 
 dddd
+
+
+
+
+
+https://gist.github.com/williamgh2019/7b2cd28d22ce7e1d06ab8564961794f4
