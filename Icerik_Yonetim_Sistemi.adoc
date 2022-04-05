@@ -151,3 +151,7 @@ Kayıtsız kullanıcılar yorumyapamazlar.
 
 == İçeriğinize Resim Ekleme
 Yönetim panelinden `Yazılar -> Yeni Ekle` menü yolu izlenerek `Ortam Ekle` düğmesine basılır.
+
+
+https://worldnetbilisim.com/cms-icerik-yonetim-sistemi-nedir-ne-ise-yarar/
+
