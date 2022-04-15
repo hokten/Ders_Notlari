@@ -293,7 +293,15 @@ CRUD(Create Read Update Delete) işlemleri yapılabilir. Peki, neden ORM? Çünk
 * Bakım ve onarımı daha kolaydır.
 
 
+=== Yeni Eklenen Kısım
+Modelin herbir alanı için etiket görevi gören yazıya DisplayName denir. Bu alanı bir web sayfasında tanımlamak gerektiğinde Html.DisplaynameFor() HTML helper methodu kullanılır. Bu helper metod ilgili alanın [Display(Name="İsim")] özelliğinde yer alan İsim metnini yazdırır.
 
+html.displayname ise modelin ilgili alanını değerini yazdırır.
+ html.beginform form oluşturur.
+ 
+ controller sınınıfları action medtodlardan oluşur. action metodların dönüş türü actionresult türündendir
+ 
+ == sınav buraya kadar
 
 == Nesne Yönelim Kavramları
 === Soyutlama (Abstraction)
