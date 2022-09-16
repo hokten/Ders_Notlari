@@ -531,28 +531,28 @@
      
     </Hour>
     <Hour name="16:00">
-     
+     <Activity id="167"></Activity><Teacher name="Öğr. Gör. Sabri Serkan TAN"></Teacher><Subject name="UATK213-İLERİ AĞ TEKNOLOJİLERİ"></Subject><Room name="SST"></Room>
     </Hour>
     <Hour name="17:00">
-     
+     <Activity id="168"></Activity><Teacher name="Öğr. Gör. Sabri Serkan TAN"></Teacher><Subject name="UATK213-İLERİ AĞ TEKNOLOJİLERİ"></Subject><Room name="SST"></Room>
     </Hour>
     <Hour name="18:00">
-     
+     <Activity id="169"></Activity><Teacher name="Öğr. Gör. Sabri Serkan TAN"></Teacher><Subject name="UATK213-İLERİ AĞ TEKNOLOJİLERİ"></Subject><Room name="SST"></Room>
     </Hour>
     <Hour name="19:00">
-     
+     <Activity id="170"></Activity><Teacher name="Öğr. Gör. Sabri Serkan TAN"></Teacher><Subject name="UATK213-İLERİ AĞ TEKNOLOJİLERİ"></Subject><Room name="SST"></Room>
     </Hour>
     <Hour name="20:00">
-     
+     <Activity id="163"></Activity><Teacher name="Öğr. Gör. Sabri Serkan TAN"></Teacher><Subject name="UATK211-NESNE TABANLI PROGRAMLAMA-I"></Subject><Room name="SST"></Room>
     </Hour>
     <Hour name="21:00">
-     
+     <Activity id="164"></Activity><Teacher name="Öğr. Gör. Sabri Serkan TAN"></Teacher><Subject name="UATK211-NESNE TABANLI PROGRAMLAMA-I"></Subject><Room name="SST"></Room>
     </Hour>
     <Hour name="22:00">
-     
+     <Activity id="165"></Activity><Teacher name="Öğr. Gör. Sabri Serkan TAN"></Teacher><Subject name="UATK211-NESNE TABANLI PROGRAMLAMA-I"></Subject><Room name="SST"></Room>
     </Hour>
     <Hour name="23:00">
-     
+     <Activity id="166"></Activity><Teacher name="Öğr. Gör. Sabri Serkan TAN"></Teacher><Subject name="UATK211-NESNE TABANLI PROGRAMLAMA-I"></Subject><Room name="SST"></Room>
     </Hour>
    </Day>
    <Day name="Salı">
@@ -587,10 +587,10 @@
      
     </Hour>
     <Hour name="18:00">
-     
+     <Activity id="171"></Activity><Teacher name="Doç. Dr. Volkan KUKUL"></Teacher><Subject name="UATK215-İÇERİK YÖNETİM SİSTEMLERİ"></Subject><Room name="VK"></Room>
     </Hour>
     <Hour name="19:00">
-     
+     <Activity id="172"></Activity><Teacher name="Doç. Dr. Volkan KUKUL"></Teacher><Subject name="UATK215-İÇERİK YÖNETİM SİSTEMLERİ"></Subject><Room name="VK"></Room>
     </Hour>
     <Hour name="20:00">
      
@@ -599,13 +599,113 @@
      
     </Hour>
     <Hour name="22:00">
-     
+     <Activity id="149"></Activity><Teacher name="Öğr. Gör. Ayhan TETİK"></Teacher><Subject name="UATK203-ARAŞTIRMA YÖNTEMLERİ VE MESLEK ETİĞİ"></Subject>
     </Hour>
     <Hour name="23:00">
-     
+     <Activity id="150"></Activity><Teacher name="Öğr. Gör. Ayhan TETİK"></Teacher><Subject name="UATK203-ARAŞTIRMA YÖNTEMLERİ VE MESLEK ETİĞİ"></Subject>
     </Hour>
    </Day>
    <Day name="Çarşamba">
+    <Hour name="08:00">
+     
+    </Hour>
+    <Hour name="09:00">
+     
+    </Hour>
+    <Hour name="10:00">
+     
+    </Hour>
+    <Hour name="11:00">
+     
+    </Hour>
+    <Hour name="12:00">
+     
+    </Hour>
+    <Hour name="13:00">
+     
+    </Hour>
+    <Hour name="14:00">
+     
+    </Hour>
+    <Hour name="15:00">
+     
+    </Hour>
+    <Hour name="16:00">
+     <Activity id="151"></Activity><Teacher name="Dr. Öğr. Üyesi Mesut TÜRK"></Teacher><Subject name="UATK205-VERİ TABANI YÖNETİM SİSTEMLERİ"></Subject><Room name="MT"></Room>
+    </Hour>
+    <Hour name="17:00">
+     <Activity id="152"></Activity><Teacher name="Dr. Öğr. Üyesi Mesut TÜRK"></Teacher><Subject name="UATK205-VERİ TABANI YÖNETİM SİSTEMLERİ"></Subject><Room name="MT"></Room>
+    </Hour>
+    <Hour name="18:00">
+     <Activity id="153"></Activity><Teacher name="Dr. Öğr. Üyesi Mesut TÜRK"></Teacher><Subject name="UATK205-VERİ TABANI YÖNETİM SİSTEMLERİ"></Subject><Room name="MT"></Room>
+    </Hour>
+    <Hour name="19:00">
+     <Activity id="154"></Activity><Teacher name="Dr. Öğr. Üyesi Mesut TÜRK"></Teacher><Subject name="UATK205-VERİ TABANI YÖNETİM SİSTEMLERİ"></Subject><Room name="MT"></Room>
+    </Hour>
+    <Hour name="20:00">
+     <Activity id="155"></Activity><Teacher name="Dr. Öğr. Üyesi Mesut TÜRK"></Teacher><Subject name="UATK207-SUNUCU YÖNETİMİ"></Subject><Room name="MT"></Room>
+    </Hour>
+    <Hour name="21:00">
+     <Activity id="156"></Activity><Teacher name="Dr. Öğr. Üyesi Mesut TÜRK"></Teacher><Subject name="UATK207-SUNUCU YÖNETİMİ"></Subject><Room name="MT"></Room>
+    </Hour>
+    <Hour name="22:00">
+     <Activity id="157"></Activity><Teacher name="Dr. Öğr. Üyesi Mesut TÜRK"></Teacher><Subject name="UATK207-SUNUCU YÖNETİMİ"></Subject><Room name="MT"></Room>
+    </Hour>
+    <Hour name="23:00">
+     <Activity id="158"></Activity><Teacher name="Dr. Öğr. Üyesi Mesut TÜRK"></Teacher><Subject name="UATK207-SUNUCU YÖNETİMİ"></Subject><Room name="MT"></Room>
+    </Hour>
+   </Day>
+   <Day name="Perşembe">
+    <Hour name="08:00">
+     
+    </Hour>
+    <Hour name="09:00">
+     
+    </Hour>
+    <Hour name="10:00">
+     
+    </Hour>
+    <Hour name="11:00">
+     
+    </Hour>
+    <Hour name="12:00">
+     
+    </Hour>
+    <Hour name="13:00">
+     
+    </Hour>
+    <Hour name="14:00">
+     
+    </Hour>
+    <Hour name="15:00">
+     
+    </Hour>
+    <Hour name="16:00">
+     <Activity id="159"></Activity><Teacher name="Doç. Dr. H. Hüseyin ÖKTEN"></Teacher><Subject name="UATK209-İNTERNET PROGRAMCILIĞI-I"></Subject><Room name="HHÖ"></Room>
+    </Hour>
+    <Hour name="17:00">
+     <Activity id="160"></Activity><Teacher name="Doç. Dr. H. Hüseyin ÖKTEN"></Teacher><Subject name="UATK209-İNTERNET PROGRAMCILIĞI-I"></Subject><Room name="HHÖ"></Room>
+    </Hour>
+    <Hour name="18:00">
+     <Activity id="161"></Activity><Teacher name="Doç. Dr. H. Hüseyin ÖKTEN"></Teacher><Subject name="UATK209-İNTERNET PROGRAMCILIĞI-I"></Subject><Room name="HHÖ"></Room>
+    </Hour>
+    <Hour name="19:00">
+     <Activity id="162"></Activity><Teacher name="Doç. Dr. H. Hüseyin ÖKTEN"></Teacher><Subject name="UATK209-İNTERNET PROGRAMCILIĞI-I"></Subject><Room name="HHÖ"></Room>
+    </Hour>
+    <Hour name="20:00">
+     <Activity id="173"></Activity><Teacher name="Doç. Dr. H. Hüseyin ÖKTEN"></Teacher><Subject name="UATK219-C++ PROGRAMLAMA"></Subject><Room name="HHÖ"></Room>
+    </Hour>
+    <Hour name="21:00">
+     <Activity id="174"></Activity><Teacher name="Doç. Dr. H. Hüseyin ÖKTEN"></Teacher><Subject name="UATK219-C++ PROGRAMLAMA"></Subject><Room name="HHÖ"></Room>
+    </Hour>
+    <Hour name="22:00">
+     <Activity id="147"></Activity><Teacher name="Öğr. Gör. Sabri Serkan TAN"></Teacher><Teacher name="Doç. Dr. Volkan KUKUL"></Teacher><Teacher name="Öğr. Gör. Osman KAYHAN"></Teacher><Teacher name="Doç. Dr. H. Hüseyin ÖKTEN"></Teacher><Teacher name="Dr. Öğr. Üyesi Mesut TÜRK"></Teacher><Subject name="UATK201-BİTİRME PROJESİ-I"></Subject>
+    </Hour>
+    <Hour name="23:00">
+     <Activity id="148"></Activity><Teacher name="Öğr. Gör. Sabri Serkan TAN"></Teacher><Teacher name="Doç. Dr. Volkan KUKUL"></Teacher><Teacher name="Öğr. Gör. Osman KAYHAN"></Teacher><Teacher name="Doç. Dr. H. Hüseyin ÖKTEN"></Teacher><Teacher name="Dr. Öğr. Üyesi Mesut TÜRK"></Teacher><Subject name="UATK201-BİTİRME PROJESİ-I"></Subject>
+    </Hour>
+   </Day>
+   <Day name="Cuma">
     <Hour name="08:00">
      
     </Hour>
@@ -653,6 +753,158 @@
     </Hour>
     <Hour name="23:00">
      
+    </Hour>
+   </Day>
+  </Subgroup>
+  <Subgroup name="İnt. ve Ağ. Tek. I. Sınıf Automatic Subgroup">
+   <Day name="Pazartesi">
+    <Hour name="08:00">
+     
+    </Hour>
+    <Hour name="09:00">
+     
+    </Hour>
+    <Hour name="10:00">
+     
+    </Hour>
+    <Hour name="11:00">
+     
+    </Hour>
+    <Hour name="12:00">
+     
+    </Hour>
+    <Hour name="13:00">
+     
+    </Hour>
+    <Hour name="14:00">
+     
+    </Hour>
+    <Hour name="15:00">
+     
+    </Hour>
+    <Hour name="16:00">
+     
+    </Hour>
+    <Hour name="17:00">
+     
+    </Hour>
+    <Hour name="18:00">
+     
+    </Hour>
+    <Hour name="19:00">
+     <Activity id="175"></Activity><Teacher name="Dr. Öğr. Üyesi Engin KAYNAR"></Teacher><Subject name="UMAT101-MATEMATİK-I"></Subject><Room name="A306"></Room>
+    </Hour>
+    <Hour name="20:00">
+     <Activity id="176"></Activity><Teacher name="Dr. Öğr. Üyesi Engin KAYNAR"></Teacher><Subject name="UMAT101-MATEMATİK-I"></Subject><Room name="A306"></Room>
+    </Hour>
+    <Hour name="21:00">
+     <Activity id="177"></Activity><Teacher name="Dr. Öğr. Üyesi Engin KAYNAR"></Teacher><Subject name="UMAT101-MATEMATİK-I"></Subject><Room name="A306"></Room>
+    </Hour>
+    <Hour name="22:00">
+     
+    </Hour>
+    <Hour name="23:00">
+     
+    </Hour>
+   </Day>
+   <Day name="Salı">
+    <Hour name="08:00">
+     
+    </Hour>
+    <Hour name="09:00">
+     
+    </Hour>
+    <Hour name="10:00">
+     
+    </Hour>
+    <Hour name="11:00">
+     
+    </Hour>
+    <Hour name="12:00">
+     
+    </Hour>
+    <Hour name="13:00">
+     
+    </Hour>
+    <Hour name="14:00">
+     
+    </Hour>
+    <Hour name="15:00">
+     
+    </Hour>
+    <Hour name="16:00">
+     <Activity id="188"></Activity><Teacher name="Öğr. Gör. Sabri Serkan TAN"></Teacher><Subject name="UATK105-BİLGİSAYAR DONANIMI"></Subject><Room name="SST"></Room>
+    </Hour>
+    <Hour name="17:00">
+     <Activity id="189"></Activity><Teacher name="Öğr. Gör. Sabri Serkan TAN"></Teacher><Subject name="UATK105-BİLGİSAYAR DONANIMI"></Subject><Room name="SST"></Room>
+    </Hour>
+    <Hour name="18:00">
+     <Activity id="194"></Activity><Teacher name="Doç. Dr. H. Hüseyin ÖKTEN"></Teacher><Subject name="UATK109-GÜNCEL TEKNOLOJİLER"></Subject><Room name="HHÖ"></Room>
+    </Hour>
+    <Hour name="19:00">
+     <Activity id="195"></Activity><Teacher name="Doç. Dr. H. Hüseyin ÖKTEN"></Teacher><Subject name="UATK109-GÜNCEL TEKNOLOJİLER"></Subject><Room name="HHÖ"></Room>
+    </Hour>
+    <Hour name="20:00">
+     <Activity id="184"></Activity><Teacher name="Doç. Dr. H. Hüseyin ÖKTEN"></Teacher><Subject name="UATK103-İŞLETİM SİSTEMLERİ"></Subject><Room name="HHÖ"></Room>
+    </Hour>
+    <Hour name="21:00">
+     <Activity id="185"></Activity><Teacher name="Doç. Dr. H. Hüseyin ÖKTEN"></Teacher><Subject name="UATK103-İŞLETİM SİSTEMLERİ"></Subject><Room name="HHÖ"></Room>
+    </Hour>
+    <Hour name="22:00">
+     <Activity id="186"></Activity><Teacher name="Doç. Dr. H. Hüseyin ÖKTEN"></Teacher><Subject name="UATK103-İŞLETİM SİSTEMLERİ"></Subject><Room name="HHÖ"></Room>
+    </Hour>
+    <Hour name="23:00">
+     <Activity id="187"></Activity><Teacher name="Doç. Dr. H. Hüseyin ÖKTEN"></Teacher><Subject name="UATK103-İŞLETİM SİSTEMLERİ"></Subject><Room name="HHÖ"></Room>
+    </Hour>
+   </Day>
+   <Day name="Çarşamba">
+    <Hour name="08:00">
+     
+    </Hour>
+    <Hour name="09:00">
+     
+    </Hour>
+    <Hour name="10:00">
+     
+    </Hour>
+    <Hour name="11:00">
+     
+    </Hour>
+    <Hour name="12:00">
+     
+    </Hour>
+    <Hour name="13:00">
+     
+    </Hour>
+    <Hour name="14:00">
+     
+    </Hour>
+    <Hour name="15:00">
+     
+    </Hour>
+    <Hour name="16:00">
+     <Activity id="190"></Activity><Teacher name="Öğr. Gör. Osman KAYHAN"></Teacher><Subject name="UATK107-WEB TASARIMININ TEMELLERİ"></Subject><Room name="OK"></Room>
+    </Hour>
+    <Hour name="17:00">
+     <Activity id="191"></Activity><Teacher name="Öğr. Gör. Osman KAYHAN"></Teacher><Subject name="UATK107-WEB TASARIMININ TEMELLERİ"></Subject><Room name="OK"></Room>
+    </Hour>
+    <Hour name="18:00">
+     <Activity id="192"></Activity><Teacher name="Öğr. Gör. Osman KAYHAN"></Teacher><Subject name="UATK107-WEB TASARIMININ TEMELLERİ"></Subject><Room name="OK"></Room>
+    </Hour>
+    <Hour name="19:00">
+     <Activity id="193"></Activity><Teacher name="Öğr. Gör. Osman KAYHAN"></Teacher><Subject name="UATK107-WEB TASARIMININ TEMELLERİ"></Subject><Room name="OK"></Room>
+    </Hour>
+    <Hour name="20:00">
+     <Activity id="178"></Activity><Teacher name="Öğr. Gör Salih GÜVERCİN"></Teacher><Subject name="UISG101-İŞ SAĞLIĞI VE GÜVENLİĞİ"></Subject>
+    </Hour>
+    <Hour name="21:00">
+     <Activity id="179"></Activity><Teacher name="Öğr. Gör Salih GÜVERCİN"></Teacher><Subject name="UISG101-İŞ SAĞLIĞI VE GÜVENLİĞİ"></Subject>
+    </Hour>
+    <Hour name="22:00">
+     <Activity id="196"></Activity><Teacher name="Öğr. Gör. Sabri Serkan TAN"></Teacher><Subject name="UATK113-YAPAY ZEKAYA GİRİŞ"></Subject><Room name="SST"></Room>
+    </Hour>
+    <Hour name="23:00">
+     <Activity id="197"></Activity><Teacher name="Öğr. Gör. Sabri Serkan TAN"></Teacher><Subject name="UATK113-YAPAY ZEKAYA GİRİŞ"></Subject><Room name="SST"></Room>
     </Hour>
    </Day>
    <Day name="Perşembe">
@@ -743,16 +995,16 @@
      
     </Hour>
     <Hour name="20:00">
-     
+     <Activity id="180"></Activity><Teacher name="Öğr. Gör. Osman KAYHAN"></Teacher><Subject name="UATK101-PROGRAMLAMA TEMELLERİ"></Subject><Room name="OK"></Room>
     </Hour>
     <Hour name="21:00">
-     
+     <Activity id="181"></Activity><Teacher name="Öğr. Gör. Osman KAYHAN"></Teacher><Subject name="UATK101-PROGRAMLAMA TEMELLERİ"></Subject><Room name="OK"></Room>
     </Hour>
     <Hour name="22:00">
-     
+     <Activity id="182"></Activity><Teacher name="Öğr. Gör. Osman KAYHAN"></Teacher><Subject name="UATK101-PROGRAMLAMA TEMELLERİ"></Subject><Room name="OK"></Room>
     </Hour>
     <Hour name="23:00">
-     
+     <Activity id="183"></Activity><Teacher name="Öğr. Gör. Osman KAYHAN"></Teacher><Subject name="UATK101-PROGRAMLAMA TEMELLERİ"></Subject><Room name="OK"></Room>
     </Hour>
    </Day>
   </Subgroup>
