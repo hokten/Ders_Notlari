@@ -1011,3 +1011,28 @@ Döngü yerine =arraycopy= fonksiyonu da kullanılabilir.
 #+RESULTS:
 : The max value is 56.5
 : The max value is 3.0
+
+
+#+BEGIN_SRC java  :results output :exports both
+import java.util.Scanner;
+class Main {
+  public static void main(String[] args) {
+    int girilen_sayi = -1;
+    int sansli_sayi = 23;
+    Scanner giris = new Scanner(System.in);
+    while(girilen_sayi != sansli_sayi) {
+      System.out.print("1 ile 100 arasında sayi gir : ");
+      girilen_sayi = giris.nextInt();
+      if(girilen_sayi > sansli_sayi) {
+        System.out.println("Küçült");
+      }
+      else if(girilen_sayi < sansli_sayi) {
+        System.out.println("Büyüt");
+      }
+      else {
+        System.out.println("Tebrikler");
+      }
+    }
+  }
+}
+#+END_SRC 
