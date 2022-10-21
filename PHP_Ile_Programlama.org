@@ -2063,7 +2063,7 @@ yukarıdaki biçimde oluşturulmuş bir çerez, ~dil~ anahtarı ile =turkce= ver
 
 
 
-#begin_src php
++#begin_src php
 <html>
   <head>
     <title>PHP Test</title>
@@ -2089,6 +2089,6 @@ for($i=1; $i<=8; $i++) {
     <script src="https://replit.com/public/js/replit-badge.js" theme="blue" defer></script> 
   </body>
 </html>
-#end_src
+#+end_src
 
 denemek için https://replit.com/@hokten/SatrancTahtasi?v=1#index.php
