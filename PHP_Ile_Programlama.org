@@ -2060,3 +2060,35 @@ biçimindedir.  Burada /deger/ ihtiyaç duyulan veridir. Bu ihtiyaç duyulan ver
 dil=turkce; Expires=Wed, 24 Nov 2021 07:28:00 GMT, Domain=deneme.com
 
 yukarıdaki biçimde oluşturulmuş bir çerez, ~dil~ anahtarı ile =turkce= verisini taşır. 24 Aralık 2021 saat 07:28'e kadar geçerlidir ve /deneme.com/ domaininden yollanmış ve sadece o domain tarafından okunabilir.
+
+
+
+#begin_src php
+<html>
+  <head>
+    <title>PHP Test</title>
+  </head>
+  <body>
+ <table border="1">
+<?php
+$arka[0] = "white";
+$arka[1] = "black";
+for($i=1; $i<=8; $i++) {
+	
+	echo "<tr>";
+	for($j=1; $j<=8; $j++) {
+		$bg = $arka[($i+$j)%2];
+		echo "<td bgcolor='$bg' style='width:50px;height:50px;'></td>";
+	}
+	echo "</tr>";
+}
+	
+?>
+</tr>
+</table>
+    <script src="https://replit.com/public/js/replit-badge.js" theme="blue" defer></script> 
+  </body>
+</html>
+#end_src
+
+denemek için https://replit.com/@hokten/SatrancTahtasi?v=1#index.php
