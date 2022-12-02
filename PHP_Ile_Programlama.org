@@ -2092,3 +2092,5 @@ for($i=1; $i<=8; $i++) {
 #+END_SRC
 
 denemek için https://replit.com/@hokten/SatrancTahtasi?v=1#index.php
+
+veritabanı kayıt ekleme https://replit.com/@hokten/VeritabaniKayitEkleme?v=1
