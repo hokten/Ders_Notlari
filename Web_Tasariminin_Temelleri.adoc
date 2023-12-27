@@ -729,5 +729,66 @@ Bu du
 CSS Seçicileri Linkler
 https://www.erbilen.net/css-seciciler-1-10/
 https://www.erbilen.net/css-seciciler-11-20/
+Display Özelliği
 
+Display özelliği iki biçimde kullanılır.
+* Kutunun Dış Yerleşimi
+* Kutunun İç Yerleşimi
+
+** Kutunun Dış Yerleşimi
+Kutunun dış yerleşimini değiştirmrk için display
+özelliğine block ve inline değerleri verilir.
+
+* Kutunun Dış Yerleşimi block olarak atanmışsa,
+1. Kutu içinde bulunduğu kapsayıcının tüm sa
+tırına yayılır. Kutudan önce herhangi bir nesne
+varsa, kutu bu nesne sonrasındaki yeni satırdan
+başlar. Kutudan sonra gelen nesnelerde 
+kutunun bir sonraki satırından devam eder.
+2. width ve height özelliklerine değerler 
+atandığında kutuda bir değişim olur.
+3. padding, margin, border özelliklerine değerler
+atandığında, kutuya komşu nesneler yer 
+değiştirirler.
+4. width özelliğine değer atanmadıysa, genişlik
+kapsayıcının genişliği kadardır.
+* Kutunun Dış Yerleşimi inline olarak atanmışsa,
+1. Kutu yeni satıra geçmez.
+2. width ve height özelliklerini değiştirmek 
+kutuya etki etmez.
+3. top, bottom margin, padding, border özellik
+lerine atanan değerler kutuyu etkiler. Ama komşu
+kutuları uzaklaştırmaz.
+4. left, right margin, padding, border özellik
+lerine atanan değerler kutuyu etkiler.
+Komşu kutular uzaklşaır.
+
+
+
+Kutu Modeli
+* CSS'de kutuların genişliği ve yüksekliği kutununun içeriğine 
+göre ayarlanır. Standar Kutu Modeli budur. 
+width:200px
+height:100px
+padding:10px;
+border:5px;
+biçiminde bir kutu oluşturursanız, bu kutunun gerçek genişliği ve 
+yüksekliği aslında sırasıyla 230 ve 130 piksel olur.
+
+
+CSS'de standart kutu modeline alternatif bir model daha vardır.
+Bu da kenarlık kutu modelidir. Bu modelde genişlik ve yükseklik
+kenarlığa göre atanır.
+box-sizing:border-box; 
+width:200px
+height:100px
+padding:10px;
+border:5px;
+
+
+margin : Kutunun dışında bulunan ve kutu dışındaki nesnelerin kutuya 
+olan mesafesini ayarlamaya yarayan özelliktir. 
+
+
+https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model
 
