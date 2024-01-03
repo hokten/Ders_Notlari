@@ -364,6 +364,13 @@ Daha sonra ise 8 baytlık UDP başlık kısmı gelir. Geri kalan 300 baytlık k�
 ==== Otomatik IP Dağıtımının Aşamaları
 *DHCP Discover* :  
 
+
+
+
+https://bulutistan.com/blog/dhcp-nedir/
+
+
+
 [bibliography]
 == Referanslar
 - _DNS kayıt tipleri MX, A, CNAME ve TXT ne demektir?_, *Fatih GÜLSUYU*, https://blog.hosting.com.tr/dns-kayit-tipleri-mx-a-cname-ve-txt-ne-demektir/
