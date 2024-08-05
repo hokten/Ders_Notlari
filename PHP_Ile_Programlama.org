@@ -58,7 +58,7 @@ Bu cihazlar, istemcinin aynı bilgiyi tekrar istemesi gibi durumlarda veri trafi
 Web sunucuları aynı anda bir çok isteğe cevap verebilecek şekilde dizayn edilmişlerdir. Sunucu herhangi bir isteğe cevap vermediği anlarda dinleme eylemeni gerçekleştirir. Yani, gelebilecek isteklere cevap verebilmek için tetikte bekler.
 
 İstemci ile *statik* bir web sunucu arasındaki iletişim genellikle aşağıdaki sırada gerçekleşir.
-
+Buraya ekledim.
 1. İstemci web tarayıcısından bir bağlantıya tıklayarak ve adresi bağlantı çubuğuna yazarak http://www.sunucu.com adresine girer.
 2. Tarayıcı www.sunucu.com alan ismine karşılık gelen IP adresini tespit eder.
 3. Tarayıcı öğrendiği IP adresine ait web sunucuya web sitesinin ana sayfasını görüntülemek üzere istekte bulunur.
