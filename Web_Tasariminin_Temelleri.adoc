@@ -792,3 +792,6 @@ olan mesafesini ayarlamaya yarayan özelliktir.
 
 https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model
 
+* Flexbox İçin Kaynak
+https://www.tercihyazilim.com/Page/flexbox-css
+
