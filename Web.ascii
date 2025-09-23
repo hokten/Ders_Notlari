@@ -1,0 +1,93 @@
+= Ders Notu: CSS'in Derinlikleri - Temel Kavramlar
+
+Bu ders notu, CSS'in en temel üç prensibini ele almaktadır: Basamaklama (Cascade), Özgüllük (Specificity) ve Kalıtım (Inheritance). Bu prensipleri derinlemesine anlamak, yazdığınız CSS kodlarının öngörülebilir ve yönetilebilir olmasını sağlar.
+
+== 1. Temel CSS Terminolojisi
+
+CSS yazarken kullanılan temel yapı taşlarını anlamak önemlidir.
+
+Declaration (Bildirim)::: Bir özellik (property) ve bir değerden (value) oluşur. Örneğin, `color: black;`.
+Declaration Block (Bildirim Bloğu)::: Küme parantezleri `{}` içinde yer alan bir veya daha fazla bildirim grubudur.
+Selector (Seçici)::: Bildirim bloğunun hangi HTML elementine veya elementlerine uygulanacağını belirtir.
+Ruleset (Kural Seti)::: Bir seçici ve bir bildirim bloğunun tamamına verilen isimdir.
+At-rules (@-kuralları)::: `@` sembolü ile başlayan ve `@import` veya `@media` gibi dil yapılarını içeren kurallardır.
+
+[source,css]
+----
+/* Bu bir kural setidir (ruleset) */
+body { /* body -> seçici (selector) */
+  /* Bu bir bildirim bloğudur (declaration block) */
+  color: black; /* color: black; -> bildirim (declaration) */
+  font-family: Helvetica; /* font-family -> özellik, Helvetica -> değer */
+}
+----
+
+== 2. Basamaklama (The Cascade)
+
+CSS'in "C"si olan "Cascade" (Basamaklama), tarayıcının aynı element için çakışan bildirimler olduğunda hangisini uygulayacağına karar verdiği bir kurallar dizisidir. Tarayıcı, bir elementin her bir özelliği için hangi stilin "kazanacağını" belirlemek üzere bu kuralları takip eder.
+
+=== Basamaklamanın Değerlendirme Kriterleri
+
+Çakışan bildirimler olduğunda, tarayıcı aşağıdaki altı kriteri sırasıyla değerlendirir:
+
+. *Stylesheet Origin (Stil Sayfası Kaynağı):* Stillerin nereden geldiği önemlidir. Üç ana kaynak vardır:
+* *User-Agent Styles (Tarayıcı Stilleri):* Tarayıcının varsayılan stilleridir. En düşük önceliğe sahiptirler. Örneğin, başlıkların (`<h1>`) büyük ve kalın olması, linklerin (`<a>`) mavi ve altı çizili olması gibi.
+* *Author Styles (Yazar Stilleri):* Bizim yazdığımız stillerdir. Tarayıcı stillerini geçersiz kılarlar.
+* *User Styles (Kullanıcı Stilleri):* Son kullanıcıların kendi tarayıcılarına eklediği özel stillerdir.
+. *Inline Styles (Satır İçi Stiller):* HTML elementine `style` attribute'u ile doğrudan eklenen stillerdir. Bu stiller, harici veya dahili stil sayfalarındaki bildirimlerden daha önceliklidir.
+. *Layer (Katman):* Stillerin farklı önceliklere sahip katmanlarda tanımlanmasını sağlayan yeni bir CSS özelliğidir.
+. *Selector Specificity (Seçici Özgüllüğü):* Eğer çakışma önceki adımlarda çözülemezse, tarayıcı seçicilerin özgüllüğüne bakar. *Özgüllük, bir seçicinin ne kadar spesifik olduğunu belirten bir ağırlıktır*.
+*Özgüllük Kuralları*:
+.. Daha fazla *ID*'ye sahip seçici kazanır.
+.. Eşitlik durumunda, daha fazla *class*, *pseudo-class* veya *attribute* seçicisine sahip olan kazanır.
+.. Yine eşitlik durumunda, daha fazla *etiket (tag)* adına sahip olan kazanır.
++
+*Özgüllük Notasyonu:* Genellikle `(ID, Class, Tag)` şeklinde üç sayıyla ifade edilir. Örneğin, `#page-title` seçicisinin özgüllüğü `1,0,0` iken, `.nav a` seçicisinin özgüllüğü `0,1,1`'dir. Bir ID seçicisi, yüzlerce class seçicisinden bile daha özgüldür.
++
+*İyi Pratik:* Büyük projelerde stilleri daha kolay yönetebilmek için *özgüllüğü olabildiğince düşük tutmak* genellikle en iyi yaklaşımdır. ID seçicilerini CSS'te kullanmaktan kaçınmak, bu amaca hizmet eder.
+. *Scope Proximity (Kapsam Yakınlığı):* Stillerin DOM'un belirli bir bölümüyle sınırlı olup olmadığını değerlendiren yeni bir CSS özelliğidir.
+. *Source Order (Kaynak Sırası):* Diğer tüm kriterler eşitse, *stil sayfasında en son yazılan kural kazanır*. Bu nedenle, link stillerini (`:link`, `:visited`, `:hover`, `:active`) belirli bir sırada yazmak önemlidir. Bu sırayı hatırlamak için *LoVe/HAte* anımsatıcısı kullanılabilir.
+
+[IMPORTANT]
+====
+*`!important` Kuralı:* Bir bildirimin sonuna `!important` eklenmesi, o bildirimi daha yüksek öncelikli bir kaynağa taşır ve normal kuralları geçersiz kılar. Ancak bu, özgüllük savaşlarına yol açabileceği için genellikle son çare olarak görülmeli ve dikkatli kullanılmalıdır.
+====
+
+== 3. Kalıtım (Inheritance)
+
+Bir element için basamaklama sonucunda belirlenmiş bir değer (cascaded value) yoksa, o element bu değeri üst (ata) elementinden *kalıtım yoluyla alabilir*.
+
+* *Hangi Özellikler Kalıtılır?* Genellikle metinle ilgili özellikler kalıtılır: `color`, `font`, `font-family`, `font-size`, `line-height`, `text-align` vb.. `border` veya `padding` gibi kutu modeli özellikleri ise genellikle kalıtılmaz.
+* *Nasıl Çalışır?* Örneğin, `<body>` elementine bir `font-family` atadığınızda, sayfa içindeki tüm alt elementler (paragraflar, başlıklar vb.) bu yazı tipini miras alır.
+
+== 4. Özel Değer Anahtar Kelimeleri
+
+CSS, basamaklama ve kalıtımı yönetmek için özel anahtar kelimeler sunar.
+
+`inherit`:: Bir özelliğin değerini, üst elementinden zorla miras almasını sağlar. Normalde kalıtılmayan `border` gibi özellikler için bile kullanılabilir.
+`initial`:: Bir özelliği, CSS spesifikasyonunda tanımlanan başlangıç (varsayılan) değerine sıfırlar.
+`unset`:: İki anahtar kelimenin birleşimidir. Eğer özellik kalıtılan bir özellikse `inherit` gibi, değilse `initial` gibi davranır.
+`revert`:: Yazar stillerini (bizim yazdıklarımızı) geri alır, ancak tarayıcının varsayılan stillerini (user-agent) korur.
+
+== 5. Kısayol Özellikleri (Shorthand Properties)
+
+Birden fazla özelliği tek bir bildirimle ayarlamanızı sağlayan özelliklerdir (`font`, `background`, `border`, `margin`, `padding` gibi).
+
+*Dikkat Edilmesi Gerekenler:*
+
+. *Gizli Geçersiz Kılma:* Kısayol özelliğinde belirtilmeyen değerler, otomatik olarak başlangıç (`initial`) değerlerine ayarlanır. Bu durum, başka bir yerde tanımladığınız stilleri farkında olmadan ezmenize neden olabilir.
+. *Değer Sırası:* Değerlerin sırası önemlidir.
+* `margin`, `padding` gibi özelliklerde sıra saat yönündedir: *Top, Right, Bottom, Left* (TRouBLe anımsatıcısı).
+* `box-shadow`, `background-position` gibi iki değerli özelliklerde sıra *yatay (x), dikey (y)* şeklindedir.
+
+== 6. Aşamalı Geliştirme (Progressive Enhancement)
+
+Eski tarayıcılarda kabul edilebilir bir deneyim sunarken, yeni tarayıcılarda modern CSS özelliklerini kullanma yaklaşımıdır.
+
+* *Temel Prensip:* Tarayıcılar, anlamadıkları CSS bildirimlerini veya seçicilerini basitçe *yok sayarlar*. Bu, CSS'in "dayanıklılık" (resilience) özelliğidir ve hata vermeden çalışmasını sağlar.
+* *Uygulama Yöntemleri:*
+.. *Basamaklamayı Kullanmak:* Önce eski tarayıcılar için bir geri düşme (fallback) değeri tanımlanır, ardından yeni özellikli değer yazılır. Yeni tarayıcılar son değeri, eskiler ise anladıkları ilk değeri kullanır.
+.. *@supports Kuralı (Feature Queries):* Bir tarayıcının belirli bir özelliği destekleyip desteklemediğini kontrol eder. Destekliyorsa, `@supports` bloğu içindeki stilleri uygular. Bu, `display: grid` gibi büyük özellikler için daha sağlam bir yöntemdir.
++
+Farklı kullanımları vardır: `@supports not(...)`, `@supports (...) or (...)`, `@supports (...) and (...)`, `@supports selector(...)`.
+```
