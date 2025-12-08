@@ -879,3 +879,86 @@ https://docs.google.com/document/d/1zDD5JQFLNBrdNrtuP1QdQGUfTpBsE_CbULvbVfbNBPc/
 
 https://docs.google.com/document/d/1UbiwM1INZhBLyB9zxx2JSQ5QPiacNnm_i1ABixDdf4o/edit?usp=sharing
 
+[[AlbumModddeli]]
+[source, html, linenums, numbered]
+.Albüm modeline ait sınıf
+----
+<!DOCTYPE html>
+<html lang="tr-TR">
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+	<div class="container">
+		<h2>Yapılacaklar Listesi</h2>
+		<div class="input-group">
+			<input type="text" id="taskInput" placeholder="Bugün ne yapacaksın?">
+			<button id="addBtn">Ekle</button>
+		</div>
+		<ul id="taskList"></ul>
+	</div>
+	<script src="test.js"></script>
+	</body>
+</html>
+----
+
+
+[[AlbuddmModddeli]]
+[source, css, linenums, numbered]
+.Albüm modeline ait sınıf
+----
+body {
+	font-family : Arial;
+	background-color: #f4f4f4;
+	display: flex;
+	justify-content: center;
+	margin-top: 50px;
+}
+
+.container {
+	background-color: white;
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.1);
+	width: 350px;
+}
+
+h2 {
+	text-align: center;
+	color: #333;
+}
+
+.input-group {
+	display: flex;
+	gap: 10px;
+	margin-bottom: 20px
+}
+
+input {
+	flex-grow: 1;
+	background-color: #28a745;
+	color: white;
+	border: node;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #218838;
+}
+
+ul {
+	list-style-type: none;
+	padding: 0
+}
+
+li {
+	background: #fff;
+	border-bottom: 1px solid #eee;
+	padding: 10px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center
+}
+----
