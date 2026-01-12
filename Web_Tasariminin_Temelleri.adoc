@@ -796,4 +796,15 @@ https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model
 https://www.tercihyazilim.com/Page/flexbox-css
 * CSS Kitabı
 https://fatihhayrioglu.com/kitap/
+Bu derste JavaScript programlama dilinde fonksiyonlar ve DOM (Document Object Model) işlemleri detaylı olarak ele alınmıştır.
 
+== Bilgisayar Mühendisliği Web Tasarım ve Programlama Dersi Vize Sonrası Dahil Olan Konular
+Fonksiyon tanımlama yöntemleri; fonksiyon deklarasyonu ve fonksiyon ifadesi (değişkene atanan fonksiyon) olmak üzere incelenmiştir. Bu iki yöntem arasındaki hoisting (yukarı taşıma) farkı açıklanmıştır. Fonksiyonlara argüman olarak aktarılan ilkel (primitive) veri tiplerinin değerinin değişmediği, ancak nesne (object) türündeki verilerin referans üzerinden aktarıldığı için değişime uğrayabildiği gösterilmiştir.
+
+Fonksiyonların başka fonksiyonlara argüman olarak aktarılması, geri dönüş değeri olan fonksiyonlar, yinelemeli (recursive) fonksiyonlar ve Immediately Invoked Function Expression (IIFE) yapısı örneklerle anlatılmıştır.
+
+String sınıfına ait at, indexOf, substring, includes, split metotları ile Array sınıfına ait forEach ve push metotları açıklanmıştır. Girilen bir tweet içerisinden hashtagleri çekme ve bir tweet dizisinden tüm hashtagleri bularak kaç kez kullanıldıklarını hesaplama örnekleri yapılmıştır (sıralama işlemi yapılmamıştır).
+
+DOM manipülasyonu kapsamında getElementById, querySelector, querySelectorAll metotları anlatılmıştır. Zamanlayıcı fonksiyonlar olan setTimeout, setInterval ve clearInterval ele alınmıştır. Bir görev listesi (to-do list) uygulaması üzerinden innerHTML, createElement, appendChild, addEventListener ve textContent kullanımı gösterilmiştir.
+
+Son olarak, var ve let anahtar kelimeleri arasındaki kapsam (scope) ve yeniden tanımlama farkları açıklanmıştır.
