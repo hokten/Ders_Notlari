@@ -213,7 +213,7 @@ Android uygulamalarında en sık karşılaşacağımız veri tipleri şunlardır
 
 Aşağıdaki kod yapısı, bu hafta öğrendiğimiz değişkenlerin bir Jetpack Compose projesinde nasıl yer aldığını göstermektedir. Bu kodda, tanımladığımız değişkenleri ekranın ortasında bir metin olarak yazdırıyoruz.
 
-```
+```kotlin
 package com.example.ilkprojem
 
 import android.os.Bundle
