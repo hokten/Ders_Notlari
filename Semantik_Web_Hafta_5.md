@@ -1,9 +1,3 @@
-# gemini-conversation
-Exported on: 11.03.2026 09:58:40
-
----
-
-
 ## XML Şeması (XSD) Temelleri
 
 Bilgisayarların birbiriyle haberleşirken kullandığı XML dillerini, bir şehrin anayasasına ya da çok kapsamlı bir oyunun kural kitabına benzetebiliriz. XML, verileri paketleyip taşımamıza yarayan bir araçtır; ancak bu verilerin her zaman doğru, eksiksiz ve belirli bir düzende olması gerekir. İşte bu noktada devreye **XSD (XML Schema Definition)** girer. XSD, bir XML dosyasının içine hangi bilgilerin yazılabileceğini, bu bilgilerin hangi sırada geleceğini ve ne türde (sayı mı, metin mi?) olacağını belirleyen resmi bir denetleyicidir.
