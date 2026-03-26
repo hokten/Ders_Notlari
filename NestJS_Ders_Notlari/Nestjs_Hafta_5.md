@@ -6,7 +6,7 @@ Yazılım projelerinde işlerin tek bir merkezden yönetilmesi yerine, görevler
 
 Bir sınıfın sistem tarafından tanınabilmesi ve ihtiyaç duyulan her noktaya yardım ulaştırabilmesi için özel bir yetki belgesine sahip olması gerekir. Bu yetki belgesi `@Injectable()` dekoratörüdür. Bu ifade, sınıfın en üstüne yerleştirilerek yazılımın o birimi bir "sağlayıcı" olarak kaydetmesini sağlar. Bu durum, bir uzmana verilen "göreve hazır" sertifikası gibidir. Bu sertifikaya sahip olan birimler, sistemin komutlarıyla her an her yerde görev alabilir. Aşağıda, iki sayıyı toplama görevini üstlenen basit bir uzman servis örneği bulunmaktadır:
 
-```
+```typescript
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
@@ -33,7 +33,7 @@ Bu durum, büyük bir kütüphanedeki kitapların üzerine yapıştırılan öze
 
 Aşağıdaki örnekte, sistem içerisinde bir bilgi kaynağı olarak görev yapacak olan temel bir servis yapısı görülmektedir:
 
-```
+```typescript
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
